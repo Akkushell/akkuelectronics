@@ -1,0 +1,1219 @@
+/* General Body & Typography */
+:root {
+    --primary-color: #ffcc00; /* Gold */
+    --secondary-color: #2e8b57; /* Sea Green */
+    --dark-bg: #1a1a1a;
+    --darker-bg: #111;
+    --card-bg-gradient: linear-gradient(145deg, #262626, #1a1a1a);
+    --text-light: #f5f5f5;
+    --text-subtle: #aaa;
+    --shadow-light: rgba(0, 0, 0, 0.4);
+    --shadow-dark: rgba(0, 0, 0, 0.7);
+    --transition-speed: 0.4s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--darker-bg);
+    color: var(--text-light);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px var(--shadow-dark);
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Header & Navigation */
+header {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+header h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color var(--transition-speed);
+    display: block; /* Ensures entire area is clickable */
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Dropdown specific styles */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--darker-bg);
+    border: 1px solid var(--primary-color);
+    border-top: none;
+    box-shadow: 0 5px 15px var(--shadow-dark);
+    min-width: 180px;
+    flex-direction: column;
+    z-index: 1001;
+}
+
+.dropdown:hover > .dropdown-menu,
+.dropdown.active > .dropdown-menu { /* Added .active for JS toggle */
+    display: flex;
+}
+
+.dropdown-menu a {
+    padding: 10px 15px;
+    white-space: nowrap; /* Prevent items from wrapping */
+}
+
+/* Image Slider */
+.image-slider {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust height as needed */
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.slides {
+    display: flex;
+    transition: transform var(--transition-speed) ease-in-out;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: 100%;
+    filter: brightness(80%);
+}
+
+.slide-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px var(--shadow-dark);
+    max-width: 90%; /* Ensure caption doesn't overflow on small screens */
+}
+
+.slide-caption h2 {
+    font-size: 3rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Prevents long words from overflowing */
+}
+
+.slide-caption p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+.slider-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: var(--text-subtle);
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+/* Services Section (Cards) */
+.services-section {
+    padding: 4rem 0;
+    background-color: var(--dark-bg);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card-bg-gradient);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    border: 1px solid var(--primary-color);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px var(--shadow-dark);
+}
+
+.card i {
+    font-size: 60px;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.card p {
+    font-size: 1rem;
+    color: var(--text-subtle);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.6rem;
+    background: var(--primary-color);
+    color: var(--darker-bg);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-speed);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+}
+
+/* Main Content Section (Console Repair in Nagpur) */
+.main-container {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.main-container h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card-container .card {
+    background: var(--card-bg-gradient);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    border: 1px solid var(--primary-color); /* Added border for consistency */
+}
+
+.card-container .card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--primary-color);
+}
+
+.card-container .card h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0;
+}
+
+.card-container .card h2::after {
+    display: none;
+}
+
+.card-container .card ul {
+    list-style: none;
+    text-align: left;
+    margin: 1rem 0 1.5rem;
+    padding-left: 0; /* Reset padding for smaller screens */
+    display: inline-block; /* Helps with centering on smaller screens if list is short */
+}
+
+.card-container .card ul li {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23ffcc00"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-340 55l128-128c4-4 10-4 14 0l64 64c4 4 4 10 0 14l-160 160c-4 4-10 4-14 0l-64-64c-4-4-4-10 0-14l64-64c4-4 10-4 14 0z"/></svg>') no-repeat left center;
+    background-size: 16px;
+    padding-left: 25px;
+    margin-bottom: 8px;
+    color: var(--text-subtle);
+}
+
+/* Services Grid Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+.service-card {
+    background: var(--dark-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px var(--shadow-dark);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    border: 1px solid var(--text-subtle);
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px var(--shadow-dark);
+    border-color: var(--primary-color);
+}
+
+.service-card .icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+    /* This filter makes the image content gold, assuming it's a black SVG or similar */
+    filter: invert(70%) sepia(80%) saturate(2000%) hue-rotate(10deg) brightness(120%) contrast(100%);
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+}
+
+.service-card p {
+    color: var(--text-subtle);
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    background: var(--darker-bg);
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--dark-bg);
+}
+
+footer p {
+    color: var(--text-subtle);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .image-slider {
+        height: 400px; /* Adjust slider height for tablets */
+    }
+    .slide-caption h2 {
+        font-size: 2.5rem;
+    }
+    .slide-caption p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: row; /* Keep logo and toggle on same row */
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu toggle button */
+    }
+
+    .nav-links {
+        display: none; /* Hide nav links by default */
+        flex-direction: column;
+        width: 100%;
+        background: var(--dark-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 4px 15px var(--shadow-dark);
+        padding: 1rem 0;
+    }
+
+    .nav-links.active { /* Class added by JS to show menu */
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links a {
+        padding: 12px 20px;
+    }
+
+    .dropdown-menu {
+        position: static; /* Position statically within the flow */
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background: var(--darker-bg);
+        padding-top: 0;
+    }
+    .dropdown-menu li {
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.05); /* Lighter border for sub-items */
+    }
+    .dropdown-menu li:last-child {
+        border-bottom: none;
+    }
+
+    .image-slider {
+        height: 300px; /* Adjust slider height for mobile */
+    }
+    .slide-caption h2 {
+        font-size: 1.8rem;
+    }
+    .slide-caption p {
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+    .main-container h1 {
+        font-size: 2.2rem;
+    }
+    .card h3, .card-container .card h2, .service-card h3 {
+        font-size: 1.2rem;
+    }
+    .card p, .card-container .card p, .service-card p {
+        font-size: 0.85rem;
+    }
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+    .image-slider {
+        height: 250px;
+    }
+    .slide-caption h2 {
+        font-size: 1.5rem;
+    }
+    .slide-caption p {
+        font-size: 0.8rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    .main-container h1 {
+        font-size: 1.8rem;
+    }
+    .cards, .card-container, .services-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+    }
+    .card, .service-card {
+        padding: 1.5rem;
+    }
+    .card i {
+        font-size: 48px;
+    }
+}
+
+/* --- New Styles for Sony PlayStation Page --- */
+
+/* Active Link in Navigation (for the current page) */
+.nav-links .dropdown .active-link {
+    color: var(--primary-color) !important; /* Force color for active dropdown parent link */
+}
+
+/* Hero Banner for PlayStation Page */
+.hero-banner.playstation-banner {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1600x600/0070D1/FFFFFF?text=All+PlayStation+Consoles') no-repeat center center/cover;
+    padding: 6rem 0;
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.playstation-banner .banner-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.playstation-banner h2 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px var(--shadow-dark);
+}
+
+.playstation-banner p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    text-shadow: 1px 1px 3px var(--shadow-dark);
+}
+
+.playstation-banner .btn {
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+}
+
+/* Section Title for internal pages (slightly different from h2 in index) */
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Slightly wider underline */
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+
+/* Individual Console Repair Cards Section */
+.console-repair-cards {
+    padding: 3rem 0;
+    background-color: var(--dark-bg);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.console-card {
+    background: var(--card-bg-gradient);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    border: 1px solid var(--primary-color);
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Push button to bottom */
+}
+
+.console-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px var(--shadow-dark);
+}
+
+.console-card img {
+    width: 100%;
+    max-height: 180px; /* Adjust image height */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--primary-color);
+}
+
+.console-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0.5rem 0 1rem;
+}
+
+.console-card p {
+    font-size: 1rem;
+    color: var(--text-subtle);
+    flex-grow: 1; /* Allow paragraph to take available space */
+    margin-bottom: 1.5rem; /* Space before button */
+}
+
+.console-card .btn.small-btn {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
+}
+
+
+/* Common Problems Section */
+.common-problems-section {
+    padding: 4rem 0;
+    background-color: var(--darker-bg);
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.problem-item {
+    background: var(--dark-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    text-align: center;
+    border: 1px solid rgba(255, 204, 0, 0.3); /* Lighter border for these cards */
+    transition: all 0.3s ease;
+}
+
+.problem-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-dark);
+    border-color: var(--primary-color);
+}
+
+.problem-item i {
+    font-size: 45px;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.problem-item h3 {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+}
+
+.problem-item p {
+    font-size: 0.9rem;
+    color: var(--text-subtle);
+}
+
+
+/* --- Responsive Adjustments for Sony PlayStation Page --- */
+
+@media (max-width: 992px) {
+    .hero-banner.playstation-banner {
+        padding: 5rem 0;
+    }
+    .playstation-banner h2 {
+        font-size: 3rem;
+    }
+    .playstation-banner p {
+        font-size: 1.3rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-banner.playstation-banner {
+        padding: 4rem 0;
+    }
+    .playstation-banner h2 {
+        font-size: 2.5rem;
+    }
+    .playstation-banner p {
+        font-size: 1.1rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .console-card img {
+        max-height: 150px;
+    }
+    .console-card h3 {
+        font-size: 1.5rem;
+    }
+    .problem-item i {
+        font-size: 40px;
+    }
+    .problem-item h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner.playstation-banner {
+        padding: 3rem 0;
+    }
+    .playstation-banner h2 {
+        font-size: 2rem;
+    }
+    .playstation-banner p {
+        font-size: 0.95rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .console-card img {
+        max-height: 120px;
+    }
+    .console-card h3 {
+        font-size: 1.3rem;
+    }
+    .console-card p {
+        font-size: 0.9rem;
+    }
+    .btn.small-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    .problem-item i {
+        font-size: 35px;
+    }
+    .problem-item h3 {
+        font-size: 1.1rem;
+    }
+    .problem-item p {
+        font-size: 0.8rem;
+    }
+}
+
+/* --- New Styles for PlayStation 3 Page --- */
+
+/* Active Link in Sub-Navigation */
+.nav-links .dropdown .dropdown-menu .active-item a {
+    color: var(--primary-color) !important;
+}
+
+/* Hero Banner for PS3 Page */
+.hero-banner.ps3-banner {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1600x600/36454F/FFFFFF?text=PlayStation+3+Repair') no-repeat center center/cover;
+    padding: 6rem 0;
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.ps3-banner h1 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px var(--shadow-dark);
+}
+
+.ps3-banner p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    text-shadow: 1px 1px 3px var(--shadow-dark);
+}
+
+/* Main Content & Sidebar Section */
+.main-content-section {
+    padding: 4rem 0;
+}
+
+.content-flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.main-text-content {
+    flex: 2; /* Takes up 2/3 of the space on large screens */
+    min-width: 300px; /* Prevents it from getting too small */
+}
+
+.image-sidebar {
+    flex: 1; /* Takes up 1/3 of the space */
+    min-width: 250px;
+    background: var(--dark-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+}
+
+.image-sidebar img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+}
+
+.main-text-content h2, .main-text-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.main-text-content h2::after, .main-text-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.main-text-content p {
+    color: var(--text-subtle);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Problem List */
+.problem-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.problem-list li {
+    background: var(--dark-bg);
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--primary-color);
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px var(--shadow-dark);
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.problem-list li:hover {
+    transform: translateX(10px);
+}
+
+.problem-list li i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-right: 1rem;
+}
+
+.problem-list li strong {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* Responsive Adjustments for PS3 Page */
+@media (max-width: 768px) {
+    .content-flex-container {
+        flex-direction: column; /* Stack content on mobile */
+    }
+    .main-text-content, .image-sidebar {
+        min-width: unset;
+        width: 100%;
+    }
+    .hero-banner.ps3-banner {
+        padding: 4rem 0;
+    }
+    .ps3-banner h1 {
+        font-size: 2.5rem;
+    }
+    .ps3-banner p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner.ps3-banner {
+        padding: 3rem 0;
+    }
+    .ps3-banner h1 {
+        font-size: 2rem;
+    }
+    .ps3-banner p {
+        font-size: 1rem;
+    }
+    .main-text-content h2, .main-text-content h3 {
+        font-size: 1.8rem;
+    }
+    .main-text-content p {
+        font-size: 0.95rem;
+    }
+    .problem-list li {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    .problem-list li i {
+        font-size: 1.2rem;
+    }
+}
+
+/* --- New Styles for PlayStation 4 Page --- */
+
+/* Hero Banner for PS4 Page */
+.hero-banner.ps4-banner {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1600x600/0070D1/FFFFFF?text=PlayStation+4+Repair') no-repeat center center/cover;
+    padding: 6rem 0;
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.ps4-banner h1 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px var(--shadow-dark);
+}
+
+.ps4-banner p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    text-shadow: 1px 1px 3px var(--shadow-dark);
+}
+
+/* Reusing .main-content-section, .content-flex-container, .main-text-content, .image-sidebar */
+/* Reusing .problem-list and its li styles */
+
+
+/* Responsive Adjustments for PS4 Page (similar to PS3 but with specific banner/content focus) */
+@media (max-width: 768px) {
+    .hero-banner.ps4-banner {
+        padding: 4rem 0;
+    }
+    .ps4-banner h1 {
+        font-size: 2.5rem;
+    }
+    .ps4-banner p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner.ps4-banner {
+        padding: 3rem 0;
+    }
+    .ps4-banner h1 {
+        font-size: 2rem;
+    }
+    .ps4-banner p {
+        font-size: 1rem;
+    }
+}
+
+
+/* --- New Styles for PlayStation 5 Page --- */
+
+/* Hero Banner for PS5 Page */
+.hero-banner.ps5-banner {
+    background: linear-gradient(rgba(36, 36, 36, 0.7), rgba(36, 36, 36, 0.7)), url('/images/ps5banner1.png') no-repeat center center/cover;
+    padding: 6rem 0;
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.ps5-banner h1 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px var(--shadow-dark);
+}
+
+.ps5-banner p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    text-shadow: 1px 1px 3px var(--shadow-dark);
+}
+
+/* Responsive Adjustments for PS5 Page (similar to PS3/PS4) */
+@media (max-width: 768px) {
+    .hero-banner.ps5-banner {
+        padding: 4rem 0;
+    }
+    .ps5-banner h1 {
+        font-size: 2.5rem;
+    }
+    .ps5-banner p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner.ps5-banner {
+        padding: 3rem 0;
+    }
+    .ps5-banner h1 {
+        font-size: 2rem;
+    }
+    .ps5-banner p {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+/* --- Updated Footer Styles --- */
+
+footer {
+    background: var(--darker-bg);
+    color: var(--text-subtle);
+    padding: 3rem 0 1rem; /* Adjust padding top/bottom */
+    border-top: 1px solid var(--dark-bg);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+    justify-content: space-between;
+    gap: 2rem; /* Space between columns */
+    margin-bottom: 2rem;
+}
+
+.footer-section {
+    flex: 1; /* Each section takes equal space */
+    min-width: 250px; /* Minimum width before wrapping */
+    padding: 0 1rem;
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    text-shadow: none; /* Remove text shadow for footer headings */
+}
+
+.footer-section p,
+.footer-section ul li {
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* About Section */
+.footer-section.about p {
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: var(--dark-bg);
+    color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border: 1px solid rgba(255, 204, 0, 0.3);
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: var(--darker-bg);
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+}
+
+/* Links Section */
+.footer-section.links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section.links ul li a {
+    color: var(--text-subtle);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block; /* Make the whole list item clickable */
+    padding: 5px 0;
+}
+
+.footer-section.links ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Contact Section */
+.footer-section.contact p i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px; /* Align icons */
+    text-align: center;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--dark-bg); /* Separator line */
+    margin-top: 1rem;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+}
+
+
+/* Responsive Adjustments for Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stack footer sections vertically */
+        align-items: center; /* Center items when stacked */
+        text-align: center;
+    }
+
+    .footer-section {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 2rem;
+        padding: 0; /* Remove horizontal padding */
+    }
+
+    .footer-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .social-links {
+        justify-content: center; /* Center social icons */
+    }
+
+    .footer-section.links ul {
+        display: flex; /* Make links horizontal on small screens */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px; /* Space between links */
+    }
+
+    .footer-section.links ul li {
+        width: auto; /* Allow links to take natural width */
+    }
+
+    .footer-section.links ul li a {
+        padding: 5px 10px; /* Adjust padding for smaller horizontal links */
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 2rem 0 0.5rem;
+    }
+    .footer-section h3 {
+        font-size: 1.3rem;
+    }
+    .footer-section p,
+    .footer-section ul li {
+        font-size: 0.9rem;
+    }
+    .social-links a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+    }
+}
