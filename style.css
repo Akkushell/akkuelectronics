@@ -1,15 +1,16 @@
 /* General Body & Typography */
 :root {
-    --primary-color: #ffcc00; /* Gold */
-    --secondary-color: #2e8b57; /* Sea Green */
-    --dark-bg: #1a1a1a;
-    --darker-bg: #111;
-    --card-bg-gradient: linear-gradient(145deg, #262626, #1a1a1a);
-    --text-light: #f5f5f5;
-    --text-subtle: #aaa;
-    --shadow-light: rgba(0, 0, 0, 0.4);
-    --shadow-dark: rgba(0, 0, 0, 0.7);
-    --transition-speed: 0.4s;
+    --primary-color: #ffd700; /* Brighter Gold */
+    --secondary-color: #00e5ff; /* Electric Blue */
+    --dark-bg: #121212;
+    --darker-bg: #0d0d0d;
+    --card-bg-gradient: linear-gradient(145deg, #1e1e1e, #121212);
+    --text-light: #e0e0e0;
+    --text-subtle: #b0b0b0;
+    --shadow-light: rgba(0, 229, 255, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.8);
+    --transition-speed: 0.5s;
+    --font-primary: 'Poppins', sans-serif;
 }
 
 * {
@@ -21,30 +22,32 @@
 body {
     background-color: var(--darker-bg);
     color: var(--text-light);
-    font-family: 'Segoe UI', Arial, sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-primary);
+    line-height: 1.7;
     overflow-x: hidden;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 25px;
 }
 
 h1, h2, h3 {
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-primary);
+    font-weight: 700;
     color: var(--primary-color);
-    text-shadow: 1px 1px 2px var(--shadow-dark);
+    text-shadow: 1px 1px 3px var(--shadow-dark);
 }
 
 h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 h2::after {
@@ -53,32 +56,136 @@ h2::after {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background-color: var(--primary-color);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero {
+    background: var(--dark-bg);
+    padding: 3rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-subtle);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Content Section */
+.content-section {
+    padding: 4rem 0;
+}
+
+.content-section h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.content-section p {
+    margin-bottom: 1rem;
+    color: var(--text-subtle);
+    line-height: 1.8;
+}
+
+.content-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.content-section ul li {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%2300e5ff"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm114.3 213.4l-128 128c-4.7 4.7-12.3 4.7-17 0l-64-64c-4.7-4.7-4.7-12.3 0-17s12.3-4.7 17 0L248 322.9l119.3-119.3c4.7-4.7 12.3-4.7 17 0s4.7 12.3 0 17z"/></svg>') no-repeat left center;
+    background-size: 20px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+/* Slider Navigation */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(18, 18, 18, 0.6);
+    color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    padding: 1.2rem;
+    cursor: pointer;
+    font-size: 1.8rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.slider-nav:hover {
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    border-color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-nav.prev {
+    left: 25px;
+}
+
+.slider-nav.next {
+    right: 25px;
 }
 
 /* Header & Navigation */
 header {
-    background: var(--dark-bg);
+    background: linear-gradient(to right, var(--dark-bg), #1a1a1a);
     color: var(--text-light);
-    padding: 1.5rem 0;
-    box-shadow: 0 4px 15px var(--shadow-dark);
+    padding: 1rem 0;
+    box-shadow: 0 5px 20px var(--shadow-dark);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    flex-wrap: wrap;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo {
+    height: 100px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover .logo {
+    transform: rotate(-10deg);
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
     color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    margin: 0; /* Reset margin */
 }
 
 nav {
@@ -87,19 +194,24 @@ nav {
 }
 
 .menu-toggle {
-    display: none; /* Hidden by default on larger screens */
+    display: none;
     background: none;
     border: none;
     color: var(--primary-color);
-    font-size: 1.8rem;
+    font-size: 2rem;
     cursor: pointer;
     padding: 10px;
+    transition: color 0.3s;
+}
+
+.menu-toggle:hover {
+    color: var(--secondary-color);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 .nav-links li {
@@ -109,39 +221,87 @@ nav {
 .nav-links a {
     text-decoration: none;
     color: var(--text-light);
-    font-weight: bold;
-    padding: 10px 15px;
-    transition: color var(--transition-speed);
-    display: block; /* Ensures entire area is clickable */
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 15px 0;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    position: relative;
+    display: block;
 }
 
-.nav-links a:hover {
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover,
+.nav-links li.active a {
     color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+.nav-links a:hover::after,
+.nav-links li.active a::after {
+    width: 100%;
 }
 
 /* Dropdown specific styles */
 .dropdown-menu {
-    display: none; /* Hidden by default */
+    display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--darker-bg);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--secondary-color);
     border-top: none;
-    box-shadow: 0 5px 15px var(--shadow-dark);
-    min-width: 180px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    min-width: 200px;
     flex-direction: column;
     z-index: 1001;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    opacity: 0;
+    transform-origin: top center;
+    animation: dropdown-fade 0.4s forwards;
+}
+
+@keyframes dropdown-fade {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) scaleY(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scaleY(1);
+    }
 }
 
 .dropdown:hover > .dropdown-menu,
-.dropdown.active > .dropdown-menu { /* Added .active for JS toggle */
+.dropdown.active > .dropdown-menu {
     display: flex;
 }
 
 .dropdown-menu a {
-    padding: 10px 15px;
-    white-space: nowrap; /* Prevent items from wrapping */
+    padding: 12px 20px;
+    white-space: nowrap;
+    font-size: 1rem;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
+}
+
+.dropdown-menu a::after {
+    display: none; /* Remove the underline effect from dropdown items */
 }
 
 /* Image Slider */
@@ -228,7 +388,7 @@ nav {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
@@ -407,131 +567,6 @@ footer p {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-    .image-slider {
-        height: 400px; /* Adjust slider height for tablets */
-    }
-    .slide-caption h2 {
-        font-size: 2.5rem;
-    }
-    .slide-caption p {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    header .container {
-        flex-direction: row; /* Keep logo and toggle on same row */
-        justify-content: space-between;
-    }
-
-    .menu-toggle {
-        display: block; /* Show menu toggle button */
-    }
-
-    .nav-links {
-        display: none; /* Hide nav links by default */
-        flex-direction: column;
-        width: 100%;
-        background: var(--dark-bg);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        box-shadow: 0 4px 15px var(--shadow-dark);
-        padding: 1rem 0;
-    }
-
-    .nav-links.active { /* Class added by JS to show menu */
-        display: flex;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .nav-links li:last-child {
-        border-bottom: none;
-    }
-
-    .nav-links a {
-        padding: 12px 20px;
-    }
-
-    .dropdown-menu {
-        position: static; /* Position statically within the flow */
-        width: 100%;
-        border: none;
-        box-shadow: none;
-        background: var(--darker-bg);
-        padding-top: 0;
-    }
-    .dropdown-menu li {
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.05); /* Lighter border for sub-items */
-    }
-    .dropdown-menu li:last-child {
-        border-bottom: none;
-    }
-
-    .image-slider {
-        height: 300px; /* Adjust slider height for mobile */
-    }
-    .slide-caption h2 {
-        font-size: 1.8rem;
-    }
-    .slide-caption p {
-        font-size: 0.9rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-    .main-container h1 {
-        font-size: 2.2rem;
-    }
-    .card h3, .card-container .card h2, .service-card h3 {
-        font-size: 1.2rem;
-    }
-    .card p, .card-container .card p, .service-card p {
-        font-size: 0.85rem;
-    }
-    .btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding: 1rem;
-    }
-    .image-slider {
-        height: 250px;
-    }
-    .slide-caption h2 {
-        font-size: 1.5rem;
-    }
-    .slide-caption p {
-        font-size: 0.8rem;
-    }
-    h2 {
-        font-size: 1.8rem;
-    }
-    .main-container h1 {
-        font-size: 1.8rem;
-    }
-    .cards, .card-container, .services-grid {
-        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
-    }
-    .card, .service-card {
-        padding: 1.5rem;
-    }
-    .card i {
-        font-size: 48px;
-    }
-}
-
 /* --- New Styles for Sony PlayStation Page --- */
 
 /* Active Link in Navigation (for the current page) */
@@ -553,165 +588,158 @@ footer p {
     margin: 0 auto;
 }
 
-.playstation-banner h2 {
+.playstation-banner h1 {
     font-size: 3.5rem;
-    color: var(--primary-color);
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 5px var(--shadow-dark);
 }
 
 .playstation-banner p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: var(--text-light);
-    text-shadow: 1px 1px 3px var(--shadow-dark);
 }
 
-.playstation-banner .btn {
-    font-size: 1.1rem;
-    padding: 1rem 2.5rem;
-}
+/* --- Styles for Specific Console Pages --- */
 
-/* Section Title for internal pages (slightly different from h2 in index) */
-.section-title {
+/* Generic Hero Banner for individual pages */
+.hero-banner {
+    padding: 8rem 0;
     text-align: center;
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    margin-bottom: 2.5rem;
-    text-transform: uppercase;
+    color: var(--text-light);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
-    padding-bottom: 10px;
 }
 
-.section-title::after {
+.hero-banner::before {
     content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px; /* Slightly wider underline */
-    height: 3px;
-    background-color: var(--primary-color);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.hero-banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+.banner-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.banner-content p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+/* Specific Banners */
+.ps5-banner {
+    background-image: url('./images/ps5banner.jpg');
+}
+
+.ps4-banner {
+    background-image: url('https://via.placeholder.com/1600x600/003087/FFFFFF?text=PS4+Banner');
+}
+
+.ps3-banner {
+    background-image: url('https://via.placeholder.com/1600x600/8B0000/FFFFFF?text=PS3+Banner');
+}
+
+.xbox-series-banner {
+    background-image: url('./images/xbox-series-x-console.png');
+}
+
+.xbox-one-banner {
+    background-image: url('./images/xboxones.jpeg');
+}
+
+.xbox360-banner {
+    background-image: url('./images/xbox360.png');
 }
 
 
-/* Individual Console Repair Cards Section */
-.console-repair-cards {
-    padding: 3rem 0;
-    background-color: var(--dark-bg);
-}
-
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.console-card {
-    background: var(--card-bg-gradient);
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px var(--shadow-dark);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    text-align: center;
-    border: 1px solid var(--primary-color);
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: space-between; /* Push button to bottom */
-}
-
-.console-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px var(--shadow-dark);
-}
-
-.console-card img {
-    width: 100%;
-    max-height: 180px; /* Adjust image height */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border: 2px solid var(--primary-color);
-}
-
-.console-card h3 {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin: 0.5rem 0 1rem;
-}
-
-.console-card p {
-    font-size: 1rem;
-    color: var(--text-subtle);
-    flex-grow: 1; /* Allow paragraph to take available space */
-    margin-bottom: 1.5rem; /* Space before button */
-}
-
-.console-card .btn.small-btn {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.95rem;
-}
-
-
-/* Common Problems Section */
-.common-problems-section {
+/* Main Content Section for individual pages */
+.main-content-section {
     padding: 4rem 0;
-    background-color: var(--darker-bg);
 }
 
-.problem-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+.content-flex-container {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
 }
 
-.problem-item {
-    background: var(--dark-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px var(--shadow-dark);
-    text-align: center;
-    border: 1px solid rgba(255, 204, 0, 0.3); /* Lighter border for these cards */
-    transition: all 0.3s ease;
+.main-text-content {
+    flex: 2; /* Takes up 2/3 of the space */
 }
 
-.problem-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px var(--shadow-dark);
-    border-color: var(--primary-color);
+.main-text-content h2 {
+    text-align: left;
+    font-size: 2.5rem;
+}
+.main-text-content h2::after {
+    left: 0;
+    transform: translateX(0);
 }
 
-.problem-item i {
-    font-size: 45px;
-    color: var(--primary-color);
+.main-text-content h3 {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
-.problem-item h3 {
-    font-size: 1.3rem;
-    color: var(--text-light);
-    margin-bottom: 0.8rem;
-}
-
-.problem-item p {
-    font-size: 0.9rem;
+.main-text-content p {
     color: var(--text-subtle);
+    line-height: 1.8;
 }
 
+.problem-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1.5rem;
+}
 
-/* --- Responsive Adjustments for Sony PlayStation Page --- */
+.problem-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
 
+.problem-list i {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-right: 15px;
+    margin-top: 4px;
+}
+
+.image-sidebar {
+    flex: 1; /* Takes up 1/3 of the space */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.image-sidebar img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px var(--shadow-dark);
+    border: 2px solid var(--secondary-color);
+}
+
+/* Responsive adjustments for the flex container */
 @media (max-width: 992px) {
-    .hero-banner.playstation-banner {
-        padding: 5rem 0;
+    .content-flex-container {
+        flex-direction: column;
     }
-    .playstation-banner h2 {
-        font-size: 3rem;
-    }
-    .playstation-banner p {
-        font-size: 1.3rem;
-    }
-    .section-title {
+    .main-text-content h2 {
         font-size: 2.2rem;
     }
 }
@@ -900,6 +928,82 @@ footer p {
     font-size: 1.1rem;
 }
 
+/* --- New Styles for Shop Page --- */
+
+.product-grid-page {
+    padding: 4rem 0;
+}
+
+.product-category-title {
+    font-size: 2.2rem;
+    color: var(--secondary-color);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-color);
+    display: inline-block;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.product-item {
+    background: var(--card-bg-gradient);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    border: 1px solid var(--primary-color);
+    overflow: hidden; /* Ensures the image corners are rounded if they overflow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px var(--shadow-dark);
+}
+
+.product-item img {
+    width: 100%;
+    height: 200px; /* Fixed height for uniform look */
+    object-fit: contain; /* Use contain to prevent distortion */
+    background-color: #2c2c2c; /* A dark background for images */
+    padding: 1rem;
+}
+
+.product-item h4 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    padding: 0 1rem;
+}
+
+.product-item p {
+    font-size: 1rem;
+    color: var(--text-subtle);
+    padding: 0 1.5rem;
+    flex-grow: 1;
+}
+
+.product-item .product-price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-top: 1rem;
+    padding: 0 1.5rem;
+}
+
+.product-item .btn {
+    margin: 1.5rem;
+}
+
+
 /* Responsive Adjustments for PS3 Page */
 @media (max-width: 768px) {
     .content-flex-container {
@@ -929,19 +1033,6 @@ footer p {
     }
     .ps3-banner p {
         font-size: 1rem;
-    }
-    .main-text-content h2, .main-text-content h3 {
-        font-size: 1.8rem;
-    }
-    .main-text-content p {
-        font-size: 0.95rem;
-    }
-    .problem-list li {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-    }
-    .problem-list li i {
-        font-size: 1.2rem;
     }
 }
 
