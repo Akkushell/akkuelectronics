@@ -35,97 +35,99 @@ let autoSlideInterval = setInterval(() => {
 
 // Optional: Pause slideshow on hover
 const slider = document.querySelector('.image-slider');
-slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-slider.addEventListener('mouseleave', () => {
-    autoSlideInterval = setInterval(() => {
-        showSlides(slideIndex += 1);
-    }, 5000);
-});
+if(slider) {
+    slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    slider.addEventListener('mouseleave', () => {
+        autoSlideInterval = setInterval(() => {
+            showSlides(slideIndex += 1);
+        }, 5000);
+    });
+}
 
 
-// Responsive Navigation Toggle
+/* --- Shop Page and Payment Modal Logic --- */
+
 document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const dropdowns = document.querySelectorAll('.dropdown');
-
-    // Toggle mobile menu
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.setAttribute('aria-expanded', 
-            menuToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-        );
-    });
-
-    // Handle dropdown menus
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('a');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            dropdown.classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
-
-        // Keyboard navigation
-        link.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-            }
-        });
-    });
-
-    dropdowns.forEach(dropdown => {
-        const dropdownLink = dropdown.querySelector('a');
-        dropdownLink.addEventListener('click', (e) => {
-            // Only toggle on smaller screens where the menu is collapsed
-            if (window.innerWidth <= 768) {
-                e.preventDefault(); // Prevent navigating to '#'
-                dropdown.classList.toggle('active');
-            }
-        });
-    });
-
-    // Close menu when clicking outside on mobile
-    document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-            navLinks.classList.remove('active');
-            dropdowns.forEach(d => d.classList.remove('active')); // Also close dropdowns
-        }
-    });
-
-    // Close dropdowns when clicking outside on desktop (if open)
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            navLinks.classList.remove('active'); // Ensure menu is closed if resized up
-            dropdowns.forEach(d => d.classList.remove('active')); // Close dropdowns on desktop
-        }
-    });
-
-    // WhatsApp Buy Button Logic
     const buyButtons = document.querySelectorAll('.buy-btn');
-    const phoneNumber = '918956389723'; // Your WhatsApp number
+    const modal = document.getElementById('payment-modal');
+    const closeButton = document.querySelector('#payment-modal .close-button');
+    const modalProductName = document.getElementById('modal-product-name');
+    const modalProductPrice = document.getElementById('modal-product-price');
+    
+    // Elements for UPI Copy
+    const copyUpiIdButton = document.getElementById('copy-upi-id');
+    const upiIdSpan = document.getElementById('upi-id');
+    const copySuccessMessage = document.getElementById('copy-success');
 
+    // 1. Show the modal when a 'Buy Now' button is clicked
     buyButtons.forEach(button => {
         button.addEventListener('click', () => {
             const productItem = button.closest('.product-item');
-            const productName = productItem.dataset.name;
-            const productPrice = productItem.dataset.price;
-            const productDescription = productItem.querySelector('.product-description').textContent.trim();
-            
-            const message = `Hello Akku Electronics, I'm interested in buying the following product:\n\n*Product:* ${productName}\n*Price:* ${productPrice}\n\nPlease let me know the next steps.`;
-            
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            window.open(whatsappUrl, '_blank');
+            const productName = productItem.querySelector('h3').textContent;
+            const productPrice = productItem.querySelector('.price').textContent;
+
+            // Check if it's a quote request
+            if (button.classList.contains('quote-btn')) {
+                // Handle "Contact for Quote" via WhatsApp
+                const message = `Hello Akku Electronics, I'm interested in getting a quote for the following product:\n\n*Product:* ${productName}\n\nPlease provide more information.`;
+                const whatsappUrl = `https://wa.me/918956389723?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            } else {
+                // For items with a price, open the payment modal
+                modalProductName.textContent = productName;
+                modalProductPrice.textContent = productPrice;
+                // Use classList.add for smooth CSS animation
+                modal.classList.add('open'); 
+            }
         });
     });
+
+    // 2. Close the modal using the button or outside click
+    if(modal) {
+        // Close button click
+        closeButton.addEventListener('click', () => {
+            modal.classList.remove('open');
+        });
+
+        // Click outside the modal content
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.classList.remove('open');
+            }
+        });
+    }
+
+    // 3. Copy UPI ID to clipboard (using document.execCommand for iframe compatibility)
+    if (copyUpiIdButton && upiIdSpan && copySuccessMessage) {
+        copyUpiIdButton.addEventListener('click', () => {
+            const upiId = upiIdSpan.textContent;
+            
+            // Create a temporary input element to hold the text
+            const tempInput = document.createElement('input');
+            tempInput.value = upiId;
+            document.body.appendChild(tempInput);
+            
+            // Select the text and execute the copy command
+            tempInput.select();
+            
+            let success = false;
+            try {
+                // document.execCommand('copy') is the most reliable method in iframes
+                success = document.execCommand('copy');
+            } catch (err) {
+                console.error('Failed to copy UPI ID using execCommand:', err);
+            } finally {
+                // Remove the temporary element
+                document.body.removeChild(tempInput);
+            }
+
+            if (success) {
+                // Show success message
+                copySuccessMessage.style.display = 'block';
+                setTimeout(() => {
+                    copySuccessMessage.style.display = 'none';
+                }, 2000); // Hide message after 2 seconds
+            }
+        });
+    }
 });

@@ -51,10 +51,12 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero-banner shop-banner">
             <div class="container">
-                <h2>Shop Our Products</h2>
-                <p>Find consoles, accessories, and parts for all your gaming needs.</p>
+                <div class="banner-content">
+                    <h2>Shop Our Products</h2>
+                    <p>Find consoles, accessories, and parts for all your gaming needs.</p>
+                </div>
             </div>
         </section>
 
@@ -188,6 +190,27 @@
             </div>
         </div>
     </footer>
+
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Complete Your Payment</h2>
+            <div class="payment-details">
+                <img src="./images/qrcode1.jpg" alt="UPI QR Code" class="qr-code">
+                <div class="upi-info">
+                    <p>Scan the QR code with your UPI app or pay directly to the UPI ID below.</p>
+                    <p><strong>UPI ID:</strong> <span id="upi-id">akkuelectronics@ybl</span></p>
+                    <button id="copy-upi-id" class="btn">Copy UPI ID</button>
+                    <p id="copy-success" style="display: none; color: green;">UPI ID copied!</p>
+                </div>
+            </div>
+            <div class="modal-product-details">
+                <h3>Order Summary</h3>
+                <p><strong>Product:</strong> <span id="modal-product-name"></span></p>
+                <p><strong>Price:</strong> <span id="modal-product-price"></span></p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 

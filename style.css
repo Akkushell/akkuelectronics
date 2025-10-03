@@ -380,6 +380,69 @@ nav {
     background-color: var(--primary-color);
 }
 
+/* Category Section */
+.category-section {
+    padding: 4rem 0;
+    background-color: var(--dark-bg);
+}
+
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.category-card {
+    background: var(--card-bg-gradient);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid var(--secondary-color);
+    text-align: center;
+}
+
+.category-card a {
+    display: block;
+    padding: 2.5rem 2rem;
+    text-decoration: none;
+    color: var(--text-light);
+    transition: background-color 0.3s;
+    height: 100%;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 28px var(--shadow-light);
+}
+
+.category-card a:hover {
+    background-color: rgba(0, 229, 255, 0.05);
+    border-radius: 12px;
+}
+
+.category-card i {
+    font-size: 50px;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.category-card:hover i {
+    transform: scale(1.1);
+}
+
+.category-card h3 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.category-card p {
+    font-size: 1rem;
+    color: var(--text-subtle);
+    line-height: 1.5;
+}
+
 /* Services Section (Cards) */
 .services-section {
     padding: 4rem 0;
@@ -567,38 +630,7 @@ footer p {
     font-size: 0.9rem;
 }
 
-/* --- New Styles for Sony PlayStation Page --- */
-
-/* Active Link in Navigation (for the current page) */
-.nav-links .dropdown .active-link {
-    color: var(--primary-color) !important; /* Force color for active dropdown parent link */
-}
-
-/* Hero Banner for PlayStation Page */
-.hero-banner.playstation-banner {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1600x600/0070D1/FFFFFF?text=All+PlayStation+Consoles') no-repeat center center/cover;
-    padding: 6rem 0;
-    text-align: center;
-    color: var(--text-light);
-    margin-bottom: 3rem;
-}
-
-.playstation-banner .banner-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.playstation-banner h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-
-.playstation-banner p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-/* --- Styles for Specific Console Pages --- */
+/* --- Styles for Page Banners --- */
 
 /* Generic Hero Banner for individual pages */
 .hero-banner {
@@ -609,6 +641,7 @@ footer p {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    margin-bottom: 3rem;
 }
 
 .hero-banner::before {
@@ -618,7 +651,8 @@ footer p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
 }
 
 .hero-banner .container {
@@ -626,41 +660,64 @@ footer p {
     z-index: 2;
 }
 
+.banner-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .banner-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
+    text-shadow: 2px 2px 8px var(--shadow-dark);
 }
 
 .banner-content p {
     font-size: 1.3rem;
     max-width: 700px;
     margin: 0 auto 2rem;
+    text-shadow: 1px 1px 4px var(--shadow-dark);
 }
 
 /* Specific Banners */
+.playstation-banner {
+    background-image: url('./images/playstationbanner1.jpg');
+}
+
+.xbox-banner {
+    background-image: url('./images/xboxbanner1.jpg');
+}
+
 .ps5-banner {
-    background-image: url('./images/ps5banner.jpg');
+    background-image: url('./images/ps5banner1.jpg');
 }
 
 .ps4-banner {
-    background-image: url('https://via.placeholder.com/1600x600/003087/FFFFFF?text=PS4+Banner');
+    background-image: url('./images/ps4banner1.jpg');
 }
 
 .ps3-banner {
-    background-image: url('https://via.placeholder.com/1600x600/8B0000/FFFFFF?text=PS3+Banner');
+    background-image: url('./images/ps3banner1.jpeg');
 }
 
 .xbox-series-banner {
-    background-image: url('./images/xbox-series-x-console.png');
+    background-image: url('./images/xboxseriesbanner1.jpg');
 }
 
 .xbox-one-banner {
-    background-image: url('./images/xboxones.jpeg');
+    background-image: url('./images/xboxonebanner1.jpg');
 }
 
 .xbox360-banner {
-    background-image: url('./images/xbox360.png');
+    background-image: url('./images/xbox360banner1.jpg');
+}
+
+.services-banner {
+    background-image: url('./images/servicesbanner.jpg');
+}
+
+.shop-banner {
+    background-image: url('./images/shopbanner.jpg');
 }
 
 
@@ -732,6 +789,12 @@ footer p {
     border-radius: 10px;
     box-shadow: 0 8px 20px var(--shadow-dark);
     border: 2px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-sidebar a:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px var(--shadow-light);
 }
 
 /* Responsive adjustments for the flex container */
@@ -745,13 +808,10 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    .hero-banner.playstation-banner {
-        padding: 4rem 0;
-    }
-    .playstation-banner h2 {
+    .banner-content h1 {
         font-size: 2.5rem;
     }
-    .playstation-banner p {
+    .banner-content p {
         font-size: 1.1rem;
     }
     .section-title {
@@ -772,13 +832,10 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    .hero-banner.playstation-banner {
-        padding: 3rem 0;
-    }
-    .playstation-banner h2 {
+    .banner-content h1 {
         font-size: 2rem;
     }
-    .playstation-banner p {
+    .banner-content p {
         font-size: 0.95rem;
     }
     .section-title {
@@ -813,29 +870,6 @@ footer p {
 /* Active Link in Sub-Navigation */
 .nav-links .dropdown .dropdown-menu .active-item a {
     color: var(--primary-color) !important;
-}
-
-/* Hero Banner for PS3 Page */
-.hero-banner.ps3-banner {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1600x600/36454F/FFFFFF?text=PlayStation+3+Repair') no-repeat center center/cover;
-    padding: 6rem 0;
-    text-align: center;
-    color: var(--text-light);
-    margin-bottom: 3rem;
-}
-
-.ps3-banner h1 {
-    font-size: 3.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 5px var(--shadow-dark);
-}
-
-.ps3-banner p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-light);
-    text-shadow: 1px 1px 3px var(--shadow-dark);
 }
 
 /* Main Content & Sidebar Section */
@@ -965,185 +999,239 @@ footer p {
 }
 
 .product-item:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px var(--shadow-dark);
+    transform: translateY(-10px);
+    box-shadow: 0 12px 28px var(--shadow-light);
 }
 
 .product-item img {
     width: 100%;
-    height: 200px; /* Fixed height for uniform look */
-    object-fit: contain; /* Use contain to prevent distortion */
-    background-color: #2c2c2c; /* A dark background for images */
+    height: 200px;
+    object-fit: contain;
     padding: 1rem;
+    background-color: #fff; /* A light background for product images */
 }
 
 .product-item h4 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--primary-color);
-    margin: 1rem 0;
-    padding: 0 1rem;
+    margin: 1rem 0 0.5rem;
 }
 
-.product-item p {
-    font-size: 1rem;
+.product-description {
+    font-size: 0.9rem;
     color: var(--text-subtle);
-    padding: 0 1.5rem;
+    padding: 0 1rem;
     flex-grow: 1;
 }
 
-.product-item .product-price {
-    font-size: 1.4rem;
+.product-price {
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--secondary-color);
-    margin-top: 1rem;
-    padding: 0 1.5rem;
+    margin: 1rem 0;
 }
 
 .product-item .btn {
-    margin: 1.5rem;
+    width: calc(100% - 2rem);
+    margin: 0 1rem 1rem;
 }
 
+/* Payment Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
 
-/* Responsive Adjustments for PS3 Page */
-@media (max-width: 768px) {
-    .content-flex-container {
-        flex-direction: column; /* Stack content on mobile */
+.modal-content {
+    background-color: var(--dark-bg);
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid var(--primary-color);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-dark);
+    position: relative;
+    animation: modal-fade-in 0.5s;
+}
+
+@keyframes modal-fade-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.close-button {
+    color: var(--text-subtle);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-color);
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.payment-details {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.qr-code {
+    width: 180px;
+    height: 180px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+}
+
+.upi-info {
+    flex-grow: 1;
+}
+
+.upi-info p {
+    margin-bottom: 1rem;
+}
+
+.upi-info strong {
+    color: var(--primary-color);
+}
+
+#copy-upi-id {
+    width: 100%;
+    margin-top: 0;
+}
+
+.modal-product-details {
+    background: var(--darker-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.modal-product-details h3 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.modal-product-details p {
+    font-size: 1.1rem;
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 1200px) {
+    .cards, .category-container {
+        grid-template-columns: repeat(2, 1fr);
     }
-    .main-text-content, .image-sidebar {
-        min-width: unset;
+}
+
+@media (max-width: 992px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
         width: 100%;
+        background: var(--darker-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem 0;
+        border-top: 1px solid var(--secondary-color);
     }
-    .hero-banner.ps3-banner {
-        padding: 4rem 0;
+
+    .nav-links.active {
+        display: flex;
     }
-    .ps3-banner h1 {
-        font-size: 2.5rem;
+
+    .nav-links li {
+        text-align: center;
     }
-    .ps3-banner p {
-        font-size: 1.2rem;
+
+    .nav-links a {
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        animation: none;
+        background: transparent;
+    }
+
+    .dropdown-menu a {
+        padding-left: 40px;
     }
 }
 
-@media (max-width: 480px) {
-    .hero-banner.ps3-banner {
-        padding: 3rem 0;
-    }
-    .ps3-banner h1 {
-        font-size: 2rem;
-    }
-    .ps3-banner p {
-        font-size: 1rem;
-    }
-}
-
-/* --- New Styles for PlayStation 4 Page --- */
-
-/* Hero Banner for PS4 Page */
-.hero-banner.ps4-banner {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1600x600/0070D1/FFFFFF?text=PlayStation+4+Repair') no-repeat center center/cover;
-    padding: 6rem 0;
-    text-align: center;
-    color: var(--text-light);
-    margin-bottom: 3rem;
-}
-
-.ps4-banner h1 {
-    font-size: 3.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 5px var(--shadow-dark);
-}
-
-.ps4-banner p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-light);
-    text-shadow: 1px 1px 3px var(--shadow-dark);
-}
-
-/* Reusing .main-content-section, .content-flex-container, .main-text-content, .image-sidebar */
-/* Reusing .problem-list and its li styles */
-
-
-/* Responsive Adjustments for PS4 Page (similar to PS3 but with specific banner/content focus) */
 @media (max-width: 768px) {
-    .hero-banner.ps4-banner {
-        padding: 4rem 0;
+    .cards, .category-container, .services-grid {
+        grid-template-columns: 1fr;
     }
-    .ps4-banner h1 {
-        font-size: 2.5rem;
+
+    h2 {
+        font-size: 2.2rem;
     }
-    .ps4-banner p {
-        font-size: 1.2rem;
+
+    .slide-caption h2 {
+        font-size: 2rem;
+    }
+
+    .slide-caption p {
+        font-size: 1rem;
+    }
+
+    .payment-details {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-banner.ps4-banner {
-        padding: 3rem 0;
+    body {
+        font-size: 14px;
     }
-    .ps4-banner h1 {
-        font-size: 2rem;
+
+    .container {
+        padding: 0 15px;
     }
-    .ps4-banner p {
-        font-size: 1rem;
+
+    h2 {
+        font-size: 1.8rem;
     }
-}
 
-
-/* --- New Styles for PlayStation 5 Page --- */
-
-/* Hero Banner for PS5 Page */
-.hero-banner.ps5-banner {
-    background: linear-gradient(rgba(36, 36, 36, 0.7), rgba(36, 36, 36, 0.7)), url('/images/ps5banner1.png') no-repeat center center/cover;
-    padding: 6rem 0;
-    text-align: center;
-    color: var(--text-light);
-    margin-bottom: 3rem;
-}
-
-.ps5-banner h1 {
-    font-size: 3.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 5px var(--shadow-dark);
-}
-
-.ps5-banner p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-light);
-    text-shadow: 1px 1px 3px var(--shadow-dark);
-}
-
-/* Responsive Adjustments for PS5 Page (similar to PS3/PS4) */
-@media (max-width: 768px) {
-    .hero-banner.ps5-banner {
-        padding: 4rem 0;
+    .logo {
+        height: 80px;
     }
-    .ps5-banner h1 {
-        font-size: 2.5rem;
-    }
-    .ps5-banner p {
-        font-size: 1.2rem;
+
+    .modal-content {
+        margin: 5% auto;
+        padding: 20px;
     }
 }
-
-@media (max-width: 480px) {
-    .hero-banner.ps5-banner {
-        padding: 3rem 0;
-    }
-    .ps5-banner h1 {
-        font-size: 2rem;
-    }
-    .ps5-banner p {
-        font-size: 1rem;
-    }
-}
-
-
-
-
 
 /* --- Updated Footer Styles --- */
 
@@ -1305,6 +1393,164 @@ footer {
     .social-links a {
         width: 35px;
         height: 35px;
-        font-size: 1.1rem;
     }
+}
+
+/* --- Modal (UPI Payment Option) --- */
+.modal {
+    /* Changed display: none to opacity and visibility for animation */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: flex; /* Ensure content is centered */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Class added by JavaScript to show the modal */
+.modal.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--card-bg-gradient);
+    padding: 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--shadow-light);
+    position: relative;
+    
+    /* Initial state for content animation */
+    transform: scale(0.8);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Animated state */
+.modal.open .modal-content {
+    transform: scale(1);
+}
+
+.close-button {
+    color: var(--text-subtle);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    outline: none;
+}
+
+.modal-content h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.payment-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.qr-code {
+    width: 180px;
+    height: 180px;
+    border: 5px solid var(--text-light);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.upi-info {
+    font-size: 1rem;
+}
+
+.upi-info strong {
+    color: var(--primary-color);
+}
+
+#upi-id {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: block; /* Ensures UPI ID is on its own line */
+    margin-top: 5px;
+    word-break: break-all;
+}
+
+.copy-btn {
+    margin-top: 10px;
+    background-color: var(--secondary-color);
+    color: var(--darker-bg);
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.copy-btn:hover {
+    background-color: #00bfff;
+}
+
+.copy-success-message {
+    color: #4CAF50 !important; /* Green success message */
+    font-weight: 600;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+.modal-product-details {
+    padding: 15px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+}
+
+.modal-product-details h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.modal-product-details p {
+    margin: 5px 0;
+}
+
+.modal-product-details span {
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.final-note {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dotted rgba(255, 255, 255, 0.1);
 }
