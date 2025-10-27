@@ -147,7 +147,7 @@ h2::after {
 
 /* Header & Navigation */
 header {
-    background: linear-gradient(to right, var(--dark-bg), #1a1a1a);
+    background: linear-gradient(to right, var(--dark-bg), #9b9b9b);
     color: var(--text-light);
     padding: 1rem 0;
     box-shadow: 0 5px 20px var(--shadow-dark);
