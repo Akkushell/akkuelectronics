@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Akku Electronics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-xxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/aelogo.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <img src="./images/aelogo.png" alt="Akku Electronics Logo" class="logo">
+            </a>
+            <nav>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="playstation.html">Sony PlayStation <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="playstation-5.html">PlayStation 5</a></li>
+                            <li><a href="playstation-4.html">PlayStation 4</a></li>
+                            <li><a href="playstation-3.html">PlayStation 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="xbox.html">Microsoft Xbox <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="xbox-series.html">Xbox Series X/S</a></li>
+                            <li><a href="xbox-one.html">Xbox One</a></li>
+                            <li><a href="xbox-360.html">Xbox 360</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="services.html">All Services</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="active-item"><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-banner">
+            <div class="container">
+                <div class="banner-content">
+                    <h1>Contact Us</h1>
+                    <p>Get in touch with us for all your gaming console repair needs</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Contact Information</h2>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>354, VHB Colony, Balabhau Peth<br>PanchPaoli, Nagpur, MH, India</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+91 8956389723</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>akkuelectronics.nagpur@gmail.com</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://wa.me/918956389723" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                                <img src="icon/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px;vertical-align:middle;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h2>Send us a Message</h2>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone:</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject:</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>Akku Electronics</h3>
+                    <p>Your trusted partner for professional gaming console repairs in Nagpur. We bring your consoles back to life!</p>
+                    <div class="social-links" style="display: flex; justify-content: center; gap: 12px; margin-top: 10px;">
+                        <a href="https://wa.me/918956389723" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <img src="icon/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="playstation.html">PlayStation Repair</a></li>
+                        <li><a href="xbox.html">Xbox Repair</a></li>
+                        <li><a href="services.html">All Services</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 354, VHB Colony, Balabhau Peth, PanchPaoli, Nagpur, MH, India</p>
+                    <p><i class="fas fa-phone"></i> +91 8956389723</p>
+                    <p><i class="fas fa-envelope"></i> akkuelectronics.nagpur@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Akku Electronics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
