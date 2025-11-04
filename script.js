@@ -131,3 +131,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+    /* --- Mobile Navigation Toggle & Dropdown Support --- */
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+                // Toggle visual classes
+                navLinks.classList.toggle('show');
+                navLinks.classList.toggle('active');
+                // Update ARIA attribute for screen readers
+                const expanded = navLinks.classList.contains('show') || navLinks.classList.contains('active');
+                menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        });
+
+        // Close the mobile nav when clicking outside
+        document.addEventListener('click', (ev) => {
+            const target = ev.target;
+            if (!navLinks.contains(target) && !menuToggle.contains(target)) {
+                navLinks.classList.remove('show');
+                navLinks.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    // Enable tapping to expand dropdowns on touch devices
+    const dropdowns = document.querySelectorAll('.nav-links .dropdown');
+        const dropdownLinks = document.querySelectorAll('.nav-links .dropdown > a');
+        dropdownLinks.forEach(link => {
+            // mark as having a popup for accessibility
+            link.setAttribute('aria-haspopup', 'true');
+            link.setAttribute('aria-expanded', 'false');
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    const parent = this.parentElement;
+                    parent.classList.toggle('active');
+                    const isOpen = parent.classList.contains('active');
+                    // update aria-expanded on the trigger link
+                    this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                }
+            });
+        });

@@ -251,6 +251,21 @@ nav {
     width: 100%;
 }
 
+/* Keyboard focus styles for accessibility */
+.nav-links a:focus,
+.nav-links a:focus-visible {
+    outline: 3px solid rgba(0, 229, 255, 0.12);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.menu-toggle:focus,
+.menu-toggle:focus-visible {
+    outline: 3px solid rgba(255, 215, 0, 0.12);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
 /* Dropdown specific styles */
 .dropdown-menu {
     display: none;
@@ -336,7 +351,9 @@ nav {
         display: none;
         z-index: 1002;
     }
-    .nav-links.show {
+    /* Support both classes (.show used by CSS added earlier, .active used in other rules) */
+    .nav-links.show,
+    .nav-links.active {
         display: flex;
     }
     .nav-links li {
@@ -360,6 +377,44 @@ nav {
         padding: 12px 25px;
         font-size: 1rem;
         border-bottom: 1px solid #222;
+    }
+}
+
+/* Tighter adjustments for small phones */
+@media (max-width: 600px) {
+    .logo {
+        height: 60px;
+    }
+    .banner-content h1 {
+        font-size: 1.8rem;
+    }
+    .image-slider {
+        height: 300px;
+    }
+    .slide-caption h2 {
+        font-size: 1.4rem;
+    }
+    .nav-links a {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    .category-container {
+        grid-template-columns: 1fr;
+    }
+    .cards, .category-container, .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        height: 55px;
+    }
+    .banner-content h1 {
+        font-size: 1.5rem;
+    }
+    .image-slider {
+        height: 220px;
     }
 }
 
@@ -440,6 +495,7 @@ nav {
 }
 
 /* Category Section */
+
 .category-section {
     padding: 4rem 0;
     background-color: var(--dark-bg);
@@ -451,55 +507,93 @@ nav {
     gap: 2rem;
 }
 
+/* Make cards more flexible and keyboard friendly */
 .category-card {
     background: var(--card-bg-gradient);
     border-radius: 12px;
     box-shadow: 0 8px 25px var(--shadow-dark);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
     border: 1px solid var(--secondary-color);
     text-align: center;
+    overflow: hidden;
+    min-height: 220px;
 }
 
 .category-card a {
-    display: block;
-    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
     text-decoration: none;
     color: var(--text-light);
-    transition: background-color 0.3s;
+    transition: background-color 0.22s, transform 0.22s;
     height: 100%;
 }
 
+.category-card:focus-within,
 .category-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     box-shadow: 0 12px 28px var(--shadow-light);
 }
 
 .category-card a:hover {
-    background-color: rgba(0, 229, 255, 0.05);
+    background-color: rgba(0, 229, 255, 0.04);
+    border-radius: 12px;
+}
+
+.category-card a:focus,
+.category-card a:focus-visible {
+    outline: 3px solid rgba(0, 229, 255, 0.10);
+    outline-offset: 6px;
     border-radius: 12px;
 }
 
 .category-card i {
-    font-size: 50px;
+    font-size: clamp(32px, 5vw, 50px);
     color: var(--secondary-color);
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s;
+    margin-bottom: 0.5rem;
+    transition: transform 0.25s;
 }
 
 .category-card:hover i {
-    transform: scale(1.1);
+    transform: scale(1.06);
 }
 
 .category-card h3 {
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
     color: var(--primary-color);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .category-card p {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--text-subtle);
     line-height: 1.5;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Responsive tweaks for category layout */
+@media (max-width: 1200px) {
+    .category-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .category-container {
+        grid-template-columns: 1fr;
+    }
+    .category-card {
+        min-height: 180px;
+    }
+    .category-card:focus-within,
+    .category-card:hover {
+        transform: none; /* avoid hover lift on small/touch devices */
+        box-shadow: 0 8px 18px var(--shadow-dark);
+    }
 }
 
 /* Services Section (Cards) */
