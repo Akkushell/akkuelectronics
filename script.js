@@ -142,6 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Toggle visual classes
                 navLinks.classList.toggle('show');
                 navLinks.classList.toggle('active');
+                // Also toggle an explicit 'open' class (strong selector in CSS)
+                navLinks.classList.toggle('open');
                 // Update ARIA attribute for screen readers
                 const expanded = navLinks.classList.contains('show') || navLinks.classList.contains('active');
                 menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
@@ -153,15 +155,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!navLinks.contains(target) && !menuToggle.contains(target)) {
                 navLinks.classList.remove('show');
                 navLinks.classList.remove('active');
+                navLinks.classList.remove('open');
                     menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
         // Close menu with Escape key for keyboard users
         document.addEventListener('keydown', (ev) => {
             if (ev.key === 'Escape') {
-                if (navLinks.classList.contains('show') || navLinks.classList.contains('active')) {
+                if (navLinks.classList.contains('show') || navLinks.classList.contains('active') || navLinks.classList.contains('open')) {
                     navLinks.classList.remove('show');
                     navLinks.classList.remove('active');
+                    navLinks.classList.remove('open');
                     menuToggle.setAttribute('aria-expanded', 'false');
                     menuToggle.focus();
                 }

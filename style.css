@@ -380,6 +380,61 @@ nav {
     }
 }
 
+/* Stronger mobile nav rules to ensure menu shows reliably */
+.nav-links.show,
+.nav-links.active,
+.nav-links.open {
+    display: flex !important; /* force display on mobile when toggled */
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-height: 90vh; /* allow scrolling inside nav */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Make dropdown triggers friendlier on touch */
+.nav-links .dropdown > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links .dropdown > a .fa-chevron-down {
+    transition: transform 0.22s ease;
+}
+
+.nav-links .dropdown.active > a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Ensure hamburger sits above nav overlay */
+.menu-toggle {
+    z-index: 1100;
+}
+
+/* Fluid images and general responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fluid typography for main headings */
+h1 {
+    font-size: clamp(1.6rem, 3.5vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(1.4rem, 2.8vw, 2.8rem);
+}
+
+/* Slight container padding reduction on very small devices */
+@media (max-width: 420px) {
+    .container { padding: 0 12px; }
+}
+
 /* Tighter adjustments for small phones */
 @media (max-width: 600px) {
     .logo {
