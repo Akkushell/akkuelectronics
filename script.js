@@ -133,7 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
     /* --- Mobile Navigation Toggle & Dropdown Support --- */
     const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    // Prefer the element with an explicit id (more robust) then fallback to class
+    const navLinks = document.getElementById('primary-navigation') || document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', (e) => {
@@ -153,6 +154,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinks.classList.remove('show');
                 navLinks.classList.remove('active');
                     menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        // Close menu with Escape key for keyboard users
+        document.addEventListener('keydown', (ev) => {
+            if (ev.key === 'Escape') {
+                if (navLinks.classList.contains('show') || navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('show');
+                    navLinks.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.focus();
+                }
             }
         });
     }
