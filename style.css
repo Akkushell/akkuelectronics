@@ -810,8 +810,17 @@ h2 {
     width: 60px;
     height: 60px;
     margin-bottom: 1rem;
+    display: block; /* ensure block centering works */
     /* This filter makes the image content gold, assuming it's a black SVG or similar */
     filter: invert(70%) sepia(80%) saturate(2000%) hue-rotate(10deg) brightness(120%) contrast(100%);
+}
+
+/* Center the icon container so icons sit centered above the card title */
+.service-card .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .service-card h3 {
