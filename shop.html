@@ -54,97 +54,233 @@
         <section class="hero-banner shop-banner">
             <div class="container">
                 <div class="banner-content">
-                    <h2>Shop Our Products</h2>
-                    <p>Find consoles, accessories, and parts for all your gaming needs.</p>
+                    <h1>Shop Gaming Consoles & Accessories</h1>
+                    <p>Browse our collection of new and pre-owned gaming consoles, controllers, and accessories. All products are tested and quality assured.</p>
                 </div>
             </div>
         </section>
 
-        <section class="product-grid-page">
+        <section class="shop-content-section">
             <div class="container">
-                <h3 class="product-category-title">PlayStation Consoles</h3>
-                <div class="product-grid">
-                    <div class="product-item" data-name="PlayStation 5" data-price="₹49,990" data-image="images/playstation 5 slim console disc.png">
-                        <img src="./images/playstation 5 slim console disc.png" alt="PlayStation 5">
-                        <h4>PlayStation 5</h4>
-                        <p class="product-description">The latest generation of gaming. Available in Disc and Digital editions.</p>
-                        <p class="product-price">₹49,990</p>
-                        <button class="btn buy-btn">Buy</button>
+                <h2 class="section-title">PlayStation Consoles</h2>
+                <div class="shop-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Latest</div>
+                        <img src="./images/playstation 5 slim console disc.png" alt="PlayStation 5" class="product-image">
+                        <div class="product-info">
+                            <h3>PlayStation 5 Disc Edition</h3>
+                            <p>Experience lightning-fast loading with an ultra-high-speed SSD, deeper immersion with support for haptic feedback, adaptive triggers, and 3D Audio technology.</p>
+                            <div class="product-features">
+                                <span><i class="fas fa-check"></i> 825GB SSD</span>
+                                <span><i class="fas fa-check"></i> 4K Gaming</span>
+                                <span><i class="fas fa-check"></i> Ray Tracing</span>
+                            </div>
+                            <div class="product-price">₹49,990</div>
+                            <button class="product-btn buy-now" 
+                                data-product-name="PlayStation 5 Disc Edition" 
+                                data-product-price="49990"
+                                data-product-image="./images/playstation 5 slim console disc.png">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-item" data-name="PlayStation 4" data-price="₹27,990" data-image="images/ps41 (1).png">
-                        <img src="./images/ps41 (1).png" alt="PlayStation 4">
-                        <h4>PlayStation 4</h4>
-                        <p class="product-description">The best-selling console with a massive library of games.</p>
-                        <p class="product-price">₹27,990</p>
-                        <button class="btn buy-btn">Buy</button>
+
+                    <div class="product-card">
+                        <div class="product-badge best-seller">Best Seller</div>
+                        <img src="./images/ps41 (1).png" alt="PlayStation 4" class="product-image">
+                        <div class="product-info">
+                            <h3>PlayStation 4 Slim</h3>
+                            <p>The best-selling console with an incredible library of over 4,000 games. Perfect for gamers who want proven quality and vast game selection.</p>
+                            <div class="product-features">
+                                <span><i class="fas fa-check"></i> 1TB Storage</span>
+                                <span><i class="fas fa-check"></i> HDR Gaming</span>
+                                <span><i class="fas fa-check"></i> 4000+ Games</span>
+                            </div>
+                            <div class="product-price">₹27,990</div>
+                            <button class="product-btn buy-now" 
+                                data-product-name="PlayStation 4 Slim" 
+                                data-product-price="27990"
+                                data-product-image="./images/ps41 (1).png">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-item" data-name="PlayStation 3" data-price="₹15,000" data-image="images/PS31.png">
-                        <img src="./images/PS31.png" alt="PlayStation 3">
-                        <h4>PlayStation 3</h4>
-                        <p class="product-description">A classic console with a huge collection of titles.</p>
-                        <p class="product-price">₹15,000</p>
-                        <button class="btn buy-btn">Buy</button>
-                    </div>
-                    <div class="product-item" data-name="PlayStation 2" data-price="₹8,000" data-image="images/ps2_placeholder.png">
-                        <img src="./images/ps2_placeholder.png" alt="PlayStation 2">
-                        <h4>PlayStation 2</h4>
-                        <p class="product-description">The iconic best-selling console of all time. Pre-owned models available.</p>
-                        <p class="product-price">₹8,000</p>
-                        <button class="btn buy-btn">Buy</button>
+
+                    <div class="product-card">
+                        <img src="./images/PS31.png" alt="PlayStation 3" class="product-image">
+                        <div class="product-info">
+                            <h3>PlayStation 3 (Pre-Owned)</h3>
+                            <p>A classic gaming console with timeless exclusives. Tested and certified pre-owned units with warranty. Great for retro gaming enthusiasts.</p>
+                            <div class="product-features">
+                                <span><i class="fas fa-check"></i> 500GB Storage</span>
+                                <span><i class="fas fa-check"></i> Blu-ray Player</span>
+                                <span><i class="fas fa-check"></i> Tested & Certified</span>
+                            </div>
+                            <div class="product-price">₹15,000</div>
+                            <button class="product-btn buy-now" 
+                                data-product-name="PlayStation 3 Pre-Owned" 
+                                data-product-price="15000"
+                                data-product-image="./images/PS31.png">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <h3 class="product-category-title">Xbox Consoles</h3>
-                <div class="product-grid">
-                    <div class="product-item" data-name="Xbox Series X" data-price="₹49,990" data-image="images/xboxseriesx.png">
-                        <img src="./images/xboxseriesx.png" alt="Xbox Series X">
-                        <h4>Xbox Series X</h4>
-                        <p class="product-description">The most powerful Xbox ever. Experience true 4K gaming.</p>
-                        <p class="product-price">₹49,990</p>
-                        <button class="btn buy-btn">Buy</button>
+                <h2 class="section-title">Xbox Consoles</h2>
+                <div class="shop-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Powerful</div>
+                        <img src="./images/xbox series x console.png" alt="Xbox Series X" class="product-image">
+                        <div class="product-info">
+                            <h3>Xbox Series X</h3>
+                            <p>The most powerful Xbox ever. Experience the speed and performance of a next-gen console with 12 teraflops of processing power.</p>
+                            <div class="product-features">
+                                <span><i class="fas fa-check"></i> 1TB SSD</span>
+                                <span><i class="fas fa-check"></i> True 4K 60fps</span>
+                                <span><i class="fas fa-check"></i> Game Pass Ready</span>
+                            </div>
+                            <div class="product-price">₹49,990</div>
+                            <button class="product-btn buy-now" 
+                                data-product-name="Xbox Series X" 
+                                data-product-price="49990"
+                                data-product-image="./images/xbox series x console.png">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-item" data-name="Xbox One S" data-price="₹22,500" data-image="images/xboxones.jpeg">
-                        <img src="./images/xboxones.jpeg" alt="Xbox One S">
-                        <h4>Xbox One S</h4>
-                        <p class="product-description">A great value console for digital games and 4K streaming.</p>
-                        <p class="product-price">₹22,500</p>
-                        <button class="btn buy-btn">Buy</button>
-                    </div>
-                    <div class="product-item" data-name="Xbox 360" data-price="₹12,000" data-image="images/xbox360.png">
-                        <img src="./images/xbox360.png" alt="Xbox 360">
-                        <h4>Xbox 360</h4>
-                        <p class="product-description">A beloved console with a vast library of classic games.</p>
-                        <p class="product-price">₹12,000</p>
-                        <button class="btn buy-btn">Buy</button>
+
+                    <div class="product-card">
+                        <img src="./images/xboxones.jpeg" alt="Xbox One S" class="product-image">
+                        <div class="product-info">
+                            <h3>Xbox One S</h3>
+                            <p>Great value for digital gaming and 4K streaming. Access hundreds of games with Xbox Game Pass subscription service.</p>
+                            <div class="product-features">
+                                <span><i class="fas fa-check"></i> 512GB Storage</span>
+                                <span><i class="fas fa-check"></i> 4K Streaming</span>
+                                <span><i class="fas fa-check"></i> HDR Support</span>
+                            </div>
+                            <div class="product-price">₹22,500</div>
+                            <button class="product-btn buy-now" 
+                                data-product-name="Xbox One S" 
+                                data-product-price="22500"
+                                data-product-image="./images/xboxones.jpeg">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <h3 class="product-category-title">Gaming Accessories & Parts</h3>
-                <div class="product-grid">
-                    <div class="product-item" data-name="PlayStation 5 Controller" data-price="₹5,990" data-image="images/ps5_controller_placeholder.png">
-                        <img src="./images/ps5_controller_placeholder.png" alt="PS5 Controller">
-                        <h4>PlayStation 5 Controller</h4>
-                        <p class="product-description">Experience haptic feedback, adaptive triggers and a built-in microphone.</p>
-                        <p class="product-price">₹5,990</p>
-                        <button class="btn buy-btn">Buy</button>
+                <h2 class="section-title">Gaming Controllers & Accessories</h2>
+                <div class="shop-grid">
+                    <div class="product-card">
+                        <div class="product-badge">New</div>
+                        <img src="./images/dualsense.png" alt="PS5 DualSense Controller" class="product-image">
+                        <div class="product-info">
+                            <h3>PlayStation 5 DualSense Controller</h3>
+                            <p>Feel physically responsive feedback with dual actuators which replace traditional rumble motors and adaptive triggers.</p>
+                            <div class="product-features">
+                                <span><i class="fas fa-check"></i> Haptic Feedback</span>
+                                <span><i class="fas fa-check"></i> Adaptive Triggers</span>
+                                <span><i class="fas fa-check"></i> Built-in Mic</span>
+                            </div>
+                            <div class="product-price">₹5,990</div>
+                            <button class="product-btn buy-now" 
+                                data-product-name="PS5 DualSense Controller" 
+                                data-product-price="5990"
+                                data-product-image="./images/dualsense.png">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-item" data-name="Xbox Wireless Controller" data-price="₹5,390" data-image="images/xbox_controller_placeholder.png">
-                        <img src="./images/xbox_controller_placeholder.png" alt="Xbox Controller">
-                        <h4>Xbox Wireless Controller</h4>
-                        <p class="product-description">Experience the modernized design of the Xbox Wireless Controller.</p>
-                        <p class="product-price">₹5,390</p>
-                        <button class="btn buy-btn">Buy</button>
+
+                    <div class="product-card">
+                        <img src="./images/xbox_controller.png" alt="Xbox Wireless Controller" class="product-image">
+                        <div class="product-info">
+                            <h3>Xbox Wireless Controller</h3>
+                            <p>Experience the modernized Xbox Wireless Controller featuring sculpted surfaces and refined geometry for enhanced comfort.</p>
+                            <div class="product-features">
+                                <span><i class="fas fa-check"></i> Wireless</span>
+                                <span><i class="fas fa-check"></i> Bluetooth</span>
+                                <span><i class="fas fa-check"></i> Textured Grip</span>
+                            </div>
+                            <div class="product-price">₹5,390</div>
+                            <button class="product-btn buy-now" 
+                                data-product-name="Xbox Wireless Controller" 
+                                data-product-price="5390"
+                                data-product-image="./images/xbox_controller.png">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-item" data-name="Repair Parts" data-price="Quote" data-image="images/repair_parts_placeholder.png">
-                        <img src="./images/repair_parts_placeholder.png" alt="Repair Parts">
-                        <h4>Repair Parts</h4>
-                        <p class="product-description">Find replacement parts like analog sticks, buttons, and more.</p>
-                        <p class="product-price">Contact for Quote</p>
-                        <button class="btn buy-btn">Buy</button>
+
+                    <div class="product-card">
+                        <img src="./images/hdmi_cable.png" alt="Premium HDMI Cable" class="product-image">
+                        <div class="product-info">
+                            <h3>Premium HDMI 2.1 Cable</h3>
+                            <p>High-speed HDMI cable supporting 4K@120Hz, 8K@60Hz, and HDR for the ultimate gaming experience.</p>
+                            <div class="product-features">
+                                <span><i class="fas fa-check"></i> 4K 120Hz</span>
+                                <span><i class="fas fa-check"></i> 2 Meter</span>
+                                <span><i class="fas fa-check"></i> Gold Plated</span>
+                            </div>
+                            <div class="product-price">₹899</div>
+                            <button class="product-btn buy-now" 
+                                data-product-name="Premium HDMI 2.1 Cable" 
+                                data-product-price="899"
+                                data-product-image="./images/hdmi_cable.png">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Payment Modal -->
+        <div id="paymentModal" class="payment-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Complete Your Purchase</h2>
+                <div class="order-summary">
+                    <div class="summary-item">
+                        <img id="modalProductImage" src="" alt="Product">
+                        <div class="summary-details">
+                            <h3 id="modalProductName"></h3>
+                            <p class="modal-price">₹<span id="modalProductPrice"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-options">
+                    <h3>Choose Payment Method</h3>
+                    <div class="payment-methods">
+                        <button class="payment-method-btn" onclick="processPayment('upi')">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>UPI Payment</span>
+                        </button>
+                        <button class="payment-method-btn" onclick="processPayment('card')">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Credit/Debit Card</span>
+                        </button>
+                        <button class="payment-method-btn" onclick="processPayment('netbanking')">
+                            <i class="fas fa-university"></i>
+                            <span>Net Banking</span>
+                        </button>
+                        <button class="payment-method-btn" onclick="processPayment('cod')">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Cash on Delivery</span>
+                        </button>
+                        <button class="payment-method-btn whatsapp-order" onclick="processPayment('whatsapp')">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Order via WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="order-note">
+                    <p><i class="fas fa-shield-alt"></i> Secure payment gateway | <i class="fas fa-truck"></i> Free delivery in Nagpur</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -190,27 +326,6 @@
             </div>
         </div>
     </footer>
-
-    <div id="payment-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Complete Your Payment</h2>
-            <div class="payment-details">
-                <img src="./images/qrcode1.jpg" alt="UPI QR Code" class="qr-code">
-                <div class="upi-info">
-                    <p>Scan the QR code with your UPI app or pay directly to the UPI ID below.</p>
-                    <p><strong>UPI ID:</strong> <span id="upi-id">akkuelectronics@ybl</span></p>
-                    <button id="copy-upi-id" class="btn">Copy UPI ID</button>
-                    <p id="copy-success" style="display: none; color: green;">UPI ID copied!</p>
-                </div>
-            </div>
-            <div class="modal-product-details">
-                <h3>Order Summary</h3>
-                <p><strong>Product:</strong> <span id="modal-product-name"></span></p>
-                <p><strong>Price:</strong> <span id="modal-product-price"></span></p>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 
