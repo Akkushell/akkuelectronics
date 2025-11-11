@@ -131,22 +131,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-    /* --- Mobile Navigation Toggle & Dropdown Support --- */
+
+// Mobile Navigation Toggle
+document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
-    // Prefer the element with an explicit id (more robust) then fallback to class
     const navLinks = document.getElementById('primary-navigation') || document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', (e) => {
             e.preventDefault();
-                // Toggle visual classes
-                navLinks.classList.toggle('show');
-                navLinks.classList.toggle('active');
-                // Also toggle an explicit 'open' class (strong selector in CSS)
-                navLinks.classList.toggle('open');
-                // Update ARIA attribute for screen readers
-                const expanded = navLinks.classList.contains('show') || navLinks.classList.contains('active');
-                menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            navLinks.classList.toggle('show');
+            const expanded = navLinks.classList.contains('show');
+            menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         });
 
         // Close the mobile nav when clicking outside
@@ -154,40 +150,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = ev.target;
             if (!navLinks.contains(target) && !menuToggle.contains(target)) {
                 navLinks.classList.remove('show');
-                navLinks.classList.remove('active');
-                navLinks.classList.remove('open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
+
         // Close menu with Escape key for keyboard users
         document.addEventListener('keydown', (ev) => {
-            if (ev.key === 'Escape') {
-                if (navLinks.classList.contains('show') || navLinks.classList.contains('active') || navLinks.classList.contains('open')) {
-                    navLinks.classList.remove('show');
-                    navLinks.classList.remove('active');
-                    navLinks.classList.remove('open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuToggle.focus();
-                }
+            if (ev.key === 'Escape' && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.focus();
             }
         });
     }
-
-    // Enable tapping to expand dropdowns on touch devices
-    const dropdowns = document.querySelectorAll('.nav-links .dropdown');
-        const dropdownLinks = document.querySelectorAll('.nav-links .dropdown > a');
-        dropdownLinks.forEach(link => {
-            // mark as having a popup for accessibility
-            link.setAttribute('aria-haspopup', 'true');
-            link.setAttribute('aria-expanded', 'false');
-            link.addEventListener('click', function(e) {
-                if (window.innerWidth <= 992) {
-                    e.preventDefault();
-                    const parent = this.parentElement;
-                    parent.classList.toggle('active');
-                    const isOpen = parent.classList.contains('active');
-                    // update aria-expanded on the trigger link
-                    this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                }
-            });
-        });
+});
