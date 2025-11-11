@@ -136,13 +136,7 @@ nav {
 }
 
 .dropdown > a i {
-    margin-left: 5px;
-    font-size: 0.75rem;
-    transition: transform 0.3s ease;
-}
-
-.dropdown:hover > a i {
-    transform: rotate(180deg);
+    display: none; /* Hide chevron icons */
 }
 
 .dropdown-menu {
@@ -156,17 +150,11 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
-}
-
-.dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
+    display: block;
 }
 
 .dropdown-menu li a {
