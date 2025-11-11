@@ -263,7 +263,6 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .logo-link {
@@ -287,7 +286,7 @@ header h1 {
     font-weight: 700;
     color: var(--primary-color);
     text-shadow: 0 0 10px var(--primary-color);
-    margin: 0; /* Reset margin */
+    margin: 0;
 }
 
 nav {
@@ -304,6 +303,7 @@ nav {
     cursor: pointer;
     padding: 10px;
     transition: color 0.3s;
+    z-index: 1100;
 }
 
 .menu-toggle:hover {
@@ -314,6 +314,8 @@ nav {
     list-style: none;
     display: flex;
     gap: 25px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
@@ -343,13 +345,13 @@ nav {
 }
 
 .nav-links a:hover,
-.nav-links li.active a {
+.nav-links li.active-item > a {
     color: var(--primary-color);
     text-shadow: 0 0 5px var(--primary-color);
 }
 
 .nav-links a:hover::after,
-.nav-links li.active a::after {
+.nav-links li.active-item > a::after {
     width: 100%;
 }
 
@@ -369,6 +371,10 @@ nav {
 }
 
 /* Dropdown specific styles */
+.dropdown {
+    position: relative;
+}
+
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -418,67 +424,103 @@ nav {
 }
 
 .dropdown-menu a::after {
-    display: none; /* Remove the underline effect from dropdown items */
+    display: none;
 }
 
 /* Mobile Responsive Navigation */
 @media (max-width: 900px) {
     header .container {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
     }
+    
     .logo {
         height: 70px;
     }
+    
     nav {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
+        width: auto;
+        position: relative;
     }
+    
     .menu-toggle {
         display: block;
-        margin-left: auto;
     }
+    
     .nav-links {
+        display: none;
         flex-direction: column;
         gap: 0;
-        width: 100%;
+        width: 280px;
+        max-width: 90vw;
         background: var(--darker-bg);
-        position: absolute;
-        top: 100%;
-        left: 0;
+        position: fixed;
+        top: 0;
         right: 0;
-        box-shadow: 0 8px 25px var(--shadow-dark);
-        border-radius: 0 0 8px 8px;
-        display: none;
+        bottom: 0;
+        box-shadow: -5px 0 25px var(--shadow-dark);
+        border-left: 2px solid var(--secondary-color);
         z-index: 1002;
+        padding: 80px 0 20px 0;
+        overflow-y: auto;
     }
-    /* Support both classes (.show used by CSS added earlier, .active used in other rules) */
+    
+    /* When menu is active/shown */
     .nav-links.show,
-    .nav-links.active {
-        display: flex;
+    .nav-links.active,
+    .nav-links.open {
+        display: flex !important;
     }
+    
     .nav-links li {
         width: 100%;
     }
+    
     .nav-links a {
         padding: 15px 25px;
         font-size: 1.1rem;
         border-bottom: 1px solid #222;
     }
+    
+    .nav-links a::after {
+        display: none;
+    }
+    
     .dropdown-menu {
         position: static;
+        transform: none !important;
         min-width: 100%;
         box-shadow: none;
         border-radius: 0;
         border: none;
         background: var(--dark-bg);
         animation: none;
+        opacity: 1;
     }
+    
     .dropdown-menu a {
-        padding: 12px 25px;
+        padding: 12px 25px 12px 45px;
         font-size: 1rem;
         border-bottom: 1px solid #222;
+    }
+    
+    /* Close button overlay when menu is open */
+    .nav-links.show::before,
+    .nav-links.active::before,
+    .nav-links.open::before {
+        content: '×';
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        font-size: 3rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        z-index: 1003;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -486,13 +528,23 @@ nav {
 .nav-links.show,
 .nav-links.active,
 .nav-links.open {
-    display: flex !important; /* force display on mobile when toggled */
+    display: flex !important;
     flex-direction: column;
     gap: 0;
-    width: 100%;
-    max-height: 90vh; /* allow scrolling inside nav */
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile menu backdrop */
+@media (max-width: 900px) {
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+    }
 }
 
 /* Make dropdown triggers friendlier on touch */
@@ -509,11 +561,6 @@ nav {
 
 .nav-links .dropdown.active > a .fa-chevron-down {
     transform: rotate(180deg);
-}
-
-/* Ensure hamburger sits above nav overlay */
-.menu-toggle {
-    z-index: 1100;
 }
 
 /* Fluid images and general responsiveness */
@@ -542,6 +589,16 @@ h2 {
     .logo {
         height: 60px;
     }
+    
+    .menu-toggle {
+        font-size: 1.8rem;
+    }
+    
+    .nav-links {
+        width: 260px;
+        padding: 60px 0 20px 0;
+    }
+    
     .banner-content h1 {
         font-size: 1.8rem;
     }
@@ -567,6 +624,11 @@ h2 {
     .logo {
         height: 55px;
     }
+    
+    .nav-links {
+        width: 240px;
+    }
+    
     .banner-content h1 {
         font-size: 1.5rem;
     }
