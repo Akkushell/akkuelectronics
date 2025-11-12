@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayStation Controller Tester | Akku Electronics</title>
+  <meta name="description" content="Test PlayStation controller buttons, sticks, triggers, touchpad click, and vibration in your browser using the Gamepad API." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="../images/aelogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tester.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>PlayStation Controller Tester</h1>
+    <div class="status" id="connectionStatus">Connect your controller and press any button</div>
+  </header>
+
+  <main class="page">
+    <section class="panel controller-panel">
+      <div class="controller">
+        <div class="top-row">
+          <div class="trigger l">
+            <div class="label">L2</div>
+            <div class="bar"><div class="fill" id="l2Fill"></div></div>
+            <div class="value" id="l2Val">0.00</div>
+          </div>
+          <div class="bumper l" id="l1">L1</div>
+          <div class="touchpad" id="touchpad">
+            <div class="title">Touchpad</div>
+            <div class="click-indicator" id="touchpadClick">Click</div>
+          </div>
+          <div class="bumper r" id="r1">R1</div>
+          <div class="trigger r">
+            <div class="label">R2</div>
+            <div class="bar"><div class="fill" id="r2Fill"></div></div>
+            <div class="value" id="r2Val">0.00</div>
+          </div>
+        </div>
+
+        <div class="middle-row">
+          <div class="stick" id="leftStick">
+            <div class="stick-area">
+              <div class="dot" id="leftDot"></div>
+            </div>
+            <div class="stick-label">L3</div>
+          </div>
+
+          <div class="center-buttons">
+            <div class="small-btn" id="share">SHARE</div>
+            <div class="ps-and-options">
+              <div class="ps-btn" id="ps">PS</div>
+              <div class="small-btn" id="options">OPTIONS</div>
+            </div>
+          </div>
+
+          <div class="stick" id="rightStick">
+            <div class="stick-area">
+              <div class="dot" id="rightDot"></div>
+            </div>
+            <div class="stick-label">R3</div>
+          </div>
+        </div>
+
+        <div class="bottom-row">
+          <div class="dpad" id="dpad">
+            <div class="arrow up" id="dpadUp">▲</div>
+            <div class="arrow left" id="dpadLeft">◀</div>
+            <div class="arrow right" id="dpadRight">▶</div>
+            <div class="arrow down" id="dpadDown">▼</div>
+          </div>
+
+          <div class="face-buttons">
+            <div class="btn square" id="square">□</div>
+            <div class="btn triangle" id="triangle">△</div>
+            <div class="btn cross" id="cross">✕</div>
+            <div class="btn circle" id="circle">◯</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel data-panel">
+      <div class="grid two">
+        <div>
+          <h2>Axes</h2>
+          <ul class="list" id="axesList"></ul>
+        </div>
+        <div>
+          <h2>Buttons</h2>
+          <ul class="list" id="buttonsList"></ul>
+        </div>
+      </div>
+      <div class="vibe">
+        <h2>Vibration Test</h2>
+        <div class="vibe-rows">
+          <div class="row">
+            <label>Weak (fast) motor</label>
+            <input type="range" id="weakIntensity" min="0" max="1" step="0.01" value="0.5" />
+            <span id="weakOut">0.50</span>
+          </div>
+          <div class="row">
+            <label>Strong (low) motor</label>
+            <input type="range" id="strongIntensity" min="0" max="1" step="0.01" value="0.5" />
+            <span id="strongOut">0.50</span>
+          </div>
+          <div class="row">
+            <label>Duration (ms)</label>
+            <input type="number" id="durationMs" min="1" max="5000" step="50" value="500" />
+          </div>
+          <div class="buttons">
+            <button id="pulseVibe">Pulse</button>
+            <button id="longVibe">Long</button>
+            <button id="stopVibe">Stop</button>
+          </div>
+          <div class="note" id="vibeSupport">Vibration support: unknown</div>
+        </div>
+      </div>
+      <div class="note small">Note: Browser Gamepad API may not expose DualShock/DualSense touchpad coordinates. This tester shows Touchpad Click state only.</div>
+    </section>
+  </main>
+
+  <footer class="footer">Akku Electronics — Local controller testing tool</footer>
+
+  <script src="tester.js"></script>
+</body>
+</html>
