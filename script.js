@@ -226,7 +226,7 @@ function processPayment(method) {
         case 'whatsapp':
             // Send order via WhatsApp
             const whatsappMessage = `Hello! I want to order:\n\n*${productName}*\nPrice: ₹${productPrice}\n\nPlease confirm availability and delivery details.`;
-            const whatsappUrl = `https://wa.me/919960599605?text=${encodeURIComponent(whatsappMessage)}`;
+            const whatsappUrl = `https://wa.me/918956389723?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappUrl, '_blank');
             closeModal();
             break;
@@ -280,7 +280,7 @@ function initiateRazorpayPayment(method) {
         prefill: {
             name: '',
             email: '',
-            contact: '9960599605'
+            contact: '8956389723'
         },
         theme: {
             color: '#d4af37'
