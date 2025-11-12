@@ -149,6 +149,18 @@ function update() {
 
     // Map selected buttons to UI
     switch(i) {
+      case 0: // Cross (X) - Bottom button on PS5
+        toggleActive(crossEl, pressed);
+        break;
+      case 1: // Circle (O) - Right button on PS5
+        toggleActive(circleEl, pressed);
+        break;
+      case 2: // Square (□) - Left button on PS5
+        toggleActive(squareEl, pressed);
+        break;
+      case 3: // Triangle (△) - Top button on PS5
+        toggleActive(triangleEl, pressed);
+        break;
       case 4: // L1
         toggleActive(l1El, pressed);
         break;
@@ -163,16 +175,16 @@ function update() {
         r2Fill.style.width = `${Math.round((val || 0) * 100)}%`;
         r2Val.textContent = (val || 0).toFixed(2);
         break;
-      case 8: // Share
+      case 8: // Share (Create on PS5)
         toggleActive(shareEl, pressed);
         break;
       case 9: // Options
         toggleActive(optionsEl, pressed);
         break;
-      case 10: // L3
+      case 10: // L3 (Left stick press)
         leftStick.classList.toggle('active', pressed);
         break;
-      case 11: // R3
+      case 11: // R3 (Right stick press)
         rightStick.classList.toggle('active', pressed);
         break;
       case 12: // Dpad Up
@@ -190,20 +202,8 @@ function update() {
       case 16: // PS Button
         toggleActive(psEl, pressed);
         break;
-      case 17: // Touchpad click (DS4/DS5)
+      case 17: // Touchpad click (DualSense)
         touchpad.classList.toggle('clicked', pressed);
-        break;
-      case 0: // Cross (A on standard mapping)
-        toggleActive(crossEl, pressed);
-        break;
-      case 1: // Circle (B)
-        toggleActive(circleEl, pressed);
-        break;
-      case 2: // Square (X)
-        toggleActive(squareEl, pressed);
-        break;
-      case 3: // Triangle (Y)
-        toggleActive(triangleEl, pressed);
         break;
       default:
         break;
@@ -217,7 +217,8 @@ function toggleActive(el, on) {
 }
 
 function moveDot(dot, stickEl, x, y) {
-  // x,y in [-1,1] with up = -1; invert y for screen
+  // x,y in [-1,1] where right=+1, left=-1, down=+1, up=-1
+  // No need to invert - use raw values from gamepad
   const area = stickEl.querySelector('.stick-area');
   if (!area) return;
   const rect = area.getBoundingClientRect();
@@ -225,7 +226,7 @@ function moveDot(dot, stickEl, x, y) {
   const cx = rect.width / 2;
   const cy = rect.height / 2;
   const dx = cx + x * radius;
-  const dy = cy + (-y) * radius;
+  const dy = cy + y * radius;
   dot.style.left = `${dx}px`;
   dot.style.top = `${dy}px`;
 }
