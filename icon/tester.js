@@ -5,35 +5,35 @@ const statusEl = document.getElementById('connectionStatus');
 const axesList = document.getElementById('axesList');
 const buttonsList = document.getElementById('buttonsList');
 
-// Visual controls
-const l1El = document.getElementById('l1');
-const r1El = document.getElementById('r1');
-const l2Fill = document.getElementById('l2Fill');
-const r2Fill = document.getElementById('r2Fill');
-const l2Val = document.getElementById('l2Val');
-const r2Val = document.getElementById('r2Val');
+// Visual controls - SVG elements
+const l1El = document.getElementById('btn-l1');
+const r1El = document.getElementById('btn-r1');
+const l2El = document.getElementById('btn-l2');
+const r2El = document.getElementById('btn-r2');
 
-const leftDot = document.getElementById('leftDot');
-const rightDot = document.getElementById('rightDot');
-const leftStick = document.getElementById('leftStick');
-const rightStick = document.getElementById('rightStick');
+const leftStick = document.getElementById('left-stick');
+const rightStick = document.getElementById('right-stick');
 
-const shareEl = document.getElementById('share');
-const optionsEl = document.getElementById('options');
-const psEl = document.getElementById('ps');
+const shareEl = document.getElementById('btn-share');
+const optionsEl = document.getElementById('btn-options');
+const psEl = document.getElementById('btn-ps');
 
-const dpadUp = document.getElementById('dpadUp');
-const dpadDown = document.getElementById('dpadDown');
-const dpadLeft = document.getElementById('dpadLeft');
-const dpadRight = document.getElementById('dpadRight');
+const dpadUp = document.getElementById('dpad-up');
+const dpadDown = document.getElementById('dpad-down');
+const dpadLeft = document.getElementById('dpad-left');
+const dpadRight = document.getElementById('dpad-right');
 
-const squareEl = document.getElementById('square');
-const triangleEl = document.getElementById('triangle');
-const crossEl = document.getElementById('cross');
-const circleEl = document.getElementById('circle');
+const squareEl = document.getElementById('btn-square');
+const triangleEl = document.getElementById('btn-triangle');
+const crossEl = document.getElementById('btn-cross');
+const circleEl = document.getElementById('btn-circle');
 
-const touchpad = document.getElementById('touchpad');
-const touchpadClick = document.getElementById('touchpadClick');
+const touchpad = document.getElementById('btn-touchpad');
+
+// Stick centers for analog positioning
+const LEFT_STICK_CENTER = { x: 310, y: 310 };
+const RIGHT_STICK_CENTER = { x: 490, y: 310 };
+const STICK_RADIUS = 30;
 
 // Vibration controls
 const weakIntensity = document.getElementById('weakIntensity');
@@ -137,8 +137,8 @@ function update() {
   // Sticks visual
   const lx = gp.axes[0] || 0, ly = gp.axes[1] || 0;
   const rx = gp.axes[2] || 0, ry = gp.axes[3] || 0;
-  moveDot(leftDot, leftStick, lx, ly);
-  moveDot(rightDot, rightStick, rx, ry);
+  moveStick(leftStick, LEFT_STICK_CENTER, lx, ly);
+  moveStick(rightStick, RIGHT_STICK_CENTER, rx, ry);
 
   // Buttons
   gp.buttons.forEach((b, i) => {
@@ -168,12 +168,10 @@ function update() {
         toggleActive(r1El, pressed);
         break;
       case 6: // L2 analog button
-        l2Fill.style.width = `${Math.round((val || 0) * 100)}%`;
-        l2Val.textContent = (val || 0).toFixed(2);
+        toggleActive(l2El, pressed || val > 0.1);
         break;
       case 7: // R2
-        r2Fill.style.width = `${Math.round((val || 0) * 100)}%`;
-        r2Val.textContent = (val || 0).toFixed(2);
+        toggleActive(r2El, pressed || val > 0.1);
         break;
       case 8: // Share (Create on PS5)
         toggleActive(shareEl, pressed);
@@ -203,7 +201,7 @@ function update() {
         toggleActive(psEl, pressed);
         break;
       case 17: // Touchpad click (DualSense)
-        touchpad.classList.toggle('clicked', pressed);
+        toggleActive(touchpad, pressed);
         break;
       default:
         break;
@@ -213,22 +211,21 @@ function update() {
 
 function toggleActive(el, on) {
   if (!el) return;
-  if (on) el.classList.add('active'); else el.classList.remove('active');
+  if (on) el.classList.add('btn-active'); else el.classList.remove('btn-active');
 }
 
-function moveDot(dot, stickEl, x, y) {
+function moveStick(stickEl, center, x, y) {
   // x,y in [-1,1] where right=+1, left=-1, down=+1, up=-1
-  // No need to invert - use raw values from gamepad
-  const area = stickEl.querySelector('.stick-area');
-  if (!area) return;
-  const rect = area.getBoundingClientRect();
-  const radius = rect.width / 2 - dot.offsetWidth / 2 - 4; // padding
-  const cx = rect.width / 2;
-  const cy = rect.height / 2;
-  const dx = cx + x * radius;
-  const dy = cy + y * radius;
-  dot.style.left = `${dx}px`;
-  dot.style.top = `${dy}px`;
+  if (!stickEl) return;
+  const newX = center.x + (x * STICK_RADIUS);
+  const newY = center.y + (y * STICK_RADIUS);
+  stickEl.setAttribute('cx', newX);
+  stickEl.setAttribute('cy', newY);
+  
+  // Add active class if stick is moved significantly
+  const moved = Math.abs(x) > 0.1 || Math.abs(y) > 0.1;
+  if (moved) stickEl.classList.add('active');
+  else stickEl.classList.remove('active');
 }
 
 // VIBRATION API

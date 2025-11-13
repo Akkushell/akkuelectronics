@@ -38,52 +38,24 @@ body {
 .panel:before { content:""; position:absolute; inset:0; background:linear-gradient(135deg, rgba(212,175,55,0.07), rgba(255,255,255,0)); opacity:.7; pointer-events:none; }
 .panel h2 { margin:0 0 14px; font-size:1.2rem; font-weight:600; letter-spacing:.5px; }
 
-/* CONTROLLER LAYOUT */
-.controller { position:relative; width:100%; aspect-ratio: 16/9; max-width:600px; margin:0 auto; display:flex; flex-direction:column; justify-content:space-between; padding:12px 10px 18px; }
-.controller .top-row, .controller .middle-row, .controller .bottom-row { display:flex; align-items:center; justify-content:space-between; }
+/* CONTROLLER LAYOUT - SVG Based */
+.controller-container { max-width:800px; margin:0 auto; padding:20px; }
+.controller-svg { width:100%; height:auto; display:block; filter:drop-shadow(0 4px 20px rgba(0,0,0,0.5)); }
 
-.trigger { width:15%; display:flex; flex-direction:column; align-items:center; gap:4px; }
-.trigger .label { font-size:.7rem; letter-spacing:1px; }
-.trigger .bar { width:100%; height:40px; border:1px solid var(--border); border-radius:8px; overflow:hidden; background:#09090c; }
-.trigger .fill { height:100%; width:0%; background:linear-gradient(135deg,var(--gold), var(--gold-light)); transition:width .1s linear; }
-.trigger .value { font-size:.65rem; color: var(--muted); }
+/* Button Active States */
+.controller-svg .btn-active { fill:var(--gold) !important; filter:drop-shadow(0 0 12px var(--gold)); }
+.controller-svg .btn-active text { fill:#111 !important; }
 
-.bumper { width:14%; height:42px; background:#1f1f24; border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:600; letter-spacing:.5px; transition:var(--trans); }
-.bumper.active { background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%); color:#111; box-shadow:0 0 0 3px rgba(212,175,55,.35); }
+/* Analog Stick Movement */
+.controller-svg #left-stick,
+.controller-svg #right-stick { transition:cx .05s, cy .05s; }
 
-.touchpad { flex:1; height:68px; margin:0 14px; background:#222229; border:1px dashed var(--border); border-radius:14px; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
-.touchpad .title { font-size:.65rem; color:var(--muted); letter-spacing:1px; }
-.touchpad .click-indicator { font-size:.7rem; padding:4px 10px; border-radius:20px; background:#18181c; border:1px solid #333; color:var(--muted); transition:var(--trans); }
-.touchpad.clicked .click-indicator { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:#111; border-color:var(--gold); }
+.controller-svg #left-stick.active,
+.controller-svg #right-stick.active { fill:var(--gold); filter:drop-shadow(0 0 10px var(--gold)); }
 
-.stick { width:30%; display:flex; flex-direction:column; align-items:center; gap:4px; }
-.stick-area { width:120px; height:120px; background:#101014; border:1px solid var(--border); border-radius:50%; position:relative; overflow:hidden; }
-.dot { width:36px; height:36px; background:radial-gradient(circle at 30% 30%, #2d2d33, #151518); border:2px solid var(--gold); border-radius:50%; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:top .05s linear, left .05s linear; }
-.stick-label { font-size:.7rem; color:var(--muted); letter-spacing:1px; }
-.stick.active .dot { box-shadow:0 0 0 4px rgba(212,175,55,.35); }
-
-.center-buttons { display:flex; flex-direction:column; align-items:center; gap:10px; }
-.ps-and-options { display:flex; align-items:center; gap:14px; }
-.small-btn, .ps-btn { background:#1f1f24; border:1px solid var(--border); padding:6px 12px; border-radius:40px; font-size:.6rem; letter-spacing:1px; font-weight:600; color:var(--muted); transition:var(--trans); }
-.ps-btn { font-size:.7rem; padding:12px 16px; }
-.small-btn.active, .ps-btn.active { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:#111; box-shadow:0 0 0 3px rgba(212,175,55,.35); }
-
-.bottom-row { margin-top:4px; }
-.dpad { position:relative; width:140px; height:140px; }
-.dpad .arrow { position:absolute; width:50px; height:50px; background:#1f1f24; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; border-radius:10px; font-size:1rem; font-weight:600; color:var(--muted); transition:var(--trans); }
-.dpad .arrow.up { top:0; left:50%; transform:translateX(-50%); }
-.dpad .arrow.down { bottom:0; left:50%; transform:translateX(-50%); }
-.dpad .arrow.left { left:0; top:50%; transform:translateY(-50%); }
-.dpad .arrow.right { right:0; top:50%; transform:translateY(-50%); }
-.dpad .arrow.active { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:#111; box-shadow:0 0 0 3px rgba(212,175,55,.35); }
-
-.face-buttons { width:200px; height:140px; position:relative; }
-.face-buttons .btn { position:absolute; width:54px; height:54px; background:#1f1f24; border:1px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:600; color:var(--muted); transition:var(--trans); }
-.face-buttons .btn.triangle { top:0; left:50%; transform:translateX(-50%); }
-.face-buttons .btn.square { top:50%; left:0; transform:translateY(-50%); }
-.face-buttons .btn.circle { top:50%; right:0; transform:translateY(-50%); }
-.face-buttons .btn.cross { bottom:0; left:50%; transform:translateX(-50%); }
-.face-buttons .btn.active { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:#111; box-shadow:0 0 0 5px rgba(212,175,55,.35); }
+/* Trigger Pressure States */
+.controller-svg .trigger-pressed { fill:var(--gold) !important; filter:drop-shadow(0 0 8px var(--gold)); }
+.controller-svg .trigger-pressed text { fill:#111 !important; }
 
 /* DATA PANEL */
 .grid.two { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
@@ -113,11 +85,7 @@ body {
 .list::-webkit-scrollbar-thumb:hover { background:#3c3c44; }
 
 @media (max-width:700px){
-  .controller { aspect-ratio: 4/3; }
-  .stick-area { width:90px; height:90px; }
-  .dot { width:28px; height:28px; }
-  .dpad { width:120px; height:120px; }
-  .face-buttons { width:170px; height:120px; }
-  .face-buttons .btn { width:46px; height:46px; font-size:1.2rem; }
-  .trigger .bar { height:34px; }
+  .trigger-display { font-size:10px; padding:6px; }
+  .trigger-display .bar { width:30px; height:50px; }
+  .dot { width:24%; height:18%; }
 }
