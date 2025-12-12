@@ -337,22 +337,170 @@
                 grid-template-columns: 1fr 1fr;
             }
             
+            .analogs-section {
+                grid-column: span 2;
+            }
+            
             .triggers-section {
                 grid-column: span 2;
             }
         }
         
         @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+            
+            .gamepad-tester-section {
+                height: auto;
+                min-height: 100vh;
+                padding: 60px 10px 20px;
+            }
+            
+            .tester-container {
+                height: auto;
+            }
+            
+            h1 {
+                font-size: 18px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .connection-status {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            
+            .status-icon {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+            
+            .controller-info {
+                font-size: 14px;
+            }
+            
+            .controller-id {
+                font-size: 12px;
+            }
+            
             .gamepad-visual {
                 grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .buttons-section, .analogs-section, .triggers-section {
+                padding: 5px;
+            }
+            
+            .section-title {
+                font-size: 13px;
+                margin-bottom: 8px;
             }
             
             .buttons-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(6, 1fr);
+                gap: 5px;
             }
             
-            .vibration-section {
-                max-width: 200px;
+            .button-item {
+                padding: 4px 4px;
+            }
+            
+            .button-label {
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
+            
+            .button-value {
+                font-size: 10px;
+            }
+            
+            .analog-container {
+                flex-direction: row;
+                gap: 5px;
+            }
+            
+            .stick-label {
+                font-size: 12px;
+                margin-bottom: 5px;
+            }
+            
+            .stick-visual {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 5px;
+            }
+            
+            .stick-indicator {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .stick-values {
+                font-size: 10px;
+                gap: 5px;
+            }
+            
+            .triggers-grid {
+                gap: 5px;
+            }
+            
+            .trigger-label {
+                font-size: 13px;
+            }
+            
+            .trigger-bar {
+                height: 18px;
+            }
+            
+            .trigger-value {
+                font-size: 12px;
+            }
+            
+            .vibration-controls {
+                gap: 5px;
+            }
+            
+            .slider-label {
+                font-size: 13px;
+            }
+            
+            .vibrate-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 16px !important;
+            }
+            
+            .buttons-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 5px;
+            }
+            
+            .button-item {
+                padding: 5px 3px;
+            }
+            
+            .button-label {
+                font-size: 9px;
+            }
+            
+            .button-value {
+                font-size: 10px;
+            }
+            
+            .analog-container {
+                flex-direction: column;
+            }
+            
+            .stick-visual {
+                width: 90px;
+                height: 90px;
             }
         }
     </style>
@@ -386,9 +534,14 @@
                             <li><a href="xbox-360.html">Xbox 360</a></li>
                         </ul>
                     </li>
-                    <li><a href="services.html">All Services</a></li>
+                    <li class="dropdown">
+                        <a href="services.html">All Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://akkushell.github.io/hen492/">PS3 HEN 492</a></li>
+                            <li class="active-item"><a href="gamepad-tester.html">Gamepad Tester</a></li>
+                        </ul>
+                    </li>
                     <li><a href="shop.html">Shop</a></li>
-                    <li class="active-item"><a href="gamepad-tester.html">Gamepad Tester</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
