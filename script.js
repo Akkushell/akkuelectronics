@@ -171,27 +171,135 @@ const modal = document.getElementById('paymentModal');
 const closeBtn = document.querySelector('.close-modal');
 let currentProduct = {};
 
-// Handle Buy Now button clicks
-document.querySelectorAll('.buy-now').forEach(button => {
-    button.addEventListener('click', function() {
-        // Get product details from data attributes
-        currentProduct = {
-            name: this.getAttribute('data-product-name'),
-            price: this.getAttribute('data-product-price'),
-            image: this.getAttribute('data-product-image')
-        };
-        
-        // Populate modal with product details
-        document.getElementById('modalProductName').textContent = currentProduct.name;
-        document.getElementById('modalProductPrice').textContent = currentProduct.price;
-        document.getElementById('modalProductImage').src = currentProduct.image;
-        document.getElementById('modalProductImage').alt = currentProduct.name;
-        
-        // Show modal
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    });
+// Initialize Google Pay containers or fallback to modal buttons
+document.querySelectorAll('.gpay-container').forEach((container, idx) => {
+    const product = {
+        name: container.getAttribute('data-product-name'),
+        price: container.getAttribute('data-product-price'),
+        image: container.getAttribute('data-product-image')
+    };
+
+    // If a Google Pay client with createButton is available, use it
+    if (window.googlePayClient && typeof googlePayClient.createButton === 'function') {
+        const button = googlePayClient.createButton({
+            buttonColor: 'black',
+            buttonType: 'buy',
+            buttonRadius: 20,
+            buttonBorderType: 'default_border',
+            buttonLocale: 'en',
+            buttonSizeMode: 'fill',
+            onClick: () => {
+                currentProduct = product;
+                document.getElementById('modalProductName').textContent = currentProduct.name;
+                document.getElementById('modalProductPrice').textContent = currentProduct.price;
+                document.getElementById('modalProductImage').src = currentProduct.image;
+                document.getElementById('modalProductImage').alt = currentProduct.name;
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            },
+            allowedPaymentMethods: [] // mirror your loadPaymentData() settings
+        });
+
+        container.appendChild(button);
+    } else {
+        // Fallback: create a simple Buy Now button that opens the modal
+        const btn = document.createElement('button');
+        btn.className = 'product-btn buy-now-fallback';
+        btn.innerHTML = '<i class="fas fa-shopping-cart"></i> Buy Now';
+        btn.addEventListener('click', () => {
+            currentProduct = product;
+            document.getElementById('modalProductName').textContent = currentProduct.name;
+            document.getElementById('modalProductPrice').textContent = currentProduct.price;
+            document.getElementById('modalProductImage').src = currentProduct.image;
+            document.getElementById('modalProductImage').alt = currentProduct.name;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(btn);
+    }
 });
+
+// Google Pay integration: set up PaymentsClient when the SDK loads
+window.onGooglePayLoaded = function() {
+    try {
+        const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
+        window.googlePayClient = paymentsClient;
+
+        const baseRequest = {
+            apiVersion: 2,
+            apiVersionMinor: 0
+        };
+
+        const tokenizationSpecification = {
+            type: 'PAYMENT_GATEWAY',
+            parameters: {
+                gateway: 'razorpay', // using Razorpay TEST placeholder
+                gatewayMerchantId: 'rzp_test_gateway_merchant_id' // replace with your Razorpay gateway merchant id
+            }
+        };
+
+        const cardPaymentMethod = {
+            type: 'CARD',
+            parameters: {
+                allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                allowedCardNetworks: ['VISA', 'MASTERCARD']
+            },
+            tokenizationSpecification: tokenizationSpecification
+        };
+
+        const isReadyToPayRequest = Object.assign({}, baseRequest);
+        isReadyToPayRequest.allowedPaymentMethods = [cardPaymentMethod];
+
+        paymentsClient.isReadyToPay(isReadyToPayRequest).then(function(response) {
+            if (response.result) {
+                // Replace any fallback buttons with real Google Pay buttons
+                document.querySelectorAll('.gpay-container').forEach(container => {
+                    // remove fallback children
+                    while (container.firstChild) container.removeChild(container.firstChild);
+
+                    const product = {
+                        name: container.getAttribute('data-product-name'),
+                        price: container.getAttribute('data-product-price'),
+                        image: container.getAttribute('data-product-image')
+                    };
+
+                    const button = paymentsClient.createButton({
+                        buttonColor: 'black',
+                        buttonType: 'buy',
+                        onClick: () => {
+                            const paymentDataRequest = Object.assign({}, baseRequest);
+                            paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
+                            paymentDataRequest.transactionInfo = {
+                                totalPriceStatus: 'FINAL',
+                                totalPrice: product.price.toString(),
+                                currencyCode: 'INR'
+                            };
+                            paymentDataRequest.merchantInfo = {
+                                merchantName: 'Akku Electronics',
+                                merchantId: 'rzp_test_merchant_id' // TEST placeholder — replace with your PRODUCTION merchantId
+                            };
+
+                            paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
+                                // Handle the response: send paymentData to your server to process the payment
+                                alert('Payment data received (TEST). Check console for details.');
+                                console.log('Google Pay paymentData:', paymentData);
+                                // Optionally, show confirmation modal or receipt
+                            }).catch(function(err) {
+                                console.error('loadPaymentData error', err);
+                                alert('Payment cancelled or failed.');
+                            });
+                        }
+                    });
+
+                    container.appendChild(button);
+                });
+            }
+        }).catch(err => console.error('isReadyToPay error', err));
+
+    } catch (e) {
+        console.error('Google Pay initialization failed', e);
+    }
+};
 
 // Close modal when clicking X
 if (closeBtn) {
