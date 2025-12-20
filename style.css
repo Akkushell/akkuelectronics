@@ -139,7 +139,6 @@ nav {
     padding: 0;
     border-radius: 8px;
     transition: transform 0.18s ease, box-shadow 0.18s ease;
-    display: inline-flex;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -310,31 +309,36 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 196, 0, 0.5);
+    background: rgba(212,175,55,0.95);
     color: #000000;
     border: none;
-    padding: 15px 25px;
-    cursor: default;
-    font-size: 12px;
-    transition: all 0.3s ease;
-    z-index: 10;
-    border-radius: 10%;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    z-index: 20;
+    border-radius: 50%;
 }
 
 .slider-nav:hover {
-    background: #d4af37;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.9);
-    transform: translateY(-50%) scale(1.1);
+    background: #f4d03f;
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.6);
+    transform: translateY(-50%) scale(1.06);
 }
 
 .slider-nav.prev {
-    left: 30px;
-    cursor: w-resize;
+    left: 24px;
+    cursor: pointer;
 }
 
 .slider-nav.next {
-    right: 30px;
-    cursor: e-resize;
+    right: 24px;
+    cursor: pointer;
 }
 
 .slider-controls {

@@ -163,16 +163,29 @@
 
     /* Slider Navigation Buttons */
     .slider-nav {
-        padding: 8px 12px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         font-size: 16px;
+        background: rgba(212,175,55,0.95);
+        border-radius: 50%;
+        border: none;
+        z-index: 20;
+        cursor: pointer;
     }
 
     .slider-nav.prev {
-        left: 8px;
+        left: 10px;
     }
 
     .slider-nav.next {
-        right: 8px;
+        right: 10px;
     }
 
     /* Slider Controls */
