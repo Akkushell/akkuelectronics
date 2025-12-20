@@ -10,12 +10,16 @@ if (menuToggle) {
     });
 }
 
-// Dropdown Menu for Mobile
+// Dropdown Menu for Mobile — toggle only when the top-level link is clicked
 const dropdowns = document.querySelectorAll('.dropdown');
 dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('click', (e) => {
+    const trigger = dropdown.querySelector(':scope > a');
+    if (!trigger) return;
+    trigger.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
             e.preventDefault();
+            // close other open dropdowns for tidy mobile UX
+            dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('active'); });
             dropdown.classList.toggle('active');
         }
     });
@@ -163,8 +167,5 @@ document.querySelectorAll('.card, .category-card, .service-card').forEach(el => 
 });
 
 // Payment gateway/shop-specific code removed — not referenced by current pages
-    
-    closeModal();
-}
 
 console.log('Akku Electronics - Website loaded successfully!');

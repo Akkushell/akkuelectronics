@@ -29,22 +29,34 @@
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
+        position: relative;
     }
 
     .logo {
         order: 1;
-        height: 70px;
+        height: 90px;
         padding: 10px 0;
     }
 
     /* Mobile Menu Toggle Button */
-    .menu-toggle {
-        display: block;
-        order: 2;
-        margin-left: auto;
-        font-size: 22px;
-        padding: 8px 12px;
-    }
+        .menu-toggle {
+            display: inline-flex;
+            /* place at right edge of header */
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            font-size: 18px;
+            padding: 0;
+            align-items: center;
+            justify-content: center;
+            z-index: 1102;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            border: 2px solid rgba(0,0,0,0.08);
+        }
 
     /* Mobile Navigation */
     nav {
@@ -57,17 +69,21 @@
         display: none;
         position: absolute;
         top: 100%;
-        left: 0;
-        right: 0;
+        right: 14px;
+        left: auto;
         background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
         flex-direction: column;
-        padding: 15px 0;
-        border-radius: 0 0 8px 8px;
+        padding: 8px 0;
+        border-radius: 6px;
         border: 2px solid #d4af37;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
         z-index: 999;
         max-height: 70vh;
         overflow-y: auto;
+        width: auto;
+        min-width: 160px;
+        max-width: 90vw;
+        box-sizing: border-box;
     }
 
     .nav-links.active {
@@ -80,11 +96,12 @@
 
     .nav-links li a {
         width: 100%;
-        text-align: center;
-        padding: 12px 20px;
+        text-align: right;
+        padding: 12px 18px;
         font-size: 13px;
         letter-spacing: 0.5px;
         border-radius: 0;
+        white-space: nowrap;
     }
 
     /* Mobile Dropdown Menu */
@@ -93,17 +110,21 @@
         display: none;
         box-shadow: none;
         border: none;
-        background: rgba(212, 175, 55, 0.1);
-        margin-top: 8px;
-        padding: 8px 0;
+        background: rgba(212, 175, 55, 0.06);
+        margin-top: 6px;
+        padding: 6px 8px;
         border-radius: 6px;
-        min-width: 100%;
+        min-width: auto;
+        width: auto;
+        white-space: nowrap;
+        text-align: right;
     }
 
     .dropdown-menu li a {
-        padding: 10px 20px;
+        padding: 8px 12px;
         font-size: 12px;
-        text-align: center;
+        text-align: right;
+        display: block;
     }
 
     .dropdown.active .dropdown-menu {
@@ -781,8 +802,21 @@
     }
 
     .menu-toggle {
-        font-size: 20px;
-        padding: 6px 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 8px;
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+        border: 2px solid rgba(0,0,0,0.08);
+        z-index: 1102;
     }
 
     .image-slider {
