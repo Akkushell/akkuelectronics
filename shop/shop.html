@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gaming Product Store - Consoles, Accessories, Parts and Gaming Gear | Akku Electronics">
+    <meta name="keywords" content="gaming consoles, controllers, gaming accessories, PS5, Xbox Series X, gaming parts">
+    <meta name="author" content="Akku Electronics">
+    
+    <title>Gaming Product Store | Akku Electronics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-xxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mobile.css">
+    <link rel="stylesheet" href="shop.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/aelogo.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo-link">
+                <img src="../images/aelogo.png" alt="Akku Electronics Logo" class="logo">
+            </a>
+            <nav>
+                <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="primary-navigation" class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="../playstation.html">Sony PlayStation <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../playstation-5.html">PlayStation 5</a></li>
+                            <li><a href="../playstation-4.html">PlayStation 4</a></li>
+                            <li><a href="../playstation-3.html">PlayStation 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../xbox.html">Microsoft Xbox <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../xbox-series.html">Xbox Series X/S</a></li>
+                            <li><a href="../xbox-one.html">Xbox One</a></li>
+                            <li><a href="../xbox-360.html">Xbox 360</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../services.html">All Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://akkushell.github.io/hen492/">PS3 HEN 492</a></li>
+                            <li><a href="../gamepad-tester.html">Gamepad Tester</a></li>
+                        </ul>
+                    </li>
+                    <li class="active-item"><a href="shop.html">Shop</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Shop Header with Search and Cart -->
+    <div class="shop-header-top">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search products... (name, category, price)">
+        </div>
+        <div class="cart-wishlist-icons">
+            <div class="wishlist-icon" onclick="openWishlistModal()">
+                <i class="fas fa-heart"></i>
+                <span class="wishlist-count">0</span>
+            </div>
+            <div class="cart-icon" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shop Hero Section -->
+    <section class="shop-hero">
+        <h1>Gaming Product Store</h1>
+        <p>Premium Gaming Consoles, Accessories, Parts & Gear - Everything You Need for Your Gaming Setup</p>
+    </section>
+
+    <!-- Main Shop Section -->
+    <div class="shop-container">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <h3>Category</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-consoles" onchange="applyFilters()">
+                    <label for="cat-consoles">Consoles</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-controllers" onchange="applyFilters()">
+                    <label for="cat-controllers">Controllers</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-accessories" onchange="applyFilters()">
+                    <label for="cat-accessories">Accessories</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-parts" onchange="applyFilters()">
+                    <label for="cat-parts">Parts</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-gear" onchange="applyFilters()">
+                    <label for="cat-gear">Gaming Gear</label>
+                </div>
+            </div>
+
+            <!-- Price Filter -->
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <div class="price-range">
+                    <input type="range" id="priceRange" min="0" max="100000" value="100000" onchange="applyFilters()">
+                    <div class="price-display">Up to ₹<span id="priceValue">100000</span></div>
+                </div>
+            </div>
+
+            <!-- Stock Filter -->
+            <div class="filter-group">
+                <h3>Availability</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="in-stock" onchange="applyFilters()">
+                    <label for="in-stock">In Stock Only</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="on-sale" onchange="applyFilters()">
+                    <label for="on-sale">On Sale</label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="section-header">
+                <h2 id="sectionTitle">All Products</h2>
+                <select class="sort-select" id="sortSelect" onchange="applySort()">
+                    <option value="newest">Newest First</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Top Rated</option>
+                    <option value="discount">Highest Discount</option>
+                </select>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            <h2 style="color: #d4af37; margin-bottom: 20px;">🛒 Shopping Cart</h2>
+            <div class="cart-modal-body" id="cartModalBody">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWishlistModal()">&times;</span>
+            <h2 style="color: #d4af37; margin-bottom: 20px;">❤️ My Wishlist</h2>
+            <div class="wishlist-modal-body" id="wishlistModalBody">
+                <!-- Wishlist items will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>Akku Electronics</h3>
+                    <p>Your trusted gaming product and console repair specialist in Nagpur. Quality products and expert service!</p>
+                    <div class="social-links" style="display: flex; justify-content: center; gap: 12px; margin-top: 10px;">
+                        <a href="https://www.facebook.com/akku0101" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <img src="../icon/facebook.png" alt="Facebook" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                        <a href="https://www.instagram.com/akkuelectronics.nagpur" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <img src="../icon/instagram.png" alt="Instagram" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                        <a href="https://x.com/Sunil_Moundekar" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <img src="../icon/twitter.png" alt="Twitter" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                        <a href="https://wa.me/918956389723" target="_blank" aria-label="WhatsApp">
+                            <img src="../icon/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../playstation.html">PlayStation Services</a></li>
+                        <li><a href="../xbox.html">Xbox Services</a></li>
+                        <li><a href="../services.html">All Services</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 354, VHB Colony, Balabhau Peth, PanchPaoli, Nagpur, MH, India</p>
+                    <p><i class="fas fa-phone"></i> +91 8956389723</p>
+                    <p><i class="fas fa-envelope"></i> akkuelectronics.nagpur@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Akku Electronics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>
