@@ -792,7 +792,14 @@
 
         function contactForProduct() {
             const phone = '918956389723';
-            const message = `Hi, I'm interested in: ${productData.name}. Please provide more information.`;
+            const productLink = window.location.href;
+            const message = `Hi, I'm interested in this product:\n\n` +
+                          `*${productData.name}*\n` +
+                          `Brand: ${productData.brand}\n` +
+                          `Price: ₹${productData.price.toLocaleString()}\n` +
+                          `Category: ${productData.category}\n\n` +
+                          `Product Link: ${productLink}\n\n` +
+                          `Please provide more information.`;
             const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
