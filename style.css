@@ -242,7 +242,8 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px;
 }
 
-/* Image Slider Section */
+/* Image Slider Section - Disabled */
+/*
 .image-slider {
     position: relative;
     width: 100%;
@@ -367,6 +368,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
     transform: scale(1.2);
 }
+*/
 
 /* Category Section */
 .category-section {
@@ -803,6 +805,7 @@ footer {
 }
 
 /* PlayStation Page Styles */
+/* Hero Banner Styles - Disabled
 .hero-banner {
     position: relative;
     padding: 120px 0;
@@ -821,7 +824,9 @@ footer {
     background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
     pointer-events: none;
 }
+*/
 
+/* PlayStation Banner - Disabled
 .playstation-banner {
     background: linear-gradient(135deg, #003087 0%, #001a4d 50%, #000000 100%);
     position: relative;
@@ -840,7 +845,9 @@ footer {
     transform: translateY(-50%);
     pointer-events: none;
 }
+*/
 
+/* Banner Content - Disabled
 .banner-content {
     position: relative;
     z-index: 1;
@@ -848,6 +855,7 @@ footer {
     text-align: center;
     margin: 0 auto;
 }
+*/
 
 .banner-content h1 {
     font-size: 48px;
@@ -981,7 +989,7 @@ footer {
     filter: brightness(1.2);
 }
 
-/* Xbox Page Styles */
+/* Xbox Page Styles - Disabled
 .xbox-banner {
     background: linear-gradient(135deg, #107c10 0%, #064d04 50%, #000000 100%);
     position: relative;
@@ -1000,11 +1008,13 @@ footer {
     transform: translateY(-50%);
     pointer-events: none;
 }
+*/
 
-/* Services Page Styles */
+/* Services Page Styles - Disabled
 .services-banner {
     background: linear-gradient(135deg, #d4af37 0%, #8b7355 50%, #000000 100%);
 }
+*/
 
 .services-grid-section {
     padding: 80px 0;
