@@ -22,7 +22,6 @@ function loadProductsFromJSON() {
             products = data.products;
             displayProducts(products);
             setupSearch();
-            setupPriceDisplay();
         })
         .catch(error => {
             console.error('Error loading products:', error);
@@ -92,20 +91,6 @@ function applyFilters() {
         filtered = filtered.filter(p => selectedCategories.includes(p.category));
     }
 
-    // Price filter
-    const maxPrice = parseInt(document.getElementById('priceRange').value);
-    filtered = filtered.filter(p => p.price <= maxPrice);
-
-    // Stock filter
-    if (document.getElementById('in-stock').checked) {
-        filtered = filtered.filter(p => p.stock);
-    }
-
-    // Sale filter
-    if (document.getElementById('on-sale').checked) {
-        filtered = filtered.filter(p => p.discount > 0);
-    }
-
     displayProducts(filtered);
 }
 
@@ -131,13 +116,6 @@ function applySort() {
             sorted.sort((a, b) => b.id - a.id);
     }
     displayProducts(sorted);
-}
-
-// Price Display
-function setupPriceDisplay() {
-    document.getElementById('priceRange').addEventListener('input', (e) => {
-        document.getElementById('priceValue').textContent = parseInt(e.target.value).toLocaleString();
-    });
 }
 
 // WhatsApp Integration
