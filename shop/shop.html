@@ -62,17 +62,7 @@
     <!-- Shop Header with Search and Cart -->
     <div class="shop-header-top">
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search products... (name, category, price)">
-        </div>
-        <div class="cart-wishlist-icons">
-            <div class="wishlist-icon" onclick="openWishlistModal()">
-                <i class="fas fa-heart"></i>
-                <span class="wishlist-count">0</span>
-            </div>
-            <div class="cart-icon" onclick="openCartModal()">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
-            </div>
+            <input type="text" id="searchInput" placeholder="Search products...">
         </div>
     </div>
 
@@ -150,29 +140,6 @@
                 <!-- Products will be loaded here by JavaScript -->
             </div>
         </section>
-    </div>
-
-    <!-- Cart Modal -->
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeCartModal()">&times;</span>
-            <h2 style="color: #d4af37; margin-bottom: 20px;">🛒 Shopping Cart</h2>
-            <div class="cart-modal-body" id="cartModalBody">
-                <!-- Cart items will be loaded here -->
-            </div>
-            <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
-        </div>
-    </div>
-
-    <!-- Wishlist Modal -->
-    <div id="wishlistModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeWishlistModal()">&times;</span>
-            <h2 style="color: #d4af37; margin-bottom: 20px;">❤️ My Wishlist</h2>
-            <div class="wishlist-modal-body" id="wishlistModalBody">
-                <!-- Wishlist items will be loaded here -->
-            </div>
-        </div>
     </div>
 
     <footer>

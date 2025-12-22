@@ -11,7 +11,12 @@
       "rating": 4.8,
       "reviews": 245,
       "stock": true,
-      "image": "fas fa-playstation",
+       "images": [
+        "images/products/PS5 SLIM DE 1.jpg",
+        "images/products/PS5 SLIM DE 2.jpg",
+        "images/products/PS5 SLIM DE 3.jpg",
+        "images/products/PS5 SLIM DE 4.jpg"
+      ],
       "description": "Experience next-gen gaming with stunning graphics and ultra-fast loading times. Includes disc drive for physical games.",
       "longDescription": "The PlayStation 5 Disc Edition brings revolutionary performance to your gaming. With a custom 8-core AMD Ryzen CPU and 10.28 TFLOP GPU, you'll experience stunning 4K visuals at up to 120fps. The lightning-fast SSD eliminates loading times, while the DualSense controller features haptic feedback and adaptive triggers for an immersive experience. Play physical game discs and enjoy an enormous library of PlayStation games.",
       "specs": ["825GB SSD Storage", "4K Gaming Up to 120fps", "DualSense Controller Included", "Custom AMD Processor", "Ultra HD Blu-ray Support"],

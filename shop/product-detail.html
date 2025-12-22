@@ -60,35 +60,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 400px;
+            width: 480px;
+            height: 480px;
             position: relative;
             overflow: hidden;
-        }
-
-        .image-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(212, 175, 55, 0.8);
-            border: none;
-            color: #000000;
-            font-size: 1.5rem;
-            padding: 15px 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .image-nav-btn:hover {
-            background: rgba(212, 175, 55, 1);
-        }
-
-        .image-nav-btn.prev {
-            left: 10px;
-        }
-
-        .image-nav-btn.next {
-            right: 10px;
         }
 
         .thumbnails-container {
@@ -147,9 +122,9 @@
         }
 
         .main-image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
             display: none;
         }
 
@@ -197,7 +172,8 @@
             padding: 12px 14px;
             border-radius: 8px;
             margin-bottom: 14px;
-            border: 1px solid #d4af37;
+            border: 2px solid #d4af37;
+            width: fit-content;
         }
 
         .current-price {
@@ -257,7 +233,6 @@
         }
 
         .btn-buy {
-            flex: 1;
             padding: 12px 16px;
             border: none;
             border-radius: 8px;
@@ -269,6 +244,8 @@
             font-size: 0.95rem;
             background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
             color: #000000;
+            width: fit-content;
+            min-width: 200px;
         }
 
         .btn-buy:hover {
@@ -279,69 +256,77 @@
         .specs-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             border: 1px solid #d4af37;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
         }
 
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #d4af37;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             border-bottom: 2px solid #d4af37;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
         }
 
         .specs-list, .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .spec-item, .feature-item {
             color: #cccccc;
-            padding: 12px;
-            background: rgba(212, 175, 55, 0.05);
-            border-radius: 6px;
-            border-left: 3px solid #d4af37;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.5;
         }
 
         .spec-item:before, .feature-item:before {
-            content: "▹";
+            content: "•";
             color: #d4af37;
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 5px;
         }
 
         .warranty-info {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             border: 1px solid #d4af37;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
         }
 
-        .warranty-icon {
-            font-size: 2.5rem;
+        .warranty-info h3 {
+            font-size: 1.2rem;
             color: #d4af37;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
         }
 
-        .warranty-text h3 {
-            color: #d4af37;
-            margin: 0 0 5px 0;
-        }
-
-        .warranty-text p {
+        .warranty-info p {
             color: #cccccc;
             margin: 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .warranty-info p:before {
+            content: "•";
+            color: #d4af37;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
         }
 
         .related-products {
@@ -360,7 +345,7 @@
 
         .related-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
@@ -428,11 +413,6 @@
                 font-size: 100px;
             }
 
-            .image-nav-btn {
-                padding: 10px 8px;
-                font-size: 1.2rem;
-            }
-
             .thumbnail-item {
                 min-width: 60px;
                 height: 60px;
@@ -457,7 +437,7 @@
             }
 
             .related-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -516,14 +496,8 @@
             <!-- Product Image Gallery -->
             <div class="product-image-section">
                 <div class="main-image-container">
-                    <button class="image-nav-btn prev" onclick="navigateImage(-1)" style="display:none;">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
                     <i id="productIcon"></i>
                     <div id="mainImageContainer"></div>
-                    <button class="image-nav-btn next" onclick="navigateImage(1)" style="display:none;">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                     <div id="discountBadgeLarge" class="discount-badge-large" style="display:none;"></div>
                 </div>
                 <div class="thumbnails-container" id="thumbnailsContainer"></div>
@@ -553,31 +527,26 @@
 
                 <!-- Action Buttons -->
                 <div class="product-actions">
-                    <button class="btn-buy" id="btnBuy" onclick="contactForProduct()">Buy on WhatsApp</button>
+                    <button class="btn-buy" id="btnBuy" onclick="contactForProduct()">Buy</button>
                 </div>
-            </div>
-        </div>
 
-        <!-- Specifications Section -->
-        <div class="specs-section">
-            <h3 class="section-title">Specifications</h3>
-            <div class="specs-list" id="specsList"></div>
-        </div>
+                <!-- Specifications Section -->
+                <div class="specs-section">
+                    <h3 class="section-title">Specifications</h3>
+                    <ul class="specs-list" id="specsList"></ul>
+                </div>
 
-        <!-- Features Section -->
-        <div class="specs-section">
-            <h3 class="section-title">Features</h3>
-            <div class="features-list" id="featuresList"></div>
-        </div>
+                <!-- Features Section -->
+                <div class="specs-section">
+                    <h3 class="section-title">Features</h3>
+                    <ul class="features-list" id="featuresList"></ul>
+                </div>
 
-        <!-- Warranty Info -->
-        <div class="warranty-info">
-            <div class="warranty-icon">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="warranty-text">
-                <h3>Manufacturer Warranty</h3>
-                <p id="warrantyInfo"></p>
+                <!-- Warranty Info -->
+                <div class="warranty-info">
+                    <h3>Warranty</h3>
+                    <p id="warrantyInfo"></p>
+                </div>
             </div>
         </div>
 
@@ -650,13 +619,6 @@
         };
 
         // Image gallery navigation
-        function navigateImage(direction) {
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = productImages.length - 1;
-            if (currentImageIndex >= productImages.length) currentImageIndex = 0;
-            showImage(currentImageIndex);
-        }
-
         function showImage(index) {
             currentImageIndex = index;
             const images = document.querySelectorAll('#mainImageContainer img');
@@ -710,8 +672,6 @@
             const iconEl = document.getElementById('productIcon');
             const mainImageContainer = document.getElementById('mainImageContainer');
             const thumbnailsContainer = document.getElementById('thumbnailsContainer');
-            const prevBtn = document.querySelector('.image-nav-btn.prev');
-            const nextBtn = document.querySelector('.image-nav-btn.next');
             
             // Get images array (support both single imageUrl and images array)
             if (productData.images && productData.images.length > 0) {
@@ -735,12 +695,8 @@
                         <img src="${imgSrc}" alt="Thumbnail ${index + 1}">
                     </div>`
                 ).join('');
-                prevBtn.style.display = 'block';
-                nextBtn.style.display = 'block';
             } else {
                 thumbnailsContainer.innerHTML = '';
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
             }
             
             currentImageIndex = 0;
@@ -773,18 +729,18 @@
 
             // Specifications
             const specsList = document.getElementById('specsList');
-            specsList.innerHTML = productData.specs.map(spec => `<div class="spec-item">${spec}</div>`).join('');
+            specsList.innerHTML = productData.specs.map(spec => `<li class="spec-item">${spec}</li>`).join('');
 
             // Features
             const featuresList = document.getElementById('featuresList');
-            featuresList.innerHTML = productData.features.map(feature => `<div class="feature-item">${feature}</div>`).join('');
+            featuresList.innerHTML = productData.features.map(feature => `<li class="feature-item">${feature}</li>`).join('');
 
             // Warranty
             document.getElementById('warrantyInfo').textContent = productData.warranty;
         }
 
         function loadRelatedProducts() {
-            const related = allProducts.filter(p => p.category === productData.category && p.id !== productData.id).slice(0, 4);
+            const related = allProducts.filter(p => p.category === productData.category && p.id !== productData.id).slice(0, 8);
             const grid = document.getElementById('relatedProductsGrid');
             
             grid.innerHTML = related.map(product => `
