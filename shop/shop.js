@@ -12,7 +12,18 @@ const fallbackImages = {
 // Initialize page
 window.addEventListener('DOMContentLoaded', () => {
     loadProductsFromJSON();
+    disableImageRightClick();
 });
+
+// Disable right-click on images
+function disableImageRightClick() {
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    });
+}
 
 // Load products from external JSON file
 function loadProductsFromJSON() {

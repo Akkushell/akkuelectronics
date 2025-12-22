@@ -1050,9 +1050,20 @@
             return parseInt(params.get('id'));
         }
 
+        // Disable right-click on images
+        function disableImageRightClick() {
+            document.addEventListener('contextmenu', function(e) {
+                if (e.target.tagName === 'IMG') {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        }
+
         // Load and display product
         window.addEventListener('DOMContentLoaded', () => {
             loadProductData();
+            disableImageRightClick();
         });
 
         function loadProductData() {
