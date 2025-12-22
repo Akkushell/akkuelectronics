@@ -243,7 +243,8 @@
 
         .product-actions {
             display: flex;
-            gap: 10px;
+            align-items: center;
+            gap: 15px;
             margin-bottom: 24px;
         }
 
@@ -261,6 +262,22 @@
             color: #000000;
             width: fit-content;
             min-width: 200px;
+        }
+
+        .payment-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .payment-icons img {
+            height: 48px;
+            width: auto;
+            transition: transform 0.2s ease;
+        }
+
+        .payment-icons img:hover {
+            transform: scale(1.1);
         }
 
         .btn-buy:hover {
@@ -477,7 +494,8 @@
             }
 
             .product-actions {
-                flex-direction: column;
+                flex-direction: row;
+                flex-wrap: wrap;
                 gap: 12px;
                 margin-bottom: 25px;
             }
@@ -487,6 +505,10 @@
                 padding: 14px 16px;
                 font-size: 0.95rem;
                 min-width: unset;
+            }
+
+            .payment-icons img {
+                height: 32px;
             }
 
             .btn-buy:active {
@@ -671,6 +693,7 @@
             .product-actions {
                 gap: 10px;
                 margin-bottom: 20px;
+                flex-wrap: wrap;
             }
 
             .btn-buy {
@@ -679,6 +702,14 @@
                 border-radius: 6px;
                 letter-spacing: 0.5px;
                 min-height: 48px;
+            }
+
+            .payment-icons {
+                gap: 8px;
+            }
+
+            .payment-icons img {
+                height: 32px;
             }
 
             .specs-section {
@@ -951,6 +982,11 @@
                 <!-- Action Buttons -->
                 <div class="product-actions">
                     <button class="btn-buy" id="btnBuy" onclick="contactForProduct()">Buy</button>
+                    <div class="payment-icons">
+                        <img src="../icon/gpay.png" alt="Google Pay" title="We accept Google Pay">
+                        <img src="../icon/upi.png" alt="UPI" title="We accept UPI">
+                        <img src="../icon/phonepe.png" alt="PhonePe" title="We accept PhonePe">
+                    </div>
                 </div>
 
                 <!-- Product Contains Section -->

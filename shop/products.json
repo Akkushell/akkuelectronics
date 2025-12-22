@@ -22,21 +22,20 @@
     },
     {
       "id": 2,
-      "name": "PlayStation 5 Digital Edition",
+      "name": "PlayStation 3 Slim 500gb ( Refurbuished )",
       "brand": "Sony",
       "category": "consoles",
-      "price": 39999,
-      "originalPrice": 42999,
-      "discount": 7,
+      "price": 14500,
+      "originalPrice": 15500,
+      "discount": 6.45,
       "stock": true,
       "images": [
-        "images/products/PS5 SLIM DE 1.jpg",
-        "images/products/PS5 SLIM DE 2.jpg",
-        "images/products/PS5 SLIM DE 3.jpg",
-        "images/products/PS5 SLIM DE 4.jpg"
+        "images/ps3/ps3s1.png",
+        "images/ps3/ps3s2.png",
+        "images/ps3/ps3s3.png"        
       ],
-      "description": "All-digital console for the ultimate gaming library. Compact design with powerful performance. The PlayStation 5 Digital Edition offers the same powerhouse performance as the Disc Edition but in a sleek, all-digital format. This compact console is perfect for gamers who prefer digital games and cloud storage. Download and play an extensive collection of PlayStation games directly from the PlayStation Store.",
-      "specs": ["825GB SSD Storage", "4K Gaming Up to 120fps", "Digital Games Only", "Custom AMD Processor", "Compact Design"],
+      "description": "The PlayStation® 3 era built on the legacy of previous generations with incredible leaps forward in online gaming and digital services, while the arrival of Blu-ray Disc games allowed creators to expand their ambitions and build truly immersive game worlds on a grand scale. The PS3 console delivered cutting-edge graphics, a robust online ecosystem, and multimedia capabilities that transformed the living room experience. As well as introducing gamers to incredible single-player adventures and revolutionary online experiences, PS3™ became an entertainment mainstay in owners’ homes thanks to new music and movie streaming apps, and easily accessible digital games via the new PlayStation™ Store.",
+      "specs": ["PlayStation 3 Console", "Model: Slim /Super-SLim", "500GB HDD Storage", "2 Wireless Controllers", "1 Power Cable", "1 HDMI Cable","1 USB Cable","25-30 Games Preloaded","Games as per user choice"],
       "availability": "In Stock"
     },
     {
