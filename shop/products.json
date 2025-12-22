@@ -30,7 +30,7 @@
       "rating": 4.7,
       "reviews": 198,
       "stock": true,
-      "image": "fas fa-playstation",
+      "imageUrl": "images/products/PS5 SLIM DE 1.jpg",
       "description": "All-digital console for the ultimate gaming library. Compact design with powerful performance.",
       "longDescription": "The PlayStation 5 Digital Edition offers the same powerhouse performance as the Disc Edition but in a sleek, all-digital format. This compact console is perfect for gamers who prefer digital games and cloud storage. Download and play an extensive collection of PlayStation games directly from the PlayStation Store.",
       "specs": ["825GB SSD Storage", "4K Gaming Up to 120fps", "Digital Games Only", "Custom AMD Processor", "Compact Design"],
