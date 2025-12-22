@@ -18,10 +18,8 @@
         "images/ps5slimdiscconsole/6.jpg",
         "images/ps5slimdiscconsole/7.jpg"
       ],
-      "description": "PlayStation 2 USB Modded console with games. PlayStation 2 Console. ( Model 77xxx/90xxx ) with USB mod. 1x power cable, 1x av cable, 1x memory card 8mb, 1x dualshock 2 controller, 1x pendrive 64gb, with games loaded ( 15-20 games ).",
-      "specs": [""],
-      "features": [""],
-      "warranty": "6 months seller Warranty. " ,
+      "description": "The PlayStation® 2 generation included giant steps forward in home console gaming, with augmented reality, online multiplayer gaming, and more ambitious, large-scale games on DVD discs. Offering users cutting-edge gaming, DVD playback, online functionality, and backward compatibility with original PlayStation discs, the PS2 console represented an irresistible package at launch and throughout its lifespan.",
+      "specs": ["PlayStation 2 Console", "Model 70xxx / 90xxx","USB Modded", "Includes 2 Controllers", "64GB Pendrive with Games", "Memory Card Included","power and AV Cables"],
       "availability": "In Stock"
     },
     {
@@ -41,8 +39,6 @@
       ],
       "description": "All-digital console for the ultimate gaming library. Compact design with powerful performance. The PlayStation 5 Digital Edition offers the same powerhouse performance as the Disc Edition but in a sleek, all-digital format. This compact console is perfect for gamers who prefer digital games and cloud storage. Download and play an extensive collection of PlayStation games directly from the PlayStation Store.",
       "specs": ["825GB SSD Storage", "4K Gaming Up to 120fps", "Digital Games Only", "Custom AMD Processor", "Compact Design"],
-      "features": ["All-Digital Gaming", "Compact & Stylish Design", "Ultra-fast Gameplay", "PlayStationPlus Included", "Cloud Game Storage"],
-      "warranty": "1 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -57,8 +53,6 @@
       "image": "fas fa-playstation",
       "description": "Premium 4K gaming console with enhanced performance and graphics. Perfect for HDR gaming. The PlayStation 4 Pro brings true 4K gaming and enhanced performance to your living room. With 8-core CPU and 4.2 TFLOP GPU, enjoy smooth gameplay and stunning visuals. The 1TB SSD provides ample storage for your game library, and support for PlayStation VR opens new gaming dimensions.",
       "specs": ["1TB SSD Storage", "4K Gaming Support", "Enhanced Graphics", "8-Core CPU", "PlayStation VR Compatible"],
-      "features": ["4K Resolution Gaming", "Enhanced Performance", "HDR Support", "Slim Design", "Large Game Library"],
-      "warranty": "1 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -73,8 +67,6 @@
       "image": "fab fa-xbox",
       "description": "The world's most powerful console. Play next-gen games with 4K resolution at 120fps. Xbox Series X is the world's most powerful gaming console, featuring a custom 8-core CPU and 12 TFLOP GPU. Experience 4K gaming at 120fps with ray tracing support. The innovative velocity architecture and 1TB SSD ensure virtually no load times. With Game Pass, get instant access to hundreds of games including day-one releases.",
       "specs": ["1TB SSD Storage", "4K Up to 120fps", "Ray Tracing Support", "Custom AMD Hardware", "Velocity Architecture"],
-      "features": ["Most Powerful Console", "Game Pass Included", "Backward Compatible", "Smart Delivery", "Quick Resume"],
-      "warranty": "2 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -89,8 +81,6 @@
       "image": "fab fa-xbox",
       "description": "Next-gen performance at a great price. Play 1440p gaming with excellent performance. Xbox Series S delivers next-gen gaming in a compact form factor at an affordable price. With 8-core CPU and 4 TFLOP GPU, enjoy smooth 1440p gaming and up to 120fps. The 512GB SSD is perfect for your favorite Game Pass titles, and Smart Delivery ensures you're always playing the optimized version of your games.",
       "specs": ["512GB SSD Storage", "1440p Gaming at 120fps", "Game Pass Compatible", "Smart Delivery", "Compact Design"],
-      "features": ["Affordable Next-Gen", "Game Pass Value", "Excellent Performance", "Compact Size", "Family-Friendly"],
-      "warranty": "2 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -105,8 +95,6 @@
       "image": "fas fa-gamepad",
       "description": "Hybrid gaming console with stunning 7-inch OLED screen. Play anywhere, anytime. The Nintendo Switch OLED model features a gorgeous 7-inch OLED display with vibrant colors and perfect blacks. Enjoy the same hybrid gaming experience with portability and performance. Play docked, in tabletop mode, or handheld - the choice is yours. Includes improved audio and enhanced storage.",
       "specs": ["64GB Storage", "7-inch OLED Display", "Hybrid Gaming", "Improved Speakers", "Docking Station Included"],
-      "features": ["Stunning OLED Screen", "Hybrid Gaming", "Portability", "Huge Game Library", "Online Multiplayer"],
-      "warranty": "1 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -121,8 +109,6 @@
       "image": "fas fa-gamepad",
       "description": "Portable-only console for on-the-go gaming. Lightweight and durable design. The Nintendo Switch Lite is the perfect portable gaming device. Featuring a compact 5.5-inch LCD screen and lightweight design, take your gaming anywhere. Play your favorite Switch games in handheld mode, with great battery life and durability. It's the affordable entry point to the Nintendo Switch ecosystem.",
       "specs": ["32GB Storage", "5.5-inch LCD Screen", "Handheld Only", "Lightweight Design", "All Colors Available"],
-      "features": ["Portable Gaming", "Affordable", "Durable Design", "Great Battery", "Huge Game Library"],
-      "warranty": "1 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -137,8 +123,6 @@
       "image": "fas fa-playstation",
       "description": "Compact PS4 with excellent game library. Great for budget-conscious gamers. The PlayStation 4 Slim is a smaller, lighter version of the original PS4 with all the same great gaming. With 500GB storage and a massive library of exclusive games, it's an excellent choice for budget-conscious gamers. Enjoy stunning graphics, exclusive titles, and online multiplayer gaming.",
       "specs": ["500GB Storage", "Full HD Gaming", "Ultra Slim Design", "1080p Resolution", "Controller Included"],
-      "features": ["Compact Design", "Budget-Friendly", "Exclusive Games", "Online Multiplayer", "Excellent Library"],
-      "warranty": "1 Year Manufacturer Warranty",
       "availability": "Out of Stock"
     },
     {
@@ -153,8 +137,6 @@
       "image": "fas fa-circle",
       "description": "Next-gen controller with haptic feedback and adaptive triggers for immersive gaming. The DualSense controller revolutionizes gaming with cutting-edge haptic feedback and adaptive triggers. Feel every impact, vibration, and sensation in incredible detail. The built-in microphone, speaker, and touchpad offer new ways to interact with games. Experience gaming like never before.",
       "specs": ["Haptic Feedback Technology", "Adaptive Triggers", "Built-in Microphone", "Touchpad", "3.5mm Jack"],
-      "features": ["Immersive Feedback", "Adaptive Resistance", "Crystal Clear Audio", "Built-in Mic", "USB-C Charging"],
-      "warranty": "1 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -169,8 +151,6 @@
       "image": "fas fa-circle",
       "description": "Standard PS4 controller with reliable performance and comfortable grip design. The DualShock 4 is the official PlayStation 4 controller, featuring dual vibration motors, a sensitive touchpad, and convenient share button. The ergonomic design fits comfortably in your hands for extended play sessions. Compatible with PS4 and supports a wide range of games.",
       "specs": ["Dual Vibration Motors", "Touchpad", "Share Button", "Sensitive Analog Sticks", "3.5mm Headphone Jack"],
-      "features": ["Reliable Performance", "Comfortable Design", "Wireless & Wired", "Long Battery Life", "Durable Construction"],
-      "warranty": "1 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -185,8 +165,6 @@
       "image": "fab fa-xbox",
       "description": "Precise and responsive controller with 40-hour battery life. Perfect for Xbox and PC. The Xbox Wireless Controller features premium build quality and responsive controls. With up to 40 hours of battery life, you'll have weeks of gaming before needing to recharge. Works seamlessly with Xbox consoles and Windows PC, making it the versatile choice for gamers.",
       "specs": ["Wireless Connectivity", "40-Hour Battery Life", "Impulse Triggers", "Textured Grips", "3.5mm Jack"],
-      "features": ["Extended Battery Life", "Precise Controls", "PC Compatible", "Durable Build", "Multiple Colors"],
-      "warranty": "1 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -201,8 +179,6 @@
       "image": "fas fa-cable",
       "description": "High-speed HDMI cable supporting 4K@120Hz. Certified and durable construction. This premium HDMI 2.1 cable supports the latest 4K gaming at 120fps. With certified construction and superior shielding, you'll get pristine video and audio quality. Perfect for connecting your gaming console to modern displays with minimal latency.",
       "specs": ["8K Resolution Support", "2.1 Specification", "3 Meter Length", "Gold-Plated Connectors", "Certified Quality"],
-      "features": ["4K @ 120Hz", "Low Latency", "Durable Cable", "High Bandwidth", "Premium Build"],
-      "warranty": "2 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -217,8 +193,6 @@
       "image": "fas fa-microchip",
       "description": "Sony-approved NVMe SSD for PS5 storage expansion with high-speed performance. Expand your PS5 storage with this Sony-approved 1TB NVMe SSD. With 7000MB/s read speeds, you'll experience lightning-fast game loading and minimal installation times. Easy installation with step-by-step guides included. Future-proof your gaming with extra storage.",
       "specs": ["1TB Capacity", "7000MB/s Speed", "Sony Approved", "M.2 Form Factor", "Heatsink Included"],
-      "features": ["Fast Loading", "Easy Installation", "Future Proof", "Reliable Brand", "Excellent Value"],
-      "warranty": "5 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -233,8 +207,6 @@
       "image": "fas fa-mouse",
       "description": "High-precision gaming mouse with customizable DPI and RGB lighting. Experience competitive gaming with this high-precision mouse featuring up to 16000 DPI sensitivity. Customize every aspect with RGB lighting and programmable buttons. The ergonomic design ensures comfort during marathon gaming sessions. Perfect for FPS, MOBA, and RPG games.",
       "specs": ["16000 DPI Max", "RGB Lighting", "Ergonomic Design", "Programmable Buttons", "USB Connection"],
-      "features": ["Precision Tracking", "Customizable RGB", "Multiple DPI Presets", "Durable Build", "Comfortable Grip"],
-      "warranty": "2 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -249,8 +221,6 @@
       "image": "fas fa-keyboard",
       "description": "Professional mechanical keyboard with RGB backlighting and programmable keys. Dominate with this professional-grade mechanical keyboard. Cherry MX mechanical switches provide responsive tactile feedback. Fully programmable RGB backlighting with macro support. Built for competitive gaming and long typing sessions. Includes detachable USB-C cable.",
       "specs": ["Mechanical Switches", "Full RGB Support", "Programmable Keys", "Detachable USB-C", "Compact Form"],
-      "features": ["Responsive Feedback", "RGB Customization", "Macro Support", "Durable Switches", "Gaming Focused"],
-      "warranty": "2 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -265,8 +235,6 @@
       "image": "fas fa-tv",
       "description": "High refresh rate gaming monitor with IPS panel for smooth competitive gaming. Gain the competitive edge with this 144Hz gaming monitor. The IPS panel delivers vivid colors and wide viewing angles, while the 1ms response time ensures razor-sharp responsiveness. Perfect for competitive shooters, MOBAs, and fast-paced games. Includes adjustable stand and AMD FreeSync support.",
       "specs": ["144Hz Refresh Rate", "1ms Response Time", "FHD Resolution", "IPS Panel", "27-inch Screen"],
-      "features": ["Smooth Gameplay", "Competitive Advantage", "Vivid Colors", "FreeSync Support", "Adjustable Stand"],
-      "warranty": "3 Year Manufacturer Warranty",
       "availability": "In Stock"
     },
     {
@@ -281,8 +249,6 @@
       "image": "fas fa-tv",
       "description": "Premium 4K TV with HDMI 2.1 and 120Hz support for next-gen console gaming. Transform your gaming room with this stunning 4K TV featuring HDMI 2.1 connectivity and 120Hz refresh rate. Enjoy next-gen console gaming at its finest with 4K resolution, HDR support, and minimal input lag. The quantum dot technology delivers exceptional color accuracy and brightness.",
       "specs": ["4K Resolution", "120Hz Refresh", "HDMI 2.1", "55-inch Screen", "Quantum Dot Tech"],
-      "features": ["Stunning 4K", "Next-Gen Gaming", "HDR Support", "Low Input Lag", "Smart TV Features"],
-      "warranty": "2 Year Manufacturer Warranty",
       "availability": "In Stock"
     }
   ]
