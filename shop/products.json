@@ -10,13 +10,11 @@
       "discount": 0,
       "stock": true,
        "images": [
-        "images/ps5slimdiscconsole/1.jpg",
-        "images/ps5slimdiscconsole/2.jpg",
-        "images/ps5slimdiscconsole/3.jpg",
-        "images/ps5slimdiscconsole/4.jpg",
-        "images/ps5slimdiscconsole/5.jpg",
-        "images/ps5slimdiscconsole/6.jpg",
-        "images/ps5slimdiscconsole/7.jpg"
+        "images/ps2/ps21.jpg",
+        "images/ps2/ps22.png",
+        "images/ps2/ps23.png",
+        "images/ps2/ps24.png",
+        "images/ps2/ps25.png"        
       ],
       "description": "The PlayStation® 2 generation included giant steps forward in home console gaming, with augmented reality, online multiplayer gaming, and more ambitious, large-scale games on DVD discs. Offering users cutting-edge gaming, DVD playback, online functionality, and backward compatibility with original PlayStation discs, the PS2 console represented an irresistible package at launch and throughout its lifespan.",
       "specs": ["PlayStation 2 Console", "Model 70xxx / 90xxx","USB Modded", "Includes 2 Controllers", "64GB Pendrive with Games", "Memory Card Included","power and AV Cables"],

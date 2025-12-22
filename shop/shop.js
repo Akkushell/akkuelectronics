@@ -49,14 +49,14 @@ function displayProducts(productsToDisplay) {
         }
         
         return `
-        <div class="product-card" data-id="${product.id}" onclick="window.location.href='product-detail.html?id=${product.id}'" style="cursor: pointer;">
+        <div class="product-card" data-id="${product.id}">
             <div class="product-image">
                 <img src="${imgSrc}" alt="${product.name}" class="product-thumb" loading="lazy">
             </div>
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-price">₹${product.price.toLocaleString()}</div>
-                <button class="btn-buy" onclick="openWhatsApp('${product.name}', event)" ${!product.stock ? 'disabled' : ''}>Buy</button>
+                <button class="btn-buy" onclick="viewProduct(${product.id}, event)" ${!product.stock ? 'disabled' : ''}>View This</button>
             </div>
         </div>
     `;
@@ -115,13 +115,10 @@ function applySort() {
     displayProducts(sorted);
 }
 
-// WhatsApp Integration
-function openWhatsApp(productName, event) {
+// View Product Detail
+function viewProduct(productId, event) {
     if (event) event.stopPropagation();
-    const phone = '918956389723';
-    const message = `Hi, I'm interested in: ${productName}. Please provide more details.`;
-    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    window.location.href = `product-detail.html?id=${productId}`;
 }
 
 // Mobile Filter Toggle
