@@ -11,9 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-xxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../mobile.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/aelogo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/aelogo.png">
     
     <style>
         /* Product Detail Styles */
@@ -73,7 +73,7 @@
             left: 12px;
             width: 50px;
             height: 50px;
-            background-image: url('../images/aelogo.png');
+            background-image: url('images/aelogo.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -899,40 +899,40 @@
 <body>
     <header>
         <div class="container">
-            <a href="../index.html" class="logo-link">
-                <img src="../images/aelogo.png" alt="Akku Electronics Logo" class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="images/aelogo.png" alt="Akku Electronics Logo" class="logo">
             </a>
             <nav>
                 <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
                 <ul id="primary-navigation" class="nav-links">
-                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li class="dropdown">
-                        <a href="../playstation.html">Sony PlayStation <i class="fas fa-chevron-down"></i></a>
+                        <a href="playstation.html">Sony PlayStation <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="../playstation-5.html">PlayStation 5</a></li>
-                            <li><a href="../playstation-4.html">PlayStation 4</a></li>
-                            <li><a href="../playstation-3.html">PlayStation 3</a></li>
+                            <li><a href="playstation-5.html">PlayStation 5</a></li>
+                            <li><a href="playstation-4.html">PlayStation 4</a></li>
+                            <li><a href="playstation-3.html">PlayStation 3</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="../xbox.html">Microsoft Xbox <i class="fas fa-chevron-down"></i></a>
+                        <a href="xbox.html">Microsoft Xbox <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="../xbox-series.html">Xbox Series X/S</a></li>
-                            <li><a href="../xbox-one.html">Xbox One</a></li>
-                            <li><a href="../xbox-360.html">Xbox 360</a></li>
+                            <li><a href="xbox-series.html">Xbox Series X/S</a></li>
+                            <li><a href="xbox-one.html">Xbox One</a></li>
+                            <li><a href="xbox-360.html">Xbox 360</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="../services.html">All Services <i class="fas fa-chevron-down"></i></a>
+                        <a href="services.html">All Services <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="https://akkushell.github.io/hen492/">PS3 HEN 492</a></li>
-                            <li><a href="../gamepad-tester.html">Gamepad Tester</a></li>
+                            <li><a href="gamepad-tester.html">Gamepad Tester</a></li>
                         </ul>
                     </li>
                     <li><a href="shop.html">Shop</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -940,9 +940,14 @@
 
     <!-- Product Detail Content -->
     <div class="product-detail-container">
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <a href="../index.html">Home</a> / <a href="shop.html">Shop</a> / <span id="breadcrumbProduct">Product</span>
+        <!-- Breadcrumb with Back Button -->
+        <div class="breadcrumb" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <span id="breadcrumbProduct">Product</span>
+            </div>
+            <a href="shop.html" style="padding: 8px 20px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: #000; text-decoration: none; border-radius: 5px; font-weight: 600; transition: all 0.3s ease;">
+                <i class="fas fa-arrow-left"></i> Back to Shop
+            </a>
         </div>
 
         <!-- Main Product Section -->
@@ -983,9 +988,9 @@
                 <div class="product-actions">
                     <button class="btn-buy" id="btnBuy" onclick="contactForProduct()">Buy</button>
                     <div class="payment-icons">
-                        <img src="../icon/gpay.png" alt="Google Pay" title="We accept Google Pay">
-                        <img src="../icon/upi.png" alt="UPI" title="We accept UPI">
-                        <img src="../icon/phonepe.png" alt="PhonePe" title="We accept PhonePe">
+                        <img src="icon/gpay.png" alt="Google Pay" title="We accept Google Pay">
+                        <img src="icon/upi.png" alt="UPI" title="We accept UPI">
+                        <img src="icon/phonepe.png" alt="PhonePe" title="We accept PhonePe">
                     </div>
                 </div>
 
@@ -1012,16 +1017,16 @@
                     <p>Your trusted gaming product and console repair specialist in Nagpur. Quality products and expert service!</p>
                     <div class="social-links" style="display: flex; justify-content: center; gap: 12px; margin-top: 10px;">
                         <a href="https://www.facebook.com/akku0101" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                            <img src="../icon/facebook.png" alt="Facebook" style="width:20px;height:20px;vertical-align:middle;">
+                            <img src="icon/facebook.png" alt="Facebook" style="width:20px;height:20px;vertical-align:middle;">
                         </a>
                         <a href="https://www.instagram.com/akkuelectronics.nagpur" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <img src="../icon/instagram.png" alt="Instagram" style="width:20px;height:20px;vertical-align:middle;">
+                            <img src="icon/instagram.png" alt="Instagram" style="width:20px;height:20px;vertical-align:middle;">
                         </a>
                         <a href="https://x.com/Sunil_Moundekar" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                            <img src="../icon/twitter.png" alt="Twitter" style="width:20px;height:20px;vertical-align:middle;">
+                            <img src="icon/twitter.png" alt="Twitter" style="width:20px;height:20px;vertical-align:middle;">
                         </a>
                         <a href="https://wa.me/918956389723" target="_blank" aria-label="WhatsApp">
-                            <img src="../icon/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px;vertical-align:middle;">
+                            <img src="icon/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px;vertical-align:middle;">
                         </a>
                     </div>
                 </div>
@@ -1029,12 +1034,12 @@
                 <div class="footer-section links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../playstation.html">PlayStation Services</a></li>
-                        <li><a href="../xbox.html">Xbox Services</a></li>
-                        <li><a href="../services.html">All Services</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="playstation.html">PlayStation Services</a></li>
+                        <li><a href="xbox.html">Xbox Services</a></li>
+                        <li><a href="services.html">All Services</a></li>
                         <li><a href="shop.html">Shop</a></li>
-                        <li><a href="../contact.html">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
 

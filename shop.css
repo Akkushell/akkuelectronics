@@ -186,7 +186,7 @@ html {
     left: 6px;
     width: 40px;
     height: 40px;
-    background-image: url('../images/aelogo.png');
+    background-image: url('images/aelogo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -207,20 +207,20 @@ html {
     display: flex;
     flex-direction: column;
 }
-
 .product-name {
-    font-size: 12px;
-    color: #ffffff;
-    font-weight: 200;
+    font-size: 1rem;
+    color: #ff0000;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
     margin-bottom: 6px;
-    line-height: 1.2;
-    min-height: 20px;
+    flex-grow: 1;
+    min-height: 50px;
     text-transform: none;
 }
 
 .product-price {
     font-size: 1.1rem;
-    color: #d4af37;
+    color: #ffffff;
     font-weight: 700;
     margin-bottom: 8px;
 }
