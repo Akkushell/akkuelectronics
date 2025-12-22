@@ -106,9 +106,6 @@ function applySort() {
         case 'price-high':
             sorted.sort((a, b) => b.price - a.price);
             break;
-        case 'rating':
-            sorted.sort((a, b) => b.rating - a.rating);
-            break;
         case 'discount':
             sorted.sort((a, b) => b.discount - a.discount);
             break;
