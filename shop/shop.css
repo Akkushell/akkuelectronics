@@ -37,28 +37,6 @@ html {
     background: #2d2d2d;
 }
 
-.shop-hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-    padding: 40px 20px;
-    text-align: center;
-    border-bottom: 2px solid #d4af37;
-}
-
-.shop-hero h1 {
-    font-size: 2.5rem;
-    color: #d4af37;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.shop-hero p {
-    font-size: 1.1rem;
-    color: #ffffff;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
 .shop-container {
     display: grid;
     grid-template-columns: 250px 1fr;
@@ -201,6 +179,21 @@ html {
     margin: 0;
 }
 
+.product-image::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 40px;
+    height: 40px;
+    background-image: url('../images/aelogo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    opacity: 100;
+}
+
 .product-thumb {
     width: 200px;
     height: 200px;
@@ -216,12 +209,13 @@ html {
 }
 
 .product-name {
-    font-size: 1rem;
+    font-size: 12px;
     color: #ffffff;
     font-weight: 200;
     margin-bottom: 6px;
     line-height: 1.2;
     min-height: 20px;
+    text-transform: none;
 }
 
 .product-price {
@@ -295,21 +289,6 @@ html {
     .search-box input {
         padding: 10px 12px;
         font-size: 0.95rem;
-    }
-
-    .shop-hero {
-        padding: 30px 15px;
-    }
-
-    .shop-hero h1 {
-        font-size: 1.8rem;
-        letter-spacing: 1px;
-    }
-
-    .shop-hero p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        padding: 0 10px;
     }
 
     .shop-container {
@@ -533,21 +512,6 @@ html {
         border-radius: 8px;
     }
 
-    .shop-hero {
-        padding: 25px 12px;
-    }
-
-    .shop-hero h1 {
-        font-size: 1.4rem;
-        letter-spacing: 0.5px;
-        margin-bottom: 8px;
-    }
-
-    .shop-hero p {
-        font-size: 0.85rem;
-        line-height: 1.4;
-    }
-
     .shop-container {
         margin: 15px auto;
         padding: 0 10px;
@@ -653,18 +617,6 @@ html {
         padding: 10px 8px;
     }
 
-    .shop-hero {
-        padding: 20px 10px;
-    }
-
-    .shop-hero h1 {
-        font-size: 1.2rem;
-    }
-
-    .shop-hero p {
-        font-size: 0.8rem;
-    }
-
     .shop-container {
         padding: 0 8px;
     }
@@ -708,14 +660,6 @@ html {
 
 /* ============= LANDSCAPE ORIENTATION ============= */
 @media (max-width: 768px) and (orientation: landscape) {
-    .shop-hero {
-        padding: 20px 15px;
-    }
-
-    .shop-hero h1 {
-        font-size: 1.5rem;
-    }
-
     .products-grid {
         grid-template-columns: repeat(3, 1fr);
     }
