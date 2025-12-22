@@ -75,29 +75,37 @@
     <!-- Main Shop Section -->
     <div class="shop-container">
         <!-- Filters Sidebar -->
-        <aside class="filters-sidebar">
-            <!-- Category Filter -->
-            <div class="filter-group">
-                <h3>Category</h3>
-                <div class="filter-option">
-                    <input type="checkbox" id="cat-consoles" onchange="applyFilters()">
-                    <label for="cat-consoles">Consoles</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="cat-controllers" onchange="applyFilters()">
-                    <label for="cat-controllers">Controllers</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="cat-accessories" onchange="applyFilters()">
-                    <label for="cat-accessories">Accessories</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="cat-parts" onchange="applyFilters()">
-                    <label for="cat-parts">Parts</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="cat-gear" onchange="applyFilters()">
-                    <label for="cat-gear">Gaming Gear</label>
+        <aside class="filters-sidebar" id="filtersSidebar">
+            <!-- Mobile Filter Toggle -->
+            <button class="mobile-filter-toggle" id="mobileFilterToggle" onclick="toggleMobileFilters()">
+                <i class="fas fa-filter"></i> Filters
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </button>
+            
+            <div class="filters-content" id="filtersContent">
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <h3>Category</h3>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-consoles" onchange="applyFilters()">
+                        <label for="cat-consoles">Consoles</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-controllers" onchange="applyFilters()">
+                        <label for="cat-controllers">Controllers</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-accessories" onchange="applyFilters()">
+                        <label for="cat-accessories">Accessories</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-parts" onchange="applyFilters()">
+                        <label for="cat-parts">Parts</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-gear" onchange="applyFilters()">
+                        <label for="cat-gear">Gaming Gear</label>
+                    </div>
                 </div>
             </div>
         </aside>

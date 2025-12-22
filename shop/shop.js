@@ -126,3 +126,12 @@ function openWhatsApp(productName, event) {
     const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
+
+// Mobile Filter Toggle
+function toggleMobileFilters() {
+    const filterToggle = document.getElementById('mobileFilterToggle');
+    const filtersContent = document.getElementById('filtersContent');
+    
+    filterToggle.classList.toggle('active');
+    filtersContent.classList.toggle('active');
+}
