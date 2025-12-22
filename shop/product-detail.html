@@ -1165,10 +1165,13 @@
                 document.getElementById('productOriginalPrice').textContent = `₹${productData.originalPrice.toLocaleString()}`;
                 document.getElementById('productOriginalPrice').style.display = 'inline';
             }
-            if (productData.discount > 0) {
-                document.getElementById('savingsAmount').textContent = `Save ₹${(productData.originalPrice - productData.price).toLocaleString()} (${productData.discount}%)`;
+            if (productData.originalPrice && productData.price < productData.originalPrice) {
+                // Calculate discount amount in rupees
+                const discountAmount = productData.originalPrice - productData.price;
+                const discountPercentage = Math.round((discountAmount / productData.originalPrice) * 100);
+                document.getElementById('savingsAmount').textContent = `Save ₹${discountAmount.toLocaleString()} (${discountPercentage}%)`;
                 document.getElementById('savingsAmount').style.display = 'inline';
-                document.getElementById('discountBadgeLarge').textContent = `-${productData.discount}%`;
+                document.getElementById('discountBadgeLarge').textContent = `-₹${discountAmount.toLocaleString()}`;
                 document.getElementById('discountBadgeLarge').style.display = 'block';
             }
 

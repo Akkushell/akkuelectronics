@@ -6,8 +6,8 @@
       "brand": "Sony",
       "category": "consoles",
       "price": 6500,
-      "originalPrice": 6500,
-      "discount": 0,
+      "originalPrice": 8500,
+      "discount": 2000,
       "stock": true,
        "images": [
         "images/ps2/ps21.jpg",
@@ -27,7 +27,7 @@
       "category": "consoles",
       "price": 14500,
       "originalPrice": 15500,
-      "discount": 6.45,
+      "discount": 1000,
       "stock": true,
       "images": [
         "images/ps3/ps3s1.png",
@@ -45,7 +45,7 @@
       "category": "consoles",
       "price": 32999,
       "originalPrice": 35999,
-      "discount": 8,
+      "discount": 3000,
       "stock": true,
       "image": "fas fa-playstation",
       "description": "Premium 4K gaming console with enhanced performance and graphics. Perfect for HDR gaming. The PlayStation 4 Pro brings true 4K gaming and enhanced performance to your living room. With 8-core CPU and 4.2 TFLOP GPU, enjoy smooth gameplay and stunning visuals. The 1TB SSD provides ample storage for your game library, and support for PlayStation VR opens new gaming dimensions.",
