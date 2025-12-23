@@ -354,5 +354,332 @@
       "specs": ["Xbox 360 Console", "RGH Modified", "500GB HDD Storage", "2 Wireless Controllers", "1 Power Supply", "1 HDMI Cable", "Pre-loaded Games", "Homebrew Capable"],
       "availability": "In Stock"
     }
+    
+  {
+    "id": 45,
+    "name": "PlayStation 4 DualShock 4 Controller",
+    "brand": "Sony",
+    "category": "controllers",
+    "price": 3499,
+    "originalPrice": 4999,
+    "discount": 1500,
+    "stock": true,
+    "images": ["images/products/ps4_controller_45.jpg"],
+    "description": "Original-style PlayStation 4 DualShock 4 wireless controller designed for accurate gameplay, responsive button feedback, and comfortable long-hour gaming. Ideal as a replacement or spare controller with full feature support including touchpad, motion sensors, vibration, and precise analog sticks.",
+    "specs": [
+      "Wireless Bluetooth connectivity",
+      "Built-in touchpad and motion sensors",
+      "Dual vibration motors",
+      "Rechargeable lithium-ion battery"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-gamepad"
+  },
+  {
+    "id": 46,
+    "name": "PlayStation 4 Fat Fan Replacement",
+    "brand": "Sony",
+    "category": "spare_parts",
+    "price": 1299,
+    "originalPrice": 1999,
+    "discount": 700,
+    "stock": true,
+    "images": ["images/products/ps4_fat_fan_46.jpg"],
+    "description": "High-quality cooling fan replacement specially designed for PlayStation 4 Fat models. Restores proper airflow, reduces overheating, and minimizes loud fan noise caused by worn or damaged internal fans.",
+    "specs": [
+      "High-speed cooling performance",
+      "Compatible with PS4 Fat model",
+      "Reduces overheating and noise"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-fan"
+  },
+  {
+    "id": 47,
+    "name": "PlayStation 4 Slim Fan Replacement",
+    "brand": "Sony",
+    "category": "spare_parts",
+    "price": 1399,
+    "originalPrice": 2199,
+    "discount": 800,
+    "stock": true,
+    "images": ["images/products/ps4_slim_fan_47.jpg"],
+    "description": "Precision-engineered cooling fan replacement for PlayStation 4 Slim consoles. Helps maintain optimal internal temperature, improves cooling efficiency, and ensures smooth and quiet console operation.",
+    "specs": [
+      "Optimized airflow design",
+      "Compatible with PS4 Slim",
+      "Low-noise operation"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-fan"
+  },
+  {
+    "id": 48,
+    "name": "PlayStation 4 Pro Fan Replacement",
+    "brand": "Sony",
+    "category": "spare_parts",
+    "price": 1599,
+    "originalPrice": 2499,
+    "discount": 900,
+    "stock": true,
+    "images": ["images/products/ps4_pro_fan_48.jpg"],
+    "description": "Heavy-duty cooling fan replacement for PlayStation 4 Pro systems. Designed to handle higher thermal output, ensuring efficient heat dissipation and stable performance during intensive gaming sessions.",
+    "specs": [
+      "High RPM cooling fan",
+      "Compatible with PS4 Pro",
+      "Improves thermal stability"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-fan"
+  },
+  {
+    "id": 49,
+    "name": "PlayStation 4 Fat Power Supply",
+    "brand": "Sony",
+    "category": "power_components",
+    "price": 2999,
+    "originalPrice": 4499,
+    "discount": 1500,
+    "stock": true,
+    "images": ["images/products/ps4_fat_psu_49.jpg"],
+    "description": "Reliable power supply unit replacement for PlayStation 4 Fat consoles. Provides stable voltage output and protects the system from power fluctuations, restoring proper startup and consistent power performance.",
+    "specs": [
+      "Stable voltage output",
+      "Compatible with PS4 Fat",
+      "Over-voltage and surge protection"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-bolt"
+  },
+  {
+    "id": 50,
+    "name": "PlayStation 4 Slim Power Supply",
+    "brand": "Sony",
+    "category": "power_components",
+    "price": 3199,
+    "originalPrice": 4799,
+    "discount": 1600,
+    "stock": true,
+    "images": ["images/products/ps4_slim_psu_50.jpg"],
+    "description": "High-efficiency power supply replacement for PlayStation 4 Slim models. Built for consistent and safe power delivery to fix no power, random shutdown, or unstable console issues.",
+    "specs": [
+      "Efficient power conversion",
+      "Compatible with PS4 Slim",
+      "Built-in safety protection"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-bolt"
+  },
+  {
+    "id": 51,
+    "name": "PlayStation 4 Pro Power Supply",
+    "brand": "Sony",
+    "category": "power_components",
+    "price": 3499,
+    "originalPrice": 5299,
+    "discount": 1800,
+    "stock": true,
+    "images": ["images/products/ps4_pro_psu_51.jpg"],
+    "description": "High-capacity power supply unit designed specifically for PlayStation 4 Pro consoles. Engineered to support higher power demands while ensuring safe, stable, and long-lasting operation.",
+    "specs": [
+      "High wattage output",
+      "Compatible with PS4 Pro",
+      "Durable internal components"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-bolt"
+  },
+  {
+    "id": 52,
+    "name": "PlayStation 4 HDMI Port Replacement (Fat / Slim / Pro)",
+    "brand": "Sony",
+    "category": "connectors",
+    "price": 499,
+    "originalPrice": 999,
+    "discount": 500,
+    "stock": true,
+    "images": ["images/products/ps4_hdmi_port_52.jpg"],
+    "description": "Premium HDMI port replacement compatible with PlayStation 4 Fat, Slim, and Pro models. Ideal for fixing no display, flickering screen, or damaged HDMI port issues. Professional soldering recommended.",
+    "specs": [
+      "Compatible with all PS4 models",
+      "High-quality HDMI connector",
+      "Requires soldering installation"
+    ],
+    "availability": "In Stock",
+    
+  },
+  {
+    "id": 53,
+    "name": "PlayStation 4 Controller Flex V1",
+    "brand": "Sony",
+    "category": "controller_parts",
+    "price": 199,
+    "originalPrice": 399,
+    "discount": 200,
+    "stock": true,
+    "images": ["images/products/ps4_flex_v1_53.jpg"],
+    "description": "Replacement flex ribbon cable for PlayStation 4 DualShock 4 V1 controllers. Designed to restore proper button response and fix unresponsive or malfunctioning controls.",
+    "specs": [
+      "Compatible with DualShock 4 V1",
+      "Restores button functionality",
+      "Flexible PCB design"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-tools"
+  },
+  {
+    "id": 54,
+    "name": "PlayStation 4 Controller Flex V2",
+    "brand": "Sony",
+    "category": "controller_parts",
+    "price": 219,
+    "originalPrice": 429,
+    "discount": 210,
+    "stock": true,
+    "images": ["images/products/ps4_flex_v2_54.jpg"],
+    "description": "High-quality flex ribbon replacement for PlayStation 4 DualShock 4 V2 controllers. Ensures reliable internal connections and smooth button response after wear or damage.",
+    "specs": [
+      "Compatible with DualShock 4 V2",
+      "Improves button response",
+      "Durable flex material"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-tools"
+  },
+  {
+    "id": 55,
+    "name": "PlayStation 4 Controller Power Flex 10 Pin",
+    "brand": "Sony",
+    "category": "controller_parts",
+    "price": 149,
+    "originalPrice": 299,
+    "discount": 150,
+    "stock": true,
+    "images": ["images/products/ps4_power_flex_10pin_55.jpg"],
+    "description": "Durable 10-pin power flex cable replacement for PlayStation 4 controllers. Helps resolve charging issues and unstable power connections caused by damaged flex cables.",
+    "specs": [
+      "10-pin connector",
+      "Stable power transmission",
+      "High durability flex cable"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-tools"
+  },
+  {
+    "id": 56,
+    "name": "PlayStation 4 Controller Power Flex 12 Pin",
+    "brand": "Sony",
+    "category": "controller_parts",
+    "price": 169,
+    "originalPrice": 329,
+    "discount": 160,
+    "stock": true,
+    "images": ["images/products/ps4_power_flex_12pin_56.jpg"],
+    "description": "Replacement 12-pin power flex cable for PlayStation 4 controllers. Designed to restore proper charging and consistent power flow.",
+    "specs": [
+      "12-pin connector",
+      "Reliable charging support",
+      "Flexible PCB construction"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-tools"
+  },
+  {
+    "id": 57,
+    "name": "PlayStation 4 Controller Power Flex 14 Pin",
+    "brand": "Sony",
+    "category": "controller_parts",
+    "price": 179,
+    "originalPrice": 349,
+    "discount": 170,
+    "stock": true,
+    "images": ["images/products/ps4_power_flex_14pin_57.jpg"],
+    "description": "High-quality 14-pin power flex cable replacement for compatible PlayStation 4 controllers. Ensures secure power connection and resolves controller power failures.",
+    "specs": [
+      "14-pin connector",
+      "Secure power transmission",
+      "Compatible with select DS4 models"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-tools"
+  },
+  {
+    "id": 58,
+    "name": "PlayStation 4 Controller V1 Battery",
+    "brand": "Sony",
+    "category": "batteries",
+    "price": 499,
+    "originalPrice": 899,
+    "discount": 400,
+    "stock": true,
+    "images": ["images/products/ps4_battery_v1_58.jpg"],
+    "description": "Rechargeable lithium-ion battery replacement for PlayStation 4 DualShock 4 V1 controllers. Restores original battery life and ensures longer gaming sessions between charges.",
+    "specs": [
+      "Lithium-ion battery",
+      "Compatible with DS4 V1",
+      "Long-lasting performance"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-battery-half"
+  },
+  {
+    "id": 59,
+    "name": "PlayStation 4 Controller V2 Battery",
+    "brand": "Sony",
+    "category": "batteries",
+    "price": 549,
+    "originalPrice": 949,
+    "discount": 400,
+    "stock": true,
+    "images": ["images/products/ps4_battery_v2_59.jpg"],
+    "description": "Premium rechargeable battery replacement for PlayStation 4 DualShock 4 V2 controllers. Designed for stable power output and extended gameplay time.",
+    "specs": [
+      "Lithium-ion battery",
+      "Compatible with DS4 V2",
+      "Stable power delivery"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-battery-half"
+  },
+  {
+    "id": 60,
+    "name": "PlayStation 4 Controller Rubber Set",
+    "brand": "Sony",
+    "category": "controller_parts",
+    "price": 199,
+    "originalPrice": 399,
+    "discount": 200,
+    "stock": true,
+    "images": ["images/products/ps4_rubber_set_60.jpg"],
+    "description": "Complete rubber button and contact replacement set for PlayStation 4 controllers. Restores original button feel and improves responsiveness for worn-out controllers.",
+    "specs": [
+      "Soft-touch rubber material",
+      "Improves button sensitivity",
+      "Complete internal rubber set"
+    ],
+    "availability": "In Stock",
+    "icon": "fas fa-tools"
+  },
+  {
+    "id": 61,
+    "name": "PlayStation 4 Controller USB Port",
+    "brand": "Sony",
+    "category": "connectors",
+    "price": 249,
+    "originalPrice": 499,
+    "discount": 250,
+    "stock": true,
+    "images": ["images/products/ps4_usb_port_61.jpg"],
+    "description": "Micro USB charging port replacement for PlayStation 4 DualShock controllers. Ideal for fixing loose ports, charging issues, or damaged connectors. Soldering required.",
+    "specs": [
+      "Micro USB connector",
+      "Fixes charging and connection issues",
+      "Requires soldering installation"
+    ],
+    "availability": "In Stock",
+    
+  }
+
+
   ]
 }
