@@ -180,46 +180,68 @@
     },
     {
       "id": 24,
-      "name": "PS5 NVMe SSD 1TB",
-      "brand": "Samsung",
-      "category": "parts",
-      "price": 9999,
-      "originalPrice": 12999,
-      "discount": 23,
+       "name": "PlayStation 2 8MB Memory Card",
+      "brand": "Sony",
+      "category": "accessories",
+      "price": 400,
+      "originalPrice": 499,
+      "discount": 99,
       "stock": true,
-      "image": "fas fa-microchip",
-      "description": "Sony-approved NVMe SSD for PS5 storage expansion with high-speed performance. Expand your PS5 storage with this Sony-approved 1TB NVMe SSD. With 7000MB/s read speeds, you'll experience lightning-fast game loading and minimal installation times. Easy installation with step-by-step guides included. Future-proof your gaming with extra storage.",
-      "specs": ["1TB Capacity", "7000MB/s Speed", "Sony Approved", "M.2 Form Factor", "Heatsink Included"],
+       "images": [
+        "images/ps2/ps2mc1.jpg",
+        "images/ps2/ps2mc2.jpg",
+        "images/ps2/ps2mc3.jpg",
+        "images/ps2/ps2mc4.jpg"             
+      ],
+      "description": "This memory card is exclusively for PS-2 and gives real 8MB memory on a single card. Used for archiving the game process, to save the game progress 100% compatible with the memory card. This card is compatible for all version of the Sony PS2. Can works with both the standard PS2 and PS2 Slim version., this is the generic third party manufacture card not original Sony Manufacture Easy to use, just plug in and play. Packing Includes: 1 x Memory Card",
+      "specs": ["This memory card is exclusively for PS2 and gives real 8MB memory on a single card.", "Used for archiving the game process, to save the game progress 100% compatible with the memory card.", "This card is compatible for all version of the Sony PS2. Can works with both the standard PS2 and PS2 Slim version.", "Easy to use, just plug in and play.", "Packing Includes: 1 x Memory Card"],
       "availability": "In Stock"
     },
     {
       "id": 32,
-      "name": "Gaming Mouse 16000 DPI",
-      "brand": "Corsair",
-      "category": "gear",
-      "price": 2499,
-      "originalPrice": 3499,
-      "discount": 29,
+       "name": "PlayStation 2 AV Cable ",
+      "brand": "AE-TECH",
+      "category": "accessories",
+      "price": 350,
+      "originalPrice": 500,
+      "discount": 150,
       "stock": true,
-      "image": "fas fa-mouse",
-      "description": "High-precision gaming mouse with customizable DPI and RGB lighting. Experience competitive gaming with this high-precision mouse featuring up to 16000 DPI sensitivity. Customize every aspect with RGB lighting and programmable buttons. The ergonomic design ensures comfort during marathon gaming sessions. Perfect for FPS, MOBA, and RPG games.",
-      "specs": ["16000 DPI Max", "RGB Lighting", "Ergonomic Design", "Programmable Buttons", "USB Connection"],
+       "images": [
+        "images/ps2/ps2av 1.jpg",
+        "images/ps2/ps2av 2.jpg",
+        "images/ps2/ps2av 3.jpg"              
+      ],
+      "description": "PlayStation AV Cable is made with high quality materials to ensure durability and video quality are met. This AV cable is compatible with multiple PlayStation models, including PS1, PS2, PS2 Slim, PS3, and PS3 Slim. Simply plug this AV cable into your PlayStation and then into your TV’s corresponding inputs. Outputs at standard resolution. Ultra thick and flexible jacket with color coded connectors to simplify installation. NOTE: This is not a HDMI Cable. If you are using this for PS3 for the first time, you need to reset the PS3 video settings. You can Google - How to reset PS3 Video Settings.",
+
+      "specs": ["Play Station AV CABLE PS AV Cable is made with high quality materials to ensure durability and video quality are met.", 
+"[WORKS FOR MULTIPLE PLAY STATION MODELS PS1, PS2, AND PS3] This AV cable is compatible with multiple PlayStation models, including PS1, PS2, PS2 slim, PS3, and PS3 slim", "[EASY TO USE] Simply plug this AV cable into your Play Station and then into your TV’s corresponding inputs. Outputs at standard resolution.", "Ultra thick and flexible jacket with color coded connectors to simplify installation."],
+
       "availability": "In Stock"
     },
     {
       "id": 33,
-      "name": "Mechanical Gaming Keyboard RGB",
-      "brand": "Corsair",
-      "category": "gear",
-      "price": 3999,
-      "originalPrice": 5499,
-      "discount": 27,
+           "name": "PlayStation AV2HDMI Converter ",
+      "brand": "AE-TECH",
+      "category": "accessories",
+      "price": 375,
+      "originalPrice": 500,
+      "discount": 125,
       "stock": true,
-      "image": "fas fa-keyboard",
-      "description": "Professional mechanical keyboard with RGB backlighting and programmable keys. Dominate with this professional-grade mechanical keyboard. Cherry MX mechanical switches provide responsive tactile feedback. Fully programmable RGB backlighting with macro support. Built for competitive gaming and long typing sessions. Includes detachable USB-C cable.",
-      "specs": ["Mechanical Switches", "Full RGB Support", "Programmable Keys", "Detachable USB-C", "Compact Form"],
+       "images": [
+        "images/accessories/av2hdmi 1.jpg",
+        "images/accessories/av2hdmi 2.jpg",
+ 	      "images/accessories/av2hdmi 3.jpg",
+      	"images/accessories/av2hdmi 4.jpg"              
+      ],
+
+      "description": "PS2 to HDMI video converter with 3.5mm audio output for HDTV HDMI monitor supports all PS2 display modes. A converter for the PS2 console, outputs video and audio in fully digital HDMI format and supports PS2 display modes (480i.576i, 480p). With just one HDMI cable, connect and play for realistic video / audio effects on your TV / monitor. 1).Connect your HDMI cable from your TV to the PS2-to-HDMI converter unit. Connect the PS2-to-HDMI converter unit to the PS2 output. Connect the supplied USB cable from the PS2-to-HDMI converter unit to the PS2 or a USB wall adapter. The USB cable and connection provide 5V power to the unit. 2).The PS2 must setup for Component Video Output (Y Pb Pr) as opposed to RGB output. If you can't see anything on your TV when using this, you probably need to go into the Configuration Settings (load PS2 without a disc) and scroll through the options to change this. 3).Once everything is connected and powered on, switch your TV to the correct HDMI input. You should see the PS2 home screen. If you don't see anything, double-check all connections and make sure the PS2 is set to Component Video Output (Y Pb Pr).",
+
+      "specs":["Support all PS2 display modes (NTSC 480i 480p, PAL 576i).", "Synchronization of video and audio output in full digital HDMI format, without transmission loss.", "The moving images in video games are broadcast in real time, without any delay.", "Analog audio output allows you to plug in headphones to not disturb others when playing late at night.", "PS2 to HDMI Converter x 1", "USB cable x 1", "User Manual x 1"],
+
       "availability": "In Stock"
     },
+
+
     {
       "id": 35,
       "name": "144Hz Gaming Monitor 27 Inch",
