@@ -357,12 +357,12 @@
     
   {
     "id": 45,
-    "name": "PlayStation 4 DualShock 4 Controller",
+    "name": "PlayStation 4 DualShock 4 Controller (Original Style)",
     "brand": "Sony",
     "category": "controllers",
-    "price": 3499,
-    "originalPrice": 4999,
-    "discount": 1500,
+    "price": 1500,
+    "originalPrice": 2000,
+    "discount": 500,
     "stock": true,
     "images": ["images/products/ps4_controller_45.jpg"],
     "description": "Original-style PlayStation 4 DualShock 4 wireless controller designed for accurate gameplay, responsive button feedback, and comfortable long-hour gaming. Ideal as a replacement or spare controller with full feature support including touchpad, motion sensors, vibration, and precise analog sticks.",
@@ -396,7 +396,7 @@
   },
   {
     "id": 47,
-    "name": "Sony Playstation 4 PS4 Slim Console Model CUH-20XXX, All Slim Model",
+    "name": "Sony Playstation 4 PS4 Slim Console Fan Replacement, All Slim Model",
     "brand": "Sony",
     "category": "parts",
     "price": 1399,
