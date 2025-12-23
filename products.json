@@ -377,80 +377,79 @@
   },
   {
     "id": 46,
-    "name": "PlayStation 4 Fat Fan Replacement",
+    "name": "Sony Playstation 4 PS4 Fat Console Model CUH-10XXA CUH-11XXA Power Fan Replacement",
     "brand": "Sony",
     "category": "parts",
     "price": 1299,
     "originalPrice": 1999,
     "discount": 700,
     "stock": true,
-    "images": ["images/products/ps4_fat_fan_46.jpg"],
-    "description": "High-quality cooling fan replacement specially designed for PlayStation 4 Fat models. Restores proper airflow, reduces overheating, and minimizes loud fan noise caused by worn or damaged internal fans.",
+    "images": ["images/parts/ps4/ps4 fan fat small pin 1.jpg","images/parts/ps4/ps4 fan fat small pin 2.jpg","images/parts/ps4/ps4 fan fat small pin 1.jpg","images/parts/ps4/ps4 fan fat small pin 1.jpg","images/parts/ps4/ps4 fan fat small pin 1.jpg"],
+    "description": "Internal fan For PS4 Fat 100xx and 11xx model only. High-quality cooling fan replacement specially designed for Sony Playstation 4 PS4 Fat Console Model CUH-10XXA CUH-11XXA Power Fan Replacement. Restores proper airflow, reduces overheating, and minimizes loud fan noise caused by worn or damaged internal fans.",
     "specs": [
       "High-speed cooling performance",
       "Compatible with PS4 Fat model",
       "Reduces overheating and noise"
     ],
-    "availability": "In Stock",
-    "icon": "fas fa-fan"
+    "availability": "In Stock"
+   
   },
   {
     "id": 47,
-    "name": "PlayStation 4 Slim Fan Replacement",
+    "name": "Sony Playstation 4 PS4 Slim Console Model CUH-20XXX, All Slim Model",
     "brand": "Sony",
     "category": "parts",
     "price": 1399,
     "originalPrice": 2199,
     "discount": 800,
     "stock": true,
-    "images": ["images/products/ps4_slim_fan_47.jpg"],
-    "description": "Precision-engineered cooling fan replacement for PlayStation 4 Slim consoles. Helps maintain optimal internal temperature, improves cooling efficiency, and ensures smooth and quiet console operation.",
+    "images": ["images/parts/ps4/ps4 fan slim 1.jpg","images/parts/ps4/ps4 fan slim 2.jpg","images/parts/ps4/ps4 fan slim 3.jpg","images/parts/ps4/ps4 fan slim 4.jpg","images/parts/ps4/ps4 fan slim 5.jpg"],
+    "description": "Brand New Internal CPU GPU Cooling Cooler Fan Replacement Part for SONY Playstation 4 PS4 Slim Console CUH-2015A CUH-2016A CUH-2017A CUH-20XX Warning: This Fan Only Fits for PS4 Slim Console, Does Not Fit for Playstation 4 Other Models.Precision-engineered cooling fan replacement for PlayStation 4 Slim consoles. Helps maintain optimal internal temperature, improves cooling efficiency, and ensures smooth and quiet console operation.If the cooling fan of your PlayStation 4 is broken or is making a lot of noise and starts overheating you should replace it.Original Internal fan for PS4 Pro 7000-7500 consoles model only. Note: This item only fit for PS4 Pro 7000-7500 consoles, not for PS4 Fat and PS4 Slim.",
     "specs": [
       "Optimized airflow design",
       "Compatible with PS4 Slim",
       "Low-noise operation"
     ],
-    "availability": "In Stock",
-    "icon": "fas fa-fan"
+    "availability": "In Stock"
+    
   },
   {
     "id": 48,
-    "name": "PlayStation 4 Pro Fan Replacement",
+    "name": "Sony Playstation 4 Pro Console Model 70XX Nidec",
     "brand": "Sony",
     "category": "parts",
     "price": 1599,
     "originalPrice": 2499,
     "discount": 900,
     "stock": true,
-    "images": ["images/products/ps4_pro_fan_48.jpg"],
+    "images": ["images/parts/ps4/ps4_pro_fan_1.jpg","images/parts/ps4/ps4_pro_fan_2.jpg","images/parts/ps4/ps4_pro_fan_3.jpg","images/parts/ps4/ps4_pro_fan_4.jpg","images/parts/ps4/ps4_pro_fan_5.jpg"],
     "description": "Heavy-duty cooling fan replacement for PlayStation 4 Pro systems. Designed to handle higher thermal output, ensuring efficient heat dissipation and stable performance during intensive gaming sessions.",
     "specs": [
       "High RPM cooling fan",
       "Compatible with PS4 Pro",
       "Improves thermal stability"
     ],
-    "availability": "In Stock",
-    "icon": "fas fa-fan"
+    "availability": "In Stock"
   },
   {
     "id": 49,
-    "name": "PlayStation 4 Fat Power Supply",
+    "name": "Sony PlayStation 4 PS4 CUH-11XXA CUH-11XXB Models Original Power Supply ADP-240CR Replacement",
     "brand": "Sony",
     "category": "parts",
-    "price": 2999,
-    "originalPrice": 4499,
+    "price": 4500,
+    "originalPrice": 6000,
     "discount": 1500,
     "stock": true,
-    "images": ["images/products/ps4_fat_psu_49.jpg"],
-    "description": "Reliable power supply unit replacement for PlayStation 4 Fat consoles. Provides stable voltage output and protects the system from power fluctuations, restoring proper startup and consistent power performance.",
+    "images": ["images/parts/ps4/ps4-240cr-1.jpg","images/parts/ps4/ps4-240cr-2.jpg"],
+    "description": "Reliable power supply unit replacement for PlayStation 4 Fat consoles. Provides stable voltage output and protects the system from power fluctuations, restoring proper startup and consistent power performance.Replacement Power Supply for Sony PS4 System Model: 240CR (4 Pins) Please check your power supply model before purchase Professional installation is recommended.",
     "specs": [
       "Stable voltage output",
       "Compatible with PS4 Fat",
       "Over-voltage and surge protection"
     ],
-    "availability": "In Stock",
-    "icon": "fas fa-bolt"
+    "availability": "In Stock"
   },
+
   {
     "id": 50,
     "name": "PlayStation 4 Slim Power Supply",
