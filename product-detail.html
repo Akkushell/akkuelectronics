@@ -342,7 +342,7 @@
 
         .related-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
         }
 
@@ -1202,17 +1202,29 @@
             const related = allProducts.filter(p => p.category === productData.category && p.id !== productData.id).slice(0, 8);
             const grid = document.getElementById('relatedProductsGrid');
             
-            grid.innerHTML = related.map(product => `
+            grid.innerHTML = related.map(product => {
+                // Get the first image from images array or use fallback
+                let imageSrc = '';
+                if (product.images && product.images.length > 0) {
+                    imageSrc = product.images[0];
+                } else if (product.imageUrl) {
+                    imageSrc = product.imageUrl;
+                } else {
+                    imageSrc = fallbackImages[product.category] || fallbackImages.gear;
+                }
+                
+                return `
                 <div class="related-product-card" onclick="window.location.href='product-detail.html?id=${product.id}'">
                     <div class="related-product-image">
-                        <i class="${product.image}"></i>
+                        ${imageSrc ? `<img src="${imageSrc}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: fill;">` : `<i class="${product.image}"></i>`}
                     </div>
                     <div class="related-product-info">
                         <div class="related-product-name">${product.name}</div>
                         <div class="related-product-price">₹${product.price.toLocaleString()}</div>
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function addProductToCart() {
