@@ -502,14 +502,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Main Container Section */
 .main-container {
-    padding: 25px 0;
+    padding: 20px 0;
     background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
 }
 
 .main-container h1 {
     text-align: center;
-    font-size: 40px;
-    margin-bottom: 35px;
+    font-size: 30px;
+    margin-bottom: 30px;
     color: #d4af37;
     text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
@@ -517,7 +517,7 @@ h1, h2, h3, h4, h5, h6 {
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    gap: 10px;
     justify-content: center;
 }
 
@@ -533,7 +533,7 @@ h1, h2, h3, h4, h5, h6 {
     object-fit: contain;
     background: #000000;
     transition: all 0.4s ease;
-    padding: 22.5px 30px;
+    padding: 15px;
 }
 
 .card-container .card:hover img {
@@ -544,17 +544,17 @@ h1, h2, h3, h4, h5, h6 {
 .card-container .card h2 {
     padding: 18.75px 25px;
     color: #d4af37;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .card-container .card ul {
     list-style: none;
-    padding: 0 30px;
+    padding: 0 15px;
     color: #b0b0b0;
 }
 
 .card-container .card ul li {
-    padding: 9px 0;
+    padding: 5px 0;
     border-bottom: 1px solid #333333;
     transition: all 0.3s ease;
     font-size: 15px;
@@ -567,9 +567,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-container .card p {
-    padding: 18.75px 30px 22.5px;
+    padding: 12px;
     color: #b0b0b0;
-    line-height: 1.8;
+    line-height: 1.5;
     font-size: 15px;
 }
 
