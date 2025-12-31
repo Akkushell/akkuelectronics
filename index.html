@@ -126,36 +126,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <section class="featured-section">
         <div class="container">
-            <div class="featured-grid">
-                <div class="featured-container featured-download">
-                    <h3>PlayStation 3 Hybrid Firmware </h3>
-                     <p>HFW 4.92 Firmware for exploit your playstation 3 consoles</p>
-                    <a href="https://ps3xploit.me/firmware/hfw/HFW_4.92.1_PS3UPDAT.PUP" class="download-btn" download>492 HFW Download</a>
+            <div class="firmware-layout">
+                <!-- Left side - Display Container -->
+                <div class="firmware-display">
+                    <h3 id="firmware-title">PlayStation 3 Hybrid Firmware</h3>
+                    <p id="firmware-description">HFW 4.92 Firmware for exploit your PlayStation 3 consoles. This hybrid firmware allows you to install custom firmware and homebrew applications.</p>
+                    <a id="firmware-download" href="https://ps3xploit.me/firmware/hfw/HFW_4.92.1_PS3UPDAT.PUP" class="download-btn" download>Download HFW 4.92</a>
                 </div>
-                <div class="featured-container featured-download">
-                    <h3>PlayStation 5 Recovery Firmware</h3>
-                    <p>Recovery 25.08-12.40.00 Firmware</p>
-                    <a href="https://pc.ps5.update.playstation.net/update/ps5/official/tJMRE80IbXnE9YuG0jzTXgKEjIMoabr6/image/2025_1127/rec_b295a7556dd0dece097554b0cfd5700bf6f8ee77200ae103d1766ec5e5fcde31/PS5UPDATE.PUP" class="download-btn" download>Recovery 25.08-12.40.00 Download</a>
-                </div>
-                <div class="featured-container featured-download">
-                    <h3>PlayStation 4 Official Firmware</h3>
-                    <p>13.02 for the best PlayStation experience.</p>
-                    <a href="https://pc.ps4.update.playstation.net/update/ps4/image/2025_0922/sys_14936e84b306562a2e93ad0b4516b629/PS4UPDATE.PUP" class="download-btn" download>13.02 Download</a>
-                </div>
-                <div class="featured-container featured-download">
-                    <h3>PlayStation 5 Official Firmware</h3>
-                    <p>25.08-12.40.00 Firmware for the best PlayStation experience.</p>
-                    <a href="https://pc.ps5.update.playstation.net/update/ps5/official/tJMRE80IbXnE9YuG0jzTXgKEjIMoabr6/image/2025_1127/sys_e92a2bcea4326bcb95e8684bac87cca2ccfaa8274770428e5fe511ba0bab50ef/PS5UPDATE.PUP" class="download-btn" download>25.08-12.40.00 Download</a>
-                </div>
-                <div class="featured-container featured-download">
-                    <h3>PlayStation 4 Recovery Update</h3>
-                    <p>Recovery 13.02 Firmware</p>
-                    <a href="https://pc.ps4.update.playstation.net/update/ps4/image/2025_0922/rec_903c988e3ab13f4088d54b687a67010c/PS4UPDATE.PUP" class="download-btn" download> Recovery 13.02 Download</a>
-                </div>
-                <div class="featured-container featured-download">
-                    <h3>Xbox Series S/X Firmware</h3>
-                    <p> Xbox One / Xbox Series system Update</p>
-                    <a href="https://support.xbox.com/en-IN/help/hardware-network/console/offline-system-update" class="download-btn" download> Xbox One / Series Download</a>
+                
+                <!-- Right side - List Menu -->
+                <div class="firmware-list">
+                    <h3>Available Firmware</h3>
+                    <ul>
+                        <li class="firmware-item active" data-title="PlayStation 3 Hybrid Firmware" data-desc="HFW 4.92 Firmware for exploit your PlayStation 3 consoles. This hybrid firmware allows you to install custom firmware and homebrew applications.HEN stands for Homebrew ENabler. it also consists of much more new functions relatively close to a CFW." data-url="https://ps3xploit.me/firmware/hfw/HFW_4.92.1_PS3UPDAT.PUP" data-btn="Download HFW 4.92">
+                            PlayStation 3 HFW 4.92 Firmware
+                        </li>
+                        <li class="firmware-item" data-title="PlayStation 3 Custom Firmware" data-desc="Custom firmware for PlayStation 3 consoles. Allows full system customization and homebrew installation. Requires compatible console model." data-url="https://mega.nz/folder/JV0RkLja#lPvSA0E2K8q3BiDfifiY2Q" data-btn="Download PS3 CFW">
+                            PlayStation 3 CFW 4.92 Firmware
+                        </li>
+                        <li class="firmware-item" data-title="PlayStation 4 Official Firmware" data-desc="Official Firmware 13.02 for the best PlayStation 4 experience. Latest system software with new features and improvements." data-url="https://pc.ps4.update.playstation.net/update/ps4/image/2025_0922/sys_14936e84b306562a2e93ad0b4516b629/PS4UPDATE.PUP" data-btn="Download PS4 OFW 13.02">
+                            PlayStation 4 Official 13.02 Firmware
+                        </li>
+                        <li class="firmware-item" data-title="PlayStation 4 Recovery Update" data-desc="Recovery Firmware 13.02 for PlayStation 4. Use this to reinstall the system software and restore your PS4 to factory settings." data-url="https://pc.ps4.update.playstation.net/update/ps4/image/2025_0922/rec_903c988e3ab13f4088d54b687a67010c/PS4UPDATE.PUP" data-btn="Download PS4 Recovery 13.02">
+                            PlayStation 4 Recovery 13.02 Firmware
+                        </li>
+                        <li class="firmware-item" data-title="PlayStation 5 Official Firmware" data-desc="Official Firmware 25.08-12.40.00 for the best PlayStation 5 experience. Latest system software with enhanced performance and new features." data-url="https://pc.ps5.update.playstation.net/update/ps5/official/tJMRE80IbXnE9YuG0jzTXgKEjIMoabr6/image/2025_1127/sys_e92a2bcea4326bcb95e8684bac87cca2ccfaa8274770428e5fe511ba0bab50ef/PS5UPDATE.PUP" data-btn="Download PS5 OFW 25.08-12.40.00">
+                            PlayStation 5 Official 25.08-12.40.00 Firmware
+                        </li>
+                        <li class="firmware-item" data-title="PlayStation 5 Recovery Firmware" data-desc="Recovery Firmware 25.08-12.40.00 for PlayStation 5. Use this to reinstall the system software and restore your PS5." data-url="https://pc.ps5.update.playstation.net/update/ps5/official/tJMRE80IbXnE9YuG0jzTXgKEjIMoabr6/image/2025_1127/rec_b295a7556dd0dece097554b0cfd5700bf6f8ee77200ae103d1766ec5e5fcde31/PS5UPDATE.PUP" data-btn="Download PS5 Recovery 25.08-12.40.00">
+                            PlayStation 5 Recovery 25.08-12.40.00 Firmware
+                        </li>
+                        <li class="firmware-item" data-title="Xbox One System Update" data-desc="Latest offline system update for Xbox One consoles. Download and install manually via USB drive." data-url="https://support.xbox.com/en-IN/help/hardware-network/console/offline-system-update" data-btn="Visit Xbox One Update Page">
+                            Xbox One System Update
+                        </li>
+                        <li class="firmware-item" data-title="Xbox Series X/S Update" data-desc="Latest offline system update for Xbox Series X and Series S consoles. Download and install manually via USB drive." data-url="https://support.xbox.com/en-IN/help/hardware-network/console/offline-system-update" data-btn="Visit Xbox Series Update Page">
+                            Xbox Series X/S Update
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

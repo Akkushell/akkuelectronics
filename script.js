@@ -168,4 +168,51 @@ document.querySelectorAll('.card, .category-card, .service-card').forEach(el => 
 
 // Payment gateway/shop-specific code removed — not referenced by current pages
 
+// Firmware Selection Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const firmwareItems = document.querySelectorAll('.firmware-item');
+    const firmwareTitle = document.getElementById('firmware-title');
+    const firmwareDescription = document.getElementById('firmware-description');
+    const firmwareDownload = document.getElementById('firmware-download');
+    
+    if (firmwareItems.length > 0 && firmwareTitle && firmwareDescription && firmwareDownload) {
+        firmwareItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                firmwareItems.forEach(i => i.classList.remove('active'));
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Get data attributes
+                const title = this.getAttribute('data-title');
+                const description = this.getAttribute('data-desc');
+                const url = this.getAttribute('data-url');
+                const btnText = this.getAttribute('data-btn');
+                
+                // Update display container with smooth transition
+                firmwareTitle.style.opacity = '0';
+                firmwareDescription.style.opacity = '0';
+                firmwareDownload.style.opacity = '0';
+                
+                setTimeout(() => {
+                    firmwareTitle.textContent = title;
+                    firmwareDescription.textContent = description;
+                    firmwareDownload.href = url;
+                    firmwareDownload.textContent = btnText;
+                    
+                    firmwareTitle.style.opacity = '1';
+                    firmwareDescription.style.opacity = '1';
+                    firmwareDownload.style.opacity = '1';
+                }, 200);
+            });
+        });
+        
+        // Add transition effect to elements
+        firmwareTitle.style.transition = 'opacity 0.3s ease';
+        firmwareDescription.style.transition = 'opacity 0.3s ease';
+        firmwareDownload.style.transition = 'opacity 0.3s ease';
+    }
+});
+
 console.log('Akku Electronics - Website loaded successfully!');
