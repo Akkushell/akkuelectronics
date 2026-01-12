@@ -5,11 +5,11 @@ const blogPosts = [
         title: "DualSense 15 Pro Tips & Tricks",
         excerpt: "Master your PlayStation 5 controller with these 15 essential tips and tricks that will enhance your gaming experience.",
         content: "Full content here...",
-        category: "gaming",
+        category: "PlayStation",
         tags: ["DualSense", "PlayStation 5", "Tips", "Controller"],
         date: "2026-01-12",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "/blog/images/ps5dsbanner1.webp",
         link: "12012026dualsense15tricks.html"
     },
     {
@@ -21,7 +21,7 @@ const blogPosts = [
         tags: ["PlayStation 5", "Repair", "Troubleshooting"],
         date: "2026-01-10",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/playstation issues.png",
         link: "#"
     },
     {
@@ -33,7 +33,7 @@ const blogPosts = [
         tags: ["Xbox Series X", "Optimization", "Performance"],
         date: "2026-01-08",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/xboxseriesbanner1.jpg",
         link: "#"
     },
     {
@@ -45,7 +45,7 @@ const blogPosts = [
         tags: ["PlayStation 4", "Fan Repair", "Maintenance"],
         date: "2026-01-05",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/ps4banner1.jpg",
         link: "#"
     },
     {
@@ -57,7 +57,7 @@ const blogPosts = [
         tags: ["News", "Gaming", "Updates"],
         date: "2026-01-03",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/playstationbanner1.jpg",
         link: "#"
     },
     {
@@ -69,7 +69,7 @@ const blogPosts = [
         tags: ["PlayStation 3", "Jailbreak", "HEN"],
         date: "2025-12-28",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/ps3banner1.jpeg",
         link: "#"
     },
     {
@@ -81,7 +81,7 @@ const blogPosts = [
         tags: ["Xbox One", "Controller", "Fix"],
         date: "2025-12-25",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/xboxonebanner1.jpg",
         link: "#"
     },
     {
@@ -93,7 +93,7 @@ const blogPosts = [
         tags: ["Performance", "FPS", "Tips"],
         date: "2025-12-20",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/ps5banner1.jpg",
         link: "#"
     },
     {
@@ -105,7 +105,7 @@ const blogPosts = [
         tags: ["Security", "PSN", "Account"],
         date: "2025-12-15",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/ps5 2.jpg",
         link: "#"
     },
     {
@@ -117,7 +117,7 @@ const blogPosts = [
         tags: ["Xbox", "Game Pass", "Guide"],
         date: "2025-12-10",
         author: "Akku Electronics",
-        image: "../images/aelogo.png",
+        image: "../images/xboxbanner1.jpg",
         link: "#"
     }
 ];
