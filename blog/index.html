@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Akku Electronics Blog - Gaming console tips, tricks, repairs, and latest tech news.">
+    <meta name="keywords" content="gaming blog, console repair, PlayStation, Xbox, gaming tips, tech news">
+    <meta name="author" content="Akku Electronics">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Akku Electronics Blog - Gaming & Tech Insights">
+    <meta property="og:description" content="Discover tips, tricks, and guides for gaming consoles and repairs.">
+    <meta property="og:image" content="https://akkuelectronics.in/images/aelogo.png">
+    <meta property="og:url" content="https://akkuelectronics.in/blog/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Akku Electronics Blog">
+    <meta name="twitter:description" content="Gaming console tips, tricks, and repair guides.">
+    <meta name="twitter:image" content="https://akkuelectronics.in/images/aelogo.png">
+    
+    <title>Blog - Akku Electronics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo3xoK5fJMITl0P+bqm8FNj1k2O0EZz1V9k0l8Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mobile.css">
+    <link rel="stylesheet" href="blog.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/aelogo.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo-link">
+                <img src="../images/aelogo.png" alt="Akku Electronics Logo" class="logo">
+            </a>
+            <nav>
+                <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="primary-navigation" class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="../playstation.html">Sony PlayStation <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../playstation-5.html">PlayStation 5</a></li>
+                            <li><a href="../playstation-4.html">PlayStation 4</a></li>
+                            <li><a href="../playstation-3.html">PlayStation 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../xbox.html">Microsoft Xbox <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../xbox-series.html">Xbox Series X/S</a></li>
+                            <li><a href="../xbox-one.html">Xbox One</a></li>
+                            <li><a href="../xbox-360.html">Xbox 360</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../services.html">All Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://akkushell.github.io/hen492/">PS3 HEN 492</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../gamepad-tester.html">Gamepad Tester</a></li>
+                    <li><a href="../shop.html">Shop</a></li>
+                    <li class="active-item"><a href="index.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Header Section -->
+    <section class="blog-header">
+        <div class="container">
+            <div class="blog-header-content">
+                <h1>Akku Electronics Blog</h1>
+                <p>Gaming Console Tips, Tricks, Repairs & Tech Insights</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Bar Section -->
+    <section class="blog-search-section">
+        <div class="container">
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search blogs by title, tag, or keyword..." class="search-input">
+                    <button class="search-clear" id="clearSearch" style="display:none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Blog Content -->
+    <section class="blog-main-section">
+        <div class="container">
+            <div class="blog-wrapper">
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">
+                            <i class="fas fa-filter"></i> Filters
+                        </h3>
+                        <button class="filter-toggle" id="filterToggle">
+                            <span>Show Filters</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <!-- Categories Filter -->
+                    <div class="sidebar-widget filter-widget" id="categoriesWidget">
+                        <h4 class="filter-title">Categories</h4>
+                        <div class="filter-items">
+                            <label class="filter-item">
+                                <input type="checkbox" class="category-filter" value="all" checked>
+                                <span>All Categories</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" class="category-filter" value="playstation">
+                                <span>PlayStation</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" class="category-filter" value="xbox">
+                                <span>Xbox</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" class="category-filter" value="repair">
+                                <span>Repair Guide</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" class="category-filter" value="gaming">
+                                <span>Gaming Tips</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" class="category-filter" value="news">
+                                <span>Tech News</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Tags Filter -->
+                    <div class="sidebar-widget filter-widget" id="tagsWidget">
+                        <h4 class="filter-title">Popular Tags</h4>
+                        <div class="tags-container" id="tagsContainer">
+                            <!-- Tags will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Date Range Filter -->
+                    <div class="sidebar-widget filter-widget" id="dateWidget">
+                        <h4 class="filter-title">Date Range</h4>
+                        <div class="date-filters">
+                            <label class="date-filter-item">
+                                <input type="radio" name="dateRange" value="all" checked>
+                                <span>All Time</span>
+                            </label>
+                            <label class="date-filter-item">
+                                <input type="radio" name="dateRange" value="week">
+                                <span>This Week</span>
+                            </label>
+                            <label class="date-filter-item">
+                                <input type="radio" name="dateRange" value="month">
+                                <span>This Month</span>
+                            </label>
+                            <label class="date-filter-item">
+                                <input type="radio" name="dateRange" value="year">
+                                <span>This Year</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Recent Posts -->
+                    <div class="sidebar-widget">
+                        <h4 class="widget-title"><i class="fas fa-clock"></i> Recent Posts</h4>
+                        <ul class="recent-posts" id="recentPostsList">
+                            <!-- Recent posts will be populated by JavaScript -->
+                        </ul>
+                    </div>
+
+                    <!-- Featured Post -->
+                    <div class="sidebar-widget featured-widget">
+                        <div class="featured-badge">Featured</div>
+                        <img src="../images/aelogo.png" alt="Featured Post" class="featured-image">
+                        <h4>DualSense 15 Pro Tips & Tricks</h4>
+                        <p>Master your PlayStation 5 controller with our comprehensive guide.</p>
+                        <a href="12012026dualsense15tricks.html" class="read-more-btn">Read More</a>
+                    </div>
+                </aside>
+
+                <!-- Blog Posts Grid -->
+                <main class="blog-content">
+                    <!-- No Results Message -->
+                    <div class="no-results" id="noResults" style="display:none;">
+                        <i class="fas fa-search"></i>
+                        <h3>No Blog Posts Found</h3>
+                        <p>Try adjusting your search or filter criteria</p>
+                    </div>
+
+                    <!-- Blog Posts Container -->
+                    <div class="blog-posts-grid" id="blogPostsGrid">
+                        <!-- Blog posts will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more-container" id="loadMoreContainer" style="display:none;">
+                        <button class="load-more-btn" id="loadMoreBtn">Load More Posts</button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Akku Electronics</h4>
+                    <p>Your trusted partner for gaming console repairs and tech solutions in Nagpur.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../services.html">Services</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://facebook.com/akku0101" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/akkuelectronics.nagpur" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/Sunil_Moundekar" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Phone: +91-8956389723</p>
+                    <p>Email: info@akkuelectronics.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Akku Electronics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="blog.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
