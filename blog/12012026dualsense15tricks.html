@@ -10,6 +10,40 @@
   <meta name="keywords" content="DualSense tips, PS5 controller tricks, DualSense battery life, DualSense Edge vs DualSense, PS5 controller settings" />
   <meta name="author" content="AKKUELECTRONICS" />
 
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://akkuelectronics.com/blog/12012026dualsense15tricks.html" />
+  <meta property="og:title" content="DualSense Controller: 15 Tips & Tricks You Need to Know (2026)" />
+  <meta property="og:description" content="Unlock the full power of the PS5 DualSense controller. 15 essential tips to improve battery life, haptics, triggers, PC support, firmware updates, and more." />
+  <meta property="og:image" content="/blog/images/ps5dsbanner1.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="AKKUELECTRONICS Blog" />
+  <meta property="article:published_time" content="2026-01-12T00:00:00Z" />
+  <meta property="article:author" content="AKKUELECTRONICS" />
+  <meta property="article:section" content="Gaming Accessories" />
+  <meta property="article:tag" content="DualSense" />
+  <meta property="article:tag" content="PlayStation 5" />
+  <meta property="article:tag" content="Gaming Tips" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://akkuelectronics.com/blog/12012026dualsense15tricks.html" />
+  <meta name="twitter:title" content="DualSense Controller: 15 Tips & Tricks You Need to Know (2026)" />
+  <meta name="twitter:description" content="Unlock the full power of the PS5 DualSense controller. 15 essential tips to improve battery life, haptics, triggers, PC support, firmware updates, and more." />
+  <meta name="twitter:image" content="/blog/images/ps5dsbanner1.webp" />
+  <meta name="twitter:creator" content="@AKKUELECTRONICS" />
+  <meta name="twitter:site" content="@AKKUELECTRONICS" />
+
+  <!-- WhatsApp & Telegram -->
+  <meta property="og:image:alt" content="PlayStation 5 DualSense Wireless Controller" />
+  
+  <!-- LinkedIn -->
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Pinterest -->
+  <meta name="pinterest-rich-pin" content="true" />
+
   <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,16 +135,33 @@
     }
 
     .hero-cover{
-      min-height:280px;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.85)),
-        url("https://www.playstation.com/content/dam/global_pdc/en/campaigns/accessories/dualsense-wireless-controller/dualsense-wireless-controller-midnight-black-image-block-01-en-15jan21.jpg") center/cover no-repeat;
+      position:relative;
+      min-height:380px;
       display:flex;
       align-items:flex-end;
       padding:26px;
+      overflow:hidden;
+    }
+    .hero-cover img{
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      object-position:center;
+      z-index:1;
+    }
+    .hero-cover::after{
+      content:'';
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: linear-gradient(180deg, rgba(0,0,0,.3), rgba(0,0,0,.85));
+      z-index:2;
     }
 
     .hero h1{
+      position:relative;
+      z-index:3;
       font-family:"Playfair Display",serif;
       font-size:40px;
       line-height:1.15;
@@ -223,14 +274,17 @@
     figure img{
       width:100%;
       height:auto;
+      max-height:500px;
       display:block;
-      transform:scale(1.01);
+      object-fit:cover;
+      object-position:center;
     }
     figcaption{
       padding:10px 14px;
       color:var(--muted);
       font-size:13px;
       border-top:1px solid rgba(212,175,55,.18);
+      background:rgba(0,0,0,.4);
     }
     .img-grid{
       display:grid;
@@ -238,7 +292,14 @@
       gap:12px;
       margin:16px 0;
     }
-    @media(max-width:700px){ .img-grid{grid-template-columns:1fr} }
+    .img-grid figure img{
+      height:280px;
+      object-fit:cover;
+    }
+    @media(max-width:700px){ 
+      .img-grid{grid-template-columns:1fr}
+      .img-grid figure img{height:240px}
+    }
 
     /* Sidebar */
     aside{
@@ -333,6 +394,9 @@
     <!-- HERO -->
     <header class="hero">
       <div class="hero-cover">
+        <img src="/blog/images/ps5dsbanner1.webp" 
+             alt="DualSense Wireless Controller Hero Banner" 
+             loading="eager">
         <h1>DualSense Controller: 15 Tips & Tricks You Need to Know</h1>
       </div>
       <div class="meta">
@@ -420,14 +484,14 @@
       <!-- Image Grid -->
       <div class="img-grid">
         <figure>
-          <img src="https://image.pollinations.ai/prompt/PS5%20DualSense%20controller%20gold%20black%20theme%20gaming%20setup%20high%20quality%20photo"
-               alt="DualSense controller in a premium gaming setup" loading="lazy">
-          <figcaption>Pro setup tip: keep your controller stored and clean.</figcaption>
+          <img src="/blog/images/ps5ds2.avif"
+               alt="DualSense controller in white / blue" loading="lazy">
+          <figcaption>keep your controller stored and clean.</figcaption>
         </figure>
         <figure>
-          <img src="https://image.pollinations.ai/prompt/PlayStation%205%20controller%20haptic%20feedback%20closeup%20high%20quality%20photo"
-               alt="DualSense close-up photo" loading="lazy">
-          <figcaption>Close-up: DualSense design & touchpad.</figcaption>
+          <img src="/blog/images/ps5ds21.avif"
+               alt="DualSense controller back to back" loading="lazy">
+          <figcaption>DualSense controller back to back.</figcaption>
         </figure>
       </div>
 
@@ -575,7 +639,7 @@
       </section>
 
       <figure>
-        <img src="https://www.bestbuy.com/site/sony-dualsense-edge-wireless-controller-black--white/6532912.p?skuId=6532912"
+        <img src="https://www.playstation.com/content/dam/global_pdc/en/corporate/dualsense-edge-wireless-controller/dualsense-edge-front-image-block-01.png"
              alt="DualSense Edge controller image" loading="lazy">
         <figcaption>DualSense Edge offers back paddles, replaceable stick modules, and pro customization.</figcaption>
       </figure>
