@@ -9,7 +9,7 @@ const blogPosts = [
         tags: ["DualSense", "PlayStation 5", "Tips", "Controller"],
         date: "2026-01-12",
         author: "Akku Electronics",
-        image: "/blog/images/ps5dsbanner1.webp",
+        image: "images/ps5dsbanner1.webp",
         link: "12012026dualsense15tricks.html"
     },
     {
@@ -370,9 +370,11 @@ function createPostCard(post) {
 
     return `
         <article class="blog-post-card">
-            <div class="blog-post-image">
-                <i class="fas fa-newspaper"></i>
-            </div>
+            <a href="${post.link}" class="blog-post-image-link">
+                <div class="blog-post-image">
+                    <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.src='../images/aelogo.png'">
+                </div>
+            </a>
             <div class="blog-post-content">
                 <div class="blog-post-meta">
                     <span class="post-date-meta">
