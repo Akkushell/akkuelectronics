@@ -14,15 +14,15 @@ const blogPosts = [
     },
     {
         id: 2,
-        title: "PlayStation 5 Common Problems & Solutions",
-        excerpt: "Learn how to troubleshoot and fix common PlayStation 5 issues with our comprehensive repair guide.",
+        title: "The PlayStation 5 Pro: A Technical Deep Dive into Sony's Mid-Gen Powerhouse",
+        excerpt: "Explore the PS5 Pro's 67% GPU upgrade, advanced ray tracing, AI-powered PSSR upscaling, and complete technical specifications.",
         content: "Full content here...",
-        category: "repair",
-        tags: ["PlayStation 5", "Repair", "Troubleshooting"],
-        date: "2026-01-10",
+        category: "PlayStation",
+        tags: ["PS5 Pro", "PlayStation 5", "GPU", "Technical Analysis", "Gaming Hardware"],
+        date: "2026-01-13",
         author: "Akku Electronics",
-        image: "../images/playstation issues.png",
-        link: "#"
+        image: "images/ps5-pro-review.jpg",
+        link: "13012026ps5prospecs.html"
     },
     {
         id: 3,
