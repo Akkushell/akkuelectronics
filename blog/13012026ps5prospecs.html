@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-56KN7HZF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXB8GK5N2B"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());
+
+    gtag('config', 'G-MXB8GK5N2B');
+</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1917270256596378"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayStation 5 Pro: Technical Deep Dive - Specs, Performance & Review</title>
+
+  <!-- META (SEO) -->
+  <meta name="description" content="Complete technical analysis of the PlayStation 5 Pro. Explore GPU upgrades, PSSR upscaling, ray tracing improvements, and full specs comparison with standard PS5." />
+  <meta name="keywords" content="PS5 Pro specs, PlayStation 5 Pro review, PS5 Pro GPU, PSSR upscaling, PS5 Pro vs PS5, PS5 Pro performance, PlayStation 5 Pro technical analysis" />
+  <meta name="author" content="AKKUELECTRONICS" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://akkuelectronics.in/blog/13012026ps5prospecs.html" />
+  <meta property="og:title" content="PlayStation 5 Pro: A Technical Deep Dive into Sony's Mid-Gen Powerhouse" />
+  <meta property="og:description" content="Complete technical breakdown of PS5 Pro: 67% more GPU power, advanced ray tracing, AI upscaling, and full specs comparison. Is it worth the upgrade?" />
+  <meta property="og:image" content="https://akkuelectronics.in/images/playstation 5 slim console disc.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="AKKUELECTRONICS Blog" />
+  <meta property="article:published_time" content="2026-01-13T00:00:00Z" />
+  <meta property="article:author" content="AKKUELECTRONICS" />
+  <meta property="article:section" content="Gaming Hardware" />
+  <meta property="article:tag" content="PlayStation 5 Pro" />
+  <meta property="article:tag" content="PS5 Pro" />
+  <meta property="article:tag" content="Gaming Console" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://akkuelectronics.in/blog/13012026ps5prospecs.html" />
+  <meta name="twitter:title" content="PlayStation 5 Pro: Technical Deep Dive - Specs & Performance Analysis" />
+  <meta name="twitter:description" content="Complete technical breakdown of PS5 Pro hardware, GPU upgrades, PSSR AI upscaling, and performance benchmarks." />
+  <meta name="twitter:image" content="https://akkuelectronics.in/images/playstation 5 slim console disc.png" />
+  <meta name="twitter:creator" content="@AKKUELECTRONICS" />
+  <meta name="twitter:site" content="@AKKUELECTRONICS" />
+
+  <!-- WhatsApp & Telegram -->
+  <meta property="og:image:alt" content="PlayStation 5 Pro Console" />
+  
+  <!-- LinkedIn -->
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Pinterest -->
+  <meta name="pinterest-rich-pin" content="true" />
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070707;
+      --bg2:#0c0c0c;
+      --card:#101010;
+      --gold:#d4af37;
+      --gold2:#f5d77a;
+      --text:#eaeaea;
+      --muted:#b9b9b9;
+      --border:rgba(212,175,55,.22);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(212,175,55,.12), transparent 55%),
+        radial-gradient(800px 500px at 90% 0%, rgba(212,175,55,.08), transparent 50%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:var(--gold2);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout */
+    .container{
+      max-width:1200px; margin:0 auto; padding:20px;
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:26px;
+    }
+
+    @media (max-width: 980px){
+      .container{grid-template-columns:1fr}
+      aside{order:2}
+    }
+
+    /* Top Bar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(212,175,55,.18);
+    }
+    .topbar .inner{
+      max-width:1200px; margin:0 auto; padding:14px 20px;
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+    .topbar .logo{
+      font-size:20px; font-weight:700; color:var(--gold);
+      text-decoration:none;
+    }
+    .topbar nav{display:flex; gap:18px}
+    .topbar nav a{
+      color:var(--text); font-size:14.5px; font-weight:500;
+      transition:color .2s;
+    }
+    .topbar nav a:hover{color:var(--gold2); text-decoration:none}
+
+    @media (max-width:600px){
+      .topbar nav{display:none}
+      .topbar .logo{font-size:17px}
+    }
+
+    /* Article */
+    article{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:50px;
+      box-shadow:var(--shadow);
+    }
+    @media (max-width:700px){
+      article{padding:30px 22px}
+    }
+
+    article h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(28px, 5vw, 42px);
+      line-height:1.25;
+      color:var(--gold);
+      margin-bottom:16px;
+      font-weight:700;
+    }
+
+    .meta{
+      display:flex; gap:14px; flex-wrap:wrap;
+      font-size:13.5px; color:var(--muted);
+      margin-bottom:32px;
+      padding-bottom:20px;
+      border-bottom:1px solid var(--border);
+    }
+    .meta span{display:flex; align-items:center; gap:6px}
+
+    .featured-image{
+      width:100%; height:auto;
+      border-radius:12px;
+      margin-bottom:30px;
+    }
+
+    article h2, article h3{
+      font-family:'Playfair Display',serif;
+      color:var(--gold2);
+      margin-top:42px;
+      margin-bottom:16px;
+      line-height:1.35;
+    }
+    article h2{font-size:clamp(24px, 4vw, 32px)}
+    article h3{font-size:clamp(20px, 3.5vw, 26px)}
+
+    article p{
+      margin-bottom:20px;
+      font-size:16px;
+      color:var(--text);
+    }
+
+    article ul, article ol{
+      margin:20px 0 20px 28px;
+      line-height:1.9;
+    }
+    article li{
+      margin-bottom:10px;
+      color:var(--text);
+    }
+
+    article strong{
+      color:var(--gold2);
+      font-weight:600;
+    }
+
+    article table{
+      width:100%;
+      border-collapse: collapse;
+      margin:30px 0;
+      background:rgba(212,175,55,.04);
+      border-radius:10px;
+      overflow:hidden;
+    }
+    article th, article td{
+      padding:14px 16px;
+      text-align:left;
+      border-bottom:1px solid var(--border);
+    }
+    article th{
+      background:rgba(212,175,55,.12);
+      color:var(--gold);
+      font-weight:600;
+    }
+    article tr:last-child td{border-bottom:none}
+
+    article hr{
+      border:none;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--border), transparent);
+      margin:40px 0;
+    }
+
+    article blockquote{
+      border-left:4px solid var(--gold);
+      padding-left:20px;
+      margin:30px 0;
+      font-style:italic;
+      color:var(--muted);
+    }
+
+    .video-container{
+      position:relative;
+      padding-bottom:56.25%;
+      height:0;
+      overflow:hidden;
+      margin:30px 0;
+      border-radius:12px;
+      background:#000;
+    }
+    .video-container iframe{
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      border:0;
+    }
+
+    /* Sidebar */
+    aside{
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+    }
+    .widget{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:24px;
+    }
+    .widget h4{
+      font-size:18px;
+      color:var(--gold);
+      margin-bottom:16px;
+      font-weight:600;
+    }
+    .widget ul{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .widget ul a{
+      display:block;
+      padding:10px;
+      background:rgba(212,175,55,.06);
+      border-radius:8px;
+      transition:all .2s;
+      font-size:14px;
+    }
+    .widget ul a:hover{
+      background:rgba(212,175,55,.12);
+      text-decoration:none;
+      transform:translateX(4px);
+    }
+
+    .cta-box{
+      background:linear-gradient(135deg, rgba(212,175,55,.15), rgba(212,175,55,.08));
+      border:1px solid var(--gold);
+      border-radius:var(--radius);
+      padding:28px;
+      text-align:center;
+    }
+    .cta-box h4{
+      font-size:20px;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+    .cta-box p{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .cta-btn{
+      display:inline-block;
+      padding:12px 28px;
+      background:var(--gold);
+      color:#000;
+      font-weight:600;
+      border-radius:8px;
+      transition:all .3s;
+      text-decoration:none;
+    }
+    .cta-btn:hover{
+      background:var(--gold2);
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(212,175,55,.3);
+    }
+
+    /* Footer */
+    footer{
+      margin-top:60px;
+      padding:40px 20px;
+      text-align:center;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:14px;
+    }
+    footer a{color:var(--gold2)}
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56KN7HZF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div class="topbar">
+    <div class="inner">
+      <a href="../index.html" class="logo">⚡ AKKUELECTRONICS</a>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="index.html">Blog</a>
+        <a href="../services.html">Services</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container">
+    <article>
+      <h1>The PlayStation 5 Pro: A Technical Deep Dive into Sony's Mid-Gen Powerhouse</h1>
+      
+      <div class="meta">
+        <span>📅 January 13, 2026</span>
+        <span>👤 AKKUELECTRONICS</span>
+        <span>⏱️ 8 min read</span>
+        <span>🏷️ Gaming Hardware</span>
+      </div>
+
+      <p>Sony has officially raised the bar for console gaming with the launch of the <strong>PlayStation 5 Pro</strong>. Designed for enthusiasts who refuse to choose between "Fidelity" and "Performance" modes, the PS5 Pro is more than just a slight iteration—it is a significant hardware leap that focuses on three core pillars: a beefier GPU, advanced ray tracing, and AI-driven upscaling.</p>
+
+      <p>In this blog, we'll break down exactly what is happening under the hood of the most powerful PlayStation ever made.</p>
+
+      <hr>
+
+      <h3>The "Big Three" Performance Features</h3>
+
+      <p>Mark Cerny, the Lead Architect of the PS5, highlighted three major technical advancements that define the Pro experience:</p>
+
+      <ol>
+        <li><strong>Upgraded GPU:</strong> The heart of the PS5 Pro is a GPU with <strong>67% more Compute Units</strong> than the standard PS5 and <strong>28% faster memory</strong>. This translates to roughly <strong>45% faster rendering</strong>, allowing games to maintain high frame rates without sacrificing the crispness of the visuals.</li>
+        
+        <li><strong>Advanced Ray Tracing:</strong> Ray tracing—the technology that handles realistic lighting, reflections, and shadows—has been supercharged. The PS5 Pro can cast rays at <strong>double or even triple the speeds</strong> of the original console, making environments in games like <em>Gran Turismo 7</em> and <em>Hogwarts Legacy</em> look incredibly lifelike.</li>
+        
+        <li><strong>PlayStation Spectral Super Resolution (PSSR):</strong> This is Sony's answer to PC-based upscaling like DLSS. Using AI and machine learning, PSSR analyzes images pixel-by-pixel to add an extraordinary amount of detail, sharpening the image to a "fake" 4K that often looks better than native resolution.</li>
+      </ol>
+
+      <hr>
+
+      <h3>Technical Specifications: PS5 Pro vs. PS5</h3>
+
+      <p>While the official blog focuses on the experience, the technical spec sheet reveals the raw power:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>PlayStation 5 (Original/Slim)</th>
+            <th>PlayStation 5 Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>GPU Power</strong></td>
+            <td>10.28 TFLOPS</td>
+            <td><strong>~16.7 - 18.05 TFLOPS</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Compute Units</strong></td>
+            <td>36 CUs (RDNA 2)</td>
+            <td><strong>60 CUs (RDNA 3/4 hybrid)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>CPU</strong></td>
+            <td>8-core Zen 2 @ 3.5GHz</td>
+            <td><strong>8-core Zen 2 (Boost to 3.85GHz)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>System Memory</strong></td>
+            <td>16GB GDDR6 (448 GB/s)</td>
+            <td><strong>16GB GDDR6 (576 GB/s)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Extra RAM</strong></td>
+            <td>N/A</td>
+            <td><strong>2GB DDR5 (dedicated to OS tasks)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Internal Storage</strong></td>
+            <td>825GB / 1TB SSD</td>
+            <td><strong>2TB Custom SSD</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Wireless</strong></td>
+            <td>Wi-Fi 6</td>
+            <td><strong>Wi-Fi 7</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h3>More Than Just Raw Power</h3>
+
+      <p>Hardware isn't just about TFLOPS; it's about the user experience. The PS5 Pro introduces several "quality of life" upgrades:</p>
+
+      <ul>
+        <li><strong>PS5 Pro Game Boost:</strong> This feature can improve or stabilize the performance of over 8,500 backward-compatible PS4 games.</li>
+        <li><strong>Enhanced Image Quality for PS4:</strong> A toggle that specifically boosts the resolution of select PS4 titles.</li>
+        <li><strong>8K Gaming Support:</strong> While still a niche, the PS5 Pro is built to output 8K resolution for compatible displays and software.</li>
+        <li><strong>Massive Storage:</strong> Moving from the base model's 825GB to a full <strong>2TB SSD</strong> means you can finally keep your entire AAA library installed at once.</li>
+      </ul>
+
+      <h3>Design and Compatibility</h3>
+
+      <p>Aesthetically, the PS5 Pro keeps the "collar" design of the Slim but adds three distinct black stripes across the middle. It matches the height of the original launch PS5 while maintaining the slimmer width of the current models.</p>
+
+      <p>Crucially, it is <strong>fully compatible</strong> with the existing ecosystem. Your DualSense controllers, PlayStation VR2, and Pulse Elite headsets will all work perfectly. However, the console is <strong>all-digital by default</strong>; if you want to play discs, you will need to purchase the attachable Disc Drive separately.</p>
+
+      <h3>Is It Worth the Upgrade?</h3>
+
+      <p>With a price tag of <strong>$699.99 / £699.99</strong>, the PS5 Pro is a premium product. It is aimed squarely at the "fidelity-first" gamer—the person who wants the 60FPS smoothness of Performance Mode with the 4K crispness of Fidelity Mode. If you have a high-end 4K/120Hz TV and want to see the absolute best version of games like <em>Marvel's Spider-Man 2</em> or <em>The Last of Us Part II Remastered</em>, the PS5 Pro is the ultimate way to play.</p>
+
+      <h3>Hardware Analysis Video</h3>
+
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/ySMu7T352Xc" title="PS5 Pro GPU Breakdown" allowfullscreen></iframe>
+      </div>
+
+      <p>This video provides a deep technical analysis of the new GPU architecture and how the increased compute units specifically impact modern game rendering.</p>
+
+      <hr>
+
+      <p><strong>Need PS5 Pro Repair Services?</strong> At Akku Electronics, we provide professional repair and maintenance for all PlayStation consoles, including the PS5 Pro. From HDMI port replacements to SSD upgrades, we've got you covered.</p>
+
+    </article>
+
+    <aside>
+      <div class="cta-box">
+        <h4>Need Console Repair?</h4>
+        <p>Expert PlayStation & Xbox repair services in Nagpur</p>
+        <a href="../contact.html" class="cta-btn">Contact Us</a>
+      </div>
+
+      <div class="widget">
+        <h4>Recent Posts</h4>
+        <ul>
+          <li><a href="12012026dualsense15tricks.html">DualSense Controller: 15 Secrets You Need to Know</a></li>
+          <li><a href="index.html">All Blog Posts →</a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h4>Popular Services</h4>
+        <ul>
+          <li><a href="../playstation-5.html">PS5 Repair Services</a></li>
+          <li><a href="../playstation-4.html">PS4 Repair Services</a></li>
+          <li><a href="../xbox-series.html">Xbox Series X/S Repair</a></li>
+          <li><a href="../gamepad-tester.html">Gamepad Tester Tool</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 AKKUELECTRONICS | <a href="../privacy-policy.html">Privacy Policy</a> | <a href="../contact.html">Contact</a></p>
+  </footer>
+
+</body>
+</html>
