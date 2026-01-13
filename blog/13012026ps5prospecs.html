@@ -98,7 +98,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     /* Layout */
     .container{
-      max-width:1200px; margin:0 auto; padding:20px;
+      max-width:1200px;
+      margin:auto;
+      padding:32px 18px 80px;
       display:grid;
       grid-template-columns: 1fr 320px;
       gap:26px;
@@ -116,224 +118,316 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       backdrop-filter: blur(10px);
       border-bottom:1px solid rgba(212,175,55,.18);
     }
-    .topbar .inner{
-      max-width:1200px; margin:0 auto; padding:14px 20px;
-      display:flex; align-items:center; justify-content:space-between; gap:20px;
+    .topbar-inner{
+      max-width:1200px;
+      margin:auto;
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
-    .topbar .logo{
-      font-size:20px; font-weight:700; color:var(--gold);
-      text-decoration:none;
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      font-weight:700; letter-spacing:.5px;
     }
-    .topbar nav{display:flex; gap:18px}
-    .topbar nav a{
-      color:var(--text); font-size:14.5px; font-weight:500;
-      transition:color .2s;
+    .logo-dot{
+      width:12px;height:12px;border-radius:99px;
+      background:var(--gold);
+      box-shadow:0 0 20px rgba(212,175,55,.5);
     }
-    .topbar nav a:hover{color:var(--gold2); text-decoration:none}
+    .nav{
+      display:flex; gap:16px; flex-wrap:wrap;
+      font-size:14px;color:var(--muted);
+    }
 
-    @media (max-width:600px){
-      .topbar nav{display:none}
-      .topbar .logo{font-size:17px}
-    }
-
-    /* Article */
-    article{
-      background:var(--card);
+    /* Hero */
+    header.hero{
+      grid-column: 1 / -1;
       border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:50px;
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(212,175,55,.12), transparent 55%),
+        linear-gradient(90deg, rgba(212,175,55,.06), transparent 40%);
       box-shadow:var(--shadow);
     }
-    @media (max-width:700px){
-      article{padding:30px 22px}
-    }
 
-    article h1{
-      font-family:'Playfair Display',serif;
-      font-size:clamp(28px, 5vw, 42px);
-      line-height:1.25;
-      color:var(--gold);
-      margin-bottom:16px;
-      font-weight:700;
-    }
-
-    .meta{
-      display:flex; gap:14px; flex-wrap:wrap;
-      font-size:13.5px; color:var(--muted);
-      margin-bottom:32px;
-      padding-bottom:20px;
-      border-bottom:1px solid var(--border);
-    }
-    .meta span{display:flex; align-items:center; gap:6px}
-
-    .featured-image{
-      width:100%; height:auto;
-      border-radius:12px;
-      margin-bottom:30px;
-    }
-
-    article h2, article h3{
-      font-family:'Playfair Display',serif;
-      color:var(--gold2);
-      margin-top:42px;
-      margin-bottom:16px;
-      line-height:1.35;
-    }
-    article h2{font-size:clamp(24px, 4vw, 32px)}
-    article h3{font-size:clamp(20px, 3.5vw, 26px)}
-
-    article p{
-      margin-bottom:20px;
-      font-size:16px;
-      color:var(--text);
-    }
-
-    article ul, article ol{
-      margin:20px 0 20px 28px;
-      line-height:1.9;
-    }
-    article li{
-      margin-bottom:10px;
-      color:var(--text);
-    }
-
-    article strong{
-      color:var(--gold2);
-      font-weight:600;
-    }
-
-    article table{
-      width:100%;
-      border-collapse: collapse;
-      margin:30px 0;
-      background:rgba(212,175,55,.04);
-      border-radius:10px;
-      overflow:hidden;
-    }
-    article th, article td{
-      padding:14px 16px;
-      text-align:left;
-      border-bottom:1px solid var(--border);
-    }
-    article th{
-      background:rgba(212,175,55,.12);
-      color:var(--gold);
-      font-weight:600;
-    }
-    article tr:last-child td{border-bottom:none}
-
-    article hr{
-      border:none;
-      height:1px;
-      background:linear-gradient(90deg, transparent, var(--border), transparent);
-      margin:40px 0;
-    }
-
-    article blockquote{
-      border-left:4px solid var(--gold);
-      padding-left:20px;
-      margin:30px 0;
-      font-style:italic;
-      color:var(--muted);
-    }
-
-    .video-container{
+    .hero-cover{
       position:relative;
-      padding-bottom:56.25%;
-      height:0;
+      min-height:380px;
+      display:flex;
+      align-items:flex-end;
+      padding:26px;
       overflow:hidden;
-      margin:30px 0;
-      border-radius:12px;
-      background:#000;
     }
-    .video-container iframe{
+    .hero-cover img{
       position:absolute;
       top:0; left:0;
       width:100%; height:100%;
-      border:0;
+      object-fit:cover;
+      object-position:center;
+      z-index:1;
+    }
+    .hero-cover::after{
+      content:'';
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: linear-gradient(180deg, rgba(0,0,0,.3), rgba(0,0,0,.85));
+      z-index:2;
+    }
+
+    .hero h1{
+      position:relative;
+      z-index:3;
+      font-family:"Playfair Display",serif;
+      font-size:40px;
+      line-height:1.15;
+      text-shadow: 0 18px 60px rgba(0,0,0,.7);
+    }
+    @media (max-width: 700px){
+      .hero h1{font-size:30px}
+      .hero-cover{padding:18px}
+    }
+
+    .meta{
+      padding:18px 26px 26px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+      border-top:1px solid rgba(212,175,55,.18);
+      background: rgba(0,0,0,.25);
+    }
+    .chip{
+      border:1px solid rgba(212,175,55,.25);
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(212,175,55,.06);
+    }
+
+    /* Content */
+    main{
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(212,175,55,.18);
+      border-radius: var(--radius);
+      padding:24px 22px;
+      box-shadow: 0 12px 50px rgba(0,0,0,.35);
+    }
+
+    h2{
+      font-family:"Playfair Display",serif;
+      font-size:26px;
+      margin:20px 0 10px;
+      color:var(--gold2);
+    }
+    h3{
+      margin:18px 0 8px;
+      color:var(--gold);
+      font-size:18px;
+    }
+    p{margin:10px 0;color:#ededed}
+    ul,ol{margin:10px 0 18px 22px}
+    li{margin:6px 0;color:#f0f0f0}
+
+    .toc{
+      border:1px solid rgba(212,175,55,.22);
+      border-radius:16px;
+      padding:16px;
+      background: rgba(212,175,55,.06);
+      margin:12px 0 18px;
+    }
+    .toc-title{
+      font-weight:700;
+      letter-spacing:.4px;
+      margin-bottom:8px;
+      color:var(--gold2);
+    }
+    .toc a{
+      display:block;
+      padding:6px 0;
+      color:var(--text);
+      font-size:14px;
+      border-bottom:1px dashed rgba(212,175,55,.18);
+    }
+    .toc a:last-child{border-bottom:none}
+
+    .tip{
+      margin:16px 0;
+      padding:16px;
+      border-radius:16px;
+      border:1px solid rgba(212,175,55,.18);
+      background: rgba(0,0,0,.28);
+    }
+    .tip-number{
+      display:inline-block;
+      font-weight:800;
+      font-size:13px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(212,175,55,.35);
+      background: rgba(212,175,55,.10);
+      color:var(--gold2);
+      margin-bottom:10px;
+    }
+
+    .note{
+      margin:14px 0;
+      padding:14px 16px;
+      border-left:4px solid var(--gold);
+      background: rgba(212,175,55,.08);
+      border-radius: 12px;
+      color:#f1f1f1;
+    }
+
+    /* Table Styling */
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:20px 0;
+      border-radius:12px;
+      overflow:hidden;
+      background:rgba(0,0,0,.3);
+      border:1px solid rgba(212,175,55,.2);
+    }
+    thead{
+      background:rgba(212,175,55,.15);
+    }
+    th{
+      padding:16px 12px;
+      text-align:center;
+      color:var(--gold2);
+      font-weight:700;
+      border-bottom:2px solid rgba(212,175,55,.3);
+      font-size:15px;
+      letter-spacing:.5px;
+    }
+    td{
+      padding:14px 12px;
+      text-align:center;
+      color:var(--text);
+      border-bottom:1px solid rgba(212,175,55,.15);
+      font-size:14px;
+    }
+    tbody tr:last-child td{
+      border-bottom:none;
+    }
+    tbody tr:hover{
+      background:rgba(212,175,55,.08);
+      transition:.2s ease;
+    }
+    tbody tr:nth-child(even){
+      background:rgba(0,0,0,.15);
+    }
+
+    /* Images */
+    figure{
+      margin:18px 0;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(212,175,55,.18);
+      background: rgba(0,0,0,.30);
+    }
+    figure img{
+      width:100%;
+      height:auto;
+      max-height:500px;
+      display:block;
+      object-fit:cover;
+      object-position:center;
+    }
+    figcaption{
+      padding:10px 14px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid rgba(212,175,55,.18);
+      background:rgba(0,0,0,.4);
+    }
+    .img-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin:16px 0;
+    }
+    .img-grid figure img{
+      height:280px;
+      object-fit:cover;
+    }
+    @media(max-width:700px){ 
+      .img-grid{grid-template-columns:1fr}
+      .img-grid figure img{height:240px}
     }
 
     /* Sidebar */
     aside{
+      position:sticky;
+      top:78px;
+      height:fit-content;
       display:flex;
       flex-direction:column;
-      gap:24px;
+      gap:16px;
     }
-    .widget{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:24px;
+
+    .side-card{
+      border:1px solid rgba(212,175,55,.18);
+      border-radius: var(--radius);
+      padding:16px;
+      background: rgba(0,0,0,.22);
+      box-shadow: 0 12px 45px rgba(0,0,0,.35);
     }
-    .widget h4{
-      font-size:18px;
-      color:var(--gold);
-      margin-bottom:16px;
+
+    .side-title{
+      color:var(--gold2);
+      font-weight:800;
+      margin-bottom:10px;
+      letter-spacing:.4px;
+    }
+
+    .share{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(212,175,55,.35);
+      background: rgba(212,175,55,.10);
+      color: var(--text);
       font-weight:600;
+      font-size:14px;
+      width:100%;
+      text-align:center;
+      cursor:pointer;
+      user-select:none;
     }
-    .widget ul{
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
+    .btn:hover{
+      background: rgba(212,175,55,.18);
+      transform: translateY(-1px);
+      transition:.18s ease;
     }
-    .widget ul a{
+
+    /* Related */
+    .related a{
       display:block;
-      padding:10px;
-      background:rgba(212,175,55,.06);
-      border-radius:8px;
-      transition:all .2s;
-      font-size:14px;
+      padding:10px 0;
+      border-bottom:1px dashed rgba(212,175,55,.18);
+      color:#ededed;
     }
-    .widget ul a:hover{
-      background:rgba(212,175,55,.12);
-      text-decoration:none;
-      transform:translateX(4px);
-    }
+    .related a:last-child{border-bottom:none}
+    .related a span{color:var(--gold2); font-weight:700}
 
-    .cta-box{
-      background:linear-gradient(135deg, rgba(212,175,55,.15), rgba(212,175,55,.08));
-      border:1px solid var(--gold);
-      border-radius:var(--radius);
-      padding:28px;
-      text-align:center;
-    }
-    .cta-box h4{
-      font-size:20px;
-      color:var(--gold);
-      margin-bottom:12px;
-    }
-    .cta-box p{
-      font-size:14px;
-      color:var(--muted);
-      margin-bottom:18px;
-    }
-    .cta-btn{
-      display:inline-block;
-      padding:12px 28px;
-      background:var(--gold);
-      color:#000;
-      font-weight:600;
-      border-radius:8px;
-      transition:all .3s;
-      text-decoration:none;
-    }
-    .cta-btn:hover{
-      background:var(--gold2);
-      transform:translateY(-2px);
-      box-shadow:0 8px 20px rgba(212,175,55,.3);
-    }
-
-    /* Footer */
     footer{
-      margin-top:60px;
-      padding:40px 20px;
-      text-align:center;
-      border-top:1px solid var(--border);
+      max-width:1200px;
+      margin:18px auto 30px;
+      padding:0 18px;
       color:var(--muted);
-      font-size:14px;
+      font-size:13px;
+      text-align:center;
     }
-    footer a{color:var(--gold2)}
   </style>
 </head>
 <body>
@@ -342,58 +436,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+  <!-- Topbar -->
   <div class="topbar">
-    <div class="inner">
-      <a href="../index.html" class="logo">⚡ AKKUELECTRONICS</a>
-      <nav>
-        <a href="../index.html">Home</a>
-        <a href="index.html">Blog</a>
-        <a href="../services.html">Services</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
+    <div class="topbar-inner">
+      <a href="/blog/index.html" class="brand" style="text-decoration:none;color:inherit;">
+        <span class="logo-dot"></span>
+        <span>AKKUELECTRONICS</span>
+      </a>
+      <div class="nav">
+        <span>PlayStation 5</span>
+        <span>Gaming Hardware</span>
+        <span>Guides</span>
+      </div>
     </div>
   </div>
 
   <div class="container">
-    <article>
-      <h1>The PlayStation 5 Pro: A Technical Deep Dive into Sony's Mid-Gen Powerhouse</h1>
-      
-      <div class="meta">
-        <span>📅 January 13, 2026</span>
-        <span>👤 AKKUELECTRONICS</span>
-        <span>⏱️ 8 min read</span>
-        <span>🏷️ Gaming Hardware</span>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-cover">
+        <img src="images/ps5problogbanner1.jpg" 
+             alt="PlayStation 5 Pro Console Hero Banner" 
+             loading="eager">
+        <h1>PlayStation 5 Pro: Technical Deep Dive & Performance Analysis</h1>
       </div>
+      <div class="meta">
+        <span class="chip">Published: January 13, 2026</span>
+        <span class="chip">PS5 Pro, Gaming Hardware</span>
+        <span class="chip">Console: PlayStation 5</span>
+      </div>
+    </header>
 
-      <p>Sony has officially raised the bar for console gaming with the launch of the <strong>PlayStation 5 Pro</strong>. Designed for enthusiasts who refuse to choose between "Fidelity" and "Performance" modes, the PS5 Pro is more than just a slight iteration—it is a significant hardware leap that focuses on three core pillars: a beefier GPU, advanced ray tracing, and AI-driven upscaling.</p>
+    <!-- MAIN -->
+    <main>
 
-      <p>In this blog, we'll break down exactly what is happening under the hood of the most powerful PlayStation ever made.</p>
-
-      <hr>
-
-      <h3>The "Big Three" Performance Features</h3>
-
-      <p>Mark Cerny, the Lead Architect of the PS5, highlighted three major technical advancements that define the Pro experience:</p>
-
-      <ol>
-        <li><strong>Upgraded GPU:</strong> The heart of the PS5 Pro is a GPU with <strong>67% more Compute Units</strong> than the standard PS5 and <strong>28% faster memory</strong>. This translates to roughly <strong>45% faster rendering</strong>, allowing games to maintain high frame rates without sacrificing the crispness of the visuals.</li>
-        
-        <li><strong>Advanced Ray Tracing:</strong> Ray tracing—the technology that handles realistic lighting, reflections, and shadows—has been supercharged. The PS5 Pro can cast rays at <strong>double or even triple the speeds</strong> of the original console, making environments in games like <em>Gran Turismo 7</em> and <em>Hogwarts Legacy</em> look incredibly lifelike.</li>
-        
-        <li><strong>PlayStation Spectral Super Resolution (PSSR):</strong> This is Sony's answer to PC-based upscaling like DLSS. Using AI and machine learning, PSSR analyzes images pixel-by-pixel to add an extraordinary amount of detail, sharpening the image to a "fake" 4K that often looks better than native resolution.</li>
-      </ol>
-
-      <hr>
+      <h2>Introduction</h2>
+      <p>
+        Sony has officially raised the bar for console gaming with the launch of the <strong>PlayStation 5 Pro</strong>. Designed for enthusiasts who refuse to choose between "Fidelity" and "Performance" modes, the PS5 Pro is more than just a slight iteration—it is a significant hardware leap that focuses on three core pillars: a beefier GPU, advanced ray tracing, and AI-driven upscaling.
+      </p>
+      <p>
+        In this technical breakdown, we'll explore exactly what is happening under the hood of the most powerful PlayStation ever made.
+      </p>
 
       <h3>Technical Specifications: PS5 Pro vs. PS5</h3>
 
-      <p>While the official blog focuses on the experience, the technical spec sheet reveals the raw power:</p>
+      <p>Here's a detailed comparison of the raw performance metrics:</p>
 
       <table>
         <thead>
           <tr>
             <th>Feature</th>
-            <th>PlayStation 5 (Original/Slim)</th>
+            <th>PlayStation 5 (Standard)</th>
             <th>PlayStation 5 Pro</th>
           </tr>
         </thead>
@@ -401,42 +495,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <tr>
             <td><strong>GPU Power</strong></td>
             <td>10.28 TFLOPS</td>
-            <td><strong>~16.7 - 18.05 TFLOPS</strong></td>
+            <td><strong style="color:var(--gold2)">~16.7 - 18.05 TFLOPS</strong></td>
           </tr>
           <tr>
             <td><strong>Compute Units</strong></td>
             <td>36 CUs (RDNA 2)</td>
-            <td><strong>60 CUs (RDNA 3/4 hybrid)</strong></td>
+            <td><strong style="color:var(--gold2)">60 CUs (RDNA 3/4)</strong></td>
           </tr>
           <tr>
             <td><strong>CPU</strong></td>
             <td>8-core Zen 2 @ 3.5GHz</td>
-            <td><strong>8-core Zen 2 (Boost to 3.85GHz)</strong></td>
+            <td><strong style="color:var(--gold2)">Boost to 3.85GHz</strong></td>
           </tr>
           <tr>
             <td><strong>System Memory</strong></td>
             <td>16GB GDDR6 (448 GB/s)</td>
-            <td><strong>16GB GDDR6 (576 GB/s)</strong></td>
+            <td><strong style="color:var(--gold2)">16GB GDDR6 (576 GB/s)</strong></td>
           </tr>
           <tr>
             <td><strong>Extra RAM</strong></td>
-            <td>N/A</td>
-            <td><strong>2GB DDR5 (dedicated to OS tasks)</strong></td>
+            <td>—</td>
+            <td><strong style="color:var(--gold2)">2GB DDR5</strong></td>
           </tr>
           <tr>
             <td><strong>Internal Storage</strong></td>
             <td>825GB / 1TB SSD</td>
-            <td><strong>2TB Custom SSD</strong></td>
+            <td><strong style="color:var(--gold2)">2TB Custom SSD</strong></td>
           </tr>
           <tr>
             <td><strong>Wireless</strong></td>
             <td>Wi-Fi 6</td>
-            <td><strong>Wi-Fi 7</strong></td>
+            <td><strong style="color:var(--gold2)">Wi-Fi 7</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Price (USD)</strong></td>
+            <td>$499.99</td>
+            <td><strong style="color:var(--gold2)">$699.99</strong></td>
           </tr>
         </tbody>
       </table>
 
+     
+
       <hr>
+
+       <figure style="display:flex;flex-direction:column;align-items:center;margin:28px 0">
+        <img src="../images/ps5banner1.jpg" 
+             alt="PlayStation 5 Pro Console" 
+             style="width:100%;height: 350px;object-fit:cover;border-radius:12px;border:1px solid rgba(212,175,55,.2)"
+             loading="lazy">
+        <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">PlayStation 5 Pro - Next-generation console power</figcaption>
+      </figure>
 
       <h3>More Than Just Raw Power</h3>
 
@@ -461,47 +570,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <h3>Hardware Analysis Video</h3>
 
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/ySMu7T352Xc" title="PS5 Pro GPU Breakdown" allowfullscreen></iframe>
-      </div>
+      <figure style="display:flex;flex-direction:column;align-items:center;margin:28px 0">
+        <div class="video-container" style="width:100%;height:350px;position:relative;overflow:hidden;border-radius:12px;border:1px solid rgba(212,175,55,.2)">
+          <iframe src="https://www.youtube.com/embed/ySMu7T352Xc" title="PS5 Pro GPU Breakdown" style="width:100%;height:100%;border:none" allowfullscreen></iframe>
+        </div>
+        <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">PS5 Pro GPU Technical Analysis - Deep Dive into Architecture</figcaption>
+      </figure>
 
       <p>This video provides a deep technical analysis of the new GPU architecture and how the increased compute units specifically impact modern game rendering.</p>
 
       <hr>
 
-      <p><strong>Need PS5 Pro Repair Services?</strong> At Akku Electronics, we provide professional repair and maintenance for all PlayStation consoles, including the PS5 Pro. From HDMI port replacements to SSD upgrades, we've got you covered.</p>
+      <h2>Conclusion</h2>
+      <p>
+        The PlayStation 5 Pro represents the pinnacle of console engineering, offering gamers the ability to experience next-gen titles with both visual fidelity and high performance. Whether you're a competitive esports player or a story-driven adventure enthusiast, the PS5 Pro delivers the power to play your way.
+      </p>
+      <div class="note">
+        <strong>Thinking about upgrading to PS5 Pro?</strong> Need professional setup or repair services? Contact AKKUELECTRONICS for expert PlayStation maintenance and support!
+      </div>
 
-    </article>
+    </main>
 
+    <!-- SIDEBAR -->
     <aside>
-      <div class="cta-box">
-        <h4>Need Console Repair?</h4>
-        <p>Expert PlayStation & Xbox repair services in Nagpur</p>
-        <a href="../contact.html" class="cta-btn">Contact Us</a>
+      <div class="side-card">
+        <div class="side-title">Quick Share</div>
+        <div class="share">
+          <div class="btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied!')">
+            Copy Article Link
+          </div>
+          <div class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            Back to Top
+          </div>
+        </div>
       </div>
 
-      <div class="widget">
-        <h4>Recent Posts</h4>
-        <ul>
-          <li><a href="12012026dualsense15tricks.html">DualSense Controller: 15 Secrets You Need to Know</a></li>
-          <li><a href="index.html">All Blog Posts →</a></li>
-        </ul>
+      <div class="side-card related">
+        <div class="side-title">Related Articles</div>
+        <a href="#"><span>•</span> DualSense Controller: 15 Secrets You Need to Know</a>
+        <a href="#"><span>•</span> PS5 Pro Game Performance Comparison 2026</a>
+        <a href="#"><span>•</span> Best 4K Games for PS5 Pro</a>
+        <a href="index.html"><span>•</span> Back to All Blog Posts</a>
       </div>
 
-      <div class="widget">
-        <h4>Popular Services</h4>
-        <ul>
-          <li><a href="../playstation-5.html">PS5 Repair Services</a></li>
-          <li><a href="../playstation-4.html">PS4 Repair Services</a></li>
-          <li><a href="../xbox-series.html">Xbox Series X/S Repair</a></li>
-          <li><a href="../gamepad-tester.html">Gamepad Tester Tool</a></li>
-        </ul>
+      <div class="side-card">
+        <div class="side-title">Need Console Service?</div>
+        <p style="color:var(--muted);font-size:14px;margin:0">
+          Expert PlayStation repair, SSD upgrades, and maintenance. Powered by <strong style="color:var(--gold2)">AKKUELECTRONICS</strong>.
+        </p>
+        <a href="../contact.html" class="btn" style="margin-top:12px">Contact Us</a>
       </div>
     </aside>
+
   </div>
 
   <footer>
-    <p>&copy; 2026 AKKUELECTRONICS | <a href="../privacy-policy.html">Privacy Policy</a> | <a href="../contact.html">Contact</a></p>
+    © 2026 AKKUELECTRONICS • All rights reserved.
   </footer>
 
 </body>
