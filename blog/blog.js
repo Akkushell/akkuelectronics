@@ -26,15 +26,15 @@ const blogPosts = [
     },
     {
         id: 3,
-        title: "Xbox Series X Performance Optimization: Complete Guide",
-        excerpt: "Master advanced optimization techniques to maximize your Xbox Series X performance. Learn hardware tweaks, software settings, and best practices for peak gaming.",
+        title: "Xbox Game Pass Ultimate in 2026: Is It Still Worth $17/Month?",
+        excerpt: "Complete 2026 analysis of Xbox Game Pass Ultimate. 500+ games, day-one releases, cloud gaming, EA Play – is it worth $17/month? Full value breakdown, tips, and recommendations.",
         content: "Full content here...",
-        category: "Guide",
-        tags: ["Xbox Series X", "Optimization", "Performance", "Console Settings"],
-        date: "2026-01-08",
+        category: "Value Analysis",
+        tags: ["Xbox Game Pass", "Xbox", "Services", "Value Analysis", "Cloud Gaming"],
+        date: "2026-01-13",
         author: "Akku Electronics",
-        image: "../images/xbox series x console.png",
-        link: "#"
+        image: "images/xbox-gpu-banner-1.jpg",
+        link: "13012026xboxgamepassultimate.html"
     },
     {
         id: 4,
