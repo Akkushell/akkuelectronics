@@ -306,6 +306,7 @@
         "images/accessories/ps2/ae-ps2-ds2.png"],
       "description": "The PlayStation® 2 DualShock controller offers precise control and immersive gameplay with its vibration feedback and analog sticks. Designed for comfort and durability, this wired controller is perfect for enhancing your gaming experience on the PlayStation 2 console.",
       "specs": ["Wired DualShock Controller", "Vibration Feedback", "Analog Sticks", "Compatible with PlayStation 2", "Black Color"],
+      "availableColors": ["Black", "White", "Red", "Blue"],
       "availability": "In Stock"
     },
     {
@@ -320,6 +321,7 @@
       "images": ["images/accessories/ps3/ae-ps3-ds3-2.jpg","images/accessories/ps3/ae-ps3-ds3-1.jpg","images/accessories/ps3/ae-ps3-ds3-3.jpg","images/accessories/ps3/ae-ps3-ds3-4.jpg"],
       "description": "The PlayStation® 3 DualShock controller offers precise control and immersive gameplay with its vibration feedback and analog sticks. Designed for comfort and durability, this wired controller is perfect for enhancing your gaming experience on the PlayStation 3 console.",
       "specs": ["Wireless DualShock-3 Controller", "Vibration Feedback", "Analog Sticks", "Compatible with PlayStation 3", "Black Color"],
+      "availableColors": ["Black", "White", "Silver", "Midnight Blue"],
       "availability": "In Stock"
     },
     {
@@ -333,7 +335,14 @@
       "stock": true,
       "images": ["images/accessories/ps4/ae-ps4-ds4-1.jpg","images/accessories/ps4/ae-ps4-ds4-2.jpg","images/accessories/ps4/ae-ps4-ds4-1.png","images/accessories/ps4/ae-ps4-ds4-2.png"],
       "description": "The PlayStation® 4 DualShock controller offers precise control and immersive gameplay with its vibration feedback and analog sticks. Designed for comfort and durability, this wired controller is perfect for enhancing your gaming experience on the PlayStation 4 console.",
-      "specs": ["Wireless DualShock-4 Controller", "Vibration Feedback", "Analog Sticks", "Compatible with PlayStation 4", "Black Color"],
+      "specs": ["Wireless DualShock-4 Controller", "Vibration Feedback", "Analog Sticks", "Compatible with PlayStation 4", "Available in Multiple Colors"],
+      "colorVariants": [
+        {
+          "color": "Black",
+          "images": ["images/accessories/ps4/ae-ps4-ds4-1.jpg","images/accessories/ps4/ae-ps4-ds4-2.jpg"]
+        }
+        
+      ],
       "availability": "In Stock"
     },
     {
@@ -422,16 +431,95 @@
     },
     {
       "id": 29,
-      "name": "AE PS4 Fat Console Cooling Fan, 17 Blades Internal Cooling Fan Cooler Replacement for Playstation 4 Fat ( small pin )",
+      "name": "AE PS4 Fat Console Cooling Fan, 17 Blades Internal Cooling Fan Replacement for Playstation 4 Fat ( small pin )",
       "brand": "AE-TECH",
       "category": "parts",
-      "price": 1600,
-      "originalPrice": 2800,
-      "discount": 1200,
+      "price": 1400,
+      "originalPrice": 2000,
+      "discount": 600,
       "stock": true,
       "images": ["images/parts/ps4/ae-ps4-fan-fat-smallpin-1.jpg","images/parts/ps4/ae-ps4-fan-fat-smallpin-2.jpg","images/parts/ps4/ae-ps4-fan-fat-smallpin-3.jpg","images/parts/ps4/ae-ps4-fan-fat-smallpin-4.jpg"],
       "description": "This AE-TECH Internal Cooling Fan Replacement Fan is designed for PS4 Fat Console models. It helps maintain optimal temperature by providing efficient cooling to prevent overheating during extended gaming sessions. The fan is easy to install and ensures your console runs smoothly and reliably.",
       "specs": ["Internal Cooling Fan", "Compatible with PS4 Fat Console", "Efficient Cooling Performance", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 30,
+      "name": "AE PS4 Slim Console Cooling Fan, Internal Cooling Fan Replacement for Playstation 4 Slim",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 1400,
+      "originalPrice": 2000,
+      "discount": 600,
+      "stock": true,
+      "images": ["images/parts/ps4/ae-ps4-fan-slim-1.jpg","images/parts/ps4/ae-ps4-fan-slim-2.jpg","images/parts/ps4/ae-ps4-fan-slim-3.jpg","images/parts/ps4/ae-ps4-fan-slim-4.jpg"],
+      "description": "This AE-TECH Internal Cooling Fan Replacement Fan is designed for PS4 Slim Console models. It helps maintain optimal temperature by providing efficient cooling to prevent overheating during extended gaming sessions. The fan is easy to install and ensures your console runs smoothly and reliably.",
+      "specs": ["Internal Cooling Fan", "Compatible with PS4 Slim Console", "Efficient Cooling Performance", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 31,
+      "name": "AE PS4 Pro Console Cooling Fan, Internal Cooling Fan Replacement for Playstation 4 Pro",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 1600,
+      "originalPrice": 2000,
+      "discount": 600,
+      "stock": true,
+      "images": ["images/parts/ps4/ae-ps4-fan-pro-4.jpg","images/parts/ps4/ae-ps4-fan-pro-2.jpg","images/parts/ps4/ae-ps4-fan-pro-3.jpg","images/parts/ps4/ae-ps4-fan-pro-1.jpg","images/parts/ps4/ae-ps4-fan-pro-5.jpg"],
+      "description": "This AE-TECH Internal Cooling Fan Replacement Fan is designed for PS4 Pro Console models. It helps maintain optimal temperature by providing efficient cooling to prevent overheating during extended gaming sessions. The fan is easy to install and ensures your console runs smoothly and reliably.",
+      "specs": ["Internal Cooling Fan", "Compatible with PS4 Pro Console", "Efficient Cooling Performance", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 32,
+      "name": "AE PS4 Internal Power Supply, ADP-240CR Built-in Replacement Power Supply,(4-pin)",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 6200,
+      "originalPrice": 7000,
+      "discount": 800,
+      "stock": true,
+      "images": ["images/parts/ps4/ae-ps4-240cr-1.jpg","images/parts/ps4/ae-ps4-240cr-2.jpg","images/parts/ps4/ae-ps4-240cr-3.jpg","images/parts/ps4/ae-ps4-240cr-4.jpg","images/parts/ps4/ae-ps4-240cr-5.jpg"],
+      "description": "This AE-TECH Internal Power Supply Replacement is designed for PS4 Console models with ADP-240CR (4-pin) power supply. It provides reliable power to ensure your console operates smoothly and efficiently. The power supply is easy to install and is built to last, making it an essential component for maintaining your PS4's performance.",
+      "specs": ["Internal Power Supply", "Compatible with PS4 Console ADP-240CR (4-pin)", "Reliable Power Delivery", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 22,
+      "name": "AE PS4 Controller USB Charging Port Charger Socket Board Replacement for Sony DualShock 4 Wireless Controller",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 499,
+      "originalPrice": 800,
+      "discount": 301,
+      "stock": true,
+      "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-2.jpg","images/parts/ps4/ps4-usb-power-flex-3.jpg","images/parts/ps4/ps4-usb-power-flex-4.jpg"],
+      "description": "High-quality replacement USB charging port socket board for PlayStation 4 DualShock 4 wireless controllers. This AE-TECH part restores proper charging functionality by replacing damaged or faulty USB ports. Essential for fixing issues like unresponsive charging, loose connections, or power delivery problems on PS4 controllers. Compatible with all DualShock 4 models, easy installation with proper disassembly.",
+      "specs": ["Compatible with PS4 DualShock 4 Controllers", "USB Charging Port Socket Board", "Restores Charging Functionality", "Fixes Loose or Damaged Ports", "High-Quality Replacement Part"],
+      "colorVariants": [
+        {
+          "color": "JDS-001",
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+        },
+        {
+          "color": "JDS-011",
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+        },
+        {
+          "color": "JDS-030",
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+        },
+        {
+          "color": "JDS-040",
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+        },
+        {
+          "color": "JDS-055",
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+        }
+        
+      ],
       "availability": "In Stock"
     }
   ]

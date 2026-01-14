@@ -375,6 +375,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding-bottom: 15px;
         }
 
+        /* Color Selection Styles */
+        .color-selection {
+            margin: 20px 0;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .color-option-btn {
+            padding: 10px 18px;
+            border: 2px solid #666;
+            background: #1a1a1a;
+            color: #cccccc;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            text-transform: capitalize;
+        }
+
+        .color-option-btn:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        .color-option-btn.active {
+            background: #d4af37;
+            color: #000;
+            border-color: #d4af37;
+            font-weight: 600;
+        }
+
         .related-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -1039,6 +1075,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     Availability: <span id="productAvailability"></span>
                 </div>
 
+                <!-- Color Selection -->
+                <div id="colorSelectionContainer" class="color-selection" style="display:none; margin: 20px 0; padding: 15px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border: 1px solid #d4af37; border-radius: 8px;">
+                    <label style="display: block; color: #d4af37; font-weight: 600; margin-bottom: 10px; text-transform: uppercase;">Select Color:</label>
+                    <div id="colorOptions" style="display: flex; gap: 10px; flex-wrap: wrap;"></div>
+                </div>
+
                 <!-- Description -->
                 <p class="product-description" id="productDescription"></p>
 
@@ -1219,6 +1261,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 productImages = [fallbackImages[productData.category] || fallbackImages.gear];
             }
             
+            // Store original images
+            window.originalImages = [...productImages];
+            
             // Display main images
             mainImageContainer.innerHTML = productImages.map((imgSrc, index) => 
                 `<img src="${imgSrc}" alt="${productData.name} - Image ${index + 1}" class="${index === 0 ? 'active' : ''}">`
@@ -1264,12 +1309,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 availSpan.className = 'availability-out';
             }
 
+            // Display Color Selection if available
+            const colorContainer = document.getElementById('colorSelectionContainer');
+            const colorOptionsDiv = document.getElementById('colorOptions');
+            
+            // Check if product has colorVariants (with images) or availableColors (simple list)
+            if (productData.colorVariants && productData.colorVariants.length > 0) {
+                colorContainer.style.display = 'block';
+                window.colorVariants = productData.colorVariants;
+                colorOptionsDiv.innerHTML = productData.colorVariants.map((variant, index) => 
+                    `<button class="color-option-btn ${index === 0 ? 'active' : ''}" onclick="selectColorVariant(${index}, this)" title="Select ${variant.color}">
+                        ${variant.color}
+                    </button>`
+                ).join('');
+                // Store selected color
+                window.selectedColor = productData.colorVariants[0].color;
+            } else if (productData.availableColors && productData.availableColors.length > 0) {
+                colorContainer.style.display = 'block';
+                window.colorVariants = null;
+                colorOptionsDiv.innerHTML = productData.availableColors.map((color, index) => 
+                    `<button class="color-option-btn ${index === 0 ? 'active' : ''}" onclick="selectColor('${color}', this)" title="Select ${color}">
+                        ${color}
+                    </button>`
+                ).join('');
+                // Store selected color
+                window.selectedColor = productData.availableColors[0];
+            } else {
+                colorContainer.style.display = 'none';
+                window.selectedColor = null;
+                window.colorVariants = null;
+            }
+
             // Description
             document.getElementById('productDescription').textContent = productData.description;
 
             // Product Contains
             const specsList = document.getElementById('specsList');
             specsList.innerHTML = productData.specs.map(spec => `<li class="spec-item">${spec}</li>`).join('');
+        }
+
+        function selectColorVariant(variantIndex, buttonElement) {
+            // Remove active class from all color buttons
+            document.querySelectorAll('.color-option-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Add active class to clicked button
+            buttonElement.classList.add('active');
+            
+            const variant = window.colorVariants[variantIndex];
+            window.selectedColor = variant.color;
+            
+            // Update images if variant has specific images
+            if (variant.images && variant.images.length > 0) {
+                productImages = variant.images;
+            } else {
+                // Fall back to original images
+                productImages = [...window.originalImages];
+            }
+            
+            // Update main image display
+            const mainImageContainer = document.getElementById('mainImageContainer');
+            mainImageContainer.innerHTML = productImages.map((imgSrc, index) => 
+                `<img src="${imgSrc}" alt="${productData.name} - ${variant.color} - Image ${index + 1}" class="${index === 0 ? 'active' : ''}">`
+            ).join('');
+            
+            // Update thumbnails
+            const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+            if (productImages.length > 1) {
+                thumbnailsContainer.innerHTML = productImages.map((imgSrc, index) => 
+                    `<div class="thumbnail-item ${index === 0 ? 'active' : ''}" onclick="showImage(${index})">
+                        <img src="${imgSrc}" alt="Thumbnail ${index + 1}">
+                    </div>`
+                ).join('');
+            } else {
+                thumbnailsContainer.innerHTML = '';
+            }
+            
+            currentImageIndex = 0;
+        }
+
+        function selectColor(color, buttonElement) {
+            // Remove active class from all color buttons
+            document.querySelectorAll('.color-option-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Add active class to clicked button
+            buttonElement.classList.add('active');
+            // Store selected color
+            window.selectedColor = color;
         }
 
         function loadRelatedProducts() {
@@ -1303,16 +1430,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         function addProductToCart() {
             let cart = JSON.parse(localStorage.getItem('gameShopCart')) || [];
-            const existingItem = cart.find(item => item.id === productData.id);
+            
+            const cartItem = {
+                ...productData,
+                quantity: 1
+            };
+            
+            // Include color if selected
+            if (window.selectedColor) {
+                cartItem.selectedColor = window.selectedColor;
+            }
+            
+            const existingItem = cart.find(item => 
+                item.id === cartItem.id && 
+                (item.selectedColor || window.selectedColor) === window.selectedColor
+            );
 
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({...productData, quantity: 1});
+                cart.push(cartItem);
             }
 
             localStorage.setItem('gameShopCart', JSON.stringify(cart));
-            alert(`${productData.name} added to cart!`);
+            
+            const colorText = window.selectedColor ? ` in ${window.selectedColor}` : '';
+            alert(`${productData.name}${colorText} added to cart!`);
             window.location.href = 'shop.html';
         }
 
