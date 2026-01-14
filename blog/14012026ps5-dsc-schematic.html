@@ -438,16 +438,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       
       <p>The BDM-010 is the original DualSense revision featuring a <strong>6-layer PCB</strong>. The primary hardware differences among early units were the FPC color (Blue or Green) and variations in TouchPad versions.</p>
 
-      <div style="background-color: var(--dark-bg); border: 2px solid var(--gold); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
-        <h4 style="color: var(--gold); margin-top: 0;">📸 PCB Scans & Reference Images</h4>
-        <p>Detailed high-resolution scans of the BDM-010 motherboard (top and bottom) and trigger assembly boards are available on the <strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" style="color: var(--gold); text-decoration: underline;">AcidMods Forum - DualSense PCB Scans Thread</a></strong>. These resources include:</p>
-        <ul style="text-align: left; display: inline-block;">
-          <li>BDM-010 Motherboard (Top & Bottom View)</li>
-          <li>BWL-010 Trigger Assembly (Top & Bottom View)</li>
-          <li>Touchpad Module Schematics</li>
-          <li>Component-level detail views</li>
-        </ul>
-        <p style="font-size: 0.9em; color: #ccc; margin: 10px 0 0 0;">💡 <strong>Tip:</strong> Keep the AcidMods reference page open while performing modifications. The detailed scans help identify exact test point locations and component references.</p>
+      <h3>BDM-010 Motherboard PCB</h3>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-010_TOP.jpg" alt="BDM-010 Motherboard Top" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-010 Motherboard - Top</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-010_BOTTOM.jpg" alt="BDM-010 Motherboard Bottom" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-010 Motherboard - Bottom</p>
+        </div>
+      </div>
+
+      <h3>BDM-010 Component Details</h3>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-010_BUTTONS.jpg" alt="BDM-010 Button VIAs" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 350px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">Button VIAs Layout</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-010_TP_BTN.jpg" alt="BDM-010 Touchpad Button" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 350px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">Touchpad & Button Details</p>
+        </div>
       </div>
         <li><strong>FPC Colors:</strong> Blue or Green variants</li>
         <li><strong>Button Design:</strong> Most buttons are common ground</li>
@@ -467,6 +479,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Trigger Assembly -->
       <h3>Trigger Assembly Details (BWL-010)</h3>
+
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BWL-010_SIDE_A.jpg" alt="BWL-010 Trigger Assembly Side A" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 350px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BWL-010 Trigger Assembly - Side A</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BWL-010_SIDE_B.jpg" alt="BWL-010 Trigger Assembly Side B" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 350px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BWL-010 Trigger Assembly - Side B</p>
+        </div>
+      </div>
+
+      <h3>Touchpad Module (LT-01)</h3>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/LT-01 TOP.jpg" alt="Touchpad LT-01 Top" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 350px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">Touchpad Module - Top</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/LT-01 BOTTOM.jpg" alt="Touchpad LT-01 Bottom" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 350px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">Touchpad Module - Bottom</p>
+        </div>
+      </div>
       
       <p>The L1/L2 and R1/R2 trigger assemblies are mechanically identical from a hardware standpoint, making the test point locations consistent across both sides.</p>
 
@@ -601,15 +636,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <p>The second revision represents a significant change in PCB complexity while maintaining similar functionality. The BDM-020 introduces a <strong>4-layer PCB design</strong> (reduced from 6 layers) to reduce manufacturing costs while preserving electrical compatibility.</p>
 
-      <div style="background-color: var(--dark-bg); border: 2px solid var(--gold); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
-        <h4 style="color: var(--gold); margin-top: 0;">📸 BDM-020 PCB Schematics</h4>
-        <p>Complete visual references for the BDM-020 revision including motherboard and trigger assembly schematics are available in the <strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" style="color: var(--gold); text-decoration: underline;">AcidMods Forum DualSense PCB Scans</a></strong>. Key visual resources:</p>
-        <ul style="text-align: left; display: inline-block;">
-          <li>BDM-020 Motherboard (Top & Bottom Detail)</li>
-          <li>BWL-020 Trigger Assembly PCB Schematics</li>
-          <li>Test Point Relocations (vs BDM-010)</li>
-        </ul>
-        <p style="font-size: 0.9em; color: #ccc; margin: 10px 0 0 0;">⚠️ <strong>Critical:</strong> BDM-020 test points are relocated compared to BDM-010. Always verify with scans before soldering to avoid damaging pads.</p>
+      <h3>BDM-020 Motherboard PCB</h3>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-020_TOP.jpg" alt="BDM-020 Motherboard Top" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-020 Motherboard - Top</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-020_BOTTOM.jpg" alt="BDM-020 Motherboard Bottom" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-020 Motherboard - Bottom</p>
+        </div>
+      </div>
+
+      <h3>BWL-020 Trigger Assembly</h3>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BWL-020_SIDE_A.jpg" alt="BWL-020 Trigger Assembly Side A" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 350px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BWL-020 Trigger Assembly - Top</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BWL-020_SIDE_B.jpg" alt="BWL-020 Trigger Assembly Side B" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 350px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BWL-020 Trigger Assembly - Bottom</p>
+        </div>
       </div>
 
       <h3>Key Changes from BDM-010</h3>
@@ -632,16 +680,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <p>The third revision introduces the most significant architectural change to the trigger system. This generation simplifies the trigger design while maintaining adaptive trigger functionality through direct motor wiring.</p>
 
-      <div style="background-color: var(--dark-bg); border: 2px solid var(--gold); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
-        <h4 style="color: var(--gold); margin-top: 0;">📸 BDM-030 Hardware Schematics</h4>
-        <p>Visual references and PCB layouts for the BDM-030 redesign are documented in the <strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" style="color: var(--gold); text-decoration: underline;">AcidMods Forum reference</a></strong>. Key schematics:</p>
-        <ul style="text-align: left; display: inline-block;">
-          <li>BDM-030 Motherboard (Redesigned Layout)</li>
-          <li>Simplified Trigger PCB (Feedback POT Only)</li>
-          <li>Integrated FPC with Button Assembly</li>
-          <li>Direct Motor Wiring Diagram</li>
-        </ul>
-        <p style="font-size: 0.9em; color: #ccc; margin: 10px 0 0 0;">💡 <strong>Modification Impact:</strong> Simplified design makes button customization easier but eliminates EEPROM-based trigger calibration from prior generations.</p>
+      <h3>BDM-030 Motherboard PCB</h3>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-030_TOP.jpg" alt="BDM-030 Motherboard Top" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-030 Motherboard - Top</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-030_BOTTOM.jpg" alt="BDM-030 Motherboard Bottom" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-030 Motherboard - Bottom</p>
+        </div>
+      </div>
+
+      <h3>BDM-030 FPC Button Assembly</h3>
+      <div style="text-align: center; margin: 20px 0;">
+        <img src="images/DualSense 5 Controller PCB Scans/BDM-030_FPC.jpg" alt="BDM-030 FPC with Integrated Buttons" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+        <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-030 FPC - Integrated Button Assembly</p>
+        <p style="font-size: 0.9em; color: #ccc; margin-top: 5px;">Flexible PCB with integrated L1, L2, R1, R2 button contacts</p>
       </div>
 
       <h3>Major Trigger Assembly Redesign</h3>
@@ -671,15 +726,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <p>The latest known revision continues the design philosophy established in BDM-030 with further refinements and optimizations.</p>
 
-      <div style="background-color: var(--dark-bg); border: 2px solid var(--gold); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
-        <h4 style="color: var(--gold); margin-top: 0;">📸 BDM-040 Reference Schematics</h4>
-        <p>Documentation and visual guides for the latest BDM-040 revision are available at the <strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" style="color: var(--gold); text-decoration: underline;">AcidMods Forum DualSense Reference</a></strong>. Current available resources:</p>
-        <ul style="text-align: left; display: inline-block;">
-          <li>BDM-040 Motherboard (Top & Bottom)</li>
-          <li>Component Layout Updates</li>
-          <li>Compatibility with BDM-030 modifications</li>
-        </ul>
-        <p style="font-size: 0.9em; color: #ccc; margin: 10px 0 0 0;">ℹ️ <strong>Note:</strong> Documentation for BDM-040 is still being compiled. Most BDM-030 modification techniques remain compatible.</p>
+      <h3>BDM-040 Motherboard PCB</h3>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-040_TOP.jpg" alt="BDM-040 Motherboard Top" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-040 Motherboard - Top</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/DualSense 5 Controller PCB Scans/BDM-040_BOTTOM.jpg" alt="BDM-040 Motherboard Bottom" style="max-width: 100%; height: auto; border: 2px solid var(--gold); border-radius: 8px; max-height: 400px;">
+          <p style="color: var(--gold); font-weight: bold; margin-top: 10px;">BDM-040 Motherboard - Bottom</p>
+        </div>
       </div>
 
       <h3>Current Status</h3>
