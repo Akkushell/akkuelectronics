@@ -16,7 +16,7 @@
         "images/ps2/ps24.png",
         "images/ps2/ps25.png"        
       ],
-      "description": "The PlayStation® 2 generation included giant steps forward in home console gaming, with augmented reality, online multiplayer gaming, and more ambitious, large-scale games on DVD discs. Offering users cutting-edge gaming, DVD playback, online functionality, and backward compatibility with original PlayStation discs, the PS2 console represented an irresistible package at launch and throughout its lifespan.",
+      "description": "The PlayStation® 2 generation included giant steps forward in home console gaming, with augmented reality, online multiplayer gaming, and more ambitious, large-scale games on DVD discs. Offering users cutting-edge gaming, DVD playback, online functionality, and backward compatibility with original PlayStation discs, the PS2 console represented an irresistible package at launch and throughout its lifespan. The PS2 library is one of the most diverse and expansive in gaming history, with thousands of titles spanning every genre imaginable, from iconic franchises to hidden gems. The console's longevity and continued popularity among gamers worldwide are a testament to its enduring appeal and the unforgettable experiences it provided.",
       "specs": ["PlayStation 2 Console", "Model 70xxx / 90xxx","USB Modded", "Includes 2 Controllers", "64GB Pendrive with Games", "Memory Card Included","power and AV Cables"],
       "availability": "In Stock"
     },
@@ -34,7 +34,7 @@
         "images/ps3/ps3s2.png",
         "images/ps3/ps3s3.png"        
       ],
-      "description": "The PlayStation® 3 era built on the legacy of previous generations with incredible leaps forward in online gaming and digital services, while the arrival of Blu-ray Disc games allowed creators to expand their ambitions and build truly immersive game worlds on a grand scale. The PS3 console delivered cutting-edge graphics, a robust online ecosystem, and multimedia capabilities that transformed the living room experience. As well as introducing gamers to incredible single-player adventures and revolutionary online experiences, PS3™ became an entertainment mainstay in owners’ homes thanks to new music and movie streaming apps, and easily accessible digital games via the new PlayStation™ Store.",
+      "description": "The PlayStation® 3 era built on the legacy of previous generations with incredible leaps forward in online gaming and digital services, while the arrival of Blu-ray Disc games allowed creators to expand their ambitions and build truly immersive game worlds on a grand scale. The PS3 console delivered cutting-edge graphics, a robust online ecosystem, and multimedia capabilities that transformed the living room experience. As well as introducing gamers to incredible single-player adventures and revolutionary online experiences, PS3™ became an entertainment mainstay in owners’ homes thanks to new music and movie streaming apps, and easily accessible digital games via the new PlayStation™ Store. The PS3 library is known for its diverse range of titles, including exclusive franchises and innovative gameplay experiences that pushed the boundaries of gaming technology.",
       "specs": ["PlayStation 3 Console", "Model: Slim /Super-SLim", "500GB HDD Storage", "2 Wireless Controllers", "1 Power Cable", "1 HDMI Cable","1 USB Cable","25-30 Games Preloaded","Games as per user choice"],
       "availability": "In Stock"
     },
@@ -139,50 +139,50 @@
     },
     {
       "id": 10,
-      "name": "AE PS5 Conductive Film Replacement Board Button Flex Cable for PS5 Wireless Controller - V2.0 BDM-020",
+      "name": "AE Replacement PS5 Board Button Flex Cable for PS5 Wireless Controller - V2.0 BDM-020",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 350 ,
       "originalPrice": 650,
       "discount": 300,
       "stock": true,
-      "images": ["images/parts/ps5/AE-PS5-FLEX-V1-1.jpg","images/parts/ps5/AE-PS5-FLEX-V1-2.jpg","images/parts/ps5/AE-PS5-FLEX-V1-3.jpg","images/parts/ps5/AE-PS5-FLEX-V1-4.jpg","images/parts/ps5/AE-PS5-FLEX-V1-5.jpg"],
+      "images": ["images/parts/ps5/AE-PS5-FLEX-V2-1.jpg","images/parts/ps5/AE-PS5-FLEX-V2-2.jpg","images/parts/ps5/AE-PS5-FLEX-V2-3.jpg","images/parts/ps5/AE-PS5-FLEX-V2-4.jpg","images/parts/ps5/AE-PS5-FLEX-V2-5.jpg"],
       "description": "High-quality conductive film replacement board button flex cable for PlayStation 5 DualSense wireless controller V2.0 model BDM-020. This AE-TECH replacement part connects all controller buttons to the main circuit board, ensuring proper button response and functionality. Essential repair component for fixing unresponsive buttons, sticky controls, or button input failures on PS5 DualSense controllers. Compatible with PS5 controller model BDM-020, professional-grade replacement part for optimal performance.",
       "specs": ["Compatible with PS5 DualSense BDM-020", "Conductive Film Board", "Button Ribbon Flex Cable", "Fixes Unresponsive Buttons", "High-Quality Replacement Part"],
       "availability": "In Stock"
     },
     {
       "id": 11,
-      "name": "Xbox Wireless Controller",
-      "brand": "Microsoft",
-      "category": "controllers",
-      "price": 4999,
-      "originalPrice": 5999,
-      "discount": 17,
+      "name": "AE Replacement PS5 Board Button Flex Cable for PS5 Wireless Controller - V3.0 BDM-030 & BDM-040",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 350,
+      "originalPrice": 599,
+      "discount": 249,
       "stock": true,
-      "image": "fab fa-xbox",
-      "description": "Precise and responsive controller with 40-hour battery life. Perfect for Xbox and PC. The Xbox Wireless Controller features premium build quality and responsive controls. With up to 40 hours of battery life, you'll have weeks of gaming before needing to recharge. Works seamlessly with Xbox consoles and Windows PC, making it the versatile choice for gamers.",
-      "specs": ["Wireless Connectivity", "40-Hour Battery Life", "Impulse Triggers", "Textured Grips", "3.5mm Jack"],
+      "images": ["images/parts/ps5/AE-PS5-FLEX-V3-1.jpg","images/parts/ps5/AE-PS5-FLEX-V3-2.jpg","images/parts/ps5/AE-PS5-FLEX-V3-3.jpg","images/parts/ps5/AE-PS5-FLEX-V3-4.jpg","images/parts/ps5/AE-PS5-FLEX-V3-5.jpg"],
+      "description": "Premium button ribbon flex cable for PlayStation 5 DualSense V3.0 and V4.0 controllers (BDM-030 and BDM-040). This AE-TECH conductive film connects the face buttons, D-pad, and function buttons to the controller PCB to restore precise inputs. Ideal for fixing unresponsive buttons, erratic inputs, or damaged flex film on DualSense pads. Built for reliable conductivity and fits the BDM-030 and BDM-040 board layouts for a clean repair.",
+      "specs": ["Fits PS5 DualSense BDM-030 & BDM-040", "Button Ribbon / Conductive Film", "Restores Face and D-Pad Inputs", "Reliable Conductivity for Repairs", "Model-Specific PCB Alignment"],
       "availability": "In Stock"
     },
     {
-      "id": 16,
-      "name": "HDMI 2.1 Cable Premium",
-      "brand": "Generic",
-      "category": "accessories",
-      "price": 999,
-      "originalPrice": 1499,
-      "discount": 33,
+      "id": 12,
+      "name": "AE Replacement PS5 Board Button Flex Cable for PS5 Wireless Controller - V1.0 BDM-010",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 350,
+      "originalPrice": 599,
+      "discount": 249,
       "stock": true,
-      "image": "fas fa-cable",
-      "description": "High-speed HDMI cable supporting 4K@120Hz. Certified and durable construction. This premium HDMI 2.1 cable supports the latest 4K gaming at 120fps. With certified construction and superior shielding, you'll get pristine video and audio quality. Perfect for connecting your gaming console to modern displays with minimal latency.",
-      "specs": ["8K Resolution Support", "2.1 Specification", "3 Meter Length", "Gold-Plated Connectors", "Certified Quality"],
+      "images": ["images/parts/ps5/AE-PS5-FLEX-V1-1.jpg","images/parts/ps5/AE-PS5-FLEX-V1-2.jpg","images/parts/ps5/AE-PS5-FLEX-V1-3.jpg","images/parts/ps5/AE-PS5-FLEX-V1-4.jpg","images/parts/ps5/AE-PS5-FLEX-V1-5.jpg"],
+      "description": "OEM-style button ribbon flex cable (conductive film) for PlayStation 5 DualSense controller V1.0 BDM-010. This flex connects the face buttons, D-pad, and function buttons to the controller PCB, restoring precise input response. Ideal for repairing unresponsive buttons, intermittent inputs, or damaged flex film on early PS5 controllers. Built for reliable conductivity and fits the BDM-010 board layout.",
+      "specs": ["Fits PS5 DualSense BDM-010", "Button Ribbon Conductive Film", "Restores Face and D-Pad Inputs", "Reliable Signal Conductivity", "Model-Specific Alignment"],
       "availability": "In Stock"
     },
     {
-      "id": 24,
-       "name": "PlayStation 2 8MB Memory Card",
-      "brand": "Sony",
+      "id": 13,
+       "name": "AE 8MB Memory Card for Sony PlayStation 2 (PS2) Console – High-Speed Game Save Card for PS2 Fat & Slim Models",
+      "brand": "AE-TECH",
       "category": "accessories",
       "price": 400,
       "originalPrice": 499,
@@ -199,8 +199,8 @@
       "availability": "In Stock"
     },
     {
-      "id": 32,
-       "name": "PlayStation 2 AV Cable ",
+      "id": 14,
+       "name": "AE PS2 & PS3 AV CVBS to 3RCA Cable For Sony Ps2 & Ps3 Console – Composite AV Cable",
       "brand": "AE-TECH",
       "category": "accessories",
       "price": 350,
@@ -212,16 +212,13 @@
         "images/ps2/ps2av 2.jpg",
         "images/ps2/ps2av 3.jpg"              
       ],
-      "description": "PlayStation AV Cable is made with high quality materials to ensure durability and video quality are met. This AV cable is compatible with multiple PlayStation models, including PS1, PS2, PS2 Slim, PS3, and PS3 Slim. Simply plug this AV cable into your PlayStation and then into your TV’s corresponding inputs. Outputs at standard resolution. Ultra thick and flexible jacket with color coded connectors to simplify installation. NOTE: This is not a HDMI Cable. If you are using this for PS3 for the first time, you need to reset the PS3 video settings. You can Google - How to reset PS3 Video Settings.",
-
-      "specs": ["Play Station AV CABLE PS AV Cable is made with high quality materials to ensure durability and video quality are met.", 
-"[WORKS FOR MULTIPLE PLAY STATION MODELS PS1, PS2, AND PS3] This AV cable is compatible with multiple PlayStation models, including PS1, PS2, PS2 slim, PS3, and PS3 slim", "[EASY TO USE] Simply plug this AV cable into your Play Station and then into your TV’s corresponding inputs. Outputs at standard resolution.", "Ultra thick and flexible jacket with color coded connectors to simplify installation."],
-
+      "description": "This AE-TECH Play Station AV CABLE PS AV Cable is made with high quality materials to ensure durability and video quality are met. This AV cable is compatible with multiple PlayStation models, including PS1, PS2, PS2 slim, PS3, and PS3 slim. Simply plug this AV cable into your Play Station and then into your TV’s corresponding inputs. Outputs at standard resolution. Ultra thick and flexible jacket with color coded connectors to simplify installation.",
+      "specs": ["Compatible with PS1, PS2, PS2 slim, PS3, and PS3 slim.", "High-quality materials for durability and video quality.", "Color-coded connectors for easy installation.", "Outputs at standard resolution.", "Ultra thick and flexible jacket."],
       "availability": "In Stock"
     },
     {
-      "id": 33,
-           "name": "PlayStation AV2HDMI Converter ",
+      "id": 15,
+      "name": "AE PS2 to HDMI Converter Adapter with 3.5mm Audio Output, High-Definition PS2 HDMI Cable Compatible with All ps2 Models",
       "brand": "AE-TECH",
       "category": "accessories",
       "price": 375,
@@ -234,452 +231,53 @@
  	      "images/accessories/av2hdmi 3.jpg",
       	"images/accessories/av2hdmi 4.jpg"              
       ],
-
-      "description": "PS2 to HDMI video converter with 3.5mm audio output for HDTV HDMI monitor supports all PS2 display modes. A converter for the PS2 console, outputs video and audio in fully digital HDMI format and supports PS2 display modes (480i.576i, 480p). With just one HDMI cable, connect and play for realistic video / audio effects on your TV / monitor. 1).Connect your HDMI cable from your TV to the PS2-to-HDMI converter unit. Connect the PS2-to-HDMI converter unit to the PS2 output. Connect the supplied USB cable from the PS2-to-HDMI converter unit to the PS2 or a USB wall adapter. The USB cable and connection provide 5V power to the unit. 2).The PS2 must setup for Component Video Output (Y Pb Pr) as opposed to RGB output. If you can't see anything on your TV when using this, you probably need to go into the Configuration Settings (load PS2 without a disc) and scroll through the options to change this. 3).Once everything is connected and powered on, switch your TV to the correct HDMI input. You should see the PS2 home screen. If you don't see anything, double-check all connections and make sure the PS2 is set to Component Video Output (Y Pb Pr).",
-
-      "specs":["Support all PS2 display modes (NTSC 480i 480p, PAL 576i).", "Synchronization of video and audio output in full digital HDMI format, without transmission loss.", "The moving images in video games are broadcast in real time, without any delay.", "Analog audio output allows you to plug in headphones to not disturb others when playing late at night.", "PS2 to HDMI Converter x 1", "USB cable x 1", "User Manual x 1"],
-
+      "description": "This AE-TECH PS2 to HDMI Converter Adapter allows you to connect your PlayStation 2 console to modern HDTVs and monitors via HDMI. It supports all PS2 display modes (NTSC 480i/480p, PAL 576i) and provides high-definition video output without any loss in quality. The adapter also features a 3.5mm audio output for connecting headphones or external speakers, ensuring an immersive gaming experience. Easy to set up and use, this converter is compatible with all PS2 models, making it a versatile accessory for retro gaming enthusiasts.",
+      "specs":["Supports all PS2 display modes (NTSC 480i/480p, PAL 576i)", "High-definition HDMI video output", "3.5mm audio output for headphones or external speakers", "Easy plug-and-play setup", "Compatible with all PS2 models"],
       "availability": "In Stock"
     },
 
 
     {
-      "id": 35,
-      "name": "144Hz Gaming Monitor 27 Inch",
-      "brand": "ASUS",
-      "category": "gear",
-      "price": 14999,
-      "originalPrice": 18999,
-      "discount": 21,
+      "id": 16,
+      "name": "AE PS5 Replacement Silicone Rubber Pad Button Pads for PS5 PlayStation 5 Controller",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 299,
+      "originalPrice": 499,
+      "discount": 200,
       "stock": true,
-      "image": "fas fa-tv",
-      "description": "High refresh rate gaming monitor with IPS panel for smooth competitive gaming. Gain the competitive edge with this 144Hz gaming monitor. The IPS panel delivers vivid colors and wide viewing angles, while the 1ms response time ensures razor-sharp responsiveness. Perfect for competitive shooters, MOBAs, and fast-paced games. Includes adjustable stand and AMD FreeSync support.",
-      "specs": ["144Hz Refresh Rate", "1ms Response Time", "FHD Resolution", "IPS Panel", "27-inch Screen"],
+      "images": ["images/parts/ps5/AE-PS5-SRS-1.jpg","images/parts/ps5/AE-PS5-SRS-2.jpg","images/parts/ps5/AE-PS5-SRS-3.jpg","images/parts/ps5/AE-PS5-SRS-4.jpg","images/parts/ps5/AE-PS5-SRS-5.jpg"],
+      "description": "High-quality silicone rubber conductive button pad set for PlayStation 5 DualSense controllers. This AE-TECH replacement kit includes the D-Pad, conductive film, and buttons, providing soft, durable, and high sensitivity repair components. Essential for fixing unresponsive or sticky buttons, restoring controller functionality. Compatible with PS5 DualSense controller models, easy installation with proper disassembly.",
+      "specs": ["Compatible with PS5 DualSense Controllers", "Silicone Rubber Conductive Pads", "Includes D-Pad and Buttons", "Soft and Durable Material", "High Sensitivity Repair Kit"],
       "availability": "In Stock"
     },
     {
-      "id": 36,
-      "name": "4K Gaming TV 55 Inch HDR",
-      "brand": "Samsung",
-      "category": "gear",
-      "price": 34999,
-      "originalPrice": 44999,
-      "discount": 22,
+      "id": 17,
+      "name": "AE R2-L2 L1-R1 Replacement Cable Ribbon Strip for Playstation 5 Controller Trigger Button (Left and Right Button)",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 450,
+      "originalPrice": 750,
+      "discount": 300,
       "stock": true,
-      "image": "fas fa-tv",
-      "description": "Premium 4K TV with HDMI 2.1 and 120Hz support for next-gen console gaming. Transform your gaming room with this stunning 4K TV featuring HDMI 2.1 connectivity and 120Hz refresh rate. Enjoy next-gen console gaming at its finest with 4K resolution, HDR support, and minimal input lag. The quantum dot technology delivers exceptional color accuracy and brightness.",
-      "specs": ["4K Resolution", "120Hz Refresh", "HDMI 2.1", "55-inch Screen", "Quantum Dot Tech"],
+      "images": ["images/parts/ps5/AE-L1L2R1R2-V1-FLEX-1.jpg","images/parts/ps5/AE-L1L2R1R2-V1-FLEX-2.jpg","images/parts/ps5/AE-L1L2R1R2-V1-FLEX-3.jpg","images/parts/ps5/AE-L1L2R1R2-V1-FLEX-4.jpg"],
+      "description": "High-quality replacement ribbon cable strip for PlayStation 5 DualSense controller trigger buttons (L1, L2, R1, R2). This AE-TECH flex cable connects the trigger buttons to the main circuit board, ensuring proper button response and functionality. Essential repair component for fixing unresponsive triggers, sticky controls, or button input failures on PS5 DualSense controllers. Compatible with PS5 DualSense controller models, professional-grade replacement part for optimal performance.",
+      "specs": ["Compatible with PS5 DualSense Controllers", "Ribbon Cable Strip for L1, L2, R1, R2 Buttons", "Fixes Unresponsive Trigger Buttons", "High-Quality Replacement Part", "Professional Repair Component"],
       "availability": "In Stock"
     },
     {
-      "id": 37,
-      "name": "PlayStation 2 USB Modded 250GB/320GB",
-      "brand": "Sony",
-      "category": "consoles",
-      "price": 7500,
-      "originalPrice": 9500,
-      "discount": 2000,
+      "id": 18,
+      "name": "AE R2-L2 L1-R1 Replacement Cable Ribbon Strip for Playstation 5 Controller Trigger Button V3.0 & V4.0 BDM-030 & BDM-040",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 450 ,
+      "originalPrice": 750,
+      "discount": 300,
       "stock": true,
-      "image": "fas fa-playstation",
-      "description": "Enhanced PlayStation 2 console with USB mod and massive storage. Play hundreds of PS2 classics with this upgraded console featuring USB modding and 250GB or 320GB storage capacity. Enjoy backward compatibility with PS1 games and DVD playback. Perfect for retro gaming enthusiasts who want an extensive game library at their fingertips.",
-      "specs": ["PlayStation 2 Console", "Model 70xxx / 90xxx", "USB Modded", "250GB/320GB HDD Storage", "Includes 2 Controllers", "Memory Card Included", "Power and AV Cables", "Pre-loaded Games"],
+      "images": ["images/parts/ps5/AE-L1L2R1R2-V3-FLEX-1.jpg","images/parts/ps5/AE-L1L2R1R2-V3-FLEX-2.jpg","images/parts/ps5/AE-L1L2R1R2-V3-FLEX-3.jpg","images/parts/ps5/AE-L1L2R1R2-V3-FLEX-4.jpg","images/parts/ps5/AE-L1L2R1R2-V3-FLEX-5.jpg"],
+      "description": "High-quality replacement ribbon cable strip for PlayStation 5 DualSense controller trigger buttons (L1, L2, R1, R2) for V3.0 and V4.0 models (BDM-030 & BDM-040). This AE-TECH flex cable connects the trigger buttons to the main circuit board, ensuring proper button response and functionality. Essential repair component for fixing unresponsive triggers, sticky controls, or button input failures on PS5 DualSense controllers. Compatible with PS5 DualSense controller models BDM-030 & BDM-040, professional-grade replacement part for optimal performance.",
+      "specs": ["Compatible with PS5 DualSense BDM-030 & BDM-040", "Ribbon Cable Strip for L1, L2, R1, R2 Buttons", "Fixes Unresponsive Trigger Buttons", "High-Quality Replacement Part", "Professional Repair Component"],
       "availability": "In Stock"
-    },
-    {
-      "id": 38,
-      "name": "PlayStation 3 Super Slim 500GB (Refurbished)",
-      "brand": "Sony",
-      "category": "consoles",
-      "price": 15500,
-      "originalPrice": 17500,
-      "discount": 2000,
-      "stock": true,
-      "image": "fas fa-playstation",
-      "description": "The most compact PlayStation 3 model with enhanced efficiency and quieter operation. This Super Slim model features a sliding disc cover design and reduced power consumption. Enjoy Blu-ray gaming, streaming services, and access to PlayStation Network. Perfect for both gaming and multimedia entertainment in your living room.",
-      "specs": ["PlayStation 3 Super Slim Console", "500GB HDD Storage", "2 Wireless Controllers", "1 Power Cable", "1 HDMI Cable", "1 USB Cable", "25-30 Games Preloaded", "Games as per user choice"],
-      "availability": "In Stock"
-    },
-    {
-      "id": 39,
-      "name": "PlayStation 4 Fat 1TB (Refurbished)",
-      "brand": "Sony",
-      "category": "consoles",
-      "price": 25000,
-      "originalPrice": 28000,
-      "discount": 3000,
-      "stock": true,
-      "image": "fas fa-playstation",
-      "description": "Original PlayStation 4 model with massive 1TB storage capacity. The iconic first-generation PS4 console delivers stunning HD gaming and exclusive PlayStation titles. With 1TB storage, you'll have plenty of space for your favorite games. Experience the PlayStation ecosystem with access to PlayStation Plus, PlayStation VR compatibility, and shareplay features.",
-      "specs": ["PlayStation 4 Fat Console", "1TB HDD Storage", "1 DualShock 4 Controller", "1 Power Cable", "1 HDMI Cable", "1 USB Cable", "Full HD 1080p Gaming", "PlayStation Plus Compatible"],
-      "availability": "In Stock"
-    },
-    {
-      "id": 40,
-      "name": "PlayStation 4 Slim 1TB (Refurbished)",
-      "brand": "Sony",
-      "category": "consoles",
-      "price": 28000,
-      "originalPrice": 31000,
-      "discount": 3000,
-      "stock": true,
-      "image": "fas fa-playstation",
-      "description": "Sleek and compact PS4 Slim with 1TB storage for extensive game library. The PS4 Slim delivers the same powerful gaming performance in a smaller, more energy-efficient design. With 1TB storage, install all your favorite AAA titles and indie games. Enjoy exclusive PlayStation games, HDR support, and seamless online multiplayer gaming.",
-      "specs": ["PlayStation 4 Slim Console", "1TB HDD Storage", "1 DualShock 4 Controller", "1 Power Cable", "1 HDMI Cable", "HDR Support", "Compact Design", "Energy Efficient"],
-      "availability": "In Stock"
-    },
-    {
-      "id": 41,
-      "name": "PlayStation 4 Pro 1TB (Refurbished)",
-      "brand": "Sony",
-      "category": "consoles",
-      "price": 32000,
-      "originalPrice": 35000,
-      "discount": 3000,
-      "stock": true,
-      "image": "fas fa-playstation",
-      "description": "Premium PS4 Pro with 4K gaming capabilities and enhanced performance. Experience gaming at its finest with PS4 Pro's 4K resolution and HDR support. The upgraded GPU delivers smoother frame rates and enhanced graphics. With 1TB storage and PlayStation VR compatibility, this is the ultimate PlayStation 4 experience for serious gamers.",
-      "specs": ["PlayStation 4 Pro Console", "1TB HDD Storage", "4K Gaming Support", "HDR Compatible", "1 DualShock 4 Controller", "1 Power Cable", "1 HDMI Cable", "PlayStation VR Ready"],
-      "availability": "In Stock"
-    },
-    {
-      "id": 42,
-      "name": "Xbox 360 RGH 500GB (Refurbished)",
-      "brand": "Microsoft",
-      "category": "consoles",
-      "price": 14500,
-      "originalPrice": 16500,
-      "discount": 2000,
-      "stock": true,
-      "image": "fab fa-xbox",
-      "description": "Modified Xbox 360 with RGH (Reset Glitch Hack) and 500GB storage. This custom-modified Xbox 360 features RGH modification allowing homebrew applications and extensive customization. With 500GB storage, enjoy a massive library of Xbox 360 classics. Perfect for retro gaming enthusiasts who want the ultimate Xbox 360 experience.",
-      "specs": ["Xbox 360 Console", "RGH Modified", "500GB HDD Storage", "2 Wireless Controllers", "1 Power Supply", "1 HDMI Cable", "Pre-loaded Games", "Homebrew Capable"],
-      "availability": "In Stock"
-    },
-    
-  {
-    "id": 45,
-    "name": "PlayStation 4 DualShock 4 Controller (Original Style)",
-    "brand": "Sony",
-    "category": "controllers",
-    "price": 1500,
-    "originalPrice": 2000,
-    "discount": 500,
-    "stock": true,
-    "images": ["images/products/ps4_controller_45.jpg"],
-    "description": "Original-style PlayStation 4 DualShock 4 wireless controller designed for accurate gameplay, responsive button feedback, and comfortable long-hour gaming. Ideal as a replacement or spare controller with full feature support including touchpad, motion sensors, vibration, and precise analog sticks.",
-    "specs": [
-      "Wireless Bluetooth connectivity",
-      "Built-in touchpad and motion sensors",
-      "Dual vibration motors",
-      "Rechargeable lithium-ion battery"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-gamepad"
-  },
-  {
-    "id": 46,
-    "name": "Sony Playstation 4 PS4 Fat Console Model CUH-10XXA CUH-11XXA Power Fan Replacement",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 1299,
-    "originalPrice": 1999,
-    "discount": 700,
-    "stock": true,
-    "images": ["images/parts/ps4/ps4 fan fat small pin 1.jpg","images/parts/ps4/ps4 fan fat small pin 2.jpg","images/parts/ps4/ps4 fan fat small pin 1.jpg","images/parts/ps4/ps4 fan fat small pin 1.jpg","images/parts/ps4/ps4 fan fat small pin 1.jpg"],
-    "description": "Internal fan For PS4 Fat 100xx and 11xx model only. High-quality cooling fan replacement specially designed for Sony Playstation 4 PS4 Fat Console Model CUH-10XXA CUH-11XXA Power Fan Replacement. Restores proper airflow, reduces overheating, and minimizes loud fan noise caused by worn or damaged internal fans.",
-    "specs": [
-      "High-speed cooling performance",
-      "Compatible with PS4 Fat model",
-      "Reduces overheating and noise"
-    ],
-    "availability": "In Stock"
-   
-  },
-  {
-    "id": 47,
-    "name": "Sony Playstation 4 PS4 Slim Console Fan Replacement, All Slim Model",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 1399,
-    "originalPrice": 2199,
-    "discount": 800,
-    "stock": true,
-    "images": ["images/parts/ps4/ps4 fan slim 1.jpg","images/parts/ps4/ps4 fan slim 2.jpg","images/parts/ps4/ps4 fan slim 3.jpg","images/parts/ps4/ps4 fan slim 4.jpg","images/parts/ps4/ps4 fan slim 5.jpg"],
-    "description": "Brand New Internal CPU GPU Cooling Cooler Fan Replacement Part for SONY Playstation 4 PS4 Slim Console CUH-2015A CUH-2016A CUH-2017A CUH-20XX Warning: This Fan Only Fits for PS4 Slim Console, Does Not Fit for Playstation 4 Other Models.Precision-engineered cooling fan replacement for PlayStation 4 Slim consoles. Helps maintain optimal internal temperature, improves cooling efficiency, and ensures smooth and quiet console operation.If the cooling fan of your PlayStation 4 is broken or is making a lot of noise and starts overheating you should replace it.Original Internal fan for PS4 Pro 7000-7500 consoles model only. Note: This item only fit for PS4 Pro 7000-7500 consoles, not for PS4 Fat and PS4 Slim.",
-    "specs": [
-      "Optimized airflow design",
-      "Compatible with PS4 Slim",
-      "Low-noise operation"
-    ],
-    "availability": "In Stock"
-    
-  },
-  {
-    "id": 48,
-    "name": "Sony Playstation 4 Pro Console Model 70XX Nidec",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 1599,
-    "originalPrice": 2499,
-    "discount": 900,
-    "stock": true,
-    "images": ["images/parts/ps4/ps4_pro_fan_1.jpg","images/parts/ps4/ps4_pro_fan_2.jpg","images/parts/ps4/ps4_pro_fan_3.jpg","images/parts/ps4/ps4_pro_fan_4.jpg","images/parts/ps4/ps4_pro_fan_5.jpg"],
-    "description": "Heavy-duty cooling fan replacement for PlayStation 4 Pro systems. Designed to handle higher thermal output, ensuring efficient heat dissipation and stable performance during intensive gaming sessions.",
-    "specs": [
-      "High RPM cooling fan",
-      "Compatible with PS4 Pro",
-      "Improves thermal stability"
-    ],
-    "availability": "In Stock"
-  },
-  {
-    "id": 49,
-    "name": "Sony PlayStation 4 PS4 CUH-11XXA CUH-11XXB Models Original Power Supply ADP-240CR Replacement",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 4500,
-    "originalPrice": 6000,
-    "discount": 1500,
-    "stock": true,
-    "images": ["images/parts/ps4/ps4-240cr-1.jpg","images/parts/ps4/ps4-240cr-2.jpg"],
-    "description": "Reliable power supply unit replacement for PlayStation 4 Fat consoles. Provides stable voltage output and protects the system from power fluctuations, restoring proper startup and consistent power performance.Replacement Power Supply for Sony PS4 System Model: 240CR (4 Pins) Please check your power supply model before purchase Professional installation is recommended.",
-    "specs": [
-      "Stable voltage output",
-      "Compatible with PS4 Fat",
-      "Over-voltage and surge protection"
-    ],
-    "availability": "In Stock"
-  },
-
-  {
-    "id": 50,
-    "name": "PlayStation 4 Slim Power Supply",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 3199,
-    "originalPrice": 4799,
-    "discount": 1600,
-    "stock": true,
-    "images": ["images/products/ps4_slim_psu_50.jpg"],
-    "description": "High-efficiency power supply replacement for PlayStation 4 Slim models. Built for consistent and safe power delivery to fix no power, random shutdown, or unstable console issues.",
-    "specs": [
-      "Efficient power conversion",
-      "Compatible with PS4 Slim",
-      "Built-in safety protection"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-bolt"
-  },
-  {
-    "id": 51,
-    "name": "PlayStation 4 Pro Power Supply",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 3499,
-    "originalPrice": 5299,
-    "discount": 1800,
-    "stock": true,
-    "images": ["images/products/ps4_pro_psu_51.jpg"],
-    "description": "High-capacity power supply unit designed specifically for PlayStation 4 Pro consoles. Engineered to support higher power demands while ensuring safe, stable, and long-lasting operation.",
-    "specs": [
-      "High wattage output",
-      "Compatible with PS4 Pro",
-      "Durable internal components"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-bolt"
-  },
-  {
-    "id": 52,
-    "name": "PlayStation 4 HDMI Port Replacement (Fat / Slim / Pro)",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 499,
-    "originalPrice": 999,
-    "discount": 500,
-    "stock": true,
-    "images": ["images/products/ps4_hdmi_port_52.jpg"],
-    "description": "Premium HDMI port replacement compatible with PlayStation 4 Fat, Slim, and Pro models. Ideal for fixing no display, flickering screen, or damaged HDMI port issues. Professional soldering recommended.",
-    "specs": [
-      "Compatible with all PS4 models",
-      "High-quality HDMI connector",
-      "Requires soldering installation"
-    ],
-    "availability": "In Stock"
-    
-  },
-  {
-    "id": 53,
-    "name": "PlayStation 4 Controller Flex V1",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 199,
-    "originalPrice": 399,
-    "discount": 200,
-    "stock": true,
-    "images": ["images/products/ps4_flex_v1_53.jpg"],
-    "description": "Replacement flex ribbon cable for PlayStation 4 DualShock 4 V1 controllers. Designed to restore proper button response and fix unresponsive or malfunctioning controls.",
-    "specs": [
-      "Compatible with DualShock 4 V1",
-      "Restores button functionality",
-      "Flexible PCB design"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-tools"
-  },
-  {
-    "id": 54,
-    "name": "PlayStation 4 Controller Flex V2",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 219,
-    "originalPrice": 429,
-    "discount": 210,
-    "stock": true,
-    "images": ["images/products/ps4_flex_v2_54.jpg"],
-    "description": "High-quality flex ribbon replacement for PlayStation 4 DualShock 4 V2 controllers. Ensures reliable internal connections and smooth button response after wear or damage.",
-    "specs": [
-      "Compatible with DualShock 4 V2",
-      "Improves button response",
-      "Durable flex material"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-tools"
-  },
-  {
-    "id": 55,
-    "name": "PlayStation 4 Controller Power Flex 10 Pin",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 149,
-    "originalPrice": 299,
-    "discount": 150,
-    "stock": true,
-    "images": ["images/products/ps4_power_flex_10pin_55.jpg"],
-    "description": "Durable 10-pin power flex cable replacement for PlayStation 4 controllers. Helps resolve charging issues and unstable power connections caused by damaged flex cables.",
-    "specs": [
-      "10-pin connector",
-      "Stable power transmission",
-      "High durability flex cable"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-tools"
-  },
-  {
-    "id": 56,
-    "name": "PlayStation 4 Controller Power Flex 12 Pin",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 169,
-    "originalPrice": 329,
-    "discount": 160,
-    "stock": true,
-    "images": ["images/products/ps4_power_flex_12pin_56.jpg"],
-    "description": "Replacement 12-pin power flex cable for PlayStation 4 controllers. Designed to restore proper charging and consistent power flow.",
-    "specs": [
-      "12-pin connector",
-      "Reliable charging support",
-      "Flexible PCB construction"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-tools"
-  },
-  {
-    "id": 57,
-    "name": "PlayStation 4 Controller Power Flex 14 Pin",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 179,
-    "originalPrice": 349,
-    "discount": 170,
-    "stock": true,
-    "images": ["images/products/ps4_power_flex_14pin_57.jpg"],
-    "description": "High-quality 14-pin power flex cable replacement for compatible PlayStation 4 controllers. Ensures secure power connection and resolves controller power failures.",
-    "specs": [
-      "14-pin connector",
-      "Secure power transmission",
-      "Compatible with select DS4 models"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-tools"
-  },
-  {
-    "id": 58,
-    "name": "PlayStation 4 Controller V1 Battery",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 499,
-    "originalPrice": 899,
-    "discount": 400,
-    "stock": true,
-    "images": ["images/products/ps4_battery_v1_58.jpg"],
-    "description": "Rechargeable lithium-ion battery replacement for PlayStation 4 DualShock 4 V1 controllers. Restores original battery life and ensures longer gaming sessions between charges.",
-    "specs": [
-      "Lithium-ion battery",
-      "Compatible with DS4 V1",
-      "Long-lasting performance"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-battery-half"
-  },
-  {
-    "id": 59,
-    "name": "PlayStation 4 Controller V2 Battery",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 549,
-    "originalPrice": 949,
-    "discount": 400,
-    "stock": true,
-    "images": ["images/products/ps4_battery_v2_59.jpg"],
-    "description": "Premium rechargeable battery replacement for PlayStation 4 DualShock 4 V2 controllers. Designed for stable power output and extended gameplay time.",
-    "specs": [
-      "Lithium-ion battery",
-      "Compatible with DS4 V2",
-      "Stable power delivery"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-battery-half"
-  },
-  {
-    "id": 60,
-    "name": "PlayStation 4 Controller Rubber Set",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 199,
-    "originalPrice": 399,
-    "discount": 200,
-    "stock": true,
-    "images": ["images/products/ps4_rubber_set_60.jpg"],
-    "description": "Complete rubber button and contact replacement set for PlayStation 4 controllers. Restores original button feel and improves responsiveness for worn-out controllers.",
-    "specs": [
-      "Soft-touch rubber material",
-      "Improves button sensitivity",
-      "Complete internal rubber set"
-    ],
-    "availability": "In Stock",
-    "icon": "fas fa-tools"
-  },
-  {
-    "id": 61,
-    "name": "PlayStation 4 Controller USB Port",
-    "brand": "Sony",
-    "category": "parts",
-    "price": 249,
-    "originalPrice": 499,
-    "discount": 250,
-    "stock": true,
-    "images": ["images/products/ps4_usb_port_61.jpg"],
-    "description": "Micro USB charging port replacement for PlayStation 4 DualShock controllers. Ideal for fixing loose ports, charging issues, or damaged connectors. Soldering required.",
-    "specs": [
-      "Micro USB connector",
-      "Fixes charging and connection issues",
-      "Requires soldering installation"
-    ],
-    "availability": "In Stock"
-    
-  }
-
-
+    }
   ]
 }
