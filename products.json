@@ -521,6 +521,62 @@
         
       ],
       "availability": "In Stock"
+    },
+    {
+      "id": 34,
+      "name": "AE PS4 Internal Power Supply, ADP-160FR Built-in Replacement Power Supply,(4-pin)",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 5500,
+      "originalPrice": 8000,  
+      "discount": 500,
+      "stock": true,
+      "images": ["images/parts/ps4/ae-ps4-adp160fr-1.jpg","images/parts/ps4/ae-ps4-adp160fr-2.jpg"],
+      "description": "This AE-TECH Internal Power Supply Replacement is designed for PS4 Console models with ADP-160FR (4-pin) power supply. It provides reliable power to ensure your console operates smoothly and efficiently. The power supply is easy to install and is built to last, making it an essential component for maintaining your PS4's performance.",
+      "specs": ["Internal Power Supply", "Compatible with PS4 Console ADP-160FR (4-pin)", "Reliable Power Delivery", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 35,
+      "name": "AE PS5 Internal Power Supply, ADP-400ER Built-in Replacement Power Supply",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 7500,
+      "originalPrice": 10500,
+      "discount": 3000,
+      "stock": true,
+      "images": ["images/parts/ps5/ae-ps5-400er-1.jpg","images/parts/ps5/ae-ps5-400er-2.jpg","images/parts/ps5/ae-ps5-400er-3.jpg","images/parts/ps5/ae-ps5-400er-4.jpg"],  
+      "description": "This AE-TECH Internal Power Supply Replacement is designed for PS5 Console models with ADP-400ER power supply. It provides reliable power to ensure your console operates smoothly and efficiently. The power supply is easy to install and is built to last, making it an essential component for maintaining your PS5's performance.",
+      "specs": ["Internal Power Supply", "Compatible with PS5 Console ADP-400ER", "Reliable Power Delivery", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+     {
+      "id": 36,
+      "name": "AE PS5 Internal Power Supply, ADP-400FR Built-in Replacement Power Supply",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 7500,
+      "originalPrice": 10500,
+      "discount": 3000,
+      "stock": true,
+      "images": ["images/parts/ps5/ae-ps5-400fr-1.jpg","images/parts/ps5/ae-ps5-400fr-2.jpg","images/parts/ps5/ae-ps5-400fr-3.jpg","images/parts/ps5/ae-ps5-400fr-4.jpg"],  
+      "description": "This AE-TECH Internal Power Supply Replacement is designed for PS5 Console models with ADP-400FR power supply. It provides reliable power to ensure your console operates smoothly and efficiently. The power supply is easy to install and is built to last, making it an essential component for maintaining your PS5's performance.",
+      "specs": ["Internal Power Supply", "Compatible with PS5 Console ADP-400FR", "Reliable Power Delivery", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 37,
+      "name": "AE PS5 Slim Internal Power Supply, ADP-400GR Built-in Replacement Power Supply",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 8500,
+      "originalPrice": 10500,
+      "discount": 2000,
+      "stock": true,
+      "images": ["images/parts/ps5/ae-ps5-400gr-1.jpg","images/parts/ps5/ae-ps5-400gr-2.jpg","images/parts/ps5/ae-ps5-400gr-3.jpg","images/parts/ps5/ae-ps5-400gr-4.jpg"],  
+      "description": "This AE-TECH Internal Power Supply Replacement is designed for PS5 Console models with ADP-400GR power supply. It provides reliable power to ensure your console operates smoothly and efficiently. The power supply is easy to install and is built to last, making it an essential component for maintaining your PS5's performance.",
+      "specs": ["Internal Power Supply", "Compatible with PS5 Console ADP-400GR", "Reliable Power Delivery", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
     }
   ]
 }
