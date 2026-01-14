@@ -10,11 +10,10 @@
       "discount": 2000,
       "stock": true,
        "images": [
-        "images/ps2/ps21.jpg",
-        "images/ps2/ps22.png",
-        "images/ps2/ps23.png",
-        "images/ps2/ps24.png",
-        "images/ps2/ps25.png"        
+        "images/console/ps2/ae-ps2-slim-1.jpg",
+        "images/console/ps2/ae-ps2-slim-2.png",
+        "images/console/ps2/ae-ps2-slim-3.png",
+        "images/console/ps2/ae-ps2-slim-4.png"      
       ],
       "description": "The PlayStation® 2 generation included giant steps forward in home console gaming, with augmented reality, online multiplayer gaming, and more ambitious, large-scale games on DVD discs. Offering users cutting-edge gaming, DVD playback, online functionality, and backward compatibility with original PlayStation discs, the PS2 console represented an irresistible package at launch and throughout its lifespan. The PS2 library is one of the most diverse and expansive in gaming history, with thousands of titles spanning every genre imaginable, from iconic franchises to hidden gems. The console's longevity and continued popularity among gamers worldwide are a testament to its enduring appeal and the unforgettable experiences it provided.",
       "specs": ["PlayStation 2 Console", "Model 70xxx / 90xxx","USB Modded", "Includes 2 Controllers", "64GB Pendrive with Games", "Memory Card Included","power and AV Cables"],
@@ -22,7 +21,7 @@
     },
     {
       "id": 2,
-      "name": "PlayStation 3 Slim 500gb ( Refurbuished )",
+      "name": "Sony PlayStation 3 Slim Jailbroken 500gb Hard-Drive ( Refurbuished Model)",
       "brand": "Sony",
       "category": "consoles",
       "price": 14500,
@@ -30,9 +29,9 @@
       "discount": 1000,
       "stock": true,
       "images": [
-        "images/ps3/ps3s1.png",
-        "images/ps3/ps3s2.png",
-        "images/ps3/ps3s3.png"        
+        "images/console/ps3/ae-ps3-slim-1.png",
+        "images/console/ps3/ae-ps3-slim-2.png",
+        "images/console/ps3/ae-ps3-slim-3.png"        
       ],
       "description": "The PlayStation® 3 era built on the legacy of previous generations with incredible leaps forward in online gaming and digital services, while the arrival of Blu-ray Disc games allowed creators to expand their ambitions and build truly immersive game worlds on a grand scale. The PS3 console delivered cutting-edge graphics, a robust online ecosystem, and multimedia capabilities that transformed the living room experience. As well as introducing gamers to incredible single-player adventures and revolutionary online experiences, PS3™ became an entertainment mainstay in owners’ homes thanks to new music and movie streaming apps, and easily accessible digital games via the new PlayStation™ Store. The PS3 library is known for its diverse range of titles, including exclusive franchises and innovative gameplay experiences that pushed the boundaries of gaming technology.",
       "specs": ["PlayStation 3 Console", "Model: Slim /Super-SLim", "500GB HDD Storage", "2 Wireless Controllers", "1 Power Cable", "1 HDMI Cable","1 USB Cable","25-30 Games Preloaded","Games as per user choice"],
@@ -189,10 +188,10 @@
       "discount": 99,
       "stock": true,
        "images": [
-        "images/ps2/ps2mc1.jpg",
-        "images/ps2/ps2mc2.jpg",
-        "images/ps2/ps2mc3.jpg",
-        "images/ps2/ps2mc4.jpg"             
+        "images/accessories/ps2/ps2mc1.jpg",
+        "images/accessories/ps2/ps2mc2.jpg",
+        "images/accessories/ps2/ps2mc3.jpg",
+        "images/accessories/ps2/ps2mc4.jpg"             
       ],
       "description": "This memory card is exclusively for PS-2 and gives real 8MB memory on a single card. Used for archiving the game process, to save the game progress 100% compatible with the memory card. This card is compatible for all version of the Sony PS2. Can works with both the standard PS2 and PS2 Slim version., this is the generic third party manufacture card not original Sony Manufacture Easy to use, just plug in and play. Packing Includes: 1 x Memory Card",
       "specs": ["This memory card is exclusively for PS2 and gives real 8MB memory on a single card.", "Used for archiving the game process, to save the game progress 100% compatible with the memory card.", "This card is compatible for all version of the Sony PS2. Can works with both the standard PS2 and PS2 Slim version.", "Easy to use, just plug in and play.", "Packing Includes: 1 x Memory Card"],
@@ -208,9 +207,9 @@
       "discount": 150,
       "stock": true,
        "images": [
-        "images/ps2/ps2av 1.jpg",
-        "images/ps2/ps2av 2.jpg",
-        "images/ps2/ps2av 3.jpg"              
+        "images/accessories/ps2/ps2av 1.jpg",
+        "images/accessories/ps2/ps2av 2.jpg",
+        "images/accessories/ps2/ps2av 3.jpg"              
       ],
       "description": "This AE-TECH Play Station AV CABLE PS AV Cable is made with high quality materials to ensure durability and video quality are met. This AV cable is compatible with multiple PlayStation models, including PS1, PS2, PS2 slim, PS3, and PS3 slim. Simply plug this AV cable into your Play Station and then into your TV’s corresponding inputs. Outputs at standard resolution. Ultra thick and flexible jacket with color coded connectors to simplify installation.",
       "specs": ["Compatible with PS1, PS2, PS2 slim, PS3, and PS3 slim.", "High-quality materials for durability and video quality.", "Color-coded connectors for easy installation.", "Outputs at standard resolution.", "Ultra thick and flexible jacket."],
@@ -226,10 +225,10 @@
       "discount": 125,
       "stock": true,
        "images": [
-        "images/accessories/av2hdmi 1.jpg",
-        "images/accessories/av2hdmi 2.jpg",
- 	      "images/accessories/av2hdmi 3.jpg",
-      	"images/accessories/av2hdmi 4.jpg"              
+        "images/accessories/ps2/av2hdmi 1.jpg",
+        "images/accessories/ps2/av2hdmi 2.jpg",
+ 	      "images/accessories/ps2/av2hdmi 3.jpg",
+      	"images/accessories/ps2/av2hdmi 4.jpg"              
       ],
       "description": "This AE-TECH PS2 to HDMI Converter Adapter allows you to connect your PlayStation 2 console to modern HDTVs and monitors via HDMI. It supports all PS2 display modes (NTSC 480i/480p, PAL 576i) and provides high-definition video output without any loss in quality. The adapter also features a 3.5mm audio output for connecting headphones or external speakers, ensuring an immersive gaming experience. Easy to set up and use, this converter is compatible with all PS2 models, making it a versatile accessory for retro gaming enthusiasts.",
       "specs":["Supports all PS2 display modes (NTSC 480i/480p, PAL 576i)", "High-definition HDMI video output", "3.5mm audio output for headphones or external speakers", "Easy plug-and-play setup", "Compatible with all PS2 models"],
@@ -277,6 +276,106 @@
       "images": ["images/parts/ps5/AE-L1L2R1R2-V3-FLEX-1.jpg","images/parts/ps5/AE-L1L2R1R2-V3-FLEX-2.jpg","images/parts/ps5/AE-L1L2R1R2-V3-FLEX-3.jpg","images/parts/ps5/AE-L1L2R1R2-V3-FLEX-4.jpg","images/parts/ps5/AE-L1L2R1R2-V3-FLEX-5.jpg"],
       "description": "High-quality replacement ribbon cable strip for PlayStation 5 DualSense controller trigger buttons (L1, L2, R1, R2) for V3.0 and V4.0 models (BDM-030 & BDM-040). This AE-TECH flex cable connects the trigger buttons to the main circuit board, ensuring proper button response and functionality. Essential repair component for fixing unresponsive triggers, sticky controls, or button input failures on PS5 DualSense controllers. Compatible with PS5 DualSense controller models BDM-030 & BDM-040, professional-grade replacement part for optimal performance.",
       "specs": ["Compatible with PS5 DualSense BDM-030 & BDM-040", "Ribbon Cable Strip for L1, L2, R1, R2 Buttons", "Fixes Unresponsive Trigger Buttons", "High-Quality Replacement Part", "Professional Repair Component"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 19,
+      "name": "Sony PlayStation 3 Super-Slim Jailbroken 500gb Hard-Drive ( Refurbuished Model)",
+      "brand": "Sony",
+      "category": "consoles",
+      "price": 14500,
+      "originalPrice": 15500,
+      "discount": 1000,
+      "stock": true,
+      "images": [
+        "images/console/ps3/ae-ps3-superslim-1.png"],
+      "description": "The PlayStation® 3 era built on the legacy of previous generations with incredible leaps forward in online gaming and digital services, while the arrival of Blu-ray Disc games allowed creators to expand their ambitions and build truly immersive game worlds on a grand scale. The PS3 console delivered cutting-edge graphics, a robust online ecosystem, and multimedia capabilities that transformed the living room experience. As well as introducing gamers to incredible single-player adventures and revolutionary online experiences, PS3™ became an entertainment mainstay in owners’ homes thanks to new music and movie streaming apps, and easily accessible digital games via the new PlayStation™ Store. The PS3 library is known for its diverse range of titles, including exclusive franchises and innovative gameplay experiences that pushed the boundaries of gaming technology.",
+      "specs": ["PlayStation 3 Console", "Model: Slim /Super-SLim", "500GB HDD Storage", "2 Wireless Controllers", "1 Power Cable", "1 HDMI Cable","1 USB Cable","25-30 Games Preloaded","Games as per user choice"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 20,
+      "name": "AE DualShock-2 Controller for PlayStation 2 | Vibration Feedback, Analog Sticks, Wired|",
+      "brand": "AE-TECH",
+      "category": "accessories",
+      "price": 350,
+      "originalPrice": 500,
+      "discount": 150,
+      "stock": true,
+      "images": [
+        "images/accessories/ps2/ae-ps2-ds2.png"],
+      "description": "The PlayStation® 2 DualShock controller offers precise control and immersive gameplay with its vibration feedback and analog sticks. Designed for comfort and durability, this wired controller is perfect for enhancing your gaming experience on the PlayStation 2 console.",
+      "specs": ["Wired DualShock Controller", "Vibration Feedback", "Analog Sticks", "Compatible with PlayStation 2", "Black Color"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 21,
+      "name": "AE DualShock-3 Controller for PlayStation 3 | Vibration, Analog Sticks, Bluetooth |",
+      "brand": "AE-TECH",
+      "category": "accessories",
+      "price": 900,
+      "originalPrice": 1500,
+      "discount": 600,
+      "stock": true,
+      "images": ["images/accessories/ps3/ae-ps3-ds3-2.jpg","images/accessories/ps3/ae-ps3-ds3-1.jpg","images/accessories/ps3/ae-ps3-ds3-3.jpg","images/accessories/ps3/ae-ps3-ds3-4.jpg"],
+      "description": "The PlayStation® 3 DualShock controller offers precise control and immersive gameplay with its vibration feedback and analog sticks. Designed for comfort and durability, this wired controller is perfect for enhancing your gaming experience on the PlayStation 3 console.",
+      "specs": ["Wireless DualShock-3 Controller", "Vibration Feedback", "Analog Sticks", "Compatible with PlayStation 3", "Black Color"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 22,
+      "name": "AE DualShock-4 Controller for PlayStation 4 | Vibration, Analog Sticks, Bluetooth |",
+      "brand": "AE-TECH",
+      "category": "accessories",
+      "price": 1500,
+      "originalPrice": 2500,
+      "discount": 1000,
+      "stock": true,
+      "images": ["images/accessories/ps4/ae-ps4-ds4-1.jpg","images/accessories/ps4/ae-ps4-ds4-2.jpg","images/accessories/ps4/ae-ps4-ds4-1.png","images/accessories/ps4/ae-ps4-ds4-2.png"],
+      "description": "The PlayStation® 4 DualShock controller offers precise control and immersive gameplay with its vibration feedback and analog sticks. Designed for comfort and durability, this wired controller is perfect for enhancing your gaming experience on the PlayStation 4 console.",
+      "specs": ["Wireless DualShock-4 Controller", "Vibration Feedback", "Analog Sticks", "Compatible with PlayStation 4", "Black Color"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 23,
+      "name": "AE 5 Pin Mini USB 2.0 Type A to Mini B Cable Compatible with PS3 Controller, MP3 Player, Digital Camera (Black)",
+      "brand": "AE-TECH",
+      "category": "accessories",
+      "price": 299,
+      "originalPrice": 450,
+      "discount": 151,
+      "stock": true,
+      "images": ["images/accessories/ps3/ae-ps3-usb-cable-1.jpg","images/accessories/ps3/ae-ps3-usb-cable-2.jpg","images/accessories/ps3/ae-ps3-usb-cable-3.jpg","images/accessories/ps3/ae-ps3-usb-cable-4.jpg","images/accessories/ps3/ae-ps3-usb-cable-5.jpg"],
+      "description": "This AE-TECH 5 Pin Mini USB 2.0 Type A to Mini B Cable is designed for connecting your PlayStation 3 controller, MP3 player, digital camera, and other compatible devices to your computer or charger. With a length of 1.5 meters, this cable provides flexibility and convenience for charging and data transfer. The durable construction ensures long-lasting performance, while the black color adds a sleek look to your accessories.",
+      "specs": ["5 Pin Mini USB 2.0 Type A to Mini B Cable", "Length: 1.5 meters", "Compatible with PS3 Controller, MP3 Player, Digital Camera", "Durable Construction", "Black Color"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 24,
+      "name": "AE PS4 Controller Charger Cable, Micro USB Charging Cable for Sony Dualshock 4, Microsoft Xbox One Controller",
+      "brand": "AE-TECH",
+      "category": "accessories",
+      "price": 299,
+      "originalPrice": 450,
+      "discount": 151,
+      "stock": true,
+      "images": ["images/accessories/ps4/ae-ps4-usb-cable-1.jpg","images/accessories/ps4/ae-ps4-usb-cable-2.jpg","images/accessories/ps4/ae-ps4-usb-cable-3.jpg","images/accessories/ps4/ae-ps4-usb-cable-4.jpg","images/accessories/ps4/ae-ps4-usb-cable-5.jpg"],
+      "description": "This AE-TECH 1.8M Charger for PS4 Controller Charger Cable is designed for charging and syncing your Sony PS4/Dualshock 4/PS4 Slim/Pro and Microsoft Xbox One/One S/One X controllers. With a length of 1.8 meters (5.9 feet), this micro USB cable provides convenience and flexibility for your gaming setup. The durable construction ensures long-lasting performance, while the black color adds a sleek look to your accessories.",
+      "specs": ["1.8M Charger Cable", "Length: 1.8 meters (5.9 feet)", "Compatible with Sony PS4/Dualshock 4/PS4 Slim/Pro and Microsoft Xbox One/One S/One X Controllers", "Durable Construction", "Black Color"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 25,
+      "name": "AE PS5 Controller Charger Cable, USB to Type-C Charging Cable for Sony DualSense Controller, Microsoft Xbox Series Controller",
+      "brand": "AE-TECH",
+      "category": "accessories",
+      "price": 399,
+      "originalPrice": 450,
+      "discount": 51,
+      "stock": true,
+      "images": ["images/accessories/ps5/ae-ps5-usb2c-cable-1.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-2.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-3.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-4.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-5.jpg"],
+      "description": "This AE-TECH 1.8M Charger for PS5 Controller Charger Cable is designed for charging and syncing your Sony PS5/DualSense and Microsoft Xbox Series controllers. With a length of 1.8 meters (5.9 feet), this USB to Type-C cable provides convenience and flexibility for your gaming setup. The durable construction ensures long-lasting performance, while the black color adds a sleek look to your accessories.",
+      "specs": ["1.8M Charger Cable", "Length: 1.8 meters (5.9 feet)", "Compatible with Sony PS5/DualSense and Microsoft Xbox Series Controllers", "Durable Construction", "Black Color"],
       "availability": "In Stock"
     }
   ]
