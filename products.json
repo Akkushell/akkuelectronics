@@ -486,7 +486,7 @@
       "availability": "In Stock"
     },
     {
-      "id": 22,
+      "id": 33,
       "name": "AE PS4 Controller USB Charging Port Charger Socket Board Replacement for Sony DualShock 4 Wireless Controller",
       "brand": "AE-TECH",
       "category": "parts",
@@ -500,23 +500,23 @@
       "colorVariants": [
         {
           "color": "JDS-001",
-          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg"]
         },
         {
           "color": "JDS-011",
-          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg"]
         },
         {
           "color": "JDS-030",
-          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg"]
         },
         {
           "color": "JDS-040",
-          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg"]
         },
         {
           "color": "JDS-055",
-          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg","images/parts/ps4/ps4-usb-power-flex-1.jpg"]
+          "images": ["images/parts/ps4/ps4-usb-power-flex-1.jpg"]
         }
         
       ],
