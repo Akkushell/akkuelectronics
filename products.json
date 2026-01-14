@@ -377,6 +377,62 @@
       "description": "This AE-TECH 1.8M Charger for PS5 Controller Charger Cable is designed for charging and syncing your Sony PS5/DualSense and Microsoft Xbox Series controllers. With a length of 1.8 meters (5.9 feet), this USB to Type-C cable provides convenience and flexibility for your gaming setup. The durable construction ensures long-lasting performance, while the black color adds a sleek look to your accessories.",
       "specs": ["1.8M Charger Cable", "Length: 1.8 meters (5.9 feet)", "Compatible with Sony PS5/DualSense and Microsoft Xbox Series Controllers", "Durable Construction", "Black Color"],
       "availability": "In Stock"
+    },
+    {
+      "id": 26,
+      "name": "AE PS2 Cooling Fan Replacement Fan for PS2 Slim Console 90000 9000X Internal Cooling Fan",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 599,
+      "originalPrice": 800,
+      "discount": 201,
+      "stock": true,
+      "images": ["images/parts/ps2/ae-ps2-fan-90xxx-1.jpg","images/parts/ps2/ae-ps2-fan-90xxx-2.jpg","images/parts/ps2/ae-ps2-fan-90xxx-3.jpg","images/parts/ps2/ae-ps2-fan-90xxx-4.jpg","images/parts/ps2/ae-ps2-fan-90xxx-5.jpg"],
+      "description": "This AE-TECH Internal Cooling Fan Replacement Fan is designed for PS2 Slim Console models 90000 and 9000X. It helps maintain optimal temperature by providing efficient cooling to prevent overheating during extended gaming sessions. The fan is easy to install and ensures your console runs smoothly and reliably.",
+      "specs": ["Internal Cooling Fan", "Compatible with PS2 Slim Console 90000 and 9000X", "Efficient Cooling Performance", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 27,
+      "name": "AE PS2 Cooling Fan Replacement Fan for PS2 Slim Console 70000 7000X 7500X Internal Cooling Fan",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 599,
+      "originalPrice": 800,
+      "discount": 201,
+      "stock": true,
+      "images": ["images/parts/ps2/ae-ps2-fan-70xxx-1.jpg","images/parts/ps2/ae-ps2-fan-70xxx-2.jpg","images/parts/ps2/ae-ps2-fan-70xxx-3.jpg","images/parts/ps2/ae-ps2-fan-70xxx-4.jpg"],
+      "description": "This AE-TECH Internal Cooling Fan Replacement Fan is designed for PS2 Slim Console models 70000, 7000X, and 7500X. It helps maintain optimal temperature by providing efficient cooling to prevent overheating during extended gaming sessions. The fan is easy to install and ensures your console runs smoothly and reliably.",
+      "specs": ["Internal Cooling Fan", "Compatible with PS2 Slim Console 70000, 7000X, and 7500X", "Efficient Cooling Performance", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 28,
+      "name": "AE PS3 Slim Console Cooling Fan for PS3 Slim, 17 Blades Internal Cooling Fan Cooler Replacement for Playstation 3 Slim",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 1200,
+      "originalPrice": 2100,
+      "discount": 900,
+      "stock": true,
+      "images": ["images/parts/ps3/ae-ps3-fan-slim-1.jpg","images/parts/ps3/ae-ps3-fan-slim-2.jpg","images/parts/ps3/ae-ps3-fan-slim-3.jpg","images/parts/ps3/ae-ps3-fan-slim-4.jpg"],
+      "description": "This AE-TECH Internal Cooling Fan Replacement Fan is designed for PS3 Slim Console models. It helps maintain optimal temperature by providing efficient cooling to prevent overheating during extended gaming sessions. The fan is easy to install and ensures your console runs smoothly and reliably.",
+      "specs": ["Internal Cooling Fan", "Compatible with PS3 Slim Console", "Efficient Cooling Performance", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 29,
+      "name": "AE PS4 Fat Console Cooling Fan, 17 Blades Internal Cooling Fan Cooler Replacement for Playstation 4 Fat ( small pin )",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 1600,
+      "originalPrice": 2800,
+      "discount": 1200,
+      "stock": true,
+      "images": ["images/parts/ps4/ae-ps4-fan-fat-smallpin-1.jpg","images/parts/ps4/ae-ps4-fan-fat-smallpin-2.jpg","images/parts/ps4/ae-ps4-fan-fat-smallpin-3.jpg","images/parts/ps4/ae-ps4-fan-fat-smallpin-4.jpg"],
+      "description": "This AE-TECH Internal Cooling Fan Replacement Fan is designed for PS4 Fat Console models. It helps maintain optimal temperature by providing efficient cooling to prevent overheating during extended gaming sessions. The fan is easy to install and ensures your console runs smoothly and reliably.",
+      "specs": ["Internal Cooling Fan", "Compatible with PS4 Fat Console", "Efficient Cooling Performance", "Easy Installation", "Durable Construction"],
+      "availability": "In Stock"
     }
   ]
 }
