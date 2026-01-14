@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-56KN7HZF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXB8GK5N2B"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());
+
+    gtag('config', 'G-MXB8GK5N2B');
+</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1917270256596378"
+     crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PS5 DualSense Controller Hardware Revisions & Schematics Guide | Akku Electronics</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Complete technical breakdown of PlayStation 5 DualSense controller hardware revisions (BDM-010, 020, 030, 040). Pinout diagrams, trigger assembly schematics, and repair guide." />
+  <meta name="keywords" content="DualSense schematic, PS5 controller pinout, BDM-010, BDM-020, BDM-030, BDM-040, DualSense trigger assembly, PS5 controller repair, DualSense hardware guide" />
+  <meta name="author" content="Akku Electronics" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PS5 DualSense Controller Hardware Revisions & Schematics Guide" />
+  <meta property="og:description" content="In-depth technical guide to all DualSense controller revisions with complete pinout diagrams and trigger assembly schematics." />
+  <meta property="og:image" content="https://akkuelectronics.in/blog/images/dualsense-schematic-banner.jpg" />
+  <meta property="og:url" content="https://akkuelectronics.in/blog/14012026ps5-dsc-schematic.html" />
+  <meta property="og:site_name" content="Akku Electronics Blog" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://akkuelectronics.in/blog/14012026ps5-dsc-schematic.html" />
+  <meta name="twitter:title" content="PS5 DualSense Controller Hardware Revisions & Schematics Guide" />
+  <meta name="twitter:description" content="Complete technical breakdown of all DualSense controller hardware revisions with pinout diagrams." />
+  <meta name="twitter:image" content="https://akkuelectronics.in/blog/images/dualsense-schematic-banner.jpg" />
+  <meta name="twitter:creator" content="@AKKUELECTRONICS" />
+  <meta name="twitter:site" content="@AKKUELECTRONICS" />
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070707;
+      --bg2:#0c0c0c;
+      --card:#101010;
+      --gold:#d4af37;
+      --gold2:#f5d77a;
+      --text:#eaeaea;
+      --muted:#b9b9b9;
+      --border:rgba(212,175,55,.22);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --accent:#00d4ff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(212,175,55,.12), transparent 55%),
+        radial-gradient(800px 500px at 90% 0%, rgba(212,175,55,.08), transparent 50%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.7;
+      min-height:100vh;
+    }
+
+    a{color:var(--gold2);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout */
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* Navigation */
+    nav{
+      background:rgba(16,16,16,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      padding:16px 0;
+      position:sticky;
+      top:0;
+      z-index:999;
+    }
+    nav .container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .logo{
+      font-size:22px;
+      font-weight:700;
+      color:var(--gold);
+      letter-spacing:-.5px;
+    }
+    .nav-links{
+      display:flex;
+      gap:24px;
+      list-style:none;
+    }
+    .nav-links a{
+      color:var(--muted);
+      font-size:15px;
+      transition:.2s;
+    }
+    .nav-links a:hover{
+      color:var(--gold2);
+      text-decoration:none;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb{
+      padding:24px 0;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .breadcrumb a{
+      color:var(--gold);
+    }
+    .breadcrumb a:hover{
+      text-decoration:underline;
+    }
+    .breadcrumb .sep{
+      margin:0 8px;
+      color:var(--muted);
+    }
+
+    /* Hero */
+    .hero{
+      margin:40px 0;
+    }
+    .hero-cover{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      margin-bottom:24px;
+      background:var(--card);
+      border:1px solid var(--border);
+    }
+    .hero-cover img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:42px;
+      line-height:1.2;
+      color:var(--gold);
+      margin-bottom:16px;
+    }
+    .meta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .chip{
+      background:rgba(212,175,55,.15);
+      color:var(--gold2);
+      padding:6px 14px;
+      border-radius:20px;
+      font-size:13px;
+      font-weight:500;
+      border:1px solid var(--border);
+    }
+
+    /* Article Content */
+    article{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:48px;
+      margin:40px 0;
+      box-shadow:var(--shadow);
+    }
+    article h2{
+      font-family:'Playfair Display',serif;
+      font-size:32px;
+      color:var(--gold);
+      margin:40px 0 20px 0;
+      padding-bottom:12px;
+      border-bottom:2px solid var(--border);
+    }
+    article h3{
+      font-size:24px;
+      color:var(--gold2);
+      margin:32px 0 16px 0;
+    }
+    article h4{
+      font-size:20px;
+      color:var(--text);
+      margin:24px 0 12px 0;
+    }
+    article p{
+      margin-bottom:18px;
+      font-size:16px;
+      line-height:1.8;
+    }
+    article ul, article ol{
+      margin:16px 0 16px 24px;
+    }
+    article li{
+      margin-bottom:12px;
+      line-height:1.7;
+    }
+    article strong{
+      color:var(--gold2);
+      font-weight:600;
+    }
+    article code{
+      background:rgba(0,0,0,.4);
+      color:var(--accent);
+      padding:3px 8px;
+      border-radius:4px;
+      font-family:'Courier New',monospace;
+      font-size:14px;
+    }
+
+    /* Warning Box */
+    .warning-box{
+      background:rgba(255,193,7,.1);
+      border-left:4px solid #ffc107;
+      padding:20px;
+      margin:24px 0;
+      border-radius:8px;
+    }
+    .warning-box h4{
+      color:#ffc107;
+      margin:0 0 12px 0;
+    }
+
+    /* Info Box */
+    .info-box{
+      background:rgba(0,212,255,.1);
+      border-left:4px solid var(--accent);
+      padding:20px;
+      margin:24px 0;
+      border-radius:8px;
+    }
+    .info-box h4{
+      color:var(--accent);
+      margin:0 0 12px 0;
+    }
+
+    /* Table */
+    .pinout-table{
+      width:100%;
+      margin:24px 0;
+      border-collapse:collapse;
+      background:rgba(0,0,0,.3);
+      border-radius:12px;
+      overflow:hidden;
+    }
+    .pinout-table thead{
+      background:rgba(212,175,55,.2);
+    }
+    .pinout-table th{
+      padding:16px;
+      text-align:left;
+      color:var(--gold);
+      font-weight:600;
+      border-bottom:2px solid var(--border);
+    }
+    .pinout-table td{
+      padding:14px 16px;
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .pinout-table tr:hover{
+      background:rgba(212,175,55,.05);
+    }
+
+    /* Images */
+    .schematic-img{
+      width:100%;
+      height:auto;
+      border:1px solid var(--border);
+      border-radius:12px;
+      margin:24px 0;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .schematic-img:hover{
+      border-color:var(--gold);
+      box-shadow:0 8px 32px rgba(212,175,55,.3);
+    }
+
+    /* Two Column Layout */
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin:24px 0;
+    }
+    .col-img{
+      width:100%;
+      border:1px solid var(--border);
+      border-radius:12px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:32px;
+      margin-bottom:40px;
+    }
+    .side-title{
+      color:var(--gold);
+      font-weight:700;
+      margin-bottom:16px;
+      font-size:18px;
+    }
+    .related-link{
+      display:block;
+      padding:12px;
+      margin:8px 0;
+      background:rgba(212,175,55,.08);
+      border-radius:8px;
+      border:1px solid var(--border);
+      transition:.2s;
+    }
+    .related-link:hover{
+      background:rgba(212,175,55,.15);
+      text-decoration:none;
+      transform:translateX(4px);
+    }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:32px 0;
+      color:var(--muted);
+      font-size:14px;
+      border-top:1px solid var(--border);
+      margin-top:80px;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      article{padding:24px}
+      .hero h1{font-size:32px}
+      article h2{font-size:26px}
+      .two-col{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56KN7HZF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="../index.html" class="logo">⚡ AKKU ELECTRONICS</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Blog</a></li>
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="index.html">Blog</a>
+      <span class="sep">/</span>
+      <span>DualSense Hardware Revisions</span>
+    </div>
+  </div>
+
+  <!-- AdSense Ad -->
+  <div style="margin: 30px auto; text-align: center; max-width: 1200px; padding: 0 20px;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1917270256596378"
+         crossorigin="anonymous"></script>
+    <!-- aeads1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1917270256596378"
+         data-ad-slot="4420837372"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <header class="hero">
+      <h1>PS5 DualSense Controller: Complete Hardware Revisions & Schematics Guide</h1>
+      <div class="meta">
+        <span class="chip">Published: January 14, 2026</span>
+        <span class="chip">Technical Guide</span>
+        <span class="chip">Hardware Repair</span>
+        <span class="chip">Read Time: 12 minutes</span>
+      </div>
+    </header>
+
+    <!-- Main Article -->
+    <article>
+      <p>The PlayStation 5 DualSense controller has undergone several hardware revisions since its launch. This comprehensive technical guide covers all known revisions (BDM-010, BDM-020, BDM-030, BDM-040) with detailed schematics, pinout diagrams, and repair information for technicians and modders.</p>
+
+      <div class="info-box">
+        <h4>📌 Source Attribution</h4>
+        <p>Technical information and images sourced from <a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" rel="noopener">AcidMods Forum</a>. This guide compiles and expands on community research for repair and modification purposes.</p>
+      </div>
+
+      <!-- BDM-010 Section -->
+      <h2>🎮 BDM-010: First Generation DualSense</h2>
+      
+      <p>The BDM-010 is the original DualSense revision featuring a <strong>6-layer PCB</strong>. The primary hardware differences among early units were the FPC color (Blue or Green) and variations in TouchPad versions.</p>
+
+      <div style="background-color: var(--dark-bg); border: 2px solid var(--gold); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+        <h4 style="color: var(--gold); margin-top: 0;">📸 PCB Scans & Reference Images</h4>
+        <p>Detailed high-resolution scans of the BDM-010 motherboard (top and bottom) and trigger assembly boards are available on the <strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" style="color: var(--gold); text-decoration: underline;">AcidMods Forum - DualSense PCB Scans Thread</a></strong>. These resources include:</p>
+        <ul style="text-align: left; display: inline-block;">
+          <li>BDM-010 Motherboard (Top & Bottom View)</li>
+          <li>BWL-010 Trigger Assembly (Top & Bottom View)</li>
+          <li>Touchpad Module Schematics</li>
+          <li>Component-level detail views</li>
+        </ul>
+        <p style="font-size: 0.9em; color: #ccc; margin: 10px 0 0 0;">💡 <strong>Tip:</strong> Keep the AcidMods reference page open while performing modifications. The detailed scans help identify exact test point locations and component references.</p>
+      </div>
+        <li><strong>FPC Colors:</strong> Blue or Green variants</li>
+        <li><strong>Button Design:</strong> Most buttons are common ground</li>
+        <li><strong>Trigger Assembly:</strong> Complex with integrated EEPROMs</li>
+      </ul>
+
+      <h3>Button Configuration</h3>
+      <div class="warning-box">
+        <h4>⚠️ IMPORTANT: Button Wiring Notes</h4>
+        <ul>
+          <li><strong>Most buttons:</strong> Common ground design</li>
+          <li><strong>L2 and R2:</strong> Voltage divider setup (analog)</li>
+          <li><strong>L3 and R3:</strong> Active Hi buttons - wire directly to solder joints if duplicating</li>
+          <li><strong>L1 and R1:</strong> Active Lo buttons</li>
+        </ul>
+      </div>
+
+      <!-- Trigger Assembly -->
+      <h3>Trigger Assembly Details (BWL-010)</h3>
+      
+      <p>The L1/L2 and R1/R2 trigger assemblies are mechanically identical from a hardware standpoint, making the test point locations consistent across both sides.</p>
+
+      <div class="warning-box">
+        <h4>⚠️ CRITICAL: FFC Connector Orientation</h4>
+        <p>The Left and Right FFC connectors are placed <strong>180° from each other</strong>, meaning their pinouts are <strong>reversed</strong>. Always verify which side you're working on before making connections!</p>
+      </div>
+
+      <h4>LEFT SIDE FFC PINOUT (BDM-010)</h4>
+      <table class="pinout-table">
+        <thead>
+          <tr>
+            <th>Pin</th>
+            <th>Function</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>2</td><td><code>M+/-</code></td><td>Motor Positive/Negative</td></tr>
+          <tr><td>3</td><td><code>M-/+</code></td><td>Motor Negative/Positive</td></tr>
+          <tr><td>4</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>5</td><td><code>1.8vE</code></td><td>1.8V EEPROM Power</td></tr>
+          <tr><td>6</td><td><code>WP2</code></td><td>Write Protect (EEPROM)</td></tr>
+          <tr><td>7</td><td><code>SCL2</code></td><td>I2C Clock (EEPROM)</td></tr>
+          <tr><td>8</td><td><code>SDA2</code></td><td>I2C Data (EEPROM)</td></tr>
+          <tr><td>9</td><td><code>L1</code></td><td>L1 Button Signal</td></tr>
+          <tr><td>10</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>11</td><td><code>1.8v</code></td><td>1.8V Power</td></tr>
+          <tr><td>12</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>13</td><td><code>L2</code></td><td>L2 Analog Signal</td></tr>
+          <tr><td>14</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>15</td><td><code>L2 Feedback</code></td><td>Force Feedback Position</td></tr>
+          <tr><td>16</td><td><code>1.8v</code></td><td>1.8V Power</td></tr>
+        </tbody>
+      </table>
+
+      <h4>RIGHT SIDE FFC PINOUT (BDM-010)</h4>
+      <table class="pinout-table">
+        <thead>
+          <tr>
+            <th>Pin</th>
+            <th>Function</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><code>1.8v</code></td><td>1.8V Power</td></tr>
+          <tr><td>2</td><td><code>R2 Feedback</code></td><td>Force Feedback Position</td></tr>
+          <tr><td>3</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>4</td><td><code>R2</code></td><td>R2 Analog Signal</td></tr>
+          <tr><td>5</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>6</td><td><code>1.8v</code></td><td>1.8V Power</td></tr>
+          <tr><td>7</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>8</td><td><code>R1</code></td><td>R1 Button Signal</td></tr>
+          <tr><td>9</td><td><code>SDA1</code></td><td>I2C Data (EEPROM)</td></tr>
+          <tr><td>10</td><td><code>SCL1</code></td><td>I2C Clock (EEPROM)</td></tr>
+          <tr><td>11</td><td><code>WP1</code></td><td>Write Protect (EEPROM)</td></tr>
+          <tr><td>12</td><td><code>1.8vE</code></td><td>1.8V EEPROM Power</td></tr>
+          <tr><td>13</td><td><code>GND</code></td><td>Ground</td></tr>
+          <tr><td>14</td><td><code>M-/+</code></td><td>Motor Negative/Positive</td></tr>
+          <tr><td>15</td><td><code>M+/-</code></td><td>Motor Positive/Negative</td></tr>
+          <tr><td>16</td><td><code>GND</code></td><td>Ground</td></tr>
+        </tbody>
+      </table>
+
+      <h4>BWL-010 Trigger Board FFC Pinout</h4>
+      <p>This is the pinout of the FFC connector <strong>on the BWL-010 trigger assembly board itself</strong>, NOT the motherboard connector.</p>
+
+      <table class="pinout-table">
+        <thead>
+          <tr>
+            <th>Pin</th>
+            <th>Function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><code>1.8v</code></td></tr>
+          <tr><td>2</td><td><code>L2/R2 Feedback</code></td></tr>
+          <tr><td>3</td><td><code>GND</code></td></tr>
+          <tr><td>4</td><td><code>L2/R2</code></td></tr>
+          <tr><td>5</td><td><code>GND</code></td></tr>
+          <tr><td>6</td><td><code>1.8v</code></td></tr>
+          <tr><td>7</td><td><code>GND</code></td></tr>
+          <tr><td>8</td><td><code>L1/R1</code></td></tr>
+          <tr><td>9</td><td><code>SDA1</code></td></tr>
+          <tr><td>10</td><td><code>SCL1</code></td></tr>
+          <tr><td>11</td><td><code>WP1</code></td></tr>
+          <tr><td>12</td><td><code>1.8vE</code></td></tr>
+          <tr><td>13</td><td><code>GND</code></td></tr>
+          <tr><td>14</td><td><code>M-</code></td></tr>
+          <tr><td>15</td><td><code>M+</code></td></tr>
+          <tr><td>16</td><td><code>GND</code></td></tr>
+        </tbody>
+      </table>
+
+      <h3>EEPROM Mystery</h3>
+      <div class="info-box">
+        <h4>🔍 Why Do Triggers Have EEPROMs?</h4>
+        <p>The trigger assemblies contain integrated EEPROMs, likely for:</p>
+        <ul>
+          <li><strong>Identification:</strong> Allowing the motherboard to recognize trigger assemblies</li>
+          <li><strong>Calibration Data:</strong> Storing force feedback calibration values</li>
+          <li><strong>Assembly Tracking:</strong> Manufacturing or quality control data</li>
+        </ul>
+        <p><strong>Recommendation:</strong> Leave EEPROM boards installed during repairs. Removing them may cause:</p>
+        <ul>
+          <li>Force feedback calibration issues</li>
+          <li>Controller recognition problems</li>
+          <li>Unknown side effects</li>
+        </ul>
+        <p>The boards provide convenient test points once removed from the assembly housing while maintaining functionality.</p>
+      </div>
+
+      <h3>L2/R2 Duplication Notes</h3>
+      <div class="warning-box">
+        <h4>⚠️ Important Wiring Instructions</h4>
+        <p>When duplicating L2/R2 triggers:</p>
+        <ol>
+          <li>If trigger assembly is <strong>removed</strong>, install a <strong>Pull-Up Resistor</strong> from L2/R2 to 1.8V</li>
+          <li>Connect new button from L2/R2 to Ground through a <strong>1kΩ resistor</strong></li>
+          <li>Do NOT drive L2/R2 line directly to ground without resistance</li>
+          <li>L2/R2 Feedback lines should not be left floating - more research needed on proper handling</li>
+        </ol>
+      </div>
+
+      <h3>I2C Lines Warning</h3>
+      <p>The <code>SDA</code>, <code>SCL</code>, and <code>WP</code> lines are for EEPROM communication and <strong>should be left alone</strong> unless you know exactly what you're doing.</p>
+
+      <!-- BDM-020 Section -->
+      <h2>🎮 BDM-020: Second Generation DualSense</h2>
+
+      <p>The second revision represents a significant change in PCB complexity while maintaining similar functionality. The BDM-020 introduces a <strong>4-layer PCB design</strong> (reduced from 6 layers) to reduce manufacturing costs while preserving electrical compatibility.</p>
+
+      <div style="background-color: var(--dark-bg); border: 2px solid var(--gold); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+        <h4 style="color: var(--gold); margin-top: 0;">📸 BDM-020 PCB Schematics</h4>
+        <p>Complete visual references for the BDM-020 revision including motherboard and trigger assembly schematics are available in the <strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" style="color: var(--gold); text-decoration: underline;">AcidMods Forum DualSense PCB Scans</a></strong>. Key visual resources:</p>
+        <ul style="text-align: left; display: inline-block;">
+          <li>BDM-020 Motherboard (Top & Bottom Detail)</li>
+          <li>BWL-020 Trigger Assembly PCB Schematics</li>
+          <li>Test Point Relocations (vs BDM-010)</li>
+        </ul>
+        <p style="font-size: 0.9em; color: #ccc; margin: 10px 0 0 0;">⚠️ <strong>Critical:</strong> BDM-020 test points are relocated compared to BDM-010. Always verify with scans before soldering to avoid damaging pads.</p>
+      </div>
+
+      <h3>Key Changes from BDM-010</h3>
+      <ul>
+        <li><strong>PCB Layers:</strong> Reduced from 6-layer to <strong>4-layer design</strong></li>
+        <li><strong>Button VIAs:</strong> Face buttons (PS, X, O, △, □) and D-Pad maintain same locations as BDM-010</li>
+        <li><strong>Trigger Assemblies:</strong> Mechanically identical to BDM-010 but with relocated test points</li>
+      </ul>
+
+      <h3>BWL-020 Trigger Assembly</h3>
+      <p>The trigger hardware remains functionally the same, but test point locations have been repositioned on this revision. Refer to visual guides for exact TP locations.</p>
+
+      <div class="warning-box">
+        <h4>⚠️ Test Point Relocation</h4>
+        <p>While the trigger assemblies work identically to BDM-010, the physical location of test points has changed. Always verify TP locations visually before soldering.</p>
+      </div>
+
+      <!-- BDM-030 Section -->
+      <h2>🎮 BDM-030: Third Generation DualSense</h2>
+
+      <p>The third revision introduces the most significant architectural change to the trigger system. This generation simplifies the trigger design while maintaining adaptive trigger functionality through direct motor wiring.</p>
+
+      <div style="background-color: var(--dark-bg); border: 2px solid var(--gold); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+        <h4 style="color: var(--gold); margin-top: 0;">📸 BDM-030 Hardware Schematics</h4>
+        <p>Visual references and PCB layouts for the BDM-030 redesign are documented in the <strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" style="color: var(--gold); text-decoration: underline;">AcidMods Forum reference</a></strong>. Key schematics:</p>
+        <ul style="text-align: left; display: inline-block;">
+          <li>BDM-030 Motherboard (Redesigned Layout)</li>
+          <li>Simplified Trigger PCB (Feedback POT Only)</li>
+          <li>Integrated FPC with Button Assembly</li>
+          <li>Direct Motor Wiring Diagram</li>
+        </ul>
+        <p style="font-size: 0.9em; color: #ccc; margin: 10px 0 0 0;">💡 <strong>Modification Impact:</strong> Simplified design makes button customization easier but eliminates EEPROM-based trigger calibration from prior generations.</p>
+      </div>
+
+      <h3>Major Trigger Assembly Redesign</h3>
+      <ul>
+        <li><strong>Simplified PCB:</strong> Trigger boards now only contain the Feedback POT</li>
+        <li><strong>Direct Motor Connection:</strong> Feedback motors wired directly to motherboard (like rumble motors)</li>
+        <li><strong>Integrated FPC:</strong> L1, L2, R1, and R2 buttons now incorporated into the FPC</li>
+        <li><strong>Classic Design:</strong> Returns to DS4, DS3, and DS2 style trigger implementation</li>
+      </ul>
+
+      <div class="info-box">
+        <h4>📋 Design Philosophy Shift</h4>
+        <p>Sony simplified the trigger assembly design significantly in BDM-030, potentially for:</p>
+        <ul>
+          <li>Reduced manufacturing complexity</li>
+          <li>Lower production costs</li>
+          <li>Improved reliability</li>
+          <li>Easier assembly/disassembly</li>
+        </ul>
+      </div>
+
+      <h3>BDM-030 FPC Details</h3>
+      <p>The new FPC design integrates button contacts directly into the flexible PCB, eliminating separate trigger board assemblies for button switching.</p>
+
+      <!-- BDM-040 Section -->
+      <h2>🎮 BDM-040: Fourth Generation DualSense</h2>
+
+      <p>The latest known revision continues the design philosophy established in BDM-030 with further refinements and optimizations.</p>
+
+      <div style="background-color: var(--dark-bg); border: 2px solid var(--gold); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+        <h4 style="color: var(--gold); margin-top: 0;">📸 BDM-040 Reference Schematics</h4>
+        <p>Documentation and visual guides for the latest BDM-040 revision are available at the <strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" style="color: var(--gold); text-decoration: underline;">AcidMods Forum DualSense Reference</a></strong>. Current available resources:</p>
+        <ul style="text-align: left; display: inline-block;">
+          <li>BDM-040 Motherboard (Top & Bottom)</li>
+          <li>Component Layout Updates</li>
+          <li>Compatibility with BDM-030 modifications</li>
+        </ul>
+        <p style="font-size: 0.9em; color: #ccc; margin: 10px 0 0 0;">ℹ️ <strong>Note:</strong> Documentation for BDM-040 is still being compiled. Most BDM-030 modification techniques remain compatible.</p>
+      </div>
+
+      <h3>Current Status</h3>
+      <p>Details on specific changes in BDM-040 are still being documented. The revision appears to maintain the BDM-030 trigger assembly design with possible component or layout optimizations.</p>
+
+      <!-- Repair Guidelines -->
+      <h2>🔧 Repair and Modification Guidelines</h2>
+
+      <h3>General Best Practices</h3>
+      <ol>
+        <li><strong>Identify Your Revision:</strong> Check motherboard marking (BDM-010/020/030/040) before starting work</li>
+        <li><strong>Document Before Disassembly:</strong> Take photos of cable routing and connector orientations</li>
+        <li><strong>Verify Pinouts:</strong> Always confirm FFC orientation - left and right connectors are reversed!</li>
+        <li><strong>Test Before Reassembly:</strong> Verify all functions before fully closing the controller</li>
+        <li><strong>EEPROM Preservation:</strong> Keep trigger EEPROMs installed when possible (BDM-010/020)</li>
+      </ol>
+
+      <h3>Common Repair Scenarios</h3>
+
+      <h4>Trigger Drift or Dead Zones</h4>
+      <ul>
+        <li>Check L2/R2 analog potentiometer for wear</li>
+        <li>Clean potentiometer contacts with isopropyl alcohol</li>
+        <li>Replace POT if mechanically damaged</li>
+        <li>Verify feedback motor connections</li>
+      </ul>
+
+      <h4>Non-Responsive Buttons</h4>
+      <ul>
+        <li>Test button continuity at VIA points</li>
+        <li>Check for damaged FPC contacts</li>
+        <li>Verify proper FFC seating in connectors</li>
+        <li>Inspect for torn or cracked flexible cables</li>
+      </ul>
+
+      <h4>Force Feedback Issues</h4>
+      <ul>
+        <li>Verify motor power connections</li>
+        <li>Check feedback POT resistance values</li>
+        <li>Ensure EEPROM is properly connected (BDM-010/020)</li>
+        <li>Test motor driver circuit on motherboard</li>
+      </ul>
+
+      <!-- Tools and Equipment -->
+      <h2>🛠️ Required Tools and Equipment</h2>
+
+      <h3>Essential Tools</h3>
+      <ul>
+        <li><strong>Soldering Iron:</strong> Temperature-controlled, fine tip (0.5mm recommended)</li>
+        <li><strong>Multimeter:</strong> For continuity and voltage testing</li>
+        <li><strong>Hot Air Station:</strong> For component-level repairs</li>
+        <li><strong>Precision Screwdrivers:</strong> Phillips #00 and #000</li>
+        <li><strong>Spudgers:</strong> Plastic pry tools for shell separation</li>
+        <li><strong>Tweezers:</strong> Fine-point ESD-safe tweezers</li>
+      </ul>
+
+      <h3>Consumables</h3>
+      <ul>
+        <li>Leaded solder (63/37 or 60/40)</li>
+        <li>Flux paste or pen</li>
+        <li>Isopropyl alcohol (90%+ purity)</li>
+        <li>Kapton tape</li>
+        <li>Resistors (1kΩ for button mods)</li>
+      </ul>
+
+      <!-- Safety and Precautions -->
+      <h2>⚠️ Safety and Precautions</h2>
+
+      <div class="warning-box">
+        <h4>🔴 Critical Safety Information</h4>
+        <ul>
+          <li><strong>ESD Protection:</strong> Use anti-static wrist strap when handling PCBs</li>
+          <li><strong>Battery Safety:</strong> Disconnect battery before any electrical work</li>
+          <li><strong>Heat Sensitivity:</strong> Keep soldering iron below 350°C for FPC work</li>
+          <li><strong>Component Polarity:</strong> Verify component orientation before installation</li>
+          <li><strong>Voltage Verification:</strong> Double-check all voltage levels with multimeter</li>
+          <li><strong>No Warranty:</strong> Modifications and repairs void Sony warranty</li>
+        </ul>
+      </div>
+
+      <!-- Conclusion -->
+      <h2>📝 Conclusion</h2>
+
+      <p>The DualSense controller has evolved significantly through four major hardware revisions, each bringing improvements in manufacturing efficiency and design optimization. Understanding these differences is crucial for successful repairs and modifications.</p>
+
+      <p>Key takeaways:</p>
+      <ul>
+        <li>BDM-010 features complex 6-layer PCB with EEPROM-equipped trigger assemblies</li>
+        <li>BDM-020 simplified to 4-layer while maintaining button layout compatibility</li>
+        <li>BDM-030/040 adopted integrated FPC design, eliminating separate trigger boards</li>
+        <li>Always verify revision number before starting repairs</li>
+        <li>FFC connectors are reversed between left and right sides</li>
+        <li>Preserve EEPROMs when working with BDM-010/020 triggers</li>
+      </ul>
+
+      <div class="info-box">
+        <h4>🔧 Professional Repair Services</h4>
+        <p>Need help with your DualSense controller repair? <strong>Akku Electronics</strong> in Nagpur offers professional PlayStation controller repair services with expertise in all DualSense revisions.</p>
+        <p><a href="../contact.html" style="color:var(--gold);font-weight:600;">Contact us for a free diagnostic →</a></p>
+      </div>
+
+      <!-- References -->
+      <h2>📚 References and Resources</h2>
+      
+      <h3>Primary PCB Schematic Sources</h3>
+      <ul>
+        <li><strong><a href="https://acidmods.com/forum/index.php?topic=44714.0" target="_blank" rel="noopener" style="color: var(--gold);">AcidMods Forum - DualSense PCB Scans Thread</a></strong>
+          <p style="font-size: 0.9em; color: #bbb; margin-top: 5px;">The definitive resource for high-resolution PCB layouts, pinout diagrams, and schematic information for all DualSense revisions (BDM-010, 020, 030, 040). Includes detailed component locations and test points.</p>
+        </li>
+      </ul>
+
+      <h3>Related Articles</h3>
+      <ul>
+        <li><a href="12012026dualsense15tricks.html" style="color: var(--gold);">15 DualSense Tips & Tricks You Need to Know</a> - Practical modification and customization guides</li>
+        <li><a href="13012026ps5prospecs.html" style="color: var(--gold);">PS5 Pro Technical Analysis</a> - Controller hardware innovations</li>
+      </ul>
+
+      <h3>Professional Services</h3>
+      <ul>
+        <li><a href="../services.html" style="color: var(--gold);">Akku Electronics Repair Services</a> - Expert DualSense repair, modification, and customization in Nagpur, India</li>
+      </ul>
+
+      <h3>Disclaimer</h3>
+      <p style="font-size: 0.9em; color: #999; margin-top: 15px; padding: 10px; background-color: rgba(212, 175, 55, 0.1); border-left: 3px solid var(--gold); border-radius: 4px;">
+        <strong>⚠️ Caution:</strong> All repairs and modifications are performed at your own risk. Improper soldering, component damage, or modification errors can permanently damage your controller and void warranty. Always verify your hardware revision before attempting modifications. Refer to the AcidMods forum scans for precise component locations. When in doubt, consult professional repair services.
+      </p>
+
+    </article>
+
+  </div>
+
+  <!-- AdSense Ad 2 -->
+  <div style="margin: 30px auto; text-align: center; max-width: 1200px; padding: 0 20px;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1917270256596378"
+         crossorigin="anonymous"></script>
+    <!-- aeads2 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1917270256596378"
+         data-ad-slot="9476248157"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <footer>
+    © 2026 AKKUELECTRONICS • All rights reserved.
+  </footer>
+
+</body>
+</html>
