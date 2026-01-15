@@ -48,6 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo3xoK5fJMITl0P+bqm8FNj1k2O0EZz1V9k0l8Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="payment.css">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/aelogo.png">
     
     <style>
@@ -1086,7 +1087,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <!-- Action Buttons -->
                 <div class="product-actions">
-                    <button class="btn-buy" id="btnBuy" onclick="contactForProduct()">Buy</button>
+                    <button class="btn-buy" id="btnBuy" onclick="buyNowProduct()">Buy Now</button>
                     <div class="payment-icons">
                         <img src="icon/gpay.png" alt="Google Pay" title="We accept Google Pay">
                         <img src="icon/upi.png" alt="UPI" title="We accept UPI">
@@ -1171,6 +1172,92 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     </footer>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <span class="payment-close">&times;</span>
+            
+            <div id="paymentStep1" class="payment-step">
+                <h2>Complete Your Payment</h2>
+                <div class="product-summary" id="productSummary"></div>
+                
+                <div class="payment-qr-section">
+                    <h3>Scan QR Code to Pay</h3>
+                    <div id="qrcode" class="qr-code-container"></div>
+                    <p class="upi-id">UPI ID: <strong>8956389723@barodampay</strong></p>
+                    <p class="payment-amount">Amount: ₹<span id="paymentAmount"></span></p>
+                </div>
+                
+                <div class="upi-apps">
+                    <p>Or pay using:</p>
+                    <div class="upi-buttons">
+                        <button onclick="openUPIApp('phonepe')" class="upi-btn phonepe-btn">
+                            <i class="fas fa-mobile-alt"></i> PhonePe
+                        </button>
+                        <button onclick="openUPIApp('gpay')" class="upi-btn gpay-btn">
+                            <i class="fas fa-mobile-alt"></i> Google Pay
+                        </button>
+                        <button onclick="openUPIApp('paytm')" class="upi-btn paytm-btn">
+                            <i class="fas fa-mobile-alt"></i> Paytm
+                        </button>
+                    </div>
+                </div>
+                
+                <button onclick="showUTRStep()" class="next-btn">I've Paid - Enter Transaction ID</button>
+            </div>
+            
+            <div id="paymentStep2" class="payment-step" style="display: none;">
+                <h2>Verify Payment</h2>
+                <p>Please enter your UPI Transaction ID (UTR)</p>
+                
+                <form id="utrForm" onsubmit="submitPayment(event)">
+                    <div class="form-group">
+                        <label for="customerName">Your Name *</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerEmail">Email *</label>
+                        <input type="email" id="customerEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerPhone">Phone Number *</label>
+                        <input type="tel" id="customerPhone" pattern="[0-9]{10}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerAddress">Delivery Address *</label>
+                        <textarea id="customerAddress" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="utrNumber">UPI Transaction ID (UTR) *</label>
+                        <input type="text" id="utrNumber" placeholder="e.g., 123456789012" required>
+                        <small>Find this in your payment app's transaction history</small>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" onclick="showQRStep()" class="back-btn">Back</button>
+                        <button type="submit" class="submit-btn">Submit Order</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="paymentStep3" class="payment-step" style="display: none;">
+                <div class="success-animation">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Order Submitted Successfully!</h2>
+                <p>Thank you for your order. We've received your payment details.</p>
+                <p>Order ID: <strong id="orderIdDisplay"></strong></p>
+                <p>You will receive a confirmation email shortly.</p>
+                <p>We'll verify your payment and contact you within 24 hours.</p>
+                <button onclick="closePaymentModal()" class="done-btn">Done</button>
+            </div>
+        </div>
+    </div>
 
     <script src="../script.js"></script>
     <script>
@@ -1491,6 +1578,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
+
+        // Buy Now with Payment Modal
+        function buyNowProduct() {
+            if (!productData) {
+                alert('Product data not loaded');
+                return;
+            }
+
+            if (!productData.stock) {
+                alert('This product is currently out of stock');
+                return;
+            }
+
+            // Get the current product image
+            let image;
+            if (productImages && productImages.length > 0) {
+                image = productImages[currentImageIndex];
+            } else if (productData.imageUrl) {
+                image = productData.imageUrl;
+            } else {
+                image = fallbackImages[productData.category] || fallbackImages.gear;
+            }
+
+            // Prepare product data for payment modal
+            const paymentProduct = {
+                id: productData.id,
+                name: productData.name + (window.selectedColor ? ` (${window.selectedColor})` : ''),
+                price: productData.price,
+                originalPrice: productData.originalPrice || productData.price,
+                category: productData.category,
+                image: image
+            };
+
+            // Open payment modal from payment.js
+            openPaymentModal(paymentProduct);
+        }
     </script>
+    
+    <!-- Payment Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="payment.js"></script>
 </body>
 </html>
