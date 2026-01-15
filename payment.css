@@ -1,0 +1,512 @@
+/* Payment Modal Styles */
+.payment-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.payment-modal-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    margin: 2% auto;
+    padding: 0;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 50px rgba(212, 175, 55, 0.3);
+    animation: slideDown 0.4s ease;
+    position: relative;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.payment-close {
+    color: #d4af37;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.payment-close:hover,
+.payment-close:focus {
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.payment-step {
+    padding: 40px 30px;
+}
+
+.payment-step h2 {
+    color: #d4af37;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.payment-step p {
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Product Summary */
+.product-summary {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.summary-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #d4af37;
+}
+
+.summary-details {
+    flex: 1;
+}
+
+.summary-details h4 {
+    color: #fff;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.summary-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d4af37;
+    margin: 0;
+}
+
+.summary-price .original-price {
+    font-size: 16px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.summary-price .discount-badge {
+    background: #e74c3c;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+/* QR Code Section */
+.payment-qr-section {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.payment-qr-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.qr-code-container {
+    display: inline-block;
+    padding: 20px;
+    background: white;
+    border: 3px solid #d4af37;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.qr-code-container img {
+    display: block;
+}
+
+.upi-id {
+    color: #555;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.upi-id strong {
+    color: #d4af37;
+    font-size: 18px;
+}
+
+.payment-amount {
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* UPI Apps Buttons */
+.upi-apps {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.upi-apps p {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.upi-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.upi-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+}
+
+.phonepe-btn {
+    background: linear-gradient(135deg, #5f259f 0%, #3e1a6b 100%);
+}
+
+.phonepe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(95, 37, 159, 0.4);
+}
+
+.gpay-btn {
+    background: linear-gradient(135deg, #4285f4 0%, #2a56c6 100%);
+}
+
+.gpay-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+}
+
+.paytm-btn {
+    background: linear-gradient(135deg, #00b9f5 0%, #0082b8 100%);
+}
+
+.paytm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 185, 245, 0.4);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #d4af37;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.form-group small {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Button Styles */
+.next-btn,
+.submit-btn,
+.done-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.next-btn:hover,
+.submit-btn:hover,
+.done-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+}
+
+.next-btn:active,
+.submit-btn:active,
+.done-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.back-btn {
+    flex: 1;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.submit-btn {
+    flex: 2;
+    margin-top: 0;
+}
+
+/* Success Animation */
+.success-animation {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.success-animation i {
+    font-size: 80px;
+    color: #27ae60;
+    animation: successPulse 0.6s ease;
+}
+
+@keyframes successPulse {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#orderIdDisplay {
+    color: #d4af37;
+    font-size: 18px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .payment-modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+
+    .payment-step {
+        padding: 30px 20px;
+    }
+
+    .payment-step h2 {
+        font-size: 24px;
+    }
+
+    .summary-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .summary-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .upi-buttons {
+        flex-direction: column;
+    }
+
+    .upi-btn {
+        min-width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .back-btn,
+    .submit-btn {
+        width: 100%;
+    }
+
+    .qr-code-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-close {
+        font-size: 28px;
+        right: 15px;
+        top: 10px;
+    }
+
+    .payment-step {
+        padding: 25px 15px;
+    }
+
+    .payment-step h2 {
+        font-size: 20px;
+    }
+
+    .summary-price {
+        font-size: 20px;
+    }
+
+    .payment-amount {
+        font-size: 24px;
+    }
+}
+
+/* Additional Product Card Styles for Buy Button */
+.product-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-view,
+.btn-buy {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-view {
+    background: rgba(212, 175, 55, 0.1);
+    color: #d4af37;
+    border: 1px solid #d4af37;
+}
+
+.btn-view:hover {
+    background: rgba(212, 175, 55, 0.2);
+}
+
+.btn-buy {
+    background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+    color: #000;
+}
+
+.btn-buy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-buy:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-buy:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.original-price {
+    font-size: 14px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 10px;
+}

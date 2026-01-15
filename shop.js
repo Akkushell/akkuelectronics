@@ -59,15 +59,29 @@ function displayProducts(productsToDisplay) {
             imgSrc = fallbackImages[product.category] || fallbackImages.gear;
         }
         
+        const discount = product.originalPrice ? 
+            Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+        
         return `
         <div class="product-card" data-id="${product.id}">
+            ${discount > 0 ? `<span class="discount-badge">${discount}% OFF</span>` : ''}
             <div class="product-image">
                 <img src="${imgSrc}" alt="${product.name}" class="product-thumb" loading="lazy">
             </div>
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
-                <div class="product-price">₹${product.price.toLocaleString()}</div>
-                <button class="btn-buy" onclick="viewProduct(${product.id}, event)" ${!product.stock ? 'disabled' : ''}>View This</button>
+                <div class="product-price">
+                    ₹${product.price.toLocaleString()}
+                    ${product.originalPrice ? `<span class="original-price">₹${product.originalPrice.toLocaleString()}</span>` : ''}
+                </div>
+                <div class="product-actions">
+                    <button class="btn-view" onclick="viewProduct(${product.id}, event)">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="btn-buy" onclick="buyProduct(${product.id}, event)" ${!product.stock ? 'disabled' : ''}>
+                        <i class="fas fa-shopping-cart"></i> Buy Now
+                    </button>
+                </div>
             </div>
         </div>
     `;
@@ -130,6 +144,42 @@ function applySort() {
 function viewProduct(productId, event) {
     if (event) event.stopPropagation();
     window.location.href = `product-detail.html?id=${productId}`;
+}
+
+// Buy Product - Opens Payment Modal
+function buyProduct(productId, event) {
+    if (event) event.stopPropagation();
+    
+    const product = products.find(p => p.id === productId);
+    if (!product) {
+        alert('Product not found');
+        return;
+    }
+    
+    if (!product.stock) {
+        alert('This product is currently out of stock');
+        return;
+    }
+    
+    // Get image URL
+    let image;
+    if (product.images && product.images.length > 0) {
+        image = product.images[0];
+    } else if (product.imageUrl) {
+        image = product.imageUrl;
+    } else {
+        image = fallbackImages[product.category] || fallbackImages.gear;
+    }
+    
+    // Open payment modal
+    openPaymentModal({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        originalPrice: product.originalPrice || product.price,
+        category: product.category,
+        image: image
+    });
 }
 
 // Mobile Filter Toggle
