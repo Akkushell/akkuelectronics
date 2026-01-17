@@ -21,10 +21,41 @@ emailjs.init(EMAILJS_PUBLIC_KEY);
 let currentProduct = null;
 let currentOrderId = null;
 
+// Check if QRCode library is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof QRCode === 'undefined') {
+        console.error('QRCode library not loaded. Make sure qrcodejs is included in your HTML.');
+    } else {
+        console.log('QRCode library loaded successfully');
+    }
+});
+
 // Open Payment Modal
 function openPaymentModal(product) {
+    console.log('Opening payment modal for product:', product);
+    
+    // Validate product data
+    if (!product) {
+        console.error('No product data provided');
+        alert('Error: Product data is missing. Please try again.');
+        return;
+    }
+    
+    if (!product.price || product.price <= 0) {
+        console.error('Invalid product price:', product.price);
+        alert('Error: Invalid product price. Please try again.');
+        return;
+    }
+    
     currentProduct = product;
     const modal = document.getElementById('paymentModal');
+    
+    if (!modal) {
+        console.error('Payment modal element not found');
+        alert('Error: Payment system not initialized. Please refresh the page.');
+        return;
+    }
+    
     modal.style.display = 'block';
     
     // Reset to step 1
@@ -33,26 +64,21 @@ function openPaymentModal(product) {
     // Display product summary
     displayProductSummary(product);
     
-    // Generate QR Code
-    generateUPIQRCode(product);
+    // Generate QR Code with a small delay to ensure DOM is ready
+    setTimeout(() => {
+        generateUPIQRCode(product);
+    }, 100);
 }
 
 // Display Product Summary
 function displayProductSummary(product) {
     const summaryDiv = document.getElementById('productSummary');
-    const discount = product.originalPrice ? 
-        Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
     
     summaryDiv.innerHTML = `
         <div class="summary-item">
             <img src="${product.image}" alt="${product.name}" class="summary-image">
             <div class="summary-details">
                 <h4>${product.name}</h4>
-                <p class="summary-price">
-                    ₹${product.price.toLocaleString('en-IN')}
-                    ${product.originalPrice ? `<span class="original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>` : ''}
-                    ${discount > 0 ? `<span class="discount-badge">${discount}% OFF</span>` : ''}
-                </p>
             </div>
         </div>
     `;
@@ -63,19 +89,54 @@ function displayProductSummary(product) {
 // Generate UPI QR Code
 function generateUPIQRCode(product) {
     const qrcodeDiv = document.getElementById('qrcode');
+    
+    if (!qrcodeDiv) {
+        console.error('QR code container not found');
+        return;
+    }
+    
     qrcodeDiv.innerHTML = ''; // Clear previous QR code
     
-    // UPI Payment URL Format
-    const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${product.price}&cu=INR&tn=${encodeURIComponent('Payment for ' + product.name)}`;
+    // Validate product data
+    if (!product || !product.price || !product.name) {
+        console.error('Invalid product data for QR code generation:', product);
+        qrcodeDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Error: Invalid product data</p>';
+        return;
+    }
     
-    new QRCode(qrcodeDiv, {
-        text: upiUrl,
-        width: 250,
-        height: 250,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-    });
+    // Check if QRCode library is available
+    if (typeof QRCode === 'undefined') {
+        console.error('QRCode library not loaded');
+        qrcodeDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Error: QR Code library not loaded</p>';
+        return;
+    }
+    
+    // Limit name length for QR code (max 200 chars to avoid QR code complexity)
+    let cleanName = product.name;
+    if (cleanName.length > 200) {
+        cleanName = cleanName.substring(0, 197) + '...';
+    }
+    
+    // UPI Payment URL Format
+    const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${product.price}&cu=INR&tn=${encodeURIComponent('Payment for ' + cleanName)}`;
+    
+    console.log('Generating QR Code for:', cleanName, 'Amount: ₹' + product.price);
+    console.log('UPI URL:', upiUrl);
+    
+    try {
+        new QRCode(qrcodeDiv, {
+            text: upiUrl,
+            width: 250,
+            height: 250,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        console.log('✓ QR Code generated successfully');
+    } catch (error) {
+        console.error('QR Code generation failed:', error);
+        qrcodeDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Error generating QR code. Please try again.</p>';
+    }
 }
 
 // Open UPI Apps directly

@@ -67,7 +67,7 @@
     },
     {
       "id": 5,
-      "name": "AE Replacement Button Ribbon Cable Sheet for PlayStation 4 PS4 Wireless Controller JDM-040",
+      "name": "AE PS4 Wireless Controller JDM-040 Replacement Button Ribbon Cable Sheet",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 249,
@@ -75,13 +75,13 @@
       "discount": 101,
       "stock": true,
       "images": ["images/parts/ps4/AE-PS4-V2-FLEX-1.jpg","images/parts/ps4/AE-PS4-V2-FLEX-2.jpg","images/parts/ps4/AE-PS4-V2-FLEX-3.jpg"],  
-      "description": "High-quality replacement button ribbon cable sheet for PlayStation 4 wireless controller model JDM-040. This AE-TECH flex cable connects the controller buttons to the main board, ensuring proper functionality of all action buttons. Essential repair part for fixing unresponsive buttons, sticky controls, or button input failures on PS4 DualShock 4 controllers. Compatible with JDM-040 controller version, easy installation with proper disassembly.",
-      "specs": ["Compatible with PS4 JDM-040 Controllers", "Button Ribbon Flex Cable", "Fixes Unresponsive Buttons", "High-Quality Replacement Part", "Professional Repair Component"],
+      "description": "High-quality conductive film replacement button ribbon cable for PlayStation 4 DualShock 4 controllers model JDM-040. This AE-TECH replacement part connects all controller buttons to the main circuit board, ensuring proper button response and functionality. Essential repair component for fixing unresponsive buttons, sticky controls, or button input failures on PS4 DualShock controllers. Compatible with PS4 controller model JDM-040, professional-grade replacement part for optimal performance.",
+      "specs": ["Compatible with PS4 DualShock JDM-040", "Conductive Film Board", "Button Ribbon Flex Cable", "Fixes Unresponsive Buttons", "High-Quality Replacement Part"],
       "availability": "In Stock"
     },
     {
       "id": 6,
-      "name": "AE Silicone Rubber Conductive Button Pad Set for PS4 DualShock 4 Controller JDS-050 JDS-055",
+      "name": "AE PS4 Wireless Controller  JDS-050 JDS-055 Replacement Button Ribbon Cable Sheet",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 199,
@@ -89,13 +89,13 @@
       "discount": 151,
       "stock": true,
       "images": ["images/parts/ps4/AE-PS4-SRS-V2-1.jpg","images/parts/ps4/AE-PS4-SRS-V2-2.jpg","images/parts/ps4/AE-PS4-SRS-V2-3.jpg"],
-      "description": "High-quality silicone rubber conductive button pad set for PlayStation 4 DualShock 4 controllers model JDS-050 and JDS-055. This AE-TECH replacement kit includes the D-Pad, conductive film, and buttons, providing soft, durable, and high sensitivity repair components. Essential for fixing unresponsive or sticky buttons, restoring controller functionality. Compatible with JDS-050 and JDS-055 controller versions, easy installation with proper disassembly.",
-      "specs": ["Compatible with PS4 JDS-050 and JDS-055 Controllers", "Silicone Rubber Conductive Pads", "Includes D-Pad and Buttons", "Soft and Durable Material", "High Sensitivity Repair Kit"],
+      "description": "High-quality silicone rubber conductive button pad set for PlayStation 4 DualShock controllers model JDS-050 and JDS-055. This AE-TECH replacement kit includes the D-Pad, conductive film, and buttons, providing soft, durable, and high sensitivity repair components. Essential for fixing unresponsive or sticky buttons, restoring controller functionality. Compatible with PS4 DualShock controller models JDS-050 and JDS-055, easy installation with proper disassembly.",
+      "specs": ["Compatible with PS4 DualShock JDS-050 & JDS-055", "Silicone Rubber Conductive Pads", "Includes D-Pad and Buttons", "Soft and Durable Material", "High Sensitivity Repair Kit"],
       "availability": "In Stock"
     },
     {
       "id": 7,
-      "name": "AE Replacement Analog Joystick Cap for PS4 PlayStation 4 Wireless Controller Remote V1",
+      "name": "AE PS4 Wireless Controller Replacement Analog Joystick Cap Remote V1",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 249,
@@ -109,7 +109,7 @@
     },
     {
       "id": 8,
-      "name": "AE Replacement Analog Joystick Cap for PS4 PlayStation 4 Wireless Controller Remote V2",
+      "name": "AE PS4 Wireless Controller Replacement Analog Joystick Cap Remote V2",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 249,
@@ -124,7 +124,7 @@
 
     {
       "id": 9,
-     "name": "AE Replacement Analog Joystick Cap for PS5 PlayStation 5 Wireless Controller Remote",
+     "name": "AE PS5 Wireless Controller Replacement Analog Joystick Cap Remote",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 249,
@@ -138,7 +138,7 @@
     },
     {
       "id": 10,
-      "name": "AE Replacement PS5 Board Button Flex Cable for PS5 Wireless Controller - V2.0 BDM-020",
+      "name": "AE PS5 Board Button Flex Cable for PS5 Wireless Controller V2 BDM-020",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 350 ,
@@ -152,7 +152,7 @@
     },
     {
       "id": 11,
-      "name": "AE Replacement PS5 Board Button Flex Cable for PS5 Wireless Controller - V3.0 BDM-030 & BDM-040",
+      "name": "AE PS5 Board Button Flex Cable for PS5 Wireless Controller V3 BDM-030 BDM-040",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 350,
@@ -166,7 +166,7 @@
     },
     {
       "id": 12,
-      "name": "AE Replacement PS5 Board Button Flex Cable for PS5 Wireless Controller - V1.0 BDM-010",
+      "name": "AE PS5 Board Button Flex Cable for PS5 Wireless Controller V1 BDM-010",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 350,
@@ -238,7 +238,7 @@
 
     {
       "id": 16,
-      "name": "AE PS5 Replacement Silicone Rubber Pad Button Pads for PS5 PlayStation 5 Controller",
+      "name": "AE PS5 Silicone Rubber Pad Button Pads for PlayStation 5 Controller",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 299,
@@ -295,7 +295,7 @@
     },
     {
       "id": 20,
-      "name": "AE DualShock-2 Controller for PlayStation 2 | Vibration Feedback, Analog Sticks, Wired|",
+      "name": "AE DualShock-2 Controller for PlayStation 2 Vibration-Feedback Analog-Sticks Wired",
       "brand": "AE-TECH",
       "category": "accessories",
       "price": 350,
@@ -311,7 +311,7 @@
     },
     {
       "id": 21,
-      "name": "AE DualShock-3 Controller for PlayStation 3 | Vibration, Analog Sticks, Bluetooth |",
+      "name": "AE DualShock-3 Controller for PlayStation 3 Vibration Analog-Sticks Bluetooth",
       "brand": "AE-TECH",
       "category": "accessories",
       "price": 900,
@@ -326,7 +326,7 @@
     },
     {
       "id": 22,
-      "name": "AE DualShock-4 Controller for PlayStation 4 | Vibration, Analog Sticks, Bluetooth |",
+      "name": "AE DualShock-4 Controller for PlayStation 4 Vibration Analog-Sticks Bluetooth",
       "brand": "AE-TECH",
       "category": "accessories",
       "price": 1500,
@@ -389,7 +389,7 @@
     },
     {
       "id": 26,
-      "name": "AE PS2 Cooling Fan Replacement Fan for PS2 Slim Console 90000 9000X Internal Cooling Fan",
+      "name": "AE PS2 Cooling Fan Replacement Fan for PS2 Slim Console 90000 9000X",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 599,
@@ -403,7 +403,7 @@
     },
     {
       "id": 27,
-      "name": "AE PS2 Cooling Fan Replacement Fan for PS2 Slim Console 70000 7000X 7500X Internal Cooling Fan",
+      "name": "AE PS2 Cooling Fan Replacement Fan for PS2 Slim Console 70000 7000X 7500X",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 599,
@@ -445,7 +445,7 @@
     },
     {
       "id": 30,
-      "name": "AE PS4 Slim Console Cooling Fan, Internal Cooling Fan Replacement for Playstation 4 Slim",
+      "name": "AE PS4 Slim Console Cooling Fan Replacement for Playstation 4 Slim",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 1400,
@@ -459,7 +459,7 @@
     },
     {
       "id": 31,
-      "name": "AE PS4 Pro Console Cooling Fan, Internal Cooling Fan Replacement for Playstation 4 Pro",
+      "name": "AE PS4 Pro Console Cooling Fan Replacement for Playstation 4 Pro",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 1600,
@@ -473,7 +473,7 @@
     },
     {
       "id": 32,
-      "name": "AE PS4 Internal Power Supply, ADP-240CR Built-in Replacement Power Supply,(4-pin)",
+      "name": "AE PS4 Internal Power Supply ADP-240CR Built-in Replacement Power Supply (4-pin)",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 6200,
@@ -524,7 +524,7 @@
     },
     {
       "id": 34,
-      "name": "AE PS4 Internal Power Supply, ADP-160FR Built-in Replacement Power Supply,(4-pin)",
+      "name": "AE PS4 Internal Power Supply ADP-160FR Built-in Replacement Power Supply (4-pin)",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 5500,
@@ -538,7 +538,7 @@
     },
     {
       "id": 35,
-      "name": "AE PS5 Internal Power Supply, ADP-400ER Built-in Replacement Power Supply",
+      "name": "AE PS5 Internal Power Supply ADP-400ER Built-in Replacement Power Supply",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 7500,
@@ -552,7 +552,7 @@
     },
      {
       "id": 36,
-      "name": "AE PS5 Internal Power Supply, ADP-400FR Built-in Replacement Power Supply",
+      "name": "AE PS5 Internal Power Supply ADP-400FR Built-in Replacement Power Supply",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 7500,
@@ -566,7 +566,7 @@
     },
     {
       "id": 37,
-      "name": "AE PS5 Slim Internal Power Supply, ADP-400GR Built-in Replacement Power Supply",
+      "name": "AE PS5 Slim Internal Power Supply ADP-400GR Built-in Replacement Power Supply",
       "brand": "AE-TECH",
       "category": "parts",
       "price": 8500,
