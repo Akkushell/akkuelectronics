@@ -1562,6 +1562,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             localStorage.setItem('gameShopCart', JSON.stringify(cart));
             
+            // Google Analytics: Track Add to Cart
+            if (typeof gtag === 'function') {
+                gtag('event', 'add_to_cart', {
+                    currency: 'INR',
+                    value: productData.price,
+                    items: [{
+                        item_id: productData.id,
+                        item_name: productData.name,
+                        price: productData.price,
+                        quantity: 1
+                    }]
+                });
+            }
+            
             const colorText = window.selectedColor ? ` in ${window.selectedColor}` : '';
             alert(`${productData.name}${colorText} added to cart!`);
             window.location.href = 'shop.html';

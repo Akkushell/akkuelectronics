@@ -48,6 +48,7 @@ function openPaymentModal(product) {
     }
     
     currentProduct = product;
+    currentOrderId = generateOrderId(); // Generate Order ID immediately for UPI linking
     const modal = document.getElementById('paymentModal');
     
     if (!modal) {
@@ -118,7 +119,7 @@ function generateUPIQRCode(product) {
     }
     
     // UPI Payment URL Format
-    const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${product.price}&cu=INR&tn=${encodeURIComponent('Payment for ' + cleanName)}`;
+    const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${product.price.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Payment for ' + cleanName)}&tr=${currentOrderId}`;
     
     console.log('Generating QR Code for:', cleanName, 'Amount: ₹' + product.price);
     console.log('UPI URL:', upiUrl);
@@ -141,19 +142,19 @@ function generateUPIQRCode(product) {
 
 // Open UPI Apps directly
 function openUPIApp(app) {
-    const amount = currentProduct.price;
+    const amount = currentProduct.price.toFixed(2);
     const note = encodeURIComponent('Payment for ' + currentProduct.name);
     let url = '';
     
     switch(app) {
         case 'phonepe':
-            url = `phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}`;
+            url = `phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}&tr=${currentOrderId}`;
             break;
         case 'gpay':
-            url = `tez://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}`;
+            url = `tez://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}&tr=${currentOrderId}`;
             break;
         case 'paytm':
-            url = `paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}`;
+            url = `paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}&tr=${currentOrderId}`;
             break;
     }
     
@@ -189,9 +190,10 @@ async function submitPayment(event) {
     
     // Collect form data
     const orderData = {
-        orderId: generateOrderId(),
+        orderId: currentOrderId,
         timestamp: new Date().toISOString(),
         product: {
+            id: currentProduct.id,
             name: currentProduct.name,
             price: currentProduct.price,
             originalPrice: currentProduct.originalPrice || currentProduct.price,
@@ -211,8 +213,6 @@ async function submitPayment(event) {
         }
     };
     
-    currentOrderId = orderData.orderId;
-    
     try {
         // 1. Generate Invoice PDF
         const invoicePDF = await generateInvoice(orderData);
@@ -225,6 +225,21 @@ async function submitPayment(event) {
         
         // 4. Log to Google Sheets
         await logToGoogleSheets(orderData);
+        
+        // Google Analytics: Track Purchase
+        if (typeof gtag === 'function') {
+            gtag('event', 'purchase', {
+                transaction_id: orderData.orderId,
+                value: orderData.product.price,
+                currency: 'INR',
+                items: [{
+                    item_id: orderData.product.id,
+                    item_name: orderData.product.name,
+                    price: orderData.product.price,
+                    quantity: 1
+                }]
+            });
+        }
         
         // Show success
         document.getElementById('orderIdDisplay').textContent = orderData.orderId;
