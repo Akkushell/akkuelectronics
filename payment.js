@@ -21,15 +21,6 @@ emailjs.init(EMAILJS_PUBLIC_KEY);
 let currentProduct = null;
 let currentOrderId = null;
 
-// Check if QRCode library is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof QRCode === 'undefined') {
-        console.error('QRCode library not loaded. Make sure qrcodejs is included in your HTML.');
-    } else {
-        console.log('QRCode library loaded successfully');
-    }
-});
-
 // Open Payment Modal
 function openPaymentModal(product) {
     console.log('Opening payment modal for product:', product);
@@ -64,11 +55,6 @@ function openPaymentModal(product) {
     
     // Display product summary
     displayProductSummary(product);
-    
-    // Generate QR Code with a small delay to ensure DOM is ready
-    setTimeout(() => {
-        generateUPIQRCode(product);
-    }, 100);
 }
 
 // Display Product Summary
@@ -85,59 +71,6 @@ function displayProductSummary(product) {
     `;
     
     document.getElementById('paymentAmount').textContent = product.price.toLocaleString('en-IN');
-}
-
-// Generate UPI QR Code
-function generateUPIQRCode(product) {
-    const qrcodeDiv = document.getElementById('qrcode');
-    
-    if (!qrcodeDiv) {
-        console.error('QR code container not found');
-        return;
-    }
-    
-    qrcodeDiv.innerHTML = ''; // Clear previous QR code
-    
-    // Validate product data
-    if (!product || !product.price || !product.name) {
-        console.error('Invalid product data for QR code generation:', product);
-        qrcodeDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Error: Invalid product data</p>';
-        return;
-    }
-    
-    // Check if QRCode library is available
-    if (typeof QRCode === 'undefined') {
-        console.error('QRCode library not loaded');
-        qrcodeDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Error: QR Code library not loaded</p>';
-        return;
-    }
-    
-    // Limit name length for QR code (max 200 chars to avoid QR code complexity)
-    let cleanName = product.name;
-    if (cleanName.length > 200) {
-        cleanName = cleanName.substring(0, 197) + '...';
-    }
-    
-    // UPI Payment URL Format
-    const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${product.price.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Payment for ' + cleanName)}&tr=${currentOrderId}`;
-    
-    console.log('Generating QR Code for:', cleanName, 'Amount: ₹' + product.price);
-    console.log('UPI URL:', upiUrl);
-    
-    try {
-        new QRCode(qrcodeDiv, {
-            text: upiUrl,
-            width: 250,
-            height: 250,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-        console.log('✓ QR Code generated successfully');
-    } catch (error) {
-        console.error('QR Code generation failed:', error);
-        qrcodeDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Error generating QR code. Please try again.</p>';
-    }
 }
 
 // Open UPI Apps directly

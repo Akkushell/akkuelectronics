@@ -274,15 +274,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h2>Complete Your Payment</h2>
                 <div class="product-summary" id="productSummary"></div>
                 
-                <div class="payment-qr-section">
-                    <h3>Scan QR Code to Pay</h3>
-                    <div id="qrcode" class="qr-code-container"></div>
-                    <p class="upi-id">UPI ID: <strong>8956389723@barodampay</strong></p>
-                    <p class="payment-amount">Amount: ₹<span id="paymentAmount"></span></p>
+                <div class="payment-info-section" style="text-align: center; margin-bottom: 20px;">
+                    <p class="payment-amount" style="font-size: 1.5rem; color: #d4af37; font-weight: bold;">Amount: ₹<span id="paymentAmount"></span></p>
+                    <p class="upi-id" style="margin-top: 5px;">UPI ID: <strong>8956389723@barodampay</strong></p>
                 </div>
                 
                 <div class="upi-apps">
-                    <p>Or pay using:</p>
+                    <p>Select your UPI App to Pay:</p>
                     <div class="upi-buttons">
                         <button onclick="openUPIApp('phonepe')" class="upi-btn phonepe-btn">
                             <i class="fas fa-mobile-alt"></i> PhonePe
@@ -354,7 +352,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="script.js"></script>
     
     <!-- Payment Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
