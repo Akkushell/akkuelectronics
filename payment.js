@@ -356,6 +356,9 @@ function generateInvoice(orderData) {
         doc.text('This is a computer-generated invoice. Payment verification is in progress.', 105, 256, { align: 'center' });
         doc.text('We will contact you within 24 hours.', 105, 262, { align: 'center' });
         
+        // Save PDF to user's device
+        doc.save(`AkkuElectronics_Invoice_${orderData.orderId}.pdf`);
+        
         // Convert to base64
         const pdfBase64 = doc.output('datauristring').split(',')[1];
         resolve(pdfBase64);
@@ -442,9 +445,7 @@ async function logToGoogleSheets(orderData) {
         const response = await fetch(GOOGLE_SHEETS_URL, {
             method: 'POST',
             mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify(sheetData)
         });
         console.log('Logged to Google Sheets');
