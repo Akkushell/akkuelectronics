@@ -343,6 +343,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             box-shadow: 0 8px 16px rgba(212, 175, 55, 0.35);
         }
 
+        .product-actions-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-buy-now, .btn-contact {
+            padding: 13px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .btn-buy-now {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #000000;
+        }
+
+        .btn-buy-now:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-buy-now:active {
+            transform: scale(0.98);
+        }
+
+        .btn-contact {
+            background: linear-gradient(135deg, #25D366 0%, #20BA5B 100%);
+            color: #ffffff;
+            border: 2px solid #25D366;
+        }
+
+        .btn-contact:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-contact:active {
+            transform: scale(0.98);
+        }
+
         .specs-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             border: 1px solid #d4af37;
@@ -609,6 +662,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 transform: scale(0.98);
             }
 
+            .product-actions-section {
+                gap: 12px;
+                margin-bottom: 25px;
+            }
+
+            .btn-buy-now, .btn-contact {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+                min-width: 160px;
+                flex: 1;
+            }
+
             .specs-section {
                 padding: 18px 20px;
                 margin-bottom: 15px;
@@ -804,6 +869,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             .payment-icons img {
                 height: 32px;
+            }
+
+            .product-actions-section {
+                gap: 10px;
+                margin-bottom: 20px;
+                flex-direction: column;
+            }
+
+            .btn-buy-now, .btn-contact {
+                padding: 12px 14px;
+                font-size: 0.9rem;
+                border-radius: 6px;
+                letter-spacing: 0.5px;
+                min-height: 48px;
+                width: 100%;
+                min-width: unset;
             }
 
             .specs-section {
@@ -1106,6 +1187,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <!-- Description -->
                 <p class="product-description" id="productDescription"></p>
+
+                <!-- Buy Now Button -->
+                <div class="product-actions-section">
+                    <button class="btn-buy-now" onclick="buyNowProduct()">
+                        <i class="fas fa-shopping-cart"></i> Buy Now
+                    </button>
+                    <button class="btn-contact" onclick="contactForProduct()">
+                        <i class="fas fa-comments"></i> Contact on WhatsApp
+                    </button>
+                </div>
 
                 <!-- Product Contains Section -->
                 <div class="specs-section">
@@ -1482,6 +1573,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const colorText = window.selectedColor ? ` in ${window.selectedColor}` : '';
             alert(`${productData.name}${colorText} added to cart!`);
             window.location.href = 'shop.html';
+        }
+
+        function buyNowProduct() {
+            let cart = JSON.parse(localStorage.getItem('gameShopCart')) || [];
+            
+            const cartItem = {
+                ...productData,
+                quantity: 1
+            };
+            
+            // Include color if selected
+            if (window.selectedColor) {
+                cartItem.selectedColor = window.selectedColor;
+            }
+            
+            const existingItem = cart.find(item => 
+                item.id === cartItem.id && 
+                (item.selectedColor || window.selectedColor) === window.selectedColor
+            );
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push(cartItem);
+            }
+
+            localStorage.setItem('gameShopCart', JSON.stringify(cart));
+            
+            // Google Analytics: Track Purchase
+            if (typeof gtag === 'function') {
+                gtag('event', 'add_to_cart', {
+                    currency: 'INR',
+                    value: productData.price,
+                    items: [{
+                        item_id: productData.id,
+                        item_name: productData.name,
+                        price: productData.price,
+                        quantity: 1
+                    }]
+                });
+            }
+            
+            // Redirect to payment page
+            window.location.href = 'payment.html';
         }
 
         function toggleProductWishlist() {
