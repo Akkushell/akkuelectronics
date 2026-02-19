@@ -577,6 +577,53 @@
       "description": "Premium OEM-specification replacement power supply for PlayStation 5 Slim console model. Model ADP-400GR delivers optimized 350W continuous output with advanced power architecture for Slim's refined design. Proprietary connector ensures perfect compatibility with PS5 Slim's internal layout. Enhanced efficiency reduces heat generation and noise compared to original units. Multi-stage power protection system safeguards all subsystems from electrical anomalies. Compatible exclusively with PS5 Slim models. Direct replacement restores full system performance and reliability.",
       "specs": ["Model: ADP-400GR (Proprietary Connector)", "Output: 350W Optimized", "Compatible PS5 Slim Models Only", "Refined Design Architecture", "Enhanced Efficiency Rating", "Reduced Heat & Noise Output", "Multi-Stage Protection System", "Factory OEM-Specification Quality"],
       "availability": "In Stock"
+    },
+   
+    {
+      "id": 38,
+      "name": "AE Genuine PS4 Replacement Analog 3D Joystick for PS4 Wireless Controller",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 299,
+      "originalPrice": 499,
+      "discount": 200,
+      "stock": true,
+      "images": ["images/parts/ps4/AE-PS4-ANALOG-1.jpg", "images/parts/ps4/AE-PS4-ANALOG-2.jpg", "images/parts/ps4/AE-PS4-ANALOG-3.jpg", "images/parts/ps4/AE-PS4-ANALOG-4.jpg", "images/parts/ps4/AE-PS4-ANALOG-5.jpg"],
+      "description": "Genuine-grade 3D analog joystick replacement module for PS4 wireless controllers. Designed to restore smooth thumbstick movement and accurate directional input on controllers affected by drift, dead zones, or worn stick mechanism. Reliable fit for board-level controller repair with stable axis response and long service life.",
+      "specs": ["PS4 3D Analog Joystick Replacement Module", "Compatible with PS4 Wireless Controller", "Fixes Stick Drift and Dead-Zone Issues", "High-Precision X/Y Axis Response", "Durable Metal-Plastic Assembly", "Soldering Required for Installation"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 39,
+      "name": "AE PS5 Controller Hall Effect 3D Analog Sensor Joystick Module Replacement for PS5 Controller",
+      "brand": "AE-TECH",
+      "category": "parts",
+      "price": 750,
+      "originalPrice": 999,
+      "discount": 249,
+      "stock": true,
+      "images": ["images/parts/ps5/AE-PS5-HALLEFFECT-1.jpg", "images/parts/ps5/AE-PS5-HALLEFFECT-2.jpg", "images/parts/ps5/AE-PS5-HALLEFFECT-3.jpg", "images/parts/ps5/AE-PS5-HALLEFFECT-4.jpg"],
+      "description": "Hall Effect 3D analog stick sensor joystick module replacement for PlayStation 5 wireless controllers. Designed for high-precision input detection with reduced wear compared to conventional potentiometer sticks, helping minimize drift and dead-zone issues. Suitable for board-level controller repair and long-term analog performance restoration.",
+      "specs": ["PS5 Hall Effect 3D Analog Sensor Joystick Module", "Compatible with PlayStation 5 Wireless Controller", "Hall Effect Magnetic Sensor Technology", "High-Precision Analog X/Y Axis Tracking", "Improved Drift Resistance over Standard Potentiometers", "Soldering Installation Required"],
+      "availability": "In Stock"
+    },
+    {
+      "id": 40,
+      "name": "Sony PlayStation 3 Slim Jailbroken 1TB Hard-Drive ( Refurbuished Model)",
+      "brand": "Sony",
+      "category": "consoles",
+      "price": 17000,
+      "originalPrice": 19500,
+      "discount": 2500,
+      "stock": true,
+      "images": [
+        "images/console/ps3/ae-ps3-slim-2.png",
+        "images/console/ps3/ae-ps3-slim-1.png",
+        "images/console/ps3/ae-ps3-slim-3.png"        
+      ],
+      "description": "Refurbished PlayStation 3 Slim with 1TB HDD and custom jailbreak firmware. Extensive gaming library with 35-40 pre-loaded games included. Blu-ray playback, built-in WiFi, HDMI connectivity. Includes 2 wireless Sixaxis controllers. Fully tested and certified. Perfect for retro gaming and media consumption.",
+      "specs": ["PS3 Slim Console (CECH-2000/3000)", "Jailbroken Custom Firmware", "1TB Hard Drive Storage", "Blu-ray Disc Player", "Built-in WiFi Connectivity", "2x Wireless Sixaxis Controllers", "35-40 Pre-loaded Games", "Power & HDMI Cables Included"],
+      "availability": "In Stock"
     }
   ]
 }
