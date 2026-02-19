@@ -9,7 +9,7 @@ const blogPosts = [
         tags: ["GTA 6", "Grand Theft Auto", "Gaming", "Gameplay", "Story", "PS5", "Xbox Series X", "Open-World"],
         date: "2026-02-19",
         author: "Akku Electronics",
-        image: "blog/images/gta61.webp",
+        image: "images/gta61.webp",
         link: "19022026gta6complete.html"
     },
     {
@@ -21,7 +21,7 @@ const blogPosts = [
         tags: ["DualSense", "PlayStation 5", "Hardware", "Schematics", "Repair Guide", "PCB"],
         date: "2026-01-14",
         author: "Akku Electronics",
-        image: "blog/images/ds_banner.webp",
+        image: "images/ds_banner.webp",
         link: "14012026ps5-dsc-schematic.html"
     },
     {
