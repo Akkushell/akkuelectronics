@@ -75,19 +75,18 @@ function displayProductSummary(product) {
 
 // Open UPI Apps directly
 function openUPIApp(app) {
-    const amount = currentProduct.price.toFixed(2);
     const note = encodeURIComponent('Payment for ' + currentProduct.name);
     let url = '';
     
     switch(app) {
         case 'phonepe':
-            url = `phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}&tr=${currentOrderId}`;
+            url = `phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&cu=INR&tn=${note}&tr=${currentOrderId}`;
             break;
         case 'gpay':
-            url = `tez://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}&tr=${currentOrderId}`;
+            url = `tez://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&cu=INR&tn=${note}&tr=${currentOrderId}`;
             break;
         case 'paytm':
-            url = `paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${note}&tr=${currentOrderId}`;
+            url = `paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&cu=INR&tn=${note}&tr=${currentOrderId}`;
             break;
     }
     
@@ -338,17 +337,28 @@ async function sendEmailNotification(orderData, invoicePDF) {
 
 // Send WhatsApp Notification
 function sendWhatsAppNotification(orderData) {
-    const message = `🛒 *New Order Received!*%0A%0A` +
-        `📦 Order ID: ${orderData.orderId}%0A` +
-        `👤 Customer: ${orderData.customer.name}%0A` +
-        `📱 Phone: ${orderData.customer.phone}%0A` +
-        `📧 Email: ${orderData.customer.email}%0A` +
-        `🏠 Address: ${orderData.customer.address}%0A%0A` +
-        `🎮 Product: ${orderData.product.name}%0A` +
-        `💰 Amount: ₹${orderData.product.price}%0A` +
-        `🔢 UTR: ${orderData.payment.utr}%0A%0A` +
-        `⏰ Time: ${new Date(orderData.timestamp).toLocaleString('en-IN')}%0A%0A` +
-        `✅ Please verify the payment in your UPI app.`;
+    const message = `🧾 *INVOICE & ORDER DETAILS* 🧾%0A` +
+        `--------------------------------%0A` +
+        `*Order ID:* ${orderData.orderId}%0A` +
+        `*Date:* ${new Date(orderData.timestamp).toLocaleString('en-IN')}%0A` +
+        `--------------------------------%0A` +
+        `👤 *CUSTOMER DETAILS*%0A` +
+        `Name: ${orderData.customer.name}%0A` +
+        `Phone: ${orderData.customer.phone}%0A` +
+        `Email: ${orderData.customer.email}%0A` +
+        `Address: ${orderData.customer.address}%0A` +
+        `--------------------------------%0A` +
+        `🛒 *PRODUCT DETAILS*%0A` +
+        `Item: ${orderData.product.name}%0A` +
+        `Category: ${orderData.product.category}%0A` +
+        `Price: ₹${orderData.product.price.toLocaleString('en-IN')}%0A` +
+        `--------------------------------%0A` +
+        `💰 *PAYMENT INFO*%0A` +
+        `Method: UPI%0A` +
+        `UTR/Ref: ${orderData.payment.utr}%0A` +
+        `Status: Pending Verification%0A` +
+        `--------------------------------%0A` +
+        `✅ *Payment Verified by Customer*`;
     
     // Open WhatsApp with pre-filled message
     const whatsappUrl = `https://wa.me/${STORE_PHONE.replace('+', '')}?text=${message}`;
