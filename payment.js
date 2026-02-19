@@ -634,32 +634,368 @@ function displayOrderSuccess(orderData, invoiceData) {
             `;
         }
         
-        // Add download button if invoice exists
+        // Display detailed receipt
+        displayDetailedReceipt(orderData);
+        
+        // Display order status timeline
+        displayOrderStatusTimeline(orderData);
+        
+        // Log order to JSON
+        logOrderToJSON(orderData, invoiceData);
+        
+        // Add download buttons if invoice exists
         if (invoiceData) {
             const successStep = document.getElementById('paymentStep3');
-            let downloadBtn = document.getElementById('downloadInvoiceBtn');
             
+            // Download Invoice Button
+            let downloadBtn = document.getElementById('downloadInvoiceBtn');
             if (!downloadBtn && successStep) {
                 downloadBtn = document.createElement('button');
                 downloadBtn.id = 'downloadInvoiceBtn';
                 downloadBtn.className = 'btn download-btn';
-                downloadBtn.style.marginTop = '15px';
+                downloadBtn.style.marginTop = '10px';
                 downloadBtn.innerHTML = '<i class="fas fa-file-pdf"></i> Download Invoice';
                 
                 const doneBtn = successStep.querySelector('.done-btn');
                 if (doneBtn) {
                     successStep.insertBefore(downloadBtn, doneBtn);
                 }
-            }
-            
-            if (downloadBtn) {
+                
                 downloadBtn.onclick = function() {
                     easyinvoice.download(`AkkuElectronics_Invoice_${orderData.orderId}.pdf`, invoiceData.pdf);
+                    showNotification('Invoice downloaded!', 'success');
+                };
+            }
+            
+            // Download Receipt Button
+            let receiptBtn = document.getElementById('downloadReceiptBtn');
+            if (!receiptBtn && successStep) {
+                receiptBtn = document.createElement('button');
+                receiptBtn.id = 'downloadReceiptBtn';
+                receiptBtn.className = 'btn download-btn';
+                receiptBtn.style.marginTop = '10px';
+                receiptBtn.innerHTML = '<i class="fas fa-receipt"></i> Download Receipt';
+                
+                const doneBtn = successStep.querySelector('.done-btn');
+                if (doneBtn) {
+                    successStep.insertBefore(receiptBtn, doneBtn);
+                }
+                
+                receiptBtn.onclick = function() {
+                    downloadReceiptAsJSON(orderData);
+                };
+            }
+            
+            // Export Order Log Button
+            let exportBtn = document.getElementById('exportLogBtn');
+            if (!exportBtn && successStep) {
+                exportBtn = document.createElement('button');
+                exportBtn.id = 'exportLogBtn';
+                exportBtn.className = 'btn download-btn';
+                exportBtn.style.marginTop = '10px';
+                exportBtn.innerHTML = '<i class="fas fa-download"></i> Export Order Log';
+                
+                const doneBtn = successStep.querySelector('.done-btn');
+                if (doneBtn) {
+                    successStep.insertBefore(exportBtn, doneBtn);
+                }
+                
+                exportBtn.onclick = function() {
+                    exportOrderLogAsJSON();
                 };
             }
         }
     } catch (error) {
         console.error('Error displaying success:', error);
+    }
+}
+
+/**
+ * Display Detailed Receipt Information
+ */
+function displayDetailedReceipt(orderData) {
+    try {
+        const successStep = document.getElementById('paymentStep3');
+        if (!successStep) return;
+        
+        let receiptDiv = document.getElementById('detailedReceiptDiv');
+        if (receiptDiv) {
+            receiptDiv.remove();
+        }
+        
+        receiptDiv = document.createElement('div');
+        receiptDiv.id = 'detailedReceiptDiv';
+        receiptDiv.style.cssText = `
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(244, 208, 63, 0.05) 100%);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+            font-size: 13px;
+            color: #cccccc;
+            max-height: 300px;
+            overflow-y: auto;
+        `;
+        
+        receiptDiv.innerHTML = `
+            <div style="text-align: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #d4af37;">
+                <h3 style="margin: 0; color: #d4af37;">📦 ORDER RECEIPT</h3>
+                <p style="margin: 4px 0; font-size: 11px; color: #999;">Order ID: <strong>${orderData.orderId}</strong></p>
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">📦 Product:</strong> ${orderData.product.name}</p>
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">🏷️ Category:</strong> ${orderData.product.category}</p>
+                ${orderData.product.discount > 0 ? `
+                    <p style="margin: 6px 0;"><strong style="color: #27ae60;">💰 Discount:</strong> ${orderData.product.discountPercentage}% OFF (₹${orderData.product.discount.toLocaleString('en-IN')})</p>
+                ` : ''}
+                <p style="margin: 6px 0; border-top: 1px solid #666; padding-top: 6px;"><strong style="color: #f4d03f; font-size: 14px;">💵 Final Amount: ₹${orderData.product.price.toLocaleString('en-IN')}</strong></p>
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">👤 Customer:</strong> ${orderData.customer.name}</p>
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">📱 Phone:</strong> ${orderData.customer.phone.replace('91', '+91 ')}</p>
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">📧 Email:</strong> ${orderData.customer.email}</p>
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">🏠 Address:</strong> ${orderData.customer.address}</p>
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">💳 Payment Method:</strong> UPI</p>
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">🔐 UTR:</strong> ${orderData.payment.utr}</p>
+                <p style="margin: 6px 0;"><strong style="color: #d4af37;">⏰ Date & Time:</strong> ${orderData.formattedDate} ${orderData.formattedTime}</p>
+            </div>
+        `;
+        
+        const doneBtn = successStep.querySelector('.done-btn');
+        if (doneBtn) {
+            successStep.insertBefore(receiptDiv, doneBtn);
+        }
+    } catch (error) {
+        console.error('Error displaying receipt:', error);
+    }
+}
+
+/**
+ * Display Order Status Timeline
+ */
+function displayOrderStatusTimeline(orderData) {
+    try {
+        const successStep = document.getElementById('paymentStep3');
+        if (!successStep) return;
+        
+        let timelineDiv = document.getElementById('orderTimelineDiv');
+        if (timelineDiv) {
+            timelineDiv.remove();
+        }
+        
+        const now = new Date();
+        const orderDate = new Date(orderData.timestamp);
+        
+        timelineDiv = document.createElement('div');
+        timelineDiv.id = 'orderTimelineDiv';
+        timelineDiv.style.cssText = `
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+        `;
+        
+        timelineDiv.innerHTML = `
+            <h3 style="margin: 0 0 12px 0; color: #d4af37; text-align: center; font-size: 14px;">📍 ORDER STATUS TIMELINE</h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; gap: 10px; align-items: start;">
+                    <div style="width: 24px; height: 24px; background: #27ae60; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                        <i class="fas fa-check" style="color: white; font-size: 12px;"></i>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #27ae60; font-weight: 600; font-size: 12px;">PAYMENT RECEIVED</p>
+                        <p style="margin: 4px 0 0 0; color: #999; font-size: 11px;">${orderDate.toLocaleString('en-IN')}</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: start;">
+                    <div style="width: 24px; height: 24px; background: #f39c12; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                        <i class="fas fa-clock" style="color: white; font-size: 12px;"></i>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #f39c12; font-weight: 600; font-size: 12px;">VERIFICATION IN PROGRESS</p>
+                        <p style="margin: 4px 0 0 0; color: #999; font-size: 11px;">Will complete within 24 hours</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: start;">
+                    <div style="width: 24px; height: 24px; background: #666; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                        <i class="fas fa-box" style="color: white; font-size: 12px;"></i>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #999; font-weight: 600; font-size: 12px;">PROCESSING & DELIVERY</p>
+                        <p style="margin: 4px 0 0 0; color: #666; font-size: 11px;">Pending verification completion</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        const doneBtn = successStep.querySelector('.done-btn');
+        if (doneBtn) {
+            successStep.insertBefore(timelineDiv, doneBtn);
+        }
+    } catch (error) {
+        console.error('Error displaying timeline:', error);
+    }
+}
+
+/**
+ * Log Order to JSON in LocalStorage
+ */
+function logOrderToJSON(orderData, invoiceData) {
+    try {
+        let orderLog = JSON.parse(localStorage.getItem('akkuOrderLog')) || {
+            storeInfo: {
+                name: CONFIG.company.name,
+                email: CONFIG.storeEmail,
+                phone: CONFIG.storePhone,
+                website: CONFIG.company.website,
+                exportedAt: new Date().toISOString()
+            },
+            orders: []
+        };
+        
+        // Add current order with invoice data
+        const logEntry = {
+            ...orderData,
+            invoiceGenerated: !!invoiceData,
+            loggedAt: new Date().toISOString()
+        };
+        
+        orderLog.orders.push(logEntry);
+        localStorage.setItem('akkuOrderLog', JSON.stringify(orderLog));
+        
+        console.log('Order logged to JSON storage:', orderData.orderId);
+    } catch (error) {
+        console.error('Error logging order to JSON:', error);
+    }
+}
+
+/**
+ * Download Receipt as JSON
+ */
+function downloadReceiptAsJSON(orderData) {
+    try {
+        const receiptData = {
+            receipt: {
+                type: 'ORDER_RECEIPT',
+                version: '2.0',
+                generatedAt: new Date().toISOString(),
+                
+                orderInfo: {
+                    orderId: orderData.orderId,
+                    orderDate: orderData.formattedDate,
+                    orderTime: orderData.formattedTime,
+                    timestamp: orderData.timestamp
+                },
+                
+                productInfo: {
+                    name: orderData.product.name,
+                    category: orderData.product.category,
+                    id: orderData.product.id,
+                    originalPrice: orderData.product.originalPrice,
+                    discount: orderData.product.discount,
+                    discountPercentage: orderData.product.discountPercentage,
+                    finalPrice: orderData.product.price,
+                    currency: 'INR'
+                },
+                
+                customerInfo: {
+                    name: orderData.customer.name,
+                    email: orderData.customer.email,
+                    phone: orderData.customer.phone,
+                    address: orderData.customer.address
+                },
+                
+                paymentInfo: {
+                    method: orderData.payment.method,
+                    upiId: orderData.payment.upiId,
+                    transactionId: orderData.payment.utr,
+                    amount: orderData.payment.amount,
+                    status: orderData.payment.status,
+                    timestamp: orderData.payment.timestamp
+                },
+                
+                storeInfo: {
+                    name: orderData.store.name,
+                    email: orderData.store.email,
+                    phone: orderData.store.phone,
+                    address: orderData.store.address,
+                    website: orderData.store.website,
+                    gstNo: orderData.store.gstNo
+                },
+                
+                message: 'Thank you for your order! Your payment has been received and is being verified. You will receive an email confirmation shortly.'
+            }
+        };
+        
+        const dataStr = JSON.stringify(receiptData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `Receipt_${orderData.orderId}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        
+        showNotification('Receipt downloaded as JSON!', 'success');
+    } catch (error) {
+        console.error('Error downloading receipt:', error);
+        showNotification('Error downloading receipt', 'error');
+    }
+}
+
+/**
+ * Export Complete Order Log as JSON
+ */
+function exportOrderLogAsJSON() {
+    try {
+        const orderLog = JSON.parse(localStorage.getItem('akkuOrderLog'));
+        if (!orderLog || !orderLog.orders || orderLog.orders.length === 0) {
+            showNotification('No orders to export', 'info');
+            return;
+        }
+        
+        // Add summary statistics
+        const exportData = {
+            exportInfo: {
+                exportedAt: new Date().toISOString(),
+                totalOrders: orderLog.orders.length,
+                dateRange: {
+                    firstOrder: orderLog.orders[0]?.formattedDate,
+                    lastOrder: orderLog.orders[orderLog.orders.length - 1]?.formattedDate
+                },
+                totalRevenue: orderLog.orders.reduce((sum, order) => sum + (order.product.price || 0), 0),
+                totalDiscount: orderLog.orders.reduce((sum, order) => sum + (order.product.discount || 0), 0)
+            },
+            storeInfo: orderLog.storeInfo,
+            orders: orderLog.orders
+        };
+        
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `AkkuElectronics_OrderLog_${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        
+        showNotification(`Order log exported! (${exportData.exportInfo.totalOrders} orders)`, 'success');
+    } catch (error) {
+        console.error('Error exporting order log:', error);
+        showNotification('Error exporting order log', 'error');
     }
 }
 

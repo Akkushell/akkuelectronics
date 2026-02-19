@@ -332,16 +332,64 @@
     transform: translateY(-2px);
 }
 
-.phonepe-btn:hover i {
+.phonepe-btn {
+    border-color: #5a4fcf;
+    background: rgba(90, 79, 207, 0.1);
+}
+
+.phonepe-btn i {
     color: #5a4fcf;
 }
 
-.gpay-btn:hover i {
+.phonepe-btn:hover {
+    border-color: #5a4fcf;
+    background: linear-gradient(135deg, #5a4fcf 0%, #7b2cbf 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(90, 79, 207, 0.4);
+}
+
+.phonepe-btn:hover i {
+    color: #ffffff;
+}
+
+.gpay-btn {
+    border-color: #4285f4;
+    background: rgba(66, 133, 244, 0.1);
+}
+
+.gpay-btn i {
     color: #4285f4;
 }
 
+.gpay-btn:hover {
+    border-color: #4285f4;
+    background: linear-gradient(135deg, #4285f4 0%, #1967d2 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
+}
+
+.gpay-btn:hover i {
+    color: #ffffff;
+}
+
+.paytm-btn {
+    border-color: #00a699;
+    background: rgba(0, 166, 153, 0.1);
+}
+
+.paytm-btn i {
+    color: #00a699;
+}
+
+.paytm-btn:hover {
+    border-color: #00a699;
+    background: linear-gradient(135deg, #00a699 0%, #008a7b 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 166, 153, 0.4);
+}
+
 .paytm-btn:hover i {
-    color: #0066ff;
+    color: #ffffff;
 }
 
 /* ====== AMOUNT SECTION ====== */
