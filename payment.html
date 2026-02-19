@@ -895,7 +895,7 @@
     </div>
 
     <!-- Loading Modal -->
-    <div id="loadingModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+    <div id="loadingModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); align-items: center; justify-content: center; z-index: 1000;">
         <div class="loading-message">
             <div class="spinner"></div>
             <p style="margin-top: 20px;">Processing your order...</p>
@@ -903,8 +903,16 @@
     </div>
 
     <script>
-        // Initialize EmailJS
-        emailjs.init('XcHn6V8lsei-xmPAf');
+        // Initialize EmailJS (safe init so checkout flow never breaks)
+        try {
+            if (typeof emailjs !== 'undefined' && typeof emailjs.init === 'function') {
+                emailjs.init('XcHn6V8lsei-xmPAf');
+            } else {
+                console.warn('EmailJS not loaded. Checkout flow will continue without email notifications.');
+            }
+        } catch (emailInitError) {
+            console.warn('EmailJS init failed. Checkout flow will continue:', emailInitError);
+        }
 
         let cartData = [];
         let totalAmount = 0;
@@ -924,20 +932,90 @@
         }
 
         // Load cart data on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            loadCartData();
-        });
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(loadCartData, 100);
+            });
+        } else {
+            // DOM is already loaded
+            setTimeout(loadCartData, 100);
+        }
 
         function loadCartData() {
-            const cart = JSON.parse(localStorage.getItem('gameShopCart')) || [];
-            if (cart.length === 0) {
-                document.body.innerHTML = '<div style="text-align:center; padding: 100px; color: #d4af37;"><h1>Your cart is empty</h1><p><a href="shop.html">Back to Shop</a></p></div>';
-                return;
-            }
+            try {
+                const buyNowJSON = localStorage.getItem('gameShopBuyNowCheckout');
+                const cartJSON = localStorage.getItem('gameShopCart');
+                console.log('Buy Now JSON:', buyNowJSON);
+                console.log('Cart JSON:', cartJSON);
 
-            cartData = cart;
-            displayOrderSummary();
-            generateQRCode();
+                let buyNowCart = [];
+                let regularCart = [];
+
+                try {
+                    buyNowCart = buyNowJSON ? JSON.parse(buyNowJSON) : [];
+                } catch (parseBuyNowError) {
+                    console.warn('Corrupted buy-now data detected. Clearing...', parseBuyNowError);
+                    localStorage.removeItem('gameShopBuyNowCheckout');
+                }
+
+                try {
+                    regularCart = cartJSON ? JSON.parse(cartJSON) : [];
+                } catch (parseCartError) {
+                    console.warn('Corrupted cart data detected. Clearing...', parseCartError);
+                    localStorage.removeItem('gameShopCart');
+                }
+
+                const sourceCart = Array.isArray(buyNowCart) && buyNowCart.length > 0 ? buyNowCart : regularCart;
+
+                const cart = Array.isArray(sourceCart)
+                    ? sourceCart
+                        .map(item => ({
+                            ...item,
+                            name: item?.name || item?.title || item?.productName || 'Unknown Product',
+                            price: Number(item?.price ?? item?.sellingPrice ?? item?.finalPrice ?? 0) || 0,
+                            quantity: Number(item?.quantity) || 1,
+                            selectedColor: item?.selectedColor || item?.color || ''
+                        }))
+                        .filter(item => {
+                            const hasName = typeof item.name === 'string' && item.name.trim().length > 0;
+                            const safeName = hasName && !/[{}<>]|function\s*\(|window\./i.test(item.name);
+                            const safePrice = Number.isFinite(item.price) && item.price >= 0;
+                            return safeName && safePrice;
+                        })
+                    : [];
+
+                console.log('Parsed cart:', cart);
+
+                if (Array.isArray(sourceCart) && sourceCart.length > 0 && cart.length === 0) {
+                    console.warn('All stored items are invalid. Auto-clearing corrupted checkout data.');
+                    localStorage.removeItem('gameShopBuyNowCheckout');
+                    localStorage.removeItem('gameShopCart');
+                }
+                
+                if (!Array.isArray(cart) || cart.length === 0) {
+                    document.body.innerHTML = '<div style="text-align:center; padding: 100px; color: #d4af37; font-family: Poppins, sans-serif;"><h1>Your cart is empty</h1><p><a href="shop.html" style="color: #d4af37;">Back to Shop</a></p></div>';
+                    return;
+                }
+
+                if (Array.isArray(buyNowCart) && buyNowCart.length > 0) {
+                    localStorage.removeItem('gameShopBuyNowCheckout');
+                }
+
+                localStorage.setItem('gameShopCart', JSON.stringify(cart));
+
+                cartData = cart;
+                console.log('CartData set:', cartData);
+                
+                displayOrderSummary();
+                try {
+                    generateQRCode();
+                } catch (qrError) {
+                    console.warn('QR generation failed:', qrError);
+                }
+            } catch (error) {
+                console.error('Error loading cart:', error);
+                document.body.innerHTML = '<div style="text-align:center; padding: 100px; color: #ff6b6b; font-family: Poppins, sans-serif;"><h1>Error Loading Cart</h1><p>' + error.message + '</p><p><a href="shop.html" style="color: #d4af37;">Back to Shop</a></p></div>';
+            }
         }
 
         function displayOrderSummary() {
@@ -945,38 +1023,66 @@
             const orderItemsDiv = document.getElementById('orderItems');
             const confirmationItemsDiv = document.getElementById('confirmationItems');
 
-            let html = '';
-            cartData.forEach(item => {
-                const itemTotal = item.price * (item.quantity || 1);
-                totalAmount += itemTotal;
+            if (!orderItemsDiv || !confirmationItemsDiv) {
+                console.error('Order summary elements not found');
+                return;
+            }
 
-                html += `
-                    <div class="order-item">
-                        <div class="item-details">
-                            <div class="item-name">${item.name}</div>
-                            <div class="item-meta">Qty: ${item.quantity || 1}${item.selectedColor ? ' | Color: ' + item.selectedColor : ''}</div>
+            console.log('CartData:', cartData);
+
+            let html = '';
+            if (cartData.length === 0) {
+                html = '<p style="color: #cccccc; text-align: center;">No items in cart</p>';
+            } else {
+                cartData.forEach(item => {
+                    const itemName = item.name || item.title || item.productName || 'Unknown Product';
+                    const rawPrice = item.price ?? item.sellingPrice ?? item.finalPrice ?? 0;
+                    const price = Number(rawPrice) || 0;
+                    const quantity = Number(item.quantity) || 1;
+                    const selectedColor = item.selectedColor || item.color || '';
+                    const itemTotal = price * quantity;
+                    totalAmount += itemTotal;
+
+                    console.log(`Item: ${itemName}, Price: ${price}, Qty: ${quantity}, Total: ${itemTotal}`);
+
+                    html += `
+                        <div class="order-item">
+                            <div class="item-details">
+                                <div class="item-name">${itemName}</div>
+                                <div class="item-meta">Qty: ${quantity}${selectedColor ? ' | Color: ' + selectedColor : ''}</div>
+                            </div>
+                            <div class="item-price">₹${isNaN(itemTotal) ? '0' : itemTotal.toLocaleString()}</div>
                         </div>
-                        <div class="item-price">₹${itemTotal.toLocaleString()}</div>
-                    </div>
-                `;
-            });
+                    `;
+                });
+            }
 
             orderItemsDiv.innerHTML = html;
             confirmationItemsDiv.innerHTML = html;
-            document.getElementById('totalAmount').textContent = '₹' + totalAmount.toLocaleString();
-            document.getElementById('confirmationTotal').textContent = '₹' + totalAmount.toLocaleString();
+            
+            const totalAmountEl = document.getElementById('totalAmount');
+            const confirmationTotalEl = document.getElementById('confirmationTotal');
+            
+            if (totalAmountEl) totalAmountEl.textContent = '₹' + (totalAmount || 0).toLocaleString();
+            if (confirmationTotalEl) confirmationTotalEl.textContent = '₹' + (totalAmount || 0).toLocaleString();
 
             orderData.items = cartData;
             orderData.total = totalAmount;
+
+            console.log('Total Amount:', totalAmount);
         }
 
         function goToStep(stepNumber) {
+            console.log('Going to step:', stepNumber, 'Current step:', currentStep);
+
             // Validate current step before moving
             if (stepNumber > currentStep) {
                 if (currentStep === 2 && !validateForm()) {
+                    console.log('Form validation failed');
                     return;
                 }
                 if (currentStep === 3 && !validatePayment()) {
+                    console.log('Payment validation failed');
                     return;
                 }
             }
@@ -987,7 +1093,14 @@
             });
 
             // Show selected step
-            document.querySelector(`.step-content[data-step="${stepNumber}"]`).classList.add('active');
+            const targetStep = document.querySelector(`.step-content[data-step="${stepNumber}"]`);
+            if (targetStep) {
+                targetStep.classList.add('active');
+                console.log('Step', stepNumber, 'activated');
+            } else {
+                console.error('Step', stepNumber, 'not found');
+                return;
+            }
 
             // Update step indicator
             document.querySelectorAll('.step').forEach((step, index) => {
@@ -1114,9 +1227,19 @@
         function generateQRCode() {
             const upiId = 'akkuelectronics@upi';
             const qrCodeContainer = document.getElementById('qrCode');
+            if (!qrCodeContainer) {
+                return;
+            }
             qrCodeContainer.innerHTML = '';
+            if (typeof QRCode === 'undefined' || typeof QRCode.toCanvas !== 'function') {
+                qrCodeContainer.innerHTML = '<p style="color:#999;">QR temporarily unavailable</p>';
+                return;
+            }
 
-            QRCode.toCanvas(qrCodeContainer, upiId, {
+            const canvas = document.createElement('canvas');
+            qrCodeContainer.appendChild(canvas);
+
+            QRCode.toCanvas(canvas, upiId, {
                 width: 250,
                 margin: 1,
                 color: {
@@ -1337,7 +1460,7 @@
 
         function logToGoogleSheets() {
             // Google Apps Script Web App URL (deploy your script as web app)
-            const googleSheetWebhookUrl = 'https://script.google.com/macros/s/AKfycbz7fsc1t_CZ5iBKr8XdpA7Z-5dgFMSvaTCwakb3vsu3CmY1JfMPw7I8r08RQGhSv5IGrA/exec';
+            const googleSheetWebhookUrl = 'https://script.google.com/macros/s/AKfycbxJ-rHFNxMdxUtIWyfdAtw2OQOtMIDGeTzdotBG_RfkRirmD_ZperRXLOLuLFumy5C_9Q/exec';
 
             const data = {
                 orderId: orderData.id,

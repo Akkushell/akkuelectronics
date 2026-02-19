@@ -1576,8 +1576,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         function buyNowProduct() {
-            let cart = JSON.parse(localStorage.getItem('gameShopCart')) || [];
-            
             const cartItem = {
                 ...productData,
                 quantity: 1
@@ -1588,18 +1586,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 cartItem.selectedColor = window.selectedColor;
             }
             
-            const existingItem = cart.find(item => 
-                item.id === cartItem.id && 
-                (item.selectedColor || window.selectedColor) === window.selectedColor
-            );
+            const cleanCheckout = [{
+                id: cartItem.id,
+                name: cartItem.name,
+                price: Number(cartItem.price) || 0,
+                quantity: 1,
+                selectedColor: cartItem.selectedColor || ''
+            }];
 
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push(cartItem);
-            }
-
-            localStorage.setItem('gameShopCart', JSON.stringify(cart));
+            localStorage.setItem('gameShopBuyNowCheckout', JSON.stringify(cleanCheckout));
+            localStorage.setItem('gameShopCart', JSON.stringify(cleanCheckout));
             
             // Google Analytics: Track Purchase
             if (typeof gtag === 'function') {
