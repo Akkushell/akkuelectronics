@@ -798,3 +798,262 @@
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* =====================================================
+   PAYMENT MODAL - CLEANED UP INLINE STYLES
+   ===================================================== */
+
+/* Amount Display Section */
+.payment-amount-wrapper {
+    text-align: center;
+    margin: 30px 0 20px;
+}
+
+.payment-amount-label {
+    color: #999;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* UPI ID Section */
+.upi-id-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+.upi-id-label {
+    color: #666;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.upi-id {
+    margin: 0;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.copy-upi-btn {
+    background: transparent;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.copy-upi-btn:hover {
+    background: #d4af37;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.copy-upi-btn:active {
+    transform: translateY(0);
+}
+
+/* WhatsApp Order Button */
+.whatsapp-order-btn {
+    width: 100%;
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+    margin-bottom: 20px;
+}
+
+.whatsapp-order-btn:hover {
+    background: #1da851;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+}
+
+.whatsapp-order-btn:active {
+    transform: translateY(0);
+}
+
+.whatsapp-order-btn i {
+    margin-right: 8px;
+}
+
+/* Icon Spacer */
+.icon-spacer {
+    margin-right: 8px;
+}
+
+/* Success Screen */
+.success-screen-text {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.order-id-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #d4af37;
+}
+
+.order-id-label {
+    color: #999;
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.order-id-display {
+    color: #d4af37;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.verification-time-info {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+/* Payment Step Hidden States */
+.payment-step {
+    display: block;
+}
+
+.payment-step.hidden {
+    display: none;
+}
+
+/* Success Screen */
+.success-screen {
+    text-align: center;
+}
+
+/* Mobile Responsiveness for Payment Modal Styles */
+@media (max-width: 768px) {
+    .payment-amount-wrapper {
+        margin: 20px 0 15px;
+    }
+
+    .upi-id-section {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .copy-upi-btn {
+        padding: 6px 12px;
+        font-size: 11px;
+        margin-top: 10px;
+    }
+
+    .whatsapp-order-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .order-id-card {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .order-id-display {
+        font-size: 14px;
+    }
+
+    .success-screen-text {
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .verification-time-info {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-amount-wrapper {
+        margin: 15px 0 12px;
+    }
+
+    .payment-amount-label {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .upi-id-section {
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 6px;
+    }
+
+    .upi-id-label {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .upi-id {
+        font-size: 14px;
+    }
+
+    .copy-upi-btn {
+        padding: 6px 10px;
+        font-size: 10px;
+        margin-top: 8px;
+        border-radius: 4px;
+    }
+
+    .whatsapp-order-btn {
+        padding: 10px 14px;
+        font-size: 12px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+    }
+
+    .order-id-card {
+        padding: 10px;
+        margin-bottom: 12px;
+        border-left-width: 3px;
+        border-radius: 6px;
+    }
+
+    .order-id-label {
+        font-size: 12px;
+        margin: 4px 0;
+    }
+
+    .order-id-display {
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .success-screen-text {
+        margin-bottom: 12px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .verification-time-info {
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+}

@@ -49,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo3xoK5fJMITl0P+bqm8FNj1k2O0EZz1V9k0l8Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile.css">
-    <link rel="stylesheet" href="payment.css">
+    <link rel="stylesheet" href="payment-new.css">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/aelogo.png">
     
     <script type="application/ld+json">
@@ -1223,32 +1223,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <!-- Payment Amount Display -->
-                <div style="text-align: center; margin: 30px 0 20px;">
-                    <p style="color: #999; margin-bottom: 10px; font-size: 14px;">Final Amount</p>
+                <div class="payment-amount-wrapper">
+                    <p class="payment-amount-label">Final Amount</p>
                     <p class="payment-amount">₹<span id="paymentAmount"></span></p>
                 </div>
 
                 <!-- UPI ID Section -->
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 25px; text-align: center; border: 1px solid #e5e7eb;">
-                    <p style="color: #666; margin-bottom: 12px; font-size: 13px; font-weight: 500;">Paying to:</p>
-                    <p class="upi-id" style="margin: 0; font-size: 15px; letter-spacing: 0.5px;"><strong>8956389723@barodampay</strong></p>
-                    <button onclick="copyUpiId()" type="button" style="background: transparent; color: #d4af37; border: 1px solid #d4af37; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin-top: 12px; font-size: 12px; font-weight: 600; transition: all 0.3s;">
+                <div class="upi-id-section">
+                    <p class="upi-id-label">Paying to:</p>
+                    <p class="upi-id"><strong>8956389723@barodampay</strong></p>
+                    <button onclick="copyUpiId()" type="button" class="copy-upi-btn">
                         <i class="fas fa-copy"></i> Copy UPI ID
                     </button>
                 </div>
 
                 <!-- WhatsApp Fallback -->
-                <button onclick="orderViaWhatsApp()" type="button" style="width: 100%; background: #25D366; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); margin-bottom: 20px;">
+                <button onclick="orderViaWhatsApp()" type="button" class="whatsapp-order-btn">
                     <i class="fab fa-whatsapp"></i> Can't Pay Now? Order via WhatsApp
                 </button>
                 
                 <button onclick="showUTRStep()" class="next-btn">
-                    <i class="fas fa-arrow-right" style="margin-right: 8px;"></i>I've Paid - Enter Transaction ID
+                    <i class="fas fa-arrow-right" class="icon-spacer"></i>I've Paid - Enter Transaction ID
                 </button>
             </div>
             
             <!-- Payment Step 2: Transaction Verification Form -->
-            <div id="paymentStep2" class="payment-step" style="display: none;">
+            <div id="paymentStep2" class="payment-step hidden">
                 <h2>Verify Your Payment</h2>
                 
                 <form id="utrForm" onsubmit="submitPayment(event)">
@@ -1284,33 +1284,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     
                     <div class="form-actions">
                         <button type="button" onclick="showQRStep()" class="back-btn">
-                            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Back
+                            <i class="fas fa-arrow-left" class="icon-spacer"></i>Back
                         </button>
                         <button type="submit" class="submit-btn">
-                            <i class="fas fa-check" style="margin-right: 8px;"></i>Submit Order
+                            <i class="fas fa-check" class="icon-spacer"></i>Submit Order
                         </button>
                     </div>
                 </form>
             </div>
             
             <!-- Payment Step 3: Success Confirmation -->
-            <div id="paymentStep3" class="payment-step" style="display: none; text-align: center;">
+            <div id="paymentStep3" class="payment-step hidden success-screen">
                 <div class="success-animation">
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <h2>Order Confirmed!</h2>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+                <p class="success-screen-text">
                     Thank you for your order. We've received your payment details and invoice has been sent to your email.
                 </p>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #d4af37;">
-                    <p style="color: #999; margin: 5px 0; font-size: 13px;">Order ID:</p>
-                    <p id="orderIdDisplay" style="color: #d4af37; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; margin: 0;"></p>
+                <div class="order-id-card">
+                    <p class="order-id-label">Order ID:</p>
+                    <p id="orderIdDisplay" class="order-id-display"></p>
                 </div>
-                <p style="color: #666; font-size: 13px; margin-bottom: 20px;">
+                <p class="verification-time-info">
                     <i class="fas fa-clock"></i> We'll verify your payment and contact you within 24 hours
                 </p>
                 <button onclick="closePaymentModal()" class="done-btn">
-                    <i class="fas fa-home" style="margin-right: 8px;"></i>Continue Shopping
+                    <i class="fas fa-home" class="icon-spacer"></i>Continue Shopping
                 </button>
             </div>
         </div>
@@ -1722,27 +1722,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         function showUTRStep() {
             const step1 = document.getElementById('paymentStep1');
             const step2 = document.getElementById('paymentStep2');
-            if (step1) {
-                step1.style.display = 'none';
-                step1.style.opacity = '0';
-            }
-            if (step2) {
-                step2.style.display = 'block';
-                step2.style.opacity = '1';
-            }
+            if (step1) step1.classList.add('hidden');
+            if (step2) step2.classList.remove('hidden');
         }
 
         function showQRStep() {
             const step1 = document.getElementById('paymentStep1');
             const step2 = document.getElementById('paymentStep2');
-            if (step1) {
-                step1.style.display = 'block';
-                step1.style.opacity = '1';
-            }
-            if (step2) {
-                step2.style.display = 'none';
-                step2.style.opacity = '0';
-            }
+            if (step1) step1.classList.remove('hidden');
+            if (step2) step2.classList.add('hidden');
         }
     </script>
 </body>

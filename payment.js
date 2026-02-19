@@ -191,15 +191,13 @@ document.addEventListener('DOMContentLoaded', function() {
  * Show Payment Method Selection Step
  */
 function showPaymentMethodStep() {
-    if (document.getElementById('paymentStep1')) {
-        document.getElementById('paymentStep1').style.display = 'block';
-    }
-    if (document.getElementById('paymentStep2')) {
-        document.getElementById('paymentStep2').style.display = 'none';
-    }
-    if (document.getElementById('paymentStep3')) {
-        document.getElementById('paymentStep3').style.display = 'none';
-    }
+    const step1 = document.getElementById('paymentStep1');
+    const step2 = document.getElementById('paymentStep2');
+    const step3 = document.getElementById('paymentStep3');
+    
+    if (step1) step1.classList.remove('hidden');
+    if (step2) step2.classList.add('hidden');
+    if (step3) step3.classList.add('hidden');
 }
 
 /**
@@ -289,15 +287,13 @@ function proceedToFormStep() {
  * Show Form Step (for entering customer details)
  */
 function showFormStep() {
-    if (document.getElementById('paymentStep1')) {
-        document.getElementById('paymentStep1').style.display = 'none';
-    }
-    if (document.getElementById('paymentStep2')) {
-        document.getElementById('paymentStep2').style.display = 'block';
-    }
-    if (document.getElementById('paymentStep3')) {
-        document.getElementById('paymentStep3').style.display = 'none';
-    }
+    const step1 = document.getElementById('paymentStep1');
+    const step2 = document.getElementById('paymentStep2');
+    const step3 = document.getElementById('paymentStep3');
+    
+    if (step1) step1.classList.add('hidden');
+    if (step2) step2.classList.remove('hidden');
+    if (step3) step3.classList.add('hidden');
     
     // Scroll to top of modal
     const modal = document.querySelector('.payment-modal-content');
@@ -308,15 +304,13 @@ function showFormStep() {
  * Show Success Step
  */
 function showSuccessStep() {
-    if (document.getElementById('paymentStep1')) {
-        document.getElementById('paymentStep1').style.display = 'none';
-    }
-    if (document.getElementById('paymentStep2')) {
-        document.getElementById('paymentStep2').style.display = 'none';
-    }
-    if (document.getElementById('paymentStep3')) {
-        document.getElementById('paymentStep3').style.display = 'block';
-    }
+    const step1 = document.getElementById('paymentStep1');
+    const step2 = document.getElementById('paymentStep2');
+    const step3 = document.getElementById('paymentStep3');
+    
+    if (step1) step1.classList.add('hidden');
+    if (step2) step2.classList.add('hidden');
+    if (step3) step3.classList.remove('hidden');
 }
 
 /**
