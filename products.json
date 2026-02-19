@@ -529,7 +529,7 @@
       "category": "parts",
       "price": 5500,
       "originalPrice": 8000,  
-      "discount": 500,
+      "discount": 2500,
       "stock": true,
       "images": ["images/parts/ps4/ae-ps4-adp160fr-1.jpg","images/parts/ps4/ae-ps4-adp160fr-2.jpg"],
       "description": "This AE-TECH Internal Power Supply Replacement is designed for PS4 Console models with ADP-160FR (4-pin) power supply. It provides reliable power to ensure your console operates smoothly and efficiently. The power supply is easy to install and is built to last, making it an essential component for maintaining your PS4's performance.",

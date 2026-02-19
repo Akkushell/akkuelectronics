@@ -1194,99 +1194,124 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </footer>
 
-    <!-- Payment Modal -->
+    <!-- Payment Modal (Professional Design) -->
     <div id="paymentModal" class="payment-modal">
         <div class="payment-modal-content">
-            <span class="payment-close">&times;</span>
+            <span class="payment-close" onclick="closePaymentModal()">&times;</span>
             
+            <!-- Payment Step 1: QR Code & UPI Payment -->
             <div id="paymentStep1" class="payment-step">
                 <h2>Complete Your Payment</h2>
+                
+                <!-- Product Summary Card -->
                 <div class="product-summary" id="productSummary"></div>
                 
-                <div class="payment-info-section" style="text-align: center; margin-bottom: 20px;">
-                    <p class="payment-amount" style="font-size: 1.5rem; color: #d4af37; font-weight: bold;">Amount: ₹<span id="paymentAmount"></span></p>
-                    
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid #333;">
-                        <p style="margin-bottom: 5px; color: #aaa; font-size: 0.9rem;">Scan QR or Pay Manually to:</p>
-                        <p class="upi-id" style="margin: 5px 0; font-size: 1.1rem; letter-spacing: 1px;"><strong>8956389723@barodampay</strong></p>
-                        <button onclick="copyUpiId()" type="button" style="background: #333; color: #d4af37; border: 1px solid #d4af37; padding: 5px 15px; border-radius: 20px; cursor: pointer; margin-top: 5px; font-size: 0.9rem;">
-                            <i class="fas fa-copy"></i> Copy UPI ID
-                        </button>
-                    </div>
-
-                    <div style="margin-top: 15px;">
-                        <button onclick="orderViaWhatsApp()" type="button" style="background: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">
-                            <i class="fab fa-whatsapp"></i> Order via WhatsApp (If Payment Fails)
-                        </button>
-                    </div>
-                </div>
-                
+                <!-- UPI Apps Payment Options -->
                 <div class="upi-apps">
-                    <p>Select your UPI App to Pay:</p>
+                    <p>Select your payment method:</p>
                     <div class="upi-buttons">
-                        <button onclick="openUPIApp('phonepe')" class="upi-btn phonepe-btn">
+                        <button onclick="openUPIApp('phonepe')" class="upi-btn phonepe-btn" title="Pay using PhonePe">
                             <i class="fas fa-mobile-alt"></i> PhonePe
                         </button>
-                        <button onclick="openUPIApp('gpay')" class="upi-btn gpay-btn">
+                        <button onclick="openUPIApp('gpay')" class="upi-btn gpay-btn" title="Pay using Google Pay">
                             <i class="fas fa-mobile-alt"></i> Google Pay
                         </button>
-                        <button onclick="openUPIApp('paytm')" class="upi-btn paytm-btn">
+                        <button onclick="openUPIApp('paytm')" class="upi-btn paytm-btn" title="Pay using Paytm">
                             <i class="fas fa-mobile-alt"></i> Paytm
                         </button>
                     </div>
                 </div>
+
+                <!-- Payment Amount Display -->
+                <div style="text-align: center; margin: 30px 0 20px;">
+                    <p style="color: #999; margin-bottom: 10px; font-size: 14px;">Final Amount</p>
+                    <p class="payment-amount">₹<span id="paymentAmount"></span></p>
+                </div>
+
+                <!-- UPI ID Section -->
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 25px; text-align: center; border: 1px solid #e5e7eb;">
+                    <p style="color: #666; margin-bottom: 12px; font-size: 13px; font-weight: 500;">Paying to:</p>
+                    <p class="upi-id" style="margin: 0; font-size: 15px; letter-spacing: 0.5px;"><strong>8956389723@barodampay</strong></p>
+                    <button onclick="copyUpiId()" type="button" style="background: transparent; color: #d4af37; border: 1px solid #d4af37; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin-top: 12px; font-size: 12px; font-weight: 600; transition: all 0.3s;">
+                        <i class="fas fa-copy"></i> Copy UPI ID
+                    </button>
+                </div>
+
+                <!-- WhatsApp Fallback -->
+                <button onclick="orderViaWhatsApp()" type="button" style="width: 100%; background: #25D366; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); margin-bottom: 20px;">
+                    <i class="fab fa-whatsapp"></i> Can't Pay Now? Order via WhatsApp
+                </button>
                 
-                <button onclick="showUTRStep()" class="next-btn">I've Paid - Enter Transaction ID</button>
+                <button onclick="showUTRStep()" class="next-btn">
+                    <i class="fas fa-arrow-right" style="margin-right: 8px;"></i>I've Paid - Enter Transaction ID
+                </button>
             </div>
             
+            <!-- Payment Step 2: Transaction Verification Form -->
             <div id="paymentStep2" class="payment-step" style="display: none;">
-                <h2>Verify Payment</h2>
-                <p>Please enter your UPI Transaction ID (UTR)</p>
+                <h2>Verify Your Payment</h2>
                 
                 <form id="utrForm" onsubmit="submitPayment(event)">
                     <div class="form-group">
-                        <label for="customerName">Your Name *</label>
-                        <input type="text" id="customerName" required>
+                        <label for="customerName"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="customerName" placeholder="Enter your full name" required minlength="3">
+                        <small>Minimum 3 characters</small>
                     </div>
                     
                     <div class="form-group">
-                        <label for="customerEmail">Email *</label>
-                        <input type="email" id="customerEmail" required>
+                        <label for="customerEmail"><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" id="customerEmail" placeholder="your@email.com" required>
+                        <small>We'll send your invoice here</small>
                     </div>
                     
                     <div class="form-group">
-                        <label for="customerPhone">Phone Number *</label>
-                        <input type="tel" id="customerPhone" pattern="[0-9]{10}" required>
+                        <label for="customerPhone"><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="customerPhone" placeholder="9876543210" pattern="[0-9]{10}" required>
+                        <small>10 digits without +91</small>
                     </div>
                     
                     <div class="form-group">
-                        <label for="customerAddress">Delivery Address *</label>
-                        <textarea id="customerAddress" rows="3" required></textarea>
+                        <label for="customerAddress"><i class="fas fa-map-marker-alt"></i>Delivery Address</label>
+                        <textarea id="customerAddress" placeholder="Enter your complete delivery address" rows="3" required minlength="10"></textarea>
+                        <small>Minimum 10 characters</small>
                     </div>
                     
                     <div class="form-group">
-                        <label for="utrNumber">UPI Transaction ID (UTR) *</label>
-                        <input type="text" id="utrNumber" placeholder="e.g., 123456789012" required>
-                        <small>Find this in your payment app's transaction history</small>
+                        <label for="utrNumber"><i class="fas fa-hashtag"></i> Transaction ID (UTR)</label>
+                        <input type="text" id="utrNumber" placeholder="12-digit code from your payment app" required>
+                        <small>Find in your payment app's transaction history</small>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" onclick="showQRStep()" class="back-btn">Back</button>
-                        <button type="submit" class="submit-btn">Submit Order</button>
+                        <button type="button" onclick="showQRStep()" class="back-btn">
+                            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Back
+                        </button>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-check" style="margin-right: 8px;"></i>Submit Order
+                        </button>
                     </div>
                 </form>
             </div>
             
-            <div id="paymentStep3" class="payment-step" style="display: none;">
+            <!-- Payment Step 3: Success Confirmation -->
+            <div id="paymentStep3" class="payment-step" style="display: none; text-align: center;">
                 <div class="success-animation">
                     <i class="fas fa-check-circle"></i>
                 </div>
-                <h2>Order Submitted Successfully!</h2>
-                <p>Thank you for your order. We've received your payment details.</p>
-                <p>Order ID: <strong id="orderIdDisplay"></strong></p>
-                <p>You will receive a confirmation email shortly.</p>
-                <p>We'll verify your payment and contact you within 24 hours.</p>
-                <button onclick="closePaymentModal()" class="done-btn">Done</button>
+                <h2>Order Confirmed!</h2>
+                <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+                    Thank you for your order. We've received your payment details and invoice has been sent to your email.
+                </p>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #d4af37;">
+                    <p style="color: #999; margin: 5px 0; font-size: 13px;">Order ID:</p>
+                    <p id="orderIdDisplay" style="color: #d4af37; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; margin: 0;"></p>
+                </div>
+                <p style="color: #666; font-size: 13px; margin-bottom: 20px;">
+                    <i class="fas fa-clock"></i> We'll verify your payment and contact you within 24 hours
+                </p>
+                <button onclick="closePaymentModal()" class="done-btn">
+                    <i class="fas fa-home" style="margin-right: 8px;"></i>Continue Shopping
+                </button>
             </div>
         </div>
     </div>
@@ -1669,18 +1694,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script>
         function copyUpiId() {
             const upiId = "8956389723@barodampay";
-            navigator.clipboard.writeText(upiId).then(() => {
-                alert("UPI ID copied to clipboard! You can now paste it in your payment app.");
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-                alert("Please manually copy the UPI ID: " + upiId);
-            });
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(upiId).then(() => {
+                    showNotification('✓ UPI ID copied to clipboard!', 'success');
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    showNotification('Try copying manually: ' + upiId, 'info');
+                });
+            } else {
+                const textarea = document.createElement("textarea");
+                textarea.value = upiId;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+                showNotification('✓ UPI ID copied!', 'success');
+            }
         }
 
         function orderViaWhatsApp() {
             const amount = document.getElementById('paymentAmount').innerText;
-            const msg = `Hi Akku Electronics, I want to place an order worth ₹${amount}. I am facing issues with the online payment. Please help me complete the order.`;
+            const productName = productData ? productData.name : 'a product';
+            const msg = `Hi Akku Electronics, I want to order ${productName} for ₹${amount}. Please help me complete the order.`;
             window.open(`https://wa.me/918956389723?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function showUTRStep() {
+            const step1 = document.getElementById('paymentStep1');
+            const step2 = document.getElementById('paymentStep2');
+            if (step1) {
+                step1.style.display = 'none';
+                step1.style.opacity = '0';
+            }
+            if (step2) {
+                step2.style.display = 'block';
+                step2.style.opacity = '1';
+            }
+        }
+
+        function showQRStep() {
+            const step1 = document.getElementById('paymentStep1');
+            const step2 = document.getElementById('paymentStep2');
+            if (step1) {
+                step1.style.display = 'block';
+                step1.style.opacity = '1';
+            }
+            if (step2) {
+                step2.style.display = 'none';
+                step2.style.opacity = '0';
+            }
         }
     </script>
 </body>
