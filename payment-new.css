@@ -46,7 +46,8 @@
     border-radius: 20px;
     width: 100%;
     max-width: 480px;
-    max-height: 90vh;
+    max-height: 92vh;
+    min-height: auto;
     box-shadow:
         0 0 1px rgba(212, 175, 55, 0.3),
         0 2px 4px rgba(0, 0, 0, 0.4),
@@ -54,7 +55,7 @@
         0 30px 60px rgba(212, 175, 55, 0.2);
     animation: modalContentSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
 }
@@ -168,8 +169,10 @@
     display: block;
     padding: 0 25px 20px;
     animation: stepFadeIn 0.3s ease-out;
-    flex: 1;
+    flex: 0 1 auto;
     overflow-y: auto;
+    max-height: calc(92vh - 140px);
+    scroll-behavior: smooth;
 }
 
 .payment-step.hidden {
@@ -178,6 +181,13 @@
 
 .payment-step.active {
     display: block;
+}
+
+/* Success screen special handling - make it scrollable for all content */
+.payment-step.success-screen {
+    max-height: calc(92vh - 140px);
+    overflow-y: auto;
+    padding-bottom: 30px;
 }
 
 @keyframes stepFadeIn {
@@ -552,7 +562,8 @@
     background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
     color: #000;
     margin-top: 12px;
-    font-size: 13px;
+    font-size: 12px;
+    box-sizing: border-box;
 }
 
 .next-btn:hover,
@@ -655,7 +666,17 @@
 /* ====== SUCCESS SCREEN ====== */
 .success-screen {
     text-align: center;
-    padding: 0 25px 20px !important;
+    padding: 15px 20px 30px;
+    max-height: none !important;
+    overflow-y: visible !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.success-screen > * {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .success-animation {
@@ -728,13 +749,59 @@
 }
 
 .verification-time-info {
-    font-size: 13px;
+    font-size: 11px;
     color: #cccccc;
-    margin: 20px 0;
+    margin: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
+}
+
+/* Download Buttons Styling */
+.download-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+    color: #000 !important;
+    border: none !important;
+    padding: 10px 16px !important;
+    border-radius: 8px !important;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 40px;
+    box-sizing: border-box;
+    margin: 8px 0 0 0 !important;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(212, 175, 55, 0.4);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+.download-btn i {
+    font-size: 12px;
+}
+
+/* Detailed Receipt DIV */
+#detailedReceiptDiv {
+    max-height: 280px !important;
+    overflow-y: auto !important;
+}
+
+/* Order Timeline DIV */
+#orderTimelineDiv {
+    max-height: 220px !important;
+    overflow-y: auto !important;
 }
 
 /* ====== NOTIFICATION TOAST ====== */
@@ -973,6 +1040,19 @@
     .form-group textarea {
         padding: 10px 12px;
         font-size: 13px;
+    }
+
+    #detailedReceiptDiv {
+        max-height: 240px !important;
+    }
+
+    #orderTimelineDiv {
+        max-height: 200px !important;
+    }
+
+    .download-btn {
+        font-size: 11px;
+        min-height: 38px;
     }
 
     .next-btn,
