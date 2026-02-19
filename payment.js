@@ -352,7 +352,7 @@ async function logToGoogleSheets(orderData) {
     const finalPrice = orderData.product.price;
 
     const sheetData = {
-        timestamp: new Date().toLocaleString('en-IN'),
+        timestamp: new Date(orderData.timestamp).toLocaleString('en-IN'),
         orderId: orderData.orderId,
         customerName: orderData.customer.name,
         customerEmail: orderData.customer.email,
