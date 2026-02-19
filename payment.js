@@ -235,17 +235,29 @@ function displayPaymentSummary(product) {
  * Submit Payment Form (Step 2) - Move to Confirmation
  */
 function submitPaymentForm() {
-    const validation = validatePaymentForm();
-    if (!validation.valid) {
-        showNotification(`Error: ${validation.message}`, 'error');
-        return;
+    try {
+        console.log('submitPaymentForm called');
+        
+        const validation = validatePaymentForm();
+        console.log('Form validation result:', validation);
+        
+        if (!validation.valid) {
+            showNotification(`Error: ${validation.message}`, 'error');
+            return;
+        }
+        
+        // Show confirmation step
+        console.log('Navigating to step 3');
+        goToPaymentStep(3);
+        
+        // Display confirmation
+        console.log('Displaying order confirmation');
+        displayOrderConfirmation();
+        console.log('Order confirmation displayed successfully');
+    } catch (error) {
+        console.error('Fatal error in submitPaymentForm:', error);
+        showNotification(`Error: ${error.message}`, 'error');
     }
-    
-    // Show confirmation step
-    goToPaymentStep(3);
-    
-    // Display confirmation
-    displayOrderConfirmation();
 }
 
 /**
@@ -401,107 +413,123 @@ function showUTRStep() {
  */
 function displayOrderConfirmation() {
     try {
-        const orderData = buildOrderData();
+        console.log('=== displayOrderConfirmation START ===');
         
         const confirmContent = document.getElementById('confirmationContent');
-        if (!confirmContent) return;
+        console.log('confirmContent element:', confirmContent);
         
-        const discount = currentProduct.originalPrice - currentProduct.price;
-        const discountPercent = currentProduct.originalPrice ?
-            Math.round((discount / currentProduct.originalPrice) * 100) : 0;
-        
-        confirmContent.innerHTML = `
-            <!-- PRODUCT DETAILS -->
-            <div class="detail-card">
-                <h3>📦 PRODUCT DETAILS</h3>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Product:</span>
-                    <span class="detail-card-value">${currentProduct.name}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Category:</span>
-                    <span class="detail-card-value">${currentProduct.category}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Original Price:</span>
-                    <span class="detail-card-value">₹${currentProduct.originalPrice.toLocaleString('en-IN')}</span>
-                </div>
-                ${discount > 0 ? `
-                <div class="detail-card-row" style="color: #27ae60;">
-                    <span class="detail-card-label" style="color: #27ae60;">Discount:</span>
-                    <span class="detail-card-value">-${discountPercent}% (₹${discount.toLocaleString('en-IN')})</span>
-                </div>
-                ` : ''}
-                <div class="final-amount-row">
-                    <span class="final-amount-label">Final Amount:</span>
-                    <span class="final-amount-value">₹${currentProduct.price.toLocaleString('en-IN')}</span>
-                </div>
-            </div>
-            
-            <!-- CUSTOMER DETAILS -->
-            <div class="detail-card">
-                <h3>👤 CUSTOMER DETAILS</h3>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Name:</span>
-                    <span class="detail-card-value">${orderData.customer.name}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Email:</span>
-                    <span class="detail-card-value">${orderData.customer.email}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Phone:</span>
-                    <span class="detail-card-value">+${orderData.customer.phone}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Address:</span>
-                    <span class="detail-card-value">${orderData.customer.address}</span>
-                </div>
-            </div>
-            
-            <!-- PAYMENT DETAILS -->
-            <div class="detail-card">
-                <h3>💳 PAYMENT DETAILS</h3>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Method:</span>
-                    <span class="detail-card-value">UPI</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Transaction ID:</span>
-                    <span class="detail-card-value highlight">${orderData.payment.utr}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Amount:</span>
-                    <span class="detail-card-value">₹${orderData.payment.amount.toLocaleString('en-IN')}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Date & Time:</span>
-                    <span class="detail-card-value">${orderData.formattedDate} ${orderData.formattedTime}</span>
-                </div>
-            </div>
-            
-            <!-- ORDER ID -->
-            <div class="order-id-card">
-                <p class="order-id-label">Order ID</p>
-                <p class="order-id-display">${orderData.orderId}</p>
-            </div>
-        `;
-        
-        const confirmActions = document.getElementById('confirmationActions');
-        if (confirmActions) {
-            confirmActions.innerHTML = `
-                <button type="button" onclick="goToPaymentStep(2)" class="back-btn">
-                    <i class="fas fa-arrow-left"></i> Back
-                </button>
-                <button type="button" onclick="finalizeOrder()" class="submit-btn">
-                    <i class="fas fa-check"></i> Confirm & Process
-                </button>
-            `;
+        if (!confirmContent) {
+            throw new Error('Confirmation content element (confirmationContent) not found in DOM');
         }
         
+        // Safely extract all form data with defaults
+        const customerName = (document.getElementById('customerName')?.value || '').trim();
+        const customerEmail = (document.getElementById('customerEmail')?.value || '').trim();
+        const customerPhone = (document.getElementById('customerPhone')?.value || '').trim();
+        const customerAddress = (document.getElementById('customerAddress')?.value || '').trim();
+        const utr = (document.getElementById('utrNumber')?.value || '').trim();
+        
+        console.log('Form data:', { customerName, customerEmail, customerPhone, customerAddress, utr });
+        
+        // Verify currentProduct exists
+        if (!currentProduct) {
+            throw new Error('Product data (currentProduct) is missing. Please try again.');
+        }
+        
+        console.log('currentProduct:', currentProduct);
+        
+        // Safe number conversion
+        const originalPrice = parseFloat(currentProduct.originalPrice) || parseFloat(currentProduct.price) || 0;
+        const finalPrice = parseFloat(currentProduct.price) || 0;
+        const discount = originalPrice - finalPrice;
+        const discountPercent = originalPrice > 0 ? Math.round((discount / originalPrice) * 100) : 0;
+        
+        console.log('Pricing:', { originalPrice, finalPrice, discount, discountPercent });
+        
+        const formattedDate = new Date().toLocaleDateString('en-IN', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        const formattedTime = new Date().toLocaleTimeString('en-IN');
+        const orderId = currentOrderId || generateOrderId();
+        
+        console.log('Formatting:', { formattedDate, formattedTime, orderId });
+        
+        // Build HTML with safe string concatenation
+        let htmlContent = '<div class="detail-card">';
+        htmlContent += '<h3>📦 PRODUCT DETAILS</h3>';
+        htmlContent += '<div class="detail-card-row">';
+        htmlContent += '<span class="detail-card-label">Product:</span>';
+        htmlContent += '<span class="detail-card-value">' + (currentProduct.name || 'N/A') + '</span>';
+        htmlContent += '</div>';
+        
+        htmlContent += '<div class="detail-card-row">';
+        htmlContent += '<span class="detail-card-label">Category:</span>';
+        htmlContent += '<span class="detail-card-value">' + (currentProduct.category || 'N/A') + '</span>';
+        htmlContent += '</div>';
+        
+        htmlContent += '<div class="detail-card-row">';
+        htmlContent += '<span class="detail-card-label">Original Price:</span>';
+        htmlContent += '<span class="detail-card-value">₹' + originalPrice.toLocaleString('en-IN') + '</span>';
+        htmlContent += '</div>';
+        
+        if (discount > 0) {
+            htmlContent += '<div class="detail-card-row" style="color: #27ae60;">';
+            htmlContent += '<span class="detail-card-label" style="color: #27ae60;">Discount:</span>';
+            htmlContent += '<span class="detail-card-value">-' + discountPercent + '% (₹' + discount.toLocaleString('en-IN') + ')</span>';
+            htmlContent += '</div>';
+        }
+        
+        htmlContent += '<div class="final-amount-row">';
+        htmlContent += '<span class="final-amount-label">Final Amount:</span>';
+        htmlContent += '<span class="final-amount-value">₹' + finalPrice.toLocaleString('en-IN') + '</span>';
+        htmlContent += '</div></div>';
+        
+        // Customer Details
+        htmlContent += '<div class="detail-card">';
+        htmlContent += '<h3>👤 CUSTOMER DETAILS</h3>';
+        htmlContent += '<div class="detail-card-row"><span class="detail-card-label">Name:</span><span class="detail-card-value">' + customerName + '</span></div>';
+        htmlContent += '<div class="detail-card-row"><span class="detail-card-label">Email:</span><span class="detail-card-value">' + customerEmail + '</span></div>';
+        htmlContent += '<div class="detail-card-row"><span class="detail-card-label">Phone:</span><span class="detail-card-value">+91' + customerPhone + '</span></div>';
+        htmlContent += '<div class="detail-card-row"><span class="detail-card-label">Address:</span><span class="detail-card-value">' + customerAddress + '</span></div>';
+        htmlContent += '</div>';
+        
+        // Payment Details
+        htmlContent += '<div class="detail-card">';
+        htmlContent += '<h3>💳 PAYMENT DETAILS</h3>';
+        htmlContent += '<div class="detail-card-row"><span class="detail-card-label">Method:</span><span class="detail-card-value">UPI</span></div>';
+        htmlContent += '<div class="detail-card-row"><span class="detail-card-label">Transaction ID:</span><span class="detail-card-value highlight">' + utr + '</span></div>';
+        htmlContent += '<div class="detail-card-row"><span class="detail-card-label">Amount:</span><span class="detail-card-value">₹' + finalPrice.toLocaleString('en-IN') + '</span></div>';
+        htmlContent += '<div class="detail-card-row"><span class="detail-card-label">Date & Time:</span><span class="detail-card-value">' + formattedDate + ' ' + formattedTime + '</span></div>';
+        htmlContent += '</div>';
+        
+        // Order ID Card
+        htmlContent += '<div class="order-id-card">';
+        htmlContent += '<p class="order-id-label">Order ID</p>';
+        htmlContent += '<p class="order-id-display">' + orderId + '</p>';
+        htmlContent += '</div>';
+        
+        console.log('Setting confirmContent innerHTML');
+        confirmContent.innerHTML = htmlContent;
+        
+        // Set action buttons
+        const confirmActions = document.getElementById('confirmationActions');
+        console.log('confirmationActions element:', confirmActions);
+        
+        if (confirmActions) {
+            confirmActions.innerHTML = '<button type="button" onclick="goToPaymentStep(2)" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button><button type="button" onclick="finalizeOrder()" class="submit-btn"><i class="fas fa-check"></i> Confirm & Process</button>';
+        }
+        
+        console.log('=== displayOrderConfirmation SUCCESS ===');
+        
     } catch (error) {
-        console.error('Error displaying confirmation:', error);
-        showNotification('Error displaying order confirmation', 'error');
+        console.error('ERROR in displayOrderConfirmation:', error);
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
+        showNotification('Error: ' + error.message, 'error');
     }
 }
 
@@ -510,8 +538,44 @@ function displayOrderConfirmation() {
  */
 async function finalizeOrder() {
     try {
-        const orderData = buildOrderData();
         const confirmBtn = document.querySelector('[onclick="finalizeOrder()"]');
+        
+        // Build order data from current form state
+        const customerData = {
+            name: document.getElementById('customerName')?.value?.trim() || 'Guest Customer',
+            email: document.getElementById('customerEmail')?.value?.trim() || '',
+            phone: '91' + (document.getElementById('customerPhone')?.value?.trim() || ''),
+            address: document.getElementById('customerAddress')?.value?.trim() || ''
+        };
+        
+        const utr = document.getElementById('utrNumber')?.value?.trim() || '';
+        
+        const orderData = {
+            orderId: currentOrderId || generateOrderId(),
+            product: {
+                id: currentProduct.id,
+                name: currentProduct.name,
+                category: currentProduct.category,
+                originalPrice: currentProduct.originalPrice,
+                price: currentProduct.price
+            },
+            customer: customerData,
+            payment: {
+                method: 'UPI',
+                upiId: CONFIG.upiId,
+                utr: utr,
+                amount: currentProduct.price,
+                status: 'VERIFIED',
+                timestamp: new Date().toISOString()
+            },
+            formattedDate: new Date().toLocaleDateString('en-IN', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }),
+            formattedTime: new Date().toLocaleTimeString('en-IN')
+        };
         
         if (confirmBtn) {
             confirmBtn.disabled = true;
