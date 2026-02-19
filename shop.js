@@ -78,9 +78,6 @@ function displayProducts(productsToDisplay) {
                     <button class="btn-view" onclick="viewProduct(${product.id}, event)">
                         <i class="fas fa-eye"></i> View
                     </button>
-                    <button class="btn-buy" onclick="buyProduct(${product.id}, event)" ${!product.stock ? 'disabled' : ''}>
-                        <i class="fas fa-shopping-cart"></i> Buy Now
-                    </button>
                 </div>
             </div>
         </div>
