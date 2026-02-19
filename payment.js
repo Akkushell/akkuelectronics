@@ -210,47 +210,33 @@ function openUPIApp(app) {
         return;
     }
     
-    const appConfigs = {
-        phonepe: {
-            protocol: 'phonepe://upi/pay',
-            name: 'PhonePe'
-        },
-        gpay: {
-            protocol: 'tez://upi/pay',
-            name: 'Google Pay'
-        },
-        paytm: {
-            protocol: 'paytmmp://pay',
-            name: 'Paytm'
-        }
-    };
-    
-    const config = appConfigs[app];
-    if (!config) return;
-    
+    // Use standard UPI URL scheme that works across all apps
     const params = new URLSearchParams({
         pa: CONFIG.upiId,
         pn: CONFIG.merchantName,
         cu: 'INR',
         tn: `Payment for ${currentProduct.name}`,
         tr: currentOrderId,
-        am: currentProduct.price
+        am: currentProduct.price.toString()
     });
     
-    const url = `${config.protocol}?${params.toString()}`;
+    // Standard UPI URL that works on all Android UPI apps
+    const upiUrl = `upi://pay?${params.toString()}`;
     
     try {
-        window.location.href = url;
-        // Fallback: Show user transaction ID input after setTimeout
+        // Open the UPI payment
+        window.location.href = upiUrl;
+        
+        // Show notification after a delay
         setTimeout(() => {
             showNotification(
-                `Opened ${config.name}. After payment, come back to enter Transaction ID.`,
+                `UPI payment opened. Complete payment and return to enter Transaction ID.`,
                 'info'
             );
-        }, 1000);
+        }, 1500);
     } catch (error) {
-        console.error(`Error opening ${config.name}:`, error);
-        showNotification(`Error: Could not open ${config.name}. Please try another method.`, 'error');
+        console.error('Error opening UPI payment:', error);
+        showNotification('Could not open UPI payment. Please try the Copy UPI ID method.', 'error');
     }
 }
 
