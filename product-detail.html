@@ -345,9 +345,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         .product-actions-section {
             display: flex;
+            flex-direction: column;
             gap: 15px;
             margin-bottom: 30px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .product-buttons-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
             flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .whatsapp-button-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
         .btn-add-cart, .btn-buy-now, .btn-checkout-cart, .btn-contact {
@@ -698,6 +714,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 margin-bottom: 25px;
             }
 
+            .product-buttons-row {
+                gap: 12px;
+            }
+
+            .whatsapp-button-row {
+                width: 100%;
+                justify-content: center;
+            }
+
             .btn-add-cart, .btn-buy-now, .btn-checkout-cart, .btn-contact {
                 padding: 12px 16px;
                 font-size: 0.9rem;
@@ -908,7 +933,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 flex-direction: column;
             }
 
-            .btn-add-cart, .btn-buy-now, .btn-checkout-cart, .btn-contact {
+            .product-buttons-row {
+                width: 100%;
+                gap: 10px;
+            }
+
+            .whatsapp-button-row {
+                width: 100%;
+            }
+
+            .btn-add-cart, .btn-buy-now, .btn-checkout-cart {
+                padding: 12px 14px;
+                font-size: 0.9rem;
+                border-radius: 6px;
+                letter-spacing: 0.5px;
+                min-height: 48px;
+                flex: 1;
+                min-width: unset;
+            }
+
+            .btn-contact {
                 padding: 12px 14px;
                 font-size: 0.9rem;
                 border-radius: 6px;
@@ -1221,18 +1265,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <!-- Buy Now Button -->
                 <div class="product-actions-section">
-                    <button class="btn-add-cart" onclick="addProductToCart()">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
-                    </button>
-                    <button class="btn-buy-now" onclick="buyNowProduct()">
-                        <i class="fas fa-shopping-cart"></i> Buy Now
-                    </button>
-                    <button class="btn-checkout-cart" onclick="checkoutCart()">
-                        <i class="fas fa-credit-card"></i> Checkout Cart
-                    </button>
-                    <button class="btn-contact" onclick="contactForProduct()">
-                        <i class="fas fa-comments"></i> Contact on WhatsApp
-                    </button>
+                    <div class="product-buttons-row">
+                        <button class="btn-add-cart" onclick="addProductToCart()">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                        <button class="btn-checkout-cart" onclick="checkoutCart()">
+                            <i class="fas fa-credit-card"></i> Checkout Cart
+                        </button>
+                        <button class="btn-buy-now" onclick="buyNowProduct()">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </button>
+                    </div>
+                    <div class="whatsapp-button-row">
+                        <button class="btn-contact" onclick="contactForProduct()">
+                            <i class="fas fa-comments"></i> Contact on WhatsApp
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Product Contains Section -->
