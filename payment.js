@@ -146,11 +146,14 @@ async function submitPayment(event) {
     };
     
     try {
-        // 1. Generate Invoice PDF
-        const invoicePDF = await generateInvoice(orderData);
-        
-        // 2. Send Email with Invoice
-        await sendEmailNotification(orderData, invoicePDF);
+        let invoicePDF = null;
+        try {
+            // 1. Generate Invoice PDF & Send Email
+            invoicePDF = await generateInvoice(orderData);
+            await sendEmailNotification(orderData, invoicePDF);
+        } catch (pdfError) {
+            console.warn('Invoice generation or email failed, but proceeding with order:', pdfError);
+        }
         
         // 3. Send WhatsApp Notification
         sendWhatsAppNotification(orderData);
@@ -175,6 +178,31 @@ async function submitPayment(event) {
         
         // Show success
         document.getElementById('orderIdDisplay').textContent = orderData.orderId;
+        
+        // Add Download Invoice Button to Success Screen
+        const successStep = document.getElementById('paymentStep3');
+        let downloadBtn = document.getElementById('downloadInvoiceBtn');
+        if (!downloadBtn) {
+            downloadBtn = document.createElement('button');
+            downloadBtn.id = 'downloadInvoiceBtn';
+            downloadBtn.className = 'next-btn';
+            downloadBtn.style.marginTop = '10px';
+            downloadBtn.style.marginBottom = '10px';
+            downloadBtn.style.background = 'transparent';
+            downloadBtn.style.border = '1px solid #d4af37';
+            downloadBtn.style.color = '#d4af37';
+            downloadBtn.innerHTML = '<i class="fas fa-file-pdf"></i> Download Invoice Again';
+            
+            const doneBtn = successStep.querySelector('.done-btn');
+            successStep.insertBefore(downloadBtn, doneBtn);
+        }
+        
+        if (invoicePDF) {
+            downloadBtn.onclick = function() {
+                easyinvoice.download(`AkkuElectronics_Invoice_${orderData.orderId}.pdf`, invoicePDF);
+            };
+        }
+
         showSuccessStep();
         
         // Reset form
@@ -196,105 +224,56 @@ function generateOrderId() {
 }
 
 // Generate Invoice PDF
-function generateInvoice(orderData) {
-    return new Promise((resolve) => {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-        
-        // Header
-        doc.setFontSize(20);
-        doc.setTextColor(212, 175, 55); // Gold color
-        doc.text('AKKU ELECTRONICS', 105, 20, { align: 'center' });
-        
-        doc.setFontSize(10);
-        doc.setTextColor(0, 0, 0);
-        doc.text('354, VHB Colony, Balabhau Peth, PanchPaoli, Nagpur, MH - 440008', 105, 28, { align: 'center' });
-        doc.text('Phone: +91 8956389723 | Email: akkuelectronics.nagpur@gmail.com', 105, 34, { align: 'center' });
-        
-        // Line separator
-        doc.setDrawColor(212, 175, 55);
-        doc.setLineWidth(0.5);
-        doc.line(20, 40, 190, 40);
-        
-        // Invoice Title
-        doc.setFontSize(16);
-        doc.text('INVOICE', 105, 50, { align: 'center' });
-        
-        // Order Details
-        doc.setFontSize(10);
-        doc.text(`Order ID: ${orderData.orderId}`, 20, 60);
-        doc.text(`Date: ${new Date(orderData.timestamp).toLocaleString('en-IN')}`, 20, 66);
-        
-        // Customer Details
-        doc.setFontSize(12);
-        doc.text('Bill To:', 20, 78);
-        doc.setFontSize(10);
-        doc.text(orderData.customer.name, 20, 84);
-        doc.text(orderData.customer.email, 20, 90);
-        doc.text(orderData.customer.phone, 20, 96);
-        const addressLines = doc.splitTextToSize(orderData.customer.address, 80);
-        doc.text(addressLines, 20, 102);
-        
-        // Product Details Table
-        doc.setFontSize(12);
-        doc.text('Product Details:', 20, 125);
-        
-        // Table headers
-        doc.setFillColor(212, 175, 55);
-        doc.rect(20, 130, 170, 8, 'F');
-        doc.setTextColor(255, 255, 255);
-        doc.text('Product', 22, 135);
-        doc.text('Category', 110, 135);
-        doc.text('Amount', 170, 135);
-        
-        // Product row
-        doc.setTextColor(0, 0, 0);
-        doc.text(orderData.product.name.substring(0, 40), 22, 145);
-        doc.text(orderData.product.category, 110, 145);
-        doc.text(`₹${orderData.product.price.toLocaleString('en-IN')}`, 170, 145);
-        
-        // Totals
-        doc.line(20, 150, 190, 150);
-        doc.setFontSize(11);
-        
-        if (orderData.product.originalPrice > orderData.product.price) {
-            const discount = orderData.product.originalPrice - orderData.product.price;
-            doc.text('Subtotal:', 130, 158);
-            doc.text(`₹${orderData.product.originalPrice.toLocaleString('en-IN')}`, 170, 158);
-            
-            doc.setTextColor(0, 128, 0);
-            doc.text('Discount:', 130, 164);
-            doc.text(`-₹${discount.toLocaleString('en-IN')}`, 170, 164);
-            doc.setTextColor(0, 0, 0);
+async function generateInvoice(orderData) {
+    const data = {
+        "images": {
+            // Logo URL - ensure this is accessible
+            "logo": "https://akkuelectronics.in/images/aelogo.png"
+        },
+        "sender": {
+            "company": "Akku Electronics",
+            "address": "354, VHB Colony, Balabhau Peth",
+            "zip": "440008",
+            "city": "Nagpur",
+            "country": "India",
+            "custom1": "Phone: +91 8956389723",
+            "custom2": "Email: akkuelectronics.nagpur@gmail.com"
+        },
+        "client": {
+            "company": orderData.customer.name,
+            "address": orderData.customer.address,
+            "zip": "", // Zip can be part of address if not collected separately
+            "city": `Phone: ${orderData.customer.phone}`,
+            "country": `Email: ${orderData.customer.email}`
+        },
+        "information": {
+            "number": orderData.orderId,
+            "date": new Date(orderData.timestamp).toLocaleDateString('en-IN'),
+            "due-date": "Paid via UPI"
+        },
+        "products": [
+            {
+                "quantity": 1,
+                "description": orderData.product.name,
+                "tax-rate": 0,
+                "price": orderData.product.price
+            }
+        ],
+        "bottom-notice": "Payment verified via UPI Ref: " + orderData.payment.utr,
+        "settings": {
+            "currency": "INR",
+            "tax-notation": "gst"
         }
-        
-        doc.setFontSize(12);
-        doc.setFont(undefined, 'bold');
-        doc.text('Total Amount:', 130, 172);
-        doc.text(`₹${orderData.product.price.toLocaleString('en-IN')}`, 170, 172);
-        
-        // Payment Details
-        doc.setFont(undefined, 'normal');
-        doc.setFontSize(11);
-        doc.text('Payment Details:', 20, 185);
-        doc.text(`Method: ${orderData.payment.method} (UPI)`, 20, 191);
-        doc.text(`Transaction ID: ${orderData.payment.utr}`, 20, 197);
-        doc.text(`Status: Pending Verification`, 20, 203);
-        
-        // Footer
-        doc.setFontSize(9);
-        doc.setTextColor(128, 128, 128);
-        doc.text('Thank you for your business!', 105, 250, { align: 'center' });
-        doc.text('This is a computer-generated invoice. Payment verification is in progress.', 105, 256, { align: 'center' });
-        doc.text('We will contact you within 24 hours.', 105, 262, { align: 'center' });
-        
-        // Save PDF to user's device
-        doc.save(`AkkuElectronics_Invoice_${orderData.orderId}.pdf`);
-        
-        // Convert to base64
-        const pdfBase64 = doc.output('datauristring').split(',')[1];
-        resolve(pdfBase64);
-    });
+    };
+
+    // Create invoice
+    const result = await easyinvoice.createInvoice(data);
+    
+    // Download PDF for the user
+    easyinvoice.download(`AkkuElectronics_Invoice_${orderData.orderId}.pdf`, result.pdf);
+    
+    // Return base64 string for EmailJS attachment
+    return result.pdf;
 }
 
 // Send Email Notification
@@ -307,6 +286,7 @@ async function sendEmailNotification(orderData, invoicePDF) {
         product_name: orderData.product.name,
         amount: orderData.product.price,
         utr: orderData.payment.utr,
+        timestamp: new Date(orderData.timestamp).toLocaleString('en-IN'),
         invoice_pdf: invoicePDF
     };
     
@@ -337,38 +317,42 @@ async function sendEmailNotification(orderData, invoicePDF) {
 
 // Send WhatsApp Notification
 function sendWhatsAppNotification(orderData) {
-    const message = `🧾 *INVOICE & ORDER DETAILS* 🧾%0A` +
-        `--------------------------------%0A` +
-        `*Order ID:* ${orderData.orderId}%0A` +
-        `*Date:* ${new Date(orderData.timestamp).toLocaleString('en-IN')}%0A` +
-        `--------------------------------%0A` +
-        `👤 *CUSTOMER DETAILS*%0A` +
-        `Name: ${orderData.customer.name}%0A` +
-        `Phone: ${orderData.customer.phone}%0A` +
-        `Email: ${orderData.customer.email}%0A` +
-        `Address: ${orderData.customer.address}%0A` +
-        `--------------------------------%0A` +
-        `🛒 *PRODUCT DETAILS*%0A` +
-        `Item: ${orderData.product.name}%0A` +
-        `Category: ${orderData.product.category}%0A` +
-        `Price: ₹${orderData.product.price.toLocaleString('en-IN')}%0A` +
-        `--------------------------------%0A` +
-        `💰 *PAYMENT INFO*%0A` +
-        `Method: UPI%0A` +
-        `UTR/Ref: ${orderData.payment.utr}%0A` +
-        `Status: Pending Verification%0A` +
-        `--------------------------------%0A` +
-        `✅ *Payment Verified by Customer*`;
+    const message = `🧾 *ORDER INVOICE & CONFIRMATION* 🧾\n` +
+        `--------------------------------\n` +
+        `*Order ID:* ${orderData.orderId}\n` +
+        `*Date:* ${new Date(orderData.timestamp).toLocaleString('en-IN')}\n` +
+        `--------------------------------\n` +
+        `👤 *CUSTOMER:*\n` +
+        `Name: ${orderData.customer.name}\n` +
+        `Phone: ${orderData.customer.phone}\n` +
+        `Email: ${orderData.customer.email}\n` +
+        `Address: ${orderData.customer.address}\n` +
+        `--------------------------------\n` +
+        `🛒 *ITEM:*\n` +
+        `Item: ${orderData.product.name}\n` +
+        `Category: ${orderData.product.category}\n` +
+        `Price: ₹${orderData.product.price.toLocaleString('en-IN')}\n` +
+        `--------------------------------\n` +
+        `💰 *PAYMENT:*\n` +
+        `Method: UPI\n` +
+        `UTR/Ref: ${orderData.payment.utr}\n` +
+        `Status: Pending Verification\n` +
+        `--------------------------------\n` +
+        `� *PDF Invoice has been downloaded to your device.*`;
     
     // Open WhatsApp with pre-filled message
-    const whatsappUrl = `https://wa.me/${STORE_PHONE.replace('+', '')}?text=${message}`;
+    const whatsappUrl = `https://wa.me/${STORE_PHONE.replace('+', '')}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
 
 // Log to Google Sheets
 async function logToGoogleSheets(orderData) {
+    // Ensure safe values for calculations
+    const originalPrice = orderData.product.originalPrice || orderData.product.price;
+    const finalPrice = orderData.product.price;
+
     const sheetData = {
-        timestamp: new Date(orderData.timestamp).toLocaleString('en-IN'),
+        timestamp: new Date().toLocaleString('en-IN'),
         orderId: orderData.orderId,
         customerName: orderData.customer.name,
         customerEmail: orderData.customer.email,
@@ -376,22 +360,22 @@ async function logToGoogleSheets(orderData) {
         customerAddress: orderData.customer.address,
         productName: orderData.product.name,
         productCategory: orderData.product.category,
-        originalPrice: orderData.product.originalPrice,
-        finalPrice: orderData.product.price,
-        discount: orderData.product.originalPrice - orderData.product.price,
+        originalPrice: originalPrice,
+        finalPrice: finalPrice,
+        discount: originalPrice - finalPrice,
         paymentMethod: orderData.payment.method,
         utr: orderData.payment.utr,
         status: 'Pending Verification'
     };
     
     try {
-        const response = await fetch(GOOGLE_SHEETS_URL, {
+        await fetch(GOOGLE_SHEETS_URL, {
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify(sheetData)
         });
-        console.log('Logged to Google Sheets');
+        console.log('Order logged to Google Sheets successfully');
     } catch (error) {
         console.error('Google Sheets logging failed:', error);
         // Continue anyway - don't block the order
