@@ -457,7 +457,15 @@
         }
         const element = document.createElement('div');
         element.innerHTML = window.invoiceHTML || '';
-        html2pdf().set({ margin: 10, filename: orderData.id + '.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' } }).from(element).save();
+        const opt = {
+            margin: 0,
+            filename: orderData.id + '_invoice.pdf',
+            image: { type: 'jpeg', quality: 0.99 },
+            html2canvas: { scale: 3, useCORS: true, logging: false },
+            jsPDF: { orientation: 'portrait', unit: 'mm', format: [148, 210] },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        };
+        html2pdf().set(opt).from(element).save();
     }
 
     function sendEmailNotification() {
