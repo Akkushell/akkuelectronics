@@ -2,6 +2,18 @@
 const blogPosts = [
     {
         id: 1,
+        title: "GTA 6: Complete Guide - Gameplay, Story, Platforms & Release Details",
+        excerpt: "Comprehensive GTA 6 guide covering gameplay mechanics, dual protagonists Lucia and Jason, Miami Vice setting, next-gen graphics, platform specifications, system requirements, story details, and everything you need to know about Grand Theft Auto VI.",
+        content: "Full content here...",
+        category: "Gaming News",
+        tags: ["GTA 6", "Grand Theft Auto", "Gaming", "Gameplay", "Story", "PS5", "Xbox Series X", "Open-World"],
+        date: "2026-02-19",
+        author: "Akku Electronics",
+        image: "blog/images/gta61.webp",
+        link: "19022026gta6complete.html"
+    },
+    {
+        id: 2,
         title: "PS5 DualSense Controller: Complete Hardware Revisions & Schematics Guide",
         excerpt: "Complete technical breakdown of all DualSense controller hardware revisions (BDM-010, 020, 030, 040). Pinout diagrams, trigger assembly schematics, PCB layouts, and comprehensive repair guide for technicians and modders.",
         content: "Full content here...",
@@ -9,11 +21,11 @@ const blogPosts = [
         tags: ["DualSense", "PlayStation 5", "Hardware", "Schematics", "Repair Guide", "PCB"],
         date: "2026-01-14",
         author: "Akku Electronics",
-        image: "images/ds_banner.webp",
+        image: "blog/images/ds_banner.webp",
         link: "14012026ps5-dsc-schematic.html"
     },
     {
-        id: 2,
+        id: 3,
         title: "DualSense Controller: 15 Pro Tips & Tricks You Need to Know",
         excerpt: "Unlock the full potential of your PlayStation 5 DualSense controller. Discover 15 essential tips to enhance haptic feedback, improve battery life, and master advanced features.",
         content: "Full content here...",
@@ -25,7 +37,7 @@ const blogPosts = [
         link: "12012026dualsense15tricks.html"
     },
     {
-        id: 3,
+        id: 4,
         title: "PlayStation 5 Pro: Technical Deep Dive & Performance Analysis",
         excerpt: "Complete technical breakdown of the PS5 Pro featuring 67% GPU upgrade, advanced ray tracing, AI-powered PSSR upscaling, and comprehensive hardware specifications.",
         content: "Full content here...",
@@ -37,7 +49,7 @@ const blogPosts = [
         link: "13012026ps5prospecs.html"
     },
     {
-        id: 4,
+        id: 5,
         title: "Xbox Game Pass Ultimate in 2026: Is It Still Worth $17/Month?",
         excerpt: "Complete 2026 analysis of Xbox Game Pass Ultimate. 500+ games, day-one releases, cloud gaming, EA Play – is it worth $17/month? Full value breakdown, tips, and recommendations.",
         content: "Full content here...",
@@ -49,7 +61,7 @@ const blogPosts = [
         link: "13012026xboxgamepassultimate.html"
     },
     {
-        id: 5,
+        id: 6,
         title: "PS4 Fan Noise: Causes, Solutions & Prevention",
         excerpt: "Comprehensive troubleshooting guide for PS4 fan issues. Discover causes, effective solutions, and maintenance tips to keep your console running quietly.",
         content: "Full content here...",
@@ -61,7 +73,7 @@ const blogPosts = [
         link: "#"
     },
     {
-        id: 6,
+        id: 7,
         title: "Gaming Console News & Updates January 2026",
         excerpt: "Stay informed with the latest gaming industry announcements, console releases, software updates, and tech innovations for this month.",
         content: "Full content here...",
@@ -73,7 +85,7 @@ const blogPosts = [
         link: "#"
     },
     {
-        id: 7,
+        id: 8,
         title: "PlayStation 3 HEN 4.92: Installation & Security Guide",
         excerpt: "Complete technical guide to PS3 HEN installation, setup process, security considerations, and how it compares to CFW alternatives.",
         content: "Full content here...",
@@ -85,7 +97,7 @@ const blogPosts = [
         link: "#"
     },
     {
-        id: 8,
+        id: 9,
         title: "Xbox One Controller Connection Issues: Troubleshooting",
         excerpt: "Expert troubleshooting guide for Xbox One controller connectivity problems. Fix wireless, USB, and pairing issues with step-by-step solutions.",
         content: "Full content here...",
@@ -97,7 +109,7 @@ const blogPosts = [
         link: "#"
     },
     {
-        id: 9,
+        id: 10,
         title: "Boost Console FPS: Performance Enhancement Techniques",
         excerpt: "Advanced strategies to increase frame rates on PlayStation and Xbox. Learn optimization methods, settings adjustments, and performance monitoring techniques.",
         content: "Full content here...",
@@ -109,7 +121,7 @@ const blogPosts = [
         link: "#"
     },
     {
-        id: 10,
+        id: 11,
         title: "PlayStation Network Security: Protect Your Account",
         excerpt: "Essential PSN security guide covering password protection, two-factor authentication, account recovery, and cyber threat prevention strategies.",
         content: "Full content here...",
@@ -121,7 +133,7 @@ const blogPosts = [
         link: "#"
     },
     {
-        id: 11,
+        id: 12,
         title: "Xbox Game Pass Ultimate: Maximizing Your Subscription",
         excerpt: "Complete guide to Xbox Game Pass Ultimate benefits, hidden features, game library navigation, and how to get maximum value from your subscription.",
         content: "Full content here...",
