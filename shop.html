@@ -271,11 +271,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="payment-modal-content">
             <span class="payment-close" onclick="closePaymentModal()">&times;</span>
             
-            <!-- Payment Step 1: QR Code & UPI Payment -->
-            <div id="paymentStep1" class="payment-step">
-                <h2>Complete Your Payment</h2>
+            <!-- Progress Indicator -->
+            <div class="payment-progress">
+                <div class="progress-step" id="progressStep0">
+                    <div class="progress-number">1</div>
+                    <p class="progress-label">Summary</p>
+                </div>
+                <div class="progress-step" id="progressStep1">
+                    <div class="progress-number">2</div>
+                    <p class="progress-label">Payment</p>
+                </div>
+                <div class="progress-step" id="progressStep2">
+                    <div class="progress-number">3</div>
+                    <p class="progress-label">Details</p>
+                </div>
+                <div class="progress-step" id="progressStep3">
+                    <div class="progress-number">4</div>
+                    <p class="progress-label">Confirm</p>
+                </div>
+            </div>
+            
+            <!-- Payment Step 0: Order Summary -->
+            <div id="paymentStep0" class="payment-step">
+                <h2>Order Summary</h2>
+                <p style="color: #cccccc; font-size: 12px; margin-bottom: 16px;">Review your order details</p>
                 
                 <!-- Product Summary Card -->
+                <div class="detail-card" id="summaryCard" style="margin: 12px 0;"></div>
+                
+                <div class="detail-card" style="margin: 12px 0;">
+                    <h3>💰 Price Details</h3>
+                    <div class="detail-card-row">
+                        <span class="detail-card-label">Original Price:</span>
+                        <span class="detail-card-value" id="summaryOriginalPrice"></span>
+                    </div>
+                    <div class="detail-card-row" id="discountRow" style="color: #27ae60;">
+                        <span class="detail-card-label" style="color: #27ae60;">Discount:</span>
+                        <span class="detail-card-value" id="summaryDiscount"></span>
+                    </div>
+                    <div class="final-amount-row">
+                        <span class="final-amount-label">Final Amount:</span>
+                        <span class="final-amount-value" id="summaryFinalPrice"></span>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" onclick="closePaymentModal()" class="back-btn">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button type="button" onclick="goToPaymentStep(1)" class="next-btn">
+                        <i class="fas fa-arrow-right"></i> Proceed to Payment
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Payment Step 1: UPI Payment Selection -->
+            <div id="paymentStep1" class="payment-step hidden">
+                <h2>Complete Your Payment</h2>
+                
+                <!-- Product Summary Card (Compact) -->
                 <div class="product-summary" id="productSummary"></div>
                 
                 <!-- UPI Apps Payment Options -->
@@ -314,12 +368,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <i class="fab fa-whatsapp"></i> Can't Pay Now? Order via WhatsApp
                 </button>
                 
-                <button onclick="showUTRStep()" class="next-btn">
-                    <i class="fas fa-arrow-right" class="icon-spacer"></i>I've Paid - Enter Transaction ID
-                </button>
+                <div class="form-actions">
+                    <button onclick="goToPaymentStep(0)" class="back-btn">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button onclick="goToPaymentStep(2)" class="next-btn">
+                        <i class="fas fa-arrow-right"></i> I've Paid - Next
+                    </button>
+                </div>
             </div>
             
-            <!-- Payment Step 2: Transaction Verification Form -->
+            <!-- Payment Step 2: Customer Details Form -->
             <div id="paymentStep2" class="payment-step hidden">
                 <h2>Verify Your Payment</h2>
                 
@@ -355,35 +414,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" onclick="showQRStep()" class="back-btn">
-                            <i class="fas fa-arrow-left" class="icon-spacer"></i>Back
+                        <button type="button" onclick="goToPaymentStep(1)" class="back-btn">
+                            <i class="fas fa-arrow-left"></i>Back
                         </button>
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-check" class="icon-spacer"></i>Submit Order
+                        <button type="button" onclick="submitPaymentForm()" class="submit-btn">
+                            <i class="fas fa-arrow-right"></i>Review Order
                         </button>
                     </div>
                 </form>
             </div>
             
-            <!-- Payment Step 3: Success Confirmation -->
+            <!-- Payment Step 3: Order Confirmation -->
             <div id="paymentStep3" class="payment-step hidden success-screen">
-                <div class="success-animation">
-                    <i class="fas fa-check-circle"></i>
+                <div class="confirmation-header">
+                    <h2>ORDER CONFIRMATION</h2>
+                    <p>Please review all details before confirming</p>
                 </div>
-                <h2>Order Confirmed!</h2>
-                <p class="success-screen-text">
-                    Thank you for your order. We've received your payment details and invoice has been sent to your email.
-                </p>
-                <div class="order-id-card">
-                    <p class="order-id-label">Order ID:</p>
-                    <p id="orderIdDisplay" class="order-id-display"></p>
-                </div>
-                <p class="verification-time-info">
-                    <i class="fas fa-clock"></i> We'll verify your payment and contact you within 24 hours
-                </p>
-                <button onclick="closePaymentModal()" class="done-btn">
-                    <i class="fas fa-home" class="icon-spacer"></i>Continue Shopping
-                </button>
+                <div id="confirmationContent"></div>
+                <div class="form-actions" id="confirmationActions"></div>
+            </div>
+            
+            <!-- Payment Step 4: Success Confirmation -->
+            <div id="paymentStep4" class="payment-step hidden success-screen">
+                <div id="successContent"></div>
+                <div id="successActions"></div>
             </div>
         </div>
     </div>

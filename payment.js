@@ -100,12 +100,10 @@ function openPaymentModal(product) {
         currentOrderId = generateOrderId();
         paymentInProgress = true;
         
-        // Update modal display
-        displayPaymentSummary(product);
+        // Display order summary and show step 0
+        displayOrderSummary(product);
         modal.style.display = 'block';
-        
-        // Reset to payment method selection
-        showPaymentMethodStep();
+        goToPaymentStep(0);
         
         console.log('Payment modal opened for product:', currentProduct.name);
         return true;
@@ -117,7 +115,91 @@ function openPaymentModal(product) {
 }
 
 /**
- * Display Product Summary in Payment Modal
+ * Navigate to specific payment step with progress indicator
+ */
+function goToPaymentStep(stepNum) {
+    try {
+        // Hide all steps
+        for (let i = 0; i <= 4; i++) {
+            const step = document.getElementById(`paymentStep${i}`);
+            if (step) step.classList.add('hidden');
+            
+            const progress = document.getElementById(`progressStep${i}`);
+            if (progress) progress.classList.remove('active');
+        }
+        
+        // Show selected step
+        const currentStep = document.getElementById(`paymentStep${stepNum}`);
+        if (currentStep) currentStep.classList.remove('hidden');
+        
+        // Update progress indicator
+        for (let i = 0; i <= stepNum; i++) {
+            const progress = document.getElementById(`progressStep${i}`);
+            if (progress) progress.classList.add('active');
+        }
+        
+        // Scroll to top of modal
+        const modalContent = document.querySelector('.payment-modal-content');
+        if (modalContent) modalContent.scrollTop = 0;
+        
+        console.log('Navigated to payment step:', stepNum);
+    } catch (error) {
+        console.error('Error navigating to step:', error);
+    }
+}
+
+/**
+ * Display Order Summary (Step 0)
+ */
+function displayOrderSummary(product) {
+    try {
+        const discount = product.originalPrice ? 
+            product.originalPrice - product.price : 0;
+        const discountPercent = product.originalPrice ?
+            Math.round((discount / product.originalPrice) * 100) : 0;
+        
+        const summaryCard = document.getElementById('summaryCard');
+        if (summaryCard) {
+            summaryCard.innerHTML = `
+                <h3>📦 ${product.name}</h3>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Category:</span>
+                    <span class="detail-card-value">${product.category}</span>
+                </div>
+            `;
+        }
+        
+        const originalPrice = document.getElementById('summaryOriginalPrice');
+        if (originalPrice) {
+            originalPrice.textContent = `₹${product.originalPrice?.toLocaleString('en-IN') || '0'}`;
+        }
+        
+        const discountRow = document.getElementById('discountRow');
+        const discountElement = document.getElementById('summaryDiscount');
+        if (discount > 0) {
+            if (discountRow) discountRow.style.display = 'flex';
+            if (discountElement) {
+                discountElement.textContent = `-${discountPercent}% (₹${discount.toLocaleString('en-IN')})`;
+            }
+        } else {
+            if (discountRow) discountRow.style.display = 'none';
+        }
+        
+        const finalPrice = document.getElementById('summaryFinalPrice');
+        if (finalPrice) {
+            finalPrice.textContent = `₹${product.price.toLocaleString('en-IN')}`;
+        }
+        
+        // Also set payment summary for step 1
+        displayPaymentSummary(product);
+        
+    } catch (error) {
+        console.error('Error displaying order summary:', error);
+    }
+}
+
+/**
+ * Display Product Summary in Payment Modal (Step 1)
  */
 function displayPaymentSummary(product) {
     const summaryDiv = document.getElementById('productSummary');
@@ -147,6 +229,23 @@ function displayPaymentSummary(product) {
     `;
     
     document.getElementById('paymentAmount').textContent = product.price.toLocaleString('en-IN');
+}
+
+/**
+ * Submit Payment Form (Step 2) - Move to Confirmation
+ */
+function submitPaymentForm() {
+    const validation = validatePaymentForm();
+    if (!validation.valid) {
+        showNotification(`Error: ${validation.message}`, 'error');
+        return;
+    }
+    
+    // Show confirmation step
+    goToPaymentStep(3);
+    
+    // Display confirmation
+    displayOrderConfirmation();
 }
 
 /**
@@ -188,16 +287,10 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================================================
 
 /**
- * Show Payment Method Selection Step
+ * Show Payment Method Selection Step (Legacy - now uses goToPaymentStep)
  */
 function showPaymentMethodStep() {
-    const step1 = document.getElementById('paymentStep1');
-    const step2 = document.getElementById('paymentStep2');
-    const step3 = document.getElementById('paymentStep3');
-    
-    if (step1) step1.classList.remove('hidden');
-    if (step2) step2.classList.add('hidden');
-    if (step3) step3.classList.add('hidden');
+    goToPaymentStep(1);
 }
 
 /**
@@ -273,41 +366,26 @@ function proceedToFormStep() {
  * Show Form Step (for entering customer details)
  */
 function showFormStep() {
-    const step1 = document.getElementById('paymentStep1');
-    const step2 = document.getElementById('paymentStep2');
-    const step3 = document.getElementById('paymentStep3');
-    
-    if (step1) step1.classList.add('hidden');
-    if (step2) step2.classList.remove('hidden');
-    if (step3) step3.classList.add('hidden');
-    
-    // Scroll to top of modal
-    const modal = document.querySelector('.payment-modal-content');
-    if (modal) modal.scrollTop = 0;
+    goToPaymentStep(2);
 }
 
 /**
  * Show Success Step
  */
 function showSuccessStep() {
-    const step1 = document.getElementById('paymentStep1');
-    const step2 = document.getElementById('paymentStep2');
-    const step3 = document.getElementById('paymentStep3');
-    
-    if (step1) step1.classList.add('hidden');
-    if (step2) step2.classList.add('hidden');
-    if (step3) step3.classList.remove('hidden');
+    // Deprecated - use goToPaymentStep(4) instead
+    goToPaymentStep(4);
 }
 
 /**
  * Legacy functions for backward compatibility
  */
 function showQRStep() {
-    showPaymentMethodStep();
+    goToPaymentStep(1);
 }
 
 function showUTRStep() {
-    showFormStep();
+    goToPaymentStep(2);
 }
 
 
@@ -318,6 +396,173 @@ function showUTRStep() {
 /**
  * Main Payment Submission Handler
  */
+/**
+ * Display Order Confirmation Page (Step 3) - Review before final submit
+ */
+function displayOrderConfirmation() {
+    try {
+        const orderData = buildOrderData();
+        
+        const confirmContent = document.getElementById('confirmationContent');
+        if (!confirmContent) return;
+        
+        const discount = currentProduct.originalPrice - currentProduct.price;
+        const discountPercent = currentProduct.originalPrice ?
+            Math.round((discount / currentProduct.originalPrice) * 100) : 0;
+        
+        confirmContent.innerHTML = `
+            <!-- PRODUCT DETAILS -->
+            <div class="detail-card">
+                <h3>📦 PRODUCT DETAILS</h3>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Product:</span>
+                    <span class="detail-card-value">${currentProduct.name}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Category:</span>
+                    <span class="detail-card-value">${currentProduct.category}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Original Price:</span>
+                    <span class="detail-card-value">₹${currentProduct.originalPrice.toLocaleString('en-IN')}</span>
+                </div>
+                ${discount > 0 ? `
+                <div class="detail-card-row" style="color: #27ae60;">
+                    <span class="detail-card-label" style="color: #27ae60;">Discount:</span>
+                    <span class="detail-card-value">-${discountPercent}% (₹${discount.toLocaleString('en-IN')})</span>
+                </div>
+                ` : ''}
+                <div class="final-amount-row">
+                    <span class="final-amount-label">Final Amount:</span>
+                    <span class="final-amount-value">₹${currentProduct.price.toLocaleString('en-IN')}</span>
+                </div>
+            </div>
+            
+            <!-- CUSTOMER DETAILS -->
+            <div class="detail-card">
+                <h3>👤 CUSTOMER DETAILS</h3>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Name:</span>
+                    <span class="detail-card-value">${orderData.customer.name}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Email:</span>
+                    <span class="detail-card-value">${orderData.customer.email}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Phone:</span>
+                    <span class="detail-card-value">+${orderData.customer.phone}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Address:</span>
+                    <span class="detail-card-value">${orderData.customer.address}</span>
+                </div>
+            </div>
+            
+            <!-- PAYMENT DETAILS -->
+            <div class="detail-card">
+                <h3>💳 PAYMENT DETAILS</h3>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Method:</span>
+                    <span class="detail-card-value">UPI</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Transaction ID:</span>
+                    <span class="detail-card-value highlight">${orderData.payment.utr}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Amount:</span>
+                    <span class="detail-card-value">₹${orderData.payment.amount.toLocaleString('en-IN')}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Date & Time:</span>
+                    <span class="detail-card-value">${orderData.formattedDate} ${orderData.formattedTime}</span>
+                </div>
+            </div>
+            
+            <!-- ORDER ID -->
+            <div class="order-id-card">
+                <p class="order-id-label">Order ID</p>
+                <p class="order-id-display">${orderData.orderId}</p>
+            </div>
+        `;
+        
+        const confirmActions = document.getElementById('confirmationActions');
+        if (confirmActions) {
+            confirmActions.innerHTML = `
+                <button type="button" onclick="goToPaymentStep(2)" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button type="button" onclick="finalizeOrder()" class="submit-btn">
+                    <i class="fas fa-check"></i> Confirm & Process
+                </button>
+            `;
+        }
+        
+    } catch (error) {
+        console.error('Error displaying confirmation:', error);
+        showNotification('Error displaying order confirmation', 'error');
+    }
+}
+
+/**
+ * Finalize Order - Generate Invoice, Send Emails, Log to Sheets (Step 3 → Step 4)
+ */
+async function finalizeOrder() {
+    try {
+        const orderData = buildOrderData();
+        const confirmBtn = document.querySelector('[onclick="finalizeOrder()"]');
+        
+        if (confirmBtn) {
+            confirmBtn.disabled = true;
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        }
+        
+        showNotification('Processing your order...', 'info');
+        
+        // Generate invoice
+        let invoiceData = null;
+        try {
+            invoiceData = await generateCompleteInvoice(orderData);
+            console.log('Invoice generated successfully');
+        } catch (invoiceError) {
+            console.warn('Invoice generation issue:', invoiceError);
+        }
+        
+        // Send notifications in parallel
+        await Promise.allSettled([
+            sendEmailNotifications(orderData, invoiceData),
+            sendWhatsAppNotification(orderData, invoiceData),
+            logToGoogleSheets(orderData)
+        ]);
+        
+        // Log to localStorage
+        logOrderToJSON(orderData, invoiceData);
+        
+        // Track in Analytics
+        trackPurchaseEvent(orderData);
+        
+        // Display success screen (Step 4)
+        displayOrderSuccess(orderData, invoiceData);
+        goToPaymentStep(4);
+        
+        showNotification('Order confirmed & processed successfully!', 'success');
+        
+    } catch (error) {
+        console.error('Error finalizing order:', error);
+        showNotification(
+            `Error finalizing order: ${error.message}. Please contact ${CONFIG.storePhone}`,
+            'error'
+        );
+        
+        const confirmBtn = document.querySelector('[onclick="finalizeOrder()"]');
+        if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.innerHTML = '<i class="fas fa-check"></i> Confirm & Process';
+        }
+    }
+}
+
 async function submitPayment(event) {
     event.preventDefault();
     
@@ -356,28 +601,9 @@ async function submitPayment(event) {
         // Save order to local storage (backup)
         saveOrderLocally(orderData);
         
-        // Generate invoice
-        let invoiceData = null;
-        try {
-            invoiceData = await generateCompleteInvoice(orderData);
-            console.log('Invoice generated successfully');
-        } catch (invoiceError) {
-            console.warn('Invoice generation failed:', invoiceError);
-        }
-        
-        // Send notifications in parallel
-        await Promise.allSettled([
-            sendEmailNotifications(orderData, invoiceData),
-            sendWhatsAppNotification(orderData, invoiceData),
-            logToGoogleSheets(orderData)
-        ]);
-        
-        // Track in Analytics
-        trackPurchaseEvent(orderData);
-        
-        // Display success
-        displayOrderSuccess(orderData, invoiceData);
-        showSuccessStep();
+        // Display Confirmation Page (Step 3)
+        displayOrderConfirmation();
+        goToPaymentStep(3);
         
         // Reset form
         if (document.getElementById('utrForm')) {
@@ -618,93 +844,260 @@ async function generateCompleteInvoice(orderData) {
 /**
  * Display Success with Download Options
  */
-function displayOrderSuccess(orderData, invoiceData) {
+// ============================================================================
+// ORDER CONFIRMATION (Review & Confirm)
+// ============================================================================
+
+/**
+ * Display Order Confirmation Page - User Reviews ALL Details Before Confirming
+ */
+function displayOrderConfirmation(orderData) {
     try {
-        const orderIdDisplay = document.getElementById('orderIdDisplay');
-        if (orderIdDisplay) {
-            orderIdDisplay.textContent = orderData.orderId;
+        const step3 = document.getElementById('paymentStep3');
+        if (!step3) return;
+        
+        // Clear existing content
+        step3.innerHTML = '';
+        step3.classList.add('success-screen');
+        
+        // Create confirmation page
+        const confirmationHTML = `
+            <div class="confirmation-header">
+                <h2>ORDER CONFIRMATION</h2>
+                <p>Please review all details before confirming</p>
+            </div>
+            
+            <!-- PRODUCT DETAILS -->
+            <div class="detail-card">
+                <h3>📦 PRODUCT DETAILS</h3>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Product:</span>
+                    <span class="detail-card-value">${orderData.product.name}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Category:</span>
+                    <span class="detail-card-value">${orderData.product.category}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Original Price:</span>
+                    <span class="detail-card-value">₹${orderData.product.originalPrice.toLocaleString('en-IN')}</span>
+                </div>
+                ${orderData.product.discount > 0 ? `
+                <div class="detail-card-row" style="color: #27ae60;">
+                    <span class="detail-card-label" style="color: #27ae60;">Discount:</span>
+                    <span class="detail-card-value">-${orderData.product.discountPercentage}% (₹${orderData.product.discount.toLocaleString('en-IN')})</span>
+                </div>
+                ` : ''}
+                <div class="final-amount-row">
+                    <span class="final-amount-label">Final Amount:</span>
+                    <span class="final-amount-value">₹${orderData.product.price.toLocaleString('en-IN')}</span>
+                </div>
+            </div>
+            
+            <!-- CUSTOMER DETAILS -->
+            <div class="detail-card">
+                <h3>👤 CUSTOMER DETAILS</h3>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Name:</span>
+                    <span class="detail-card-value">${orderData.customer.name}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Email:</span>
+                    <span class="detail-card-value">${orderData.customer.email}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Phone:</span>
+                    <span class="detail-card-value">+${orderData.customer.phone}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Address:</span>
+                    <span class="detail-card-value">${orderData.customer.address}</span>
+                </div>
+            </div>
+            
+            <!-- PAYMENT DETAILS -->
+            <div class="detail-card">
+                <h3>💳 PAYMENT DETAILS</h3>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Method:</span>
+                    <span class="detail-card-value">UPI</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Transaction ID:</span>
+                    <span class="detail-card-value highlight">${orderData.payment.utr}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Amount:</span>
+                    <span class="detail-card-value">₹${orderData.payment.amount.toLocaleString('en-IN')}</span>
+                </div>
+                <div class="detail-card-row">
+                    <span class="detail-card-label">Date & Time:</span>
+                    <span class="detail-card-value">${orderData.formattedDate} ${orderData.formattedTime}</span>
+                </div>
+            </div>
+            
+            <!-- ORDER ID -->
+            <div class="order-id-card">
+                <p class="order-id-label">Order ID</p>
+                <p class="order-id-display">${orderData.orderId}</p>
+            </div>
+        `;
+        
+        step3.innerHTML = confirmationHTML;
+        
+        // Add action buttons
+        const buttonsDiv = document.createElement('div');
+        buttonsDiv.style.cssText = `
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        `;
+        
+        // Confirm Order Button
+        const confirmBtn = document.createElement('button');
+        confirmBtn.className = 'btn submit-btn';
+        confirmBtn.style.flex = '1';
+        confirmBtn.innerHTML = '<i class="fas fa-check"></i> Confirm & Process';
+        confirmBtn.onclick = function() {
+            finalizeOrderConfirmation(orderData);
+        };
+        
+        // Cancel Button
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'btn back-btn';
+        cancelBtn.style.flex = '1';
+        cancelBtn.innerHTML = '<i class="fas fa-arrow-left"></i> Back';
+        cancelBtn.onclick = function() {
+            closePaymentModal();
+        };
+        
+        buttonsDiv.appendChild(confirmBtn);
+        buttonsDiv.appendChild(cancelBtn);
+        step3.appendChild(buttonsDiv);
+        
+    } catch (error) {
+        console.error('Error displaying confirmation:', error);
+        showNotification('Error displaying order confirmation', 'error');
+    }
+}
+
+/**
+ * Finalize Order - Generate Invoice, Send Emails, Log to Sheets
+ */
+async function finalizeOrderConfirmation(orderData) {
+    try {
+        const confirmStep = document.getElementById('paymentStep3');
+        if (!confirmStep) return;
+        
+        // Disable buttons and show processing
+        const buttons = confirmStep.querySelectorAll('button');
+        buttons.forEach(btn => btn.disabled = true);
+        
+        const confirmBtn = Array.from(buttons).find(btn => btn.textContent.includes('Confirm'));
+        if (confirmBtn) {
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
         }
         
-        const successMessage = document.querySelector('.success-message');
-        if (successMessage) {
-            successMessage.innerHTML = `
-                <p>✓ Order submitted successfully!</p>
-                <p>Order ID: <strong>${orderData.orderId}</strong></p>
-                <p>Confirmation email has been sent to <strong>${orderData.customer.email}</strong></p>
-            `;
+        // Show loading notification
+        showNotification('Processing your order...', 'info');
+        
+        // Generate invoice
+        let invoiceData = null;
+        try {
+            invoiceData = await generateCompleteInvoice(orderData);
+            console.log('Invoice generated successfully');
+        } catch (invoiceError) {
+            console.warn('Invoice generation issue:', invoiceError);
         }
         
-        // Display detailed receipt
-        displayDetailedReceipt(orderData);
+        // Send notifications in parallel
+        await Promise.allSettled([
+            sendEmailNotifications(orderData, invoiceData),
+            sendWhatsAppNotification(orderData, invoiceData),
+            logToGoogleSheets(orderData)
+        ]);
         
-        // Display order status timeline
-        displayOrderStatusTimeline(orderData);
-        
-        // Log order to JSON
+        // Log to localStorage
         logOrderToJSON(orderData, invoiceData);
         
-        // Add download buttons if invoice exists
-        if (invoiceData) {
-            const successStep = document.getElementById('paymentStep3');
-            
-            // Download Invoice Button
-            let downloadBtn = document.getElementById('downloadInvoiceBtn');
-            if (!downloadBtn && successStep) {
-                downloadBtn = document.createElement('button');
-                downloadBtn.id = 'downloadInvoiceBtn';
-                downloadBtn.className = 'btn download-btn';
-                downloadBtn.style.marginTop = '10px';
-                downloadBtn.innerHTML = '<i class="fas fa-file-pdf"></i> Download Invoice';
-                
-                const doneBtn = successStep.querySelector('.done-btn');
-                if (doneBtn) {
-                    successStep.insertBefore(downloadBtn, doneBtn);
-                }
-                
-                downloadBtn.onclick = function() {
-                    easyinvoice.download(`AkkuElectronics_Invoice_${orderData.orderId}.pdf`, invoiceData.pdf);
-                    showNotification('Invoice downloaded!', 'success');
-                };
-            }
-            
-            // Download Receipt Button
-            let receiptBtn = document.getElementById('downloadReceiptBtn');
-            if (!receiptBtn && successStep) {
-                receiptBtn = document.createElement('button');
-                receiptBtn.id = 'downloadReceiptBtn';
-                receiptBtn.className = 'btn download-btn';
-                receiptBtn.style.marginTop = '10px';
-                receiptBtn.innerHTML = '<i class="fas fa-receipt"></i> Download Receipt';
-                
-                const doneBtn = successStep.querySelector('.done-btn');
-                if (doneBtn) {
-                    successStep.insertBefore(receiptBtn, doneBtn);
-                }
-                
-                receiptBtn.onclick = function() {
-                    downloadReceiptAsJSON(orderData);
-                };
-            }
-            
-            // Export Order Log Button
-            let exportBtn = document.getElementById('exportLogBtn');
-            if (!exportBtn && successStep) {
-                exportBtn = document.createElement('button');
-                exportBtn.id = 'exportLogBtn';
-                exportBtn.className = 'btn download-btn';
-                exportBtn.style.marginTop = '10px';
-                exportBtn.innerHTML = '<i class="fas fa-download"></i> Export Order Log';
-                
-                const doneBtn = successStep.querySelector('.done-btn');
-                if (doneBtn) {
-                    successStep.insertBefore(exportBtn, doneBtn);
-                }
-                
-                exportBtn.onclick = function() {
-                    exportOrderLogAsJSON();
-                };
-            }
+        // Track in Analytics
+        trackPurchaseEvent(orderData);
+        
+        // Display final success screen
+        displayOrderSuccess(orderData, invoiceData);
+        
+        showNotification('Order confirmed & processed successfully!', 'success');
+        
+    } catch (error) {
+        console.error('Error finalizing order:', error);
+        showNotification(
+            `Error finalizing order: ${error.message}. Please contact ${CONFIG.storePhone}`,
+            'error'
+        );
+        
+        // Re-enable buttons
+        const buttons = document.getElementById('paymentStep3')?.querySelectorAll('button');
+        if (buttons) {
+            buttons.forEach(btn => btn.disabled = false);
         }
+    }
+}
+
+// ============================================================================
+// ORDER SUCCESS (Final)
+// ============================================================================
+
+function displayOrderSuccess(orderData, invoiceData) {
+    try {
+        const successContent = document.getElementById('successContent');
+        const successActions = document.getElementById('successActions');
+        
+        if (!successContent || !successActions) return;
+        
+        // Success animation and message
+        const successHTML = `
+            <div style="text-align: center;">
+                <div class="success-animation">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 style="color: #d4af37; margin: 0 0 8px 0;">✓ Order Confirmed!</h2>
+                <p style="color: #cccccc; font-size: 12px; margin: 0 0 6px 0;">Your order has been submitted successfully</p>
+                <p style="color: #999; font-size: 11px; margin: 0 0 12px 0;">Invoice PDF sent to <strong style="color: #d4af37;">${orderData.customer.email}</strong></p>
+                
+                <div class="order-id-card">
+                    <p class="order-id-label">Order ID</p>
+                    <p class="order-id-display">${orderData.orderId}</p>
+                </div>
+                
+                <p style="color: #f39c12; font-size: 11px; margin: 10px 0;"><i class="fas fa-clock"></i> We'll verify your payment and contact you within 24 hours</p>
+            </div>
+        `;
+        
+        successContent.innerHTML = successHTML;
+        
+        // Add download buttons
+        const buttonsHTML = `
+            ${invoiceData ? `
+            <button class="btn download-btn" onclick="easyinvoice.download('AkkuElectronics_Invoice_${orderData.orderId}.pdf', ${JSON.stringify(invoiceData.pdf).replace(/"/g, '&quot;')}); showNotification('Invoice downloaded!', 'success');">
+                <i class="fas fa-file-pdf"></i> Download Invoice (PDF)
+            </button>
+            <button class="btn download-btn" onclick="downloadReceiptAsJSON(${JSON.stringify(orderData).replace(/"/g, '&quot;')})">
+                <i class="fas fa-receipt"></i> Download Receipt (JSON)
+            </button>
+            <button class="btn download-btn" onclick="exportOrderLogAsJSON()">
+                <i class="fas fa-download"></i> Export Order Log
+            </button>
+            ` : ''}
+            <button class="btn done-btn" onclick="closePaymentModal()">
+                <i class="fas fa-home"></i> Continue Shopping
+            </button>
+        `;
+        
+        successActions.innerHTML = buttonsHTML;
+        
+        // Log to localStorage
+        logOrderToJSON(orderData, invoiceData);
+        
     } catch (error) {
         console.error('Error displaying success:', error);
     }
