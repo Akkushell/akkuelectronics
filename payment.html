@@ -203,7 +203,7 @@
     let cartData = [];
     let totalAmount = 0;
     let currentStep = 1;
-    const upiId = 'akkuelectronics@upi';
+    const upiId = '8956389723@barodampay';
     const orderData = { id: 'ORD-' + Date.now() + '-' + Math.floor(Math.random() * 1000), items: [], total: 0, customer: {}, paymentMethod: 'UPI', utrId: '' };
 
     (function init() {
@@ -384,8 +384,8 @@
         setTimeout(processOrder, 700);
     }
 
-    function processOrder() {
-        generateInvoice();
+    async function processOrder() {
+        await generateInvoice();
         sendEmailNotification();
         logToGoogleSheets();
         hideLoadingModal();
@@ -398,26 +398,63 @@
         localStorage.removeItem('gameShopCart');
     }
 
-    function generateInvoice() {
-        const invoiceHTML = `
-            <div style="font-family:Arial,sans-serif;padding:20px;color:#333;">
-                <h2>AKKU ELECTRONICS</h2>
-                <p><strong>Order:</strong> ${orderData.id}</p>
-                <p><strong>Name:</strong> ${orderData.customer.name}</p>
-                <p><strong>Phone:</strong> ${orderData.customer.phone}</p>
-                <p><strong>Email:</strong> ${orderData.customer.email}</p>
-                <p><strong>Address:</strong> ${orderData.customer.address}</p>
-                <hr>
-                ${orderData.items.map(i => `<p>${i.name} x ${i.quantity} - ₹${(i.price * i.quantity).toLocaleString()}</p>`).join('')}
-                <hr>
-                <p><strong>Total:</strong> ₹${orderData.total.toLocaleString()}</p>
-                <p><strong>Payment:</strong> UPI</p>
-                <p><strong>UTR:</strong> ${orderData.utrId}</p>
-            </div>`;
-        window.invoiceHTML = invoiceHTML;
+    function replaceTemplateValue(template, key, value) {
+        return template.split(`{{${key}}}`).join(value);
     }
 
-    function downloadInvoice() {
+    async function generateInvoice() {
+        const productSummary = orderData.items.map(i => `${i.name}${i.selectedColor ? ' (' + i.selectedColor + ')' : ''} x ${i.quantity}`).join(', ');
+        const data = {
+            to_name: orderData.customer.name || '-',
+            to_email: orderData.customer.email || '-',
+            order_id: orderData.id,
+            timestamp: new Date().toLocaleString('en-IN'),
+            product_name: productSummary || 'Gaming Product',
+            amount: (orderData.total || 0).toLocaleString('en-IN'),
+            utr: orderData.utrId || 'N/A'
+        };
+
+        try {
+            const response = await fetch('invoice.html', { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error('Failed to fetch invoice template');
+            }
+
+            let templateHTML = await response.text();
+            templateHTML = replaceTemplateValue(templateHTML, 'to_name', data.to_name);
+            templateHTML = replaceTemplateValue(templateHTML, 'to_email', data.to_email);
+            templateHTML = replaceTemplateValue(templateHTML, 'order_id', data.order_id);
+            templateHTML = replaceTemplateValue(templateHTML, 'timestamp', data.timestamp);
+            templateHTML = replaceTemplateValue(templateHTML, 'product_name', data.product_name);
+            templateHTML = replaceTemplateValue(templateHTML, 'amount', data.amount);
+            templateHTML = replaceTemplateValue(templateHTML, 'utr', data.utr);
+
+            window.invoiceHTML = templateHTML;
+        } catch (error) {
+            const fallbackInvoice = `
+                <div style="font-family:Arial,sans-serif;padding:20px;color:#333;">
+                    <h2>AKKU ELECTRONICS</h2>
+                    <p><strong>Order:</strong> ${orderData.id}</p>
+                    <p><strong>Name:</strong> ${orderData.customer.name}</p>
+                    <p><strong>Phone:</strong> ${orderData.customer.phone}</p>
+                    <p><strong>Email:</strong> ${orderData.customer.email}</p>
+                    <p><strong>Address:</strong> ${orderData.customer.address}</p>
+                    <hr>
+                    ${orderData.items.map(i => `<p>${i.name} x ${i.quantity} - ₹${(i.price * i.quantity).toLocaleString()}</p>`).join('')}
+                    <hr>
+                    <p><strong>Total:</strong> ₹${orderData.total.toLocaleString()}</p>
+                    <p><strong>Payment:</strong> UPI</p>
+                    <p><strong>UTR:</strong> ${orderData.utrId || 'N/A'}</p>
+                </div>`;
+            window.invoiceHTML = fallbackInvoice;
+            console.warn('Using fallback invoice format:', error);
+        }
+    }
+
+    async function downloadInvoice() {
+        if (!window.invoiceHTML) {
+            await generateInvoice();
+        }
         const element = document.createElement('div');
         element.innerHTML = window.invoiceHTML || '';
         html2pdf().set({ margin: 10, filename: orderData.id + '.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' } }).from(element).save();
