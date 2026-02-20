@@ -46,7 +46,7 @@
       "originalPrice": 300,
       "discount": 120,
       "stock": true,
-      "images": ["images/parts/ps4/ae-14pin-flex-1.jpg","images/parts/ps4/ae-14pin-flex-2.jpg","images/parts/ps4/ae-14pin-flex-3.jpg"],
+      "images": ["images/parts/ps4/AE-14PIN-FLEX-1.jpg","images/parts/ps4/AE-14PIN-FLEX-2.jpg","images/parts/ps4/AE-14PIN-FLEX-3.jpg"],
       "description": "Professional-grade 14-pin power flex cable for PS4 DualShock 4 controllers. Direct power delivery component connecting USB charging port to main PCB. Essential repair for controllers with intermittent charging, no-charge issues, or power failures. Premium conductive material ensures stable voltage without surges. Ideal for technicians and experienced DIY repairers with soldering capability.",
       "specs": ["14-Pin SMD Connector", "PS4 DualShock 4 Compatible", "Restores Charging Functionality", "Premium Conductive Material", "Soldering Installation Required", "OEM-Level Quality"],
       "availability": "In Stock"
@@ -60,7 +60,7 @@
       "originalPrice": 300,
       "discount": 120,
       "stock": true,
-      "images": ["images/parts/ps4/ae-12pin-flex-1.jpg","images/parts/ps4/ae-12pin-flex-2.jpg","images/parts/ps4/ae-12pin-flex-3.jpg"],
+      "images": ["images/parts/ps4/AE-12PIN-FLEX-1.jpg","images/parts/ps4/AE-12PIN-FLEX-2.jpg","images/parts/ps4/AE-12PIN-FLEX-3.jpg"],
       "description": "Professional-grade 12-pin power flex cable for PS4 DualShock 4 controllers. Direct power delivery component connecting USB charging port to main PCB. Essential repair for controllers with intermittent charging, no-charge issues, or power failures. Premium conductive material ensures stable voltage without surges. Ideal for technicians and experienced DIY repairers with soldering capability.",
       "specs": ["12-Pin SMD Connector", "PS4 DualShock 4 Compatible", "Restores Charging Functionality", "Premium Conductive Material", "Soldering Installation Required", "OEM-Level Quality"],
       "availability": "In Stock"
@@ -102,7 +102,7 @@
       "originalPrice": 350,
       "discount": 101,
       "stock": true,
-      "images": ["images/parts/ps4/AE-PS4-ANALOGCAPS-1.jpg","images/parts/ps4/ae-ps4-analogcaps-2.jpg","images/parts/ps4/AE-PS4-ANALOGCAPS-3.jpg"],
+      "images": ["images/parts/ps4/AE-PS4-ANALOGCAPS-1.jpg","images/parts/ps4/AE-PS4-ANALOGCAPS-2.jpg","images/parts/ps4/AE-PS4-ANALOGCAPS-3.jpg"],
       "description": "Premium replacement analog stick caps for PS4 DualShock 4 V1 controllers. These advanced AE-TECH caps restore worn or stiff thumbsticks to factory specifications, eliminating stick drift and restoring precision control. Features enhanced high-grip texture for improved gameplay accuracy during competitive sessions. Compatible with all PS4 V1 models, simply slide on for instant replacement without disassembly.",
       "specs": ["Model: PS4 DualShock V1 (CUH-ZCT1)", "Replacement Analog Stick Caps (Pair)", "Premium Rubber Compound", "High-Grip Surface Texture", "No-Disassembly Installation", "Restores Stick Precision"],
       "availability": "In Stock"
@@ -116,7 +116,7 @@
       "originalPrice": 350,
       "discount": 101,
       "stock": true,
-      "images": ["images/parts/ps4/AE-PS4-ANALOGCAPS-V2-1.jpg","images/parts/ps4/ae-ps4-analogcaps-V2-2.jpg","images/parts/ps4/AE-PS4-ANALOGCAPS-V2-3.jpg"],
+      "images": ["images/parts/ps4/AE-PS4-ANALOGCAPS-V2-1.jpg","images/parts/ps4/AE-PS4-ANALOGCAPS-V2-2.jpg","images/parts/ps4/AE-PS4-ANALOGCAPS-V2-3.jpg"],
       "description": "Premium replacement analog stick caps for PS4 DualShock 4 V2 controllers. These advanced AE-TECH caps restore worn or stiff thumbsticks to factory specifications, eliminating stick drift and restoring precision control. Features enhanced high-grip texture for improved gameplay accuracy during competitive sessions. Compatible with all PS4 V2 models, simply slide on for instant replacement without disassembly.",
       "specs": ["Model: PS4 DualShock V2 (CUH-ZCT2)", "Replacement Analog Stick Caps (Pair)", "Premium Rubber Compound", "High-Grip Surface Texture", "No-Disassembly Installation", "Restores Stick Precision"],
       "availability": "In Stock"
@@ -131,7 +131,7 @@
       "originalPrice": 350,
       "discount": 101,
       "stock": true,
-      "images": ["images/parts/ps5/AE-PS5-ANALOGCAPS-1.jpg","images/parts/ps5/ae-ps5-analogcaps-2.jpg","images/parts/ps5/AE-PS5-ANALOGCAPS-3.jpg"],
+      "images": ["images/parts/ps5/AE-PS5-ANALOGCAPS-1.jpg","images/parts/ps5/AE-PS5-ANALOGCAPS-2.jpg","images/parts/ps5/AE-PS5-ANALOGCAPS-3.jpg"],
       "description": "Premium replacement analog stick caps for PS5 DualSense controllers. These advanced AE-TECH caps restore worn or stiff thumbsticks to factory specifications, eliminating stick drift and restoring precision control. Features enhanced high-grip texture for improved gameplay accuracy during competitive next-gen gaming. Compatible with all PS5 DualSense models, simply slide on for instant replacement without disassembly.",
       "specs": ["Model: PS5 DualSense (CFI-ZCT1)", "Replacement Analog Stick Caps (Pair)", "Premium Rubber Compound", "High-Grip Surface Texture", "No-Disassembly Installation", "Restores Stick Precision"],
       "availability": "In Stock"
@@ -159,7 +159,7 @@
       "originalPrice": 599,
       "discount": 249,
       "stock": true,
-      "images": ["images/parts/ps5/AE-PS5-FLEX-V3-1.jpg","images/parts/ps5/AE-PS5-FLEX-V3-2.jpg","images/parts/ps5/AE-PS5-FLEX-V3-3.jpg","images/parts/ps5/AE-PS5-FLEX-V3-4.jpg","images/parts/ps5/AE-PS5-FLEX-V3-5.jpg"],
+      "images": ["images/parts/ps5/AE-PS5-FLEX-V3-1.jpg","images/parts/ps5/AE-PS5-FLEX-V3-2.jpg","images/parts/ps5/AE-PS5-FLEX-V3-3.jpg","images/parts/ps5/AE-PS5-FLEX-V3-4.jpg"],
       "description": "Premium button ribbon flex cable for PlayStation 5 DualSense V3.0 and V4.0 controllers (BDM-030 and BDM-040). This AE-TECH component bridges all button inputs (face buttons, D-pad, shoulder buttons) to the main PCB with high-grade conductive film. Restores precise tactile feedback and responsive input on controllers experiencing intermittent button presses, unresponsive inputs, or damaged flex film. Factory-aligned for BDM-030/BDM-040 specifications.",
       "specs": ["Model: PS5 DualSense BDM-030 & BDM-040", "Button Ribbon Conductive Film", "Restores Face & D-Pad Inputs", "Reliable Signal Conductivity", "Model-Specific PCB Alignment", "Professional Soldering Required"],
       "availability": "In Stock"
@@ -209,7 +209,8 @@
        "images": [
         "images/accessories/ps2/ps2av 1.jpg",
         "images/accessories/ps2/ps2av 2.jpg",
-        "images/accessories/ps2/ps2av 3.jpg"              
+        "images/accessories/ps2/ps2av 3.jpg",
+        "images/accessories/ps2/ps2av 4.jpg"              
       ],
       "description": "Professional composite AV cable for PlayStation 2 and PlayStation 3 consoles. Premium-grade materials ensure clear video and audio without signal degradation. Color-coded connectors simplify proper connection to TVs and displays. Ultra-thick, flexible jacket provides durability and easy installation. Supports standard-definition video output with excellent color fidelity.",
       "specs": ["Composite AV (CVBS) Connector Type", "Compatible with PS2 & PS3 (All Models)", "Color-Coded Connectors (Red/White/Yellow)", "Premium Shielded Cable", "Ultra-Thick Flexible Jacket", "Standard Resolution Output", "Professional-Grade Material"],
@@ -225,10 +226,10 @@
       "discount": 125,
       "stock": true,
        "images": [
-        "images/accessories/ps2/av2hdmi 1.jpg",
-        "images/accessories/ps2/av2hdmi 2.jpg",
- 	      "images/accessories/ps2/av2hdmi 3.jpg",
-      	"images/accessories/ps2/av2hdmi 4.jpg"              
+        "images/accessories/ps2/AV2HDMI 1.jpg",
+        "images/accessories/ps2/AV2HDMI 2.jpg",
+	      "images/accessories/ps2/AV2HDMI 3.jpg",
+	    	"images/accessories/ps2/AV2HDMI 4.jpg"              
       ],
       "description": "Advanced PS2 to HDMI converter adapter for modern displays. Converts composite video and audio signals to digital HDMI output at up to 1080p resolution. Supports all PS2 display modes (NTSC/PAL). Features dedicated 3.5mm audio output for connecting headphones or external speakers. Essential bridge for retro gaming on modern flat-screen TVs and displays without signal loss.",
       "specs": ["PS2 Composite to HDMI Adapter", "HDMI Output (Up to 1080p)", "Supports NTSC & PAL Modes", "3.5mm Audio Output Jack", "Plug & Play Installation", "Compatible with All PS2 Models", "No External Power Required"],
@@ -382,7 +383,7 @@
       "originalPrice": 450,
       "discount": 51,
       "stock": true,
-      "images": ["images/accessories/ps5/ae-ps5-usb2c-cable-1.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-2.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-3.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-4.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-5.jpg"],
+      "images": ["images/accessories/ps5/ae-ps5-usb2c-cable-1.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-2.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-3.jpg","images/accessories/ps5/ae-ps5-usb2c-cable-4.jpg"],
       "description": "Premium USB Type-C charging and data transfer cable for PlayStation 5 DualSense and newer Xbox Series controllers. 1.8-meter length enables comfortable gaming while charging. USB 3.1 Gen 1 standard delivers high-speed data sync up to 480 Mbps. Advanced shielding eliminates EMI interference. Fast-charge certified for rapid battery replenishment. Ultra-durable PVC jacket withstands daily wear. ISO-certified construction ensures optimal power delivery and safety.",
       "specs": ["USB Type-A to USB-C", "Length: 1.8 meters (5.9 feet)", "USB 3.1 Gen 1 High-Speed Data Sync", "Compatible PS5 DualSense Controllers", "Compatible Xbox Series X/S Controllers", "Fast-Charge Certified", "Advanced EMI-Shielded Construction", "Simultaneous Play & Charge Support"],
       "availability": "In Stock"

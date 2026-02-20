@@ -9,6 +9,11 @@ const fallbackImages = {
     gear: 'images/products/gear.svg'
 };
 
+function sanitizeImagePath(path) {
+    if (!path || typeof path !== 'string') return path;
+    return encodeURI(path);
+}
+
 // Initialize page
 window.addEventListener('DOMContentLoaded', () => {
     loadProductsFromJSON();
@@ -66,7 +71,7 @@ function displayProducts(productsToDisplay) {
         <div class="product-card" data-id="${product.id}">
             ${discount > 0 ? `<span class="discount-badge">${discount}% OFF</span>` : ''}
             <div class="product-image">
-                <img src="${imgSrc}" alt="${product.name}" class="product-thumb" loading="lazy">
+                <img src="${sanitizeImagePath(imgSrc)}" alt="${product.name}" class="product-thumb" loading="lazy">
             </div>
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
@@ -175,7 +180,7 @@ function buyProduct(productId, event) {
         price: product.price,
         originalPrice: product.originalPrice || product.price,
         category: product.category,
-        image: image
+        image: sanitizeImagePath(image)
     });
 }
 
