@@ -9,7 +9,7 @@ const blogPosts = [
         tags: ["PS4 13.00", "Vue-After-Free", "PlayStation 4", "Exploit", "Jailbreak", "Netctrl", "Lapse"],
         date: "2026-02-20",
         author: "Akku Electronics",
-        image: "images/psvue.jpg",
+        image: "images/psvue2.webp",
         link: "20022026ps4-vue-userland-exploit.html"
     },
     {
