@@ -1,6 +1,18 @@
 // Blog Data Structure
 const blogPosts = [
     {
+        id: 0,
+        title: "PS4 13.00 Vue-After-Free (VEU) Exploit: Complete 2026 Technical Guide",
+        excerpt: "Professional breakdown of the PS4 13.00 Vue-After-Free exploit chain based on the official Vuemony repository: firmware compatibility, setup paths, DNS/network rules, payload workflow, and stability troubleshooting.",
+        content: "Full content here...",
+        category: "Technical Guide",
+        tags: ["PS4 13.00", "Vue-After-Free", "PlayStation 4", "Exploit", "Jailbreak", "Netctrl", "Lapse"],
+        date: "2026-02-20",
+        author: "Akku Electronics",
+        image: "images/psvue1.jpg",
+        link: "20022026ps4-vue-userland-exploit.html"
+    },
+    {
         id: 1,
         title: "GTA 6: Complete Guide - Gameplay, Story, Platforms & Release Details",
         excerpt: "Comprehensive GTA 6 guide covering gameplay mechanics, dual protagonists Lucia and Jason, Miami Vice setting, next-gen graphics, platform specifications, system requirements, story details, and everything you need to know about Grand Theft Auto VI.",
