@@ -10,7 +10,7 @@
 
 const CONFIG = {
     // UPI Payment Details
-    upiId: "8956389723@barodampay",
+    upiId: "akkue89563749@barodampay",
     upiMobile: "918956389723",
     merchantName: "Akku Electronics",
     
@@ -30,12 +30,6 @@ const CONFIG = {
     // Google Sheets Integration
     googleSheets: {
         url: "https://script.google.com/macros/s/AKfycby3847N8DdVKDGlEqAG8Qtgt7ePZPdXj0JcSAuuRRevU9sqZfLISsPetuCOf_PWARRSEw/exec"
-    },
-    
-    // Tax Details (For India - GST)
-    tax: {
-        gstRate: 0, // 0% for now, can be changed
-        gstNo: "27AABCA1234H1Z2" // Sample GST No.
     },
     
     // Company Details
@@ -765,8 +759,7 @@ function buildOrderData() {
             phone: CONFIG.storePhone,
             email: CONFIG.storeEmail,
             address: CONFIG.storeAddress,
-            website: CONFIG.company.website,
-            gstNo: CONFIG.tax.gstNo
+            website: CONFIG.company.website
         }
     };
 }
@@ -852,8 +845,7 @@ async function generateCompleteInvoice(orderData) {
                 city: 'Nagpur',
                 country: 'India',
                 custom1: `Phone: ${CONFIG.storePhone}`,
-                custom2: `Email: ${CONFIG.storeEmail}`,
-                custom3: `GST No: ${CONFIG.tax.gstNo}`
+                custom2: `Email: ${CONFIG.storeEmail}`
             },
             client: {
                 company: orderData.customer.name,
@@ -871,14 +863,12 @@ async function generateCompleteInvoice(orderData) {
                 {
                     quantity: 1,
                     description: orderData.product.name,
-                    'tax-rate': CONFIG.tax.gstRate,
                     price: orderData.product.price
                 }
             ],
             'bottom-notice': `Thank you for your order! Payment verified on UPI. For queries, contact ${CONFIG.storeEmail}`,
             settings: {
                 currency: 'INR',
-                'tax-notation': 'gst',
                 'margin-top': 50,
                 'margin-bottom': 50
             },
@@ -1385,8 +1375,7 @@ function downloadReceiptAsJSON(orderData) {
                     email: orderData.store.email,
                     phone: orderData.store.phone,
                     address: orderData.store.address,
-                    website: orderData.store.website,
-                    gstNo: orderData.store.gstNo
+                    website: orderData.store.website
                 },
                 
                 message: 'Thank you for your order! Your payment has been received and is being verified. You will receive an email confirmation shortly.'
@@ -1696,8 +1685,7 @@ async function logToGoogleSheets(orderData) {
             paymentStatus: orderData.payment.status,
             storeName: CONFIG.company.name,
             storeEmail: CONFIG.storeEmail,
-            storePhone: CONFIG.storePhone,
-            gstNo: CONFIG.tax.gstNo
+            storePhone: CONFIG.storePhone
         };
         
         await fetch(CONFIG.googleSheets.url, {
@@ -2024,7 +2012,6 @@ Name: ${CONFIG.company.name}
 Phone: ${CONFIG.storePhone}
 Email: ${CONFIG.storeEmail}
 Address: ${CONFIG.storeAddress}
-GST No: ${CONFIG.tax.gstNo}
     `;
     
     const element = document.createElement('a');
@@ -2064,6 +2051,70 @@ function cleanupOrderHistory() {
     }
 }
 
+function removeLegacyTaxFieldsFromObject(value) {
+    if (Array.isArray(value)) {
+        return value.map(removeLegacyTaxFieldsFromObject);
+    }
+
+    if (!value || typeof value !== 'object') {
+        return value;
+    }
+
+    const cleaned = {};
+    for (const [key, data] of Object.entries(value)) {
+        if (key === 'gstNo' || key === 'gstRate' || key === 'tax') {
+            continue;
+        }
+        cleaned[key] = removeLegacyTaxFieldsFromObject(data);
+    }
+    return cleaned;
+}
+
+function migrateLegacyTaxFields() {
+    try {
+        const targets = ['akkuOrders', 'akkuOrderLog'];
+        let scannedRecords = 0;
+        let updatedRecords = 0;
+
+        targets.forEach((storageKey) => {
+            const raw = localStorage.getItem(storageKey);
+            if (!raw) return;
+
+            scannedRecords += 1;
+            const parsed = JSON.parse(raw);
+            const cleaned = removeLegacyTaxFieldsFromObject(parsed);
+            const cleanedRaw = JSON.stringify(cleaned);
+            if (cleanedRaw !== raw) {
+                updatedRecords += 1;
+                localStorage.setItem(storageKey, cleanedRaw);
+            }
+        });
+
+        for (let index = 0; index < localStorage.length; index += 1) {
+            const storageKey = localStorage.key(index);
+            if (!storageKey || !storageKey.startsWith('order_')) {
+                continue;
+            }
+
+            const raw = localStorage.getItem(storageKey);
+            if (!raw) continue;
+
+            scannedRecords += 1;
+            const parsed = JSON.parse(raw);
+            const cleaned = removeLegacyTaxFieldsFromObject(parsed);
+            const cleanedRaw = JSON.stringify(cleaned);
+            if (cleanedRaw !== raw) {
+                updatedRecords += 1;
+                localStorage.setItem(storageKey, cleanedRaw);
+            }
+        }
+
+        console.info(`[Migration] Legacy GST/tax cleanup complete: ${updatedRecords}/${scannedRecords} records updated.`);
+    } catch (error) {
+        console.warn('Legacy GST/tax data migration skipped:', error);
+    }
+}
+
 // Run cleanup on page load
 document.addEventListener('DOMContentLoaded', cleanupOrderHistory);
 
@@ -2077,6 +2128,9 @@ document.addEventListener('DOMContentLoaded', cleanupOrderHistory);
 function initializePaymentSystem() {
     try {
         console.log('🚀 Initializing Akku Electronics Payment System v2.0');
+
+        // Migrate older localStorage records to remove deprecated GST/tax fields
+        migrateLegacyTaxFields();
         
         // Check required libraries
         checkRequiredLibraries();
@@ -2192,8 +2246,7 @@ const DEBUG = {
                 phone: CONFIG.storePhone,
                 email: CONFIG.storeEmail,
                 address: CONFIG.storeAddress,
-                website: CONFIG.company.website,
-                gstNo: CONFIG.tax.gstNo
+                website: CONFIG.company.website
             }
         };
         return sampleOrder;

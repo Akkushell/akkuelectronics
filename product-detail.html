@@ -1418,7 +1418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
 
         function loadProductData() {
-            fetch('shop/products.json')
+            fetch('products.json')
                 .then(response => response.json())
                 .then(data => {
                     allProducts = data.products;
@@ -1609,7 +1609,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
                 
                 return `
-                <div class="related-product-card" onclick="window.location.href='shop/product-detail.html?id=${product.id}'">
+                <div class="related-product-card" onclick="window.location.href='product-detail.html?id=${product.id}'">
                     <div class="related-product-image">
                         ${imageSrc ? `<img src="${sanitizeImagePath(imageSrc)}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: fill;">` : `<i class="${product.image}"></i>`}
                     </div>
@@ -1676,7 +1676,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
 
             localStorage.removeItem('gameShopBuyNowCheckout');
-            window.location.href = 'shop/payment.html';
+            window.location.href = 'payment.html';
         }
 
         function buyNowProduct() {
@@ -1716,7 +1716,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
             
             // Redirect to payment page
-            window.location.href = 'shop/payment.html';
+            window.location.href = 'payment.html';
         }
 
         function toggleProductWishlist() {
