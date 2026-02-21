@@ -3,6 +3,7 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://akkuelectronics.in/sitemap.xml
+Sitemap: https://akkuelectronics.in/sitemap-news.xml
 
 # Disallow admin or private directories if any
 # Disallow: /admin/

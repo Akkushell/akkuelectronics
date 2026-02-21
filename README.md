@@ -62,6 +62,25 @@ This single comprehensive guide includes:
 
 ## 🧑‍💻 FOR DEVELOPERS
 
+### Sitemap Generation
+
+When you add a new blog post, regenerate both sitemaps with:
+
+```bash
+python generate_sitemaps.py
+```
+
+For Windows PowerShell:
+
+```powershell
+.\generate-sitemaps.ps1
+```
+
+This updates:
+- `sitemap.xml`
+- `sitemap-news.xml`
+- `robots.txt` already points to both sitemap URLs.
+
 **Payment System Functions:** 50+ functions  
 **Lines of Code:** 1,500+ (payment.js)  
 **CSS:** 800+ lines (modern, professional)  

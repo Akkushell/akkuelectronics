@@ -1,0 +1,114 @@
+.guides-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f7f9ff 50%, #eef2ff 100%);
+    padding: 70px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.guides-hero h1 {
+    font-size: 3rem;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.guides-hero p {
+    color: #5f6b84;
+    font-size: 1.1rem;
+}
+
+.guides-main {
+    background: #f8f9fa;
+    padding: 40px 20px 60px;
+}
+
+.company-grid-section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 4px solid #d4af37;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.company-grid-section h2 {
+    margin-bottom: 16px;
+    color: #1a1a1a;
+}
+
+.company-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.company-card {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #1a1a1a;
+    background: #fff;
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    padding: 14px 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.company-card:hover {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.guide-block {
+    background: #fff;
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-left: 4px solid #d4af37;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.guide-block h3 {
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.guide-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.guide-block li {
+    margin-bottom: 8px;
+}
+
+.guide-block a {
+    color: #223c75;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.guide-block a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .guides-hero {
+        padding: 45px 14px;
+    }
+
+    .guides-hero h1 {
+        font-size: 2.1rem;
+    }
+
+    .guides-main {
+        padding: 22px 12px 35px;
+    }
+
+    .company-grid-section,
+    .guide-block {
+        padding: 16px;
+    }
+}
