@@ -65,7 +65,7 @@ foreach ($a in $articles) {
     $mainUrls += @{ Loc = $a.Loc; Lastmod = $a.PublicationDate; Changefreq = 'monthly'; Priority = '0.7' }
 }
 
-$mainUrls += @{ Loc = "$baseUrl/blog/guides/index.html"; Lastmod = $today; Changefreq = 'monthly'; Priority = '0.8' }
+$mainUrls += @{ Loc = "$baseUrl/guides/index.html"; Lastmod = $today; Changefreq = 'monthly'; Priority = '0.8' }
 
 $mainBuilder = New-Object System.Text.StringBuilder
 $null = $mainBuilder.AppendLine('<?xml version="1.0" encoding="UTF-8"?>')

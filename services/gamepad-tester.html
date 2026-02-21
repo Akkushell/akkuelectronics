@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-56KN7HZF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXB8GK5N2B"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());
+
+    gtag('config', 'G-MXB8GK5N2B');
+</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1917270256596378"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="YB0gaatPKdTjdyO-nZmltGoGV8_KcfS6vSSFjyd2F48">
+    <title>Gamepad Tester - Test Your Controller | Akku Electronics</title>
+    <meta name="description" content="AkkuElectronics Gamepad Tester for PS5, PS4, PS3, Xbox controllers. Test buttons, joysticks, triggers, and vibration. No download required.">
+    <meta name="keywords" content="gamepad tester, controller test, PS5 controller test, Xbox controller test, stick drift test, button test, joystick test">
+    <meta name="author" content="Akku Electronics">
+    <base href="../">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Gamepad Tester - Test Your Controller | Akku Electronics">
+    <meta property="og:description" content="Free online gamepad tester for PS5, PS4, PS3, Xbox controllers. Test buttons, joysticks, triggers, and vibration instantly in your browser.">
+    <meta property="og:image" content="https://akkuelectronics.in/icon/gamepadtester.png">
+    <meta property="og:url" content="https://akkuelectronics.in/gamepad-tester.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gamepad Tester - Akku Electronics">
+    <meta name="twitter:description" content="Free online gamepad tester for all gaming controllers. Test your PS5, PS4, Xbox controllers instantly.">
+    <meta name="twitter:image" content="https://akkuelectronics.in/icon/gamepadtester.png">
+    
+    <link rel="canonical" href="https://akkuelectronics.in/gamepad-tester.html">
+    <link rel="icon" href="./images/aelogo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Akku Electronics Gamepad Tester",
+      "url": "https://akkuelectronics.in/gamepad-tester.html",
+      "description": "Free online gamepad tester for PS5, PS4, PS3, Xbox controllers. Test buttons, joysticks, triggers, and vibration.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+        
+        .gamepad-tester-section {
+            background: #000000;
+            height: 100vh;
+            padding: 20px 15px 15px;
+            overflow: hidden;
+        }
+        
+        .tester-container {
+            max-width: 100%;
+            height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .connection-status {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 2px dashed rgba(255,255,255,0.1);
+        }
+        
+        .connection-status.connected {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: #4CAF50;
+        }
+        
+        .status-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+        
+        .status-icon.disconnected {
+            color: #ff6b6b;
+        }
+        
+        .status-icon.connected {
+            color: #4CAF50;
+        }
+        
+        .controller-info {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .controller-id {
+            color: #aaa;
+            font-size: 18px;
+        }
+        
+        .gamepad-visual {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+            flex: 1;
+            min-height: 0;
+        }
+        
+        .buttons-section, .analogs-section, .triggers-section {
+            background: rgba(255,255,255,0.05);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        
+        .button-item {
+            background: rgba(255,255,255,0.08);
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.1s ease;
+            border: 2px solid transparent;
+        }
+        
+        .button-item.pressed {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #fff;
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+        }
+        
+        .button-label {
+            color: #aaa;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        
+        .button-item.pressed .button-label {
+            color: #fff;
+        }
+        
+        .button-value {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .analog-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            justify-content: space-around;
+        }
+        
+        .analog-stick {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stick-label {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .stick-visual {
+            width: 100px;
+            height: 100px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.2);
+            margin-bottom: 8px;
+        }
+        
+        .stick-visual::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translate(-50%, -50%);
+        }
+        
+        .stick-visual::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            transform: translate(-50%, -50%);
+        }
+        
+        .stick-indicator {
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.05s ease;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.6);
+            border: 2px solid #fff;
+        }
+        
+        .stick-values {
+            display: flex;
+            gap: 10px;
+            color: #aaa;
+            font-size: 13px;
+        }
+        
+        .stick-values span {
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .triggers-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .trigger-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .trigger-label {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .trigger-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .trigger-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.05s ease;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+        
+        .trigger-value {
+            text-align: center;
+            color: #aaa;
+            font-size: 13px;
+        }
+        
+
+        
+        .vibration-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .vibration-slider {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .slider-label {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.2);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+            border: none;
+        }
+        
+        .vibrate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .vibrate-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .vibrate-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        @media (max-width: 1200px) {
+            .gamepad-visual {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .analogs-section {
+                grid-column: span 2;
+            }
+            
+            .triggers-section {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+            
+            .gamepad-tester-section {
+                height: auto;
+                min-height: 100vh;
+                padding: 60px 10px 20px;
+            }
+            
+            .tester-container {
+                height: auto;
+            }
+            
+            h1 {
+                font-size: 18px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .connection-status {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            
+            .status-icon {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+            
+            .controller-info {
+                font-size: 14px;
+            }
+            
+            .controller-id {
+                font-size: 12px;
+            }
+            
+            .gamepad-visual {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .buttons-section, .analogs-section, .triggers-section {
+                padding: 5px;
+            }
+            
+            .section-title {
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+            
+            .buttons-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 5px;
+            }
+            
+            .button-item {
+                padding: 4px 4px;
+            }
+            
+            .button-label {
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
+            
+            .button-value {
+                font-size: 10px;
+            }
+            
+            .analog-container {
+                flex-direction: row;
+                gap: 5px;
+            }
+            
+            .stick-label {
+                font-size: 12px;
+                margin-bottom: 5px;
+            }
+            
+            .stick-visual {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 5px;
+            }
+            
+            .stick-indicator {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .stick-values {
+                font-size: 10px;
+                gap: 5px;
+            }
+            
+            .triggers-grid {
+                gap: 5px;
+            }
+            
+            .trigger-label {
+                font-size: 13px;
+            }
+            
+            .trigger-bar {
+                height: 18px;
+            }
+            
+            .trigger-value {
+                font-size: 12px;
+            }
+            
+            .vibration-controls {
+                gap: 5px;
+            }
+            
+            .slider-label {
+                font-size: 13px;
+            }
+            
+            .vibrate-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 16px !important;
+            }
+            
+            .buttons-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 5px;
+            }
+            
+            .button-item {
+                padding: 5px 3px;
+            }
+            
+            .button-label {
+                font-size: 9px;
+            }
+            
+            .button-value {
+                font-size: 10px;
+            }
+            
+            .analog-container {
+                flex-direction: column;
+            }
+            
+            .stick-visual {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56KN7HZF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <img src="./images/aelogo.png" alt="Akku Electronics Logo" class="logo">
+            </a>
+            <nav>
+                <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="primary-navigation" class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="playstation.html">Sony PlayStation <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="playstation-5.html">PlayStation 5</a></li>
+                            <li><a href="playstation-4.html">PlayStation 4</a></li>
+                            <li><a href="playstation-3.html">PlayStation 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="xbox.html">Microsoft Xbox <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="xbox-series.html">Xbox Series X/S</a></li>
+                            <li><a href="xbox-one.html">Xbox One</a></li>
+                            <li><a href="xbox-360.html">Xbox 360</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="services.html">All Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://akkushell.github.io/hen492/">PS3 HEN 492</a></li>
+                            <li><a href="gamepad-tester.html">Gamepad Tester</a></li>
+                            <li><a href="blog/index.html">Blog</a></li>
+                            <li><a href="guides/index.html">Guides</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+       
+
+        <section class="gamepad-tester-section">
+            <div class="tester-container">
+                <h1 style="text-align: center; margin-bottom: 15px; font-size: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-gamepad"></i> Akku Electronics Gamepad Tester For All Gaming Controllers</h1>
+
+                <div class="connection-status" id="connectionStatus">
+                    <div class="status-icon disconnected" id="statusIcon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <div class="controller-info" id="controllerInfo">
+                        No Gamepad Detected
+                    </div>
+                    <div class="controller-id" id="controllerId">
+                        Connect your controller via USB or Bluetooth and press any button
+                    </div>
+                </div>
+
+                <div id="testerContent" style="display: none;">
+                    <div class="gamepad-visual">
+                        <div class="buttons-section">
+                            <div class="section-title">Buttons</div>
+                            <div class="buttons-grid" id="buttonsGrid">
+                                <!-- Buttons will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="analogs-section">
+                            <div class="section-title">Analog Sticks</div>
+                            <div class="analog-container">
+                                <div class="analog-stick">
+                                    <div class="stick-label">Left Stick</div>
+                                    <div class="stick-visual">
+                                        <div class="stick-indicator" id="leftStick"></div>
+                                    </div>
+                                    <div class="stick-values">
+                                        X: <span id="leftStickX">0.00</span> | Y: <span id="leftStickY">0.00</span>
+                                    </div>
+                                </div>
+                                <div class="analog-stick">
+                                    <div class="stick-label">Right Stick</div>
+                                    <div class="stick-visual">
+                                        <div class="stick-indicator" id="rightStick"></div>
+                                    </div>
+                                    <div class="stick-values">
+                                        X: <span id="rightStickX">0.00</span> | Y: <span id="rightStickY">0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="triggers-section" id="triggersMain">
+                            <div class="section-title">Triggers</div>
+                            <div class="triggers-grid">
+                                <div class="trigger-item">
+                                    <div class="trigger-label">L2 / LT</div>
+                                    <div class="trigger-bar">
+                                        <div class="trigger-fill" id="trigger-l2-main"></div>
+                                    </div>
+                                    <div class="trigger-value" id="trigger-l2-value-main">0.00</div>
+                                </div>
+                                <div class="trigger-item">
+                                    <div class="trigger-label">R2 / RT</div>
+                                    <div class="trigger-bar">
+                                        <div class="trigger-fill" id="trigger-r2-main"></div>
+                                    </div>
+                                    <div class="trigger-value" id="trigger-r2-value-main">0.00</div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+                                <div class="section-title" style="font-size: 14px; margin-bottom: 10px;">Vibration</div>
+                                <div class="vibration-controls">
+                                    <div class="vibration-slider">
+                                        <div class="slider-label">Weak: <span id="weakValue">0.5</span></div>
+                                        <input type="range" id="weakMotor" min="0" max="1" step="0.1" value="0.5">
+                                    </div>
+                                    <div class="vibration-slider">
+                                        <div class="slider-label">Strong: <span id="strongValue">0.5</span></div>
+                                        <input type="range" id="strongMotor" min="0" max="1" step="0.1" value="0.5">
+                                    </div>
+                                    <button class="vibrate-btn" id="vibrateBtn">Test</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <!-- AdSense Ad -->
+        <div class="container" style="margin: 30px auto; text-align: center;">
+            <!-- aeads1 -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1917270256596378"
+                 data-ad-slot="4420837372"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+    <!-- AdSense Ad 2 -->
+    <div class="container" style="margin: 30px auto; text-align: center;">
+        <!-- aeads2 -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1917270256596378"
+             data-ad-slot="9476248157"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>Akku Electronics</h3>
+                    <p>Your trusted partner for professional gaming console repairs in Nagpur. We bring your consoles back to life!</p>
+                    <div class="social-links" style="display: flex; justify-content: center; gap: 12px; margin-top: 10px;">
+                        <a href="https://www.facebook.com/akku0101" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <img src="icon/facebook.png" alt="Facebook" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                        <a href="https://www.instagram.com/akkuelectronics.nagpur" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <img src="icon/instagram.png" alt="Instagram" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                        <a href="https://x.com/Sunil_Moundekar" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <img src="icon/twitter.png" alt="Twitter" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                        <a href="https://wa.me/918956389723" target="_blank" aria-label="WhatsApp">
+                            <img src="icon/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px;vertical-align:middle;">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="playstation.html">PlayStation Repair</a></li>
+                        <li><a href="xbox.html">Xbox Repair</a></li>
+                        <li><a href="services.html">All Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 354, VHB Colony, Balabhau Peth, PanchPaoli, Nagpur, MH, India</p>
+                    <p><i class="fas fa-phone"></i> +91 8956389723</p>
+                    <p><i class="fas fa-envelope"></i> akkuelectronics.nagpur@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Akku Electronics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        let currentGamepad = null;
+        let animationFrame = null;
+        
+        const buttonNames = [
+            'A / Cross', 'B / Circle', 'X / Square', 'Y / Triangle',
+            'L1 / LB', 'R1 / RB', 'L2 / LT', 'R2 / RT',
+            'Select / Share', 'Start / Options', 'L3', 'R3',
+            'D-Up', 'D-Down', 'D-Left', 'D-Right',
+            'Home / PS', 'Touchpad'
+        ];
+
+        function connectHandler(e) {
+            currentGamepad = e.gamepad;
+            updateConnectionStatus(true);
+            if (!animationFrame) {
+                animationFrame = requestAnimationFrame(updateGamepadState);
+            }
+        }
+
+        function disconnectHandler(e) {
+            if (currentGamepad && currentGamepad.index === e.gamepad.index) {
+                currentGamepad = null;
+                updateConnectionStatus(false);
+                if (animationFrame) {
+                    cancelAnimationFrame(animationFrame);
+                    animationFrame = null;
+                }
+            }
+        }
+
+        function updateConnectionStatus(connected) {
+            const status = document.getElementById('connectionStatus');
+            const icon = document.getElementById('statusIcon');
+            const info = document.getElementById('controllerInfo');
+            const id = document.getElementById('controllerId');
+            const content = document.getElementById('testerContent');
+
+            if (connected) {
+                status.classList.add('connected');
+                icon.classList.remove('disconnected');
+                icon.classList.add('connected');
+                icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                info.textContent = 'Controller Connected';
+                id.textContent = currentGamepad.id;
+                content.style.display = 'block';
+                initializeButtons();
+            } else {
+                status.classList.remove('connected');
+                icon.classList.add('disconnected');
+                icon.classList.remove('connected');
+                icon.innerHTML = '<i class="fas fa-plug"></i>';
+                info.textContent = 'No Gamepad Detected';
+                id.textContent = 'Connect your controller via USB or Bluetooth and press any button';
+                content.style.display = 'none';
+            }
+        }
+
+        function initializeButtons() {
+            const grid = document.getElementById('buttonsGrid');
+            grid.innerHTML = '';
+            
+            if (currentGamepad) {
+                currentGamepad.buttons.forEach((button, index) => {
+                    const buttonElement = document.createElement('div');
+                    buttonElement.className = 'button-item';
+                    buttonElement.id = `button-${index}`;
+                    buttonElement.innerHTML = `
+                        <div class="button-label">${buttonNames[index] || `Button ${index}`}</div>
+                        <div class="button-value">0.00</div>
+                    `;
+                    grid.appendChild(buttonElement);
+                });
+            }
+        }
+
+        function updateGamepadState() {
+            const gamepads = navigator.getGamepads();
+            currentGamepad = gamepads[currentGamepad.index];
+
+            if (!currentGamepad) {
+                return;
+            }
+
+            // Update buttons
+            currentGamepad.buttons.forEach((button, index) => {
+                const buttonElement = document.getElementById(`button-${index}`);
+                if (buttonElement) {
+                    const value = button.value.toFixed(2);
+                    buttonElement.querySelector('.button-value').textContent = value;
+                    
+                    if (button.pressed) {
+                        buttonElement.classList.add('pressed');
+                    } else {
+                        buttonElement.classList.remove('pressed');
+                    }
+                }
+            });
+
+            // Update triggers
+            if (currentGamepad.buttons[6]) {
+                const l2Value = currentGamepad.buttons[6].value;
+                const l2Main = document.getElementById('trigger-l2-main');
+                const l2ValueMain = document.getElementById('trigger-l2-value-main');
+                if (l2Main) l2Main.style.width = `${l2Value * 100}%`;
+                if (l2ValueMain) l2ValueMain.textContent = l2Value.toFixed(2);
+            }
+            
+            if (currentGamepad.buttons[7]) {
+                const r2Value = currentGamepad.buttons[7].value;
+                const r2Main = document.getElementById('trigger-r2-main');
+                const r2ValueMain = document.getElementById('trigger-r2-value-main');
+                if (r2Main) r2Main.style.width = `${r2Value * 100}%`;
+                if (r2ValueMain) r2ValueMain.textContent = r2Value.toFixed(2);
+            }
+
+            // Update analog sticks
+            const leftX = currentGamepad.axes[0] || 0;
+            const leftY = currentGamepad.axes[1] || 0;
+            const rightX = currentGamepad.axes[2] || 0;
+            const rightY = currentGamepad.axes[3] || 0;
+
+            updateStick('leftStick', 'leftStickX', 'leftStickY', leftX, leftY);
+            updateStick('rightStick', 'rightStickX', 'rightStickY', rightX, rightY);
+
+            animationFrame = requestAnimationFrame(updateGamepadState);
+        }
+
+        function updateStick(stickId, xId, yId, xValue, yValue) {
+            const stick = document.getElementById(stickId);
+            const xDisplay = document.getElementById(xId);
+            const yDisplay = document.getElementById(yId);
+
+            // Convert -1 to 1 range to pixel position (0 to 100%)
+            const xPos = ((xValue + 1) / 2) * 100;
+            const yPos = ((yValue + 1) / 2) * 100;
+
+            stick.style.left = `${xPos}%`;
+            stick.style.top = `${yPos}%`;
+
+            xDisplay.textContent = xValue.toFixed(2);
+            yDisplay.textContent = yValue.toFixed(2);
+        }
+
+        // Vibration controls
+        const weakMotorSlider = document.getElementById('weakMotor');
+        const strongMotorSlider = document.getElementById('strongMotor');
+        const weakValueDisplay = document.getElementById('weakValue');
+        const strongValueDisplay = document.getElementById('strongValue');
+        const vibrateBtn = document.getElementById('vibrateBtn');
+
+        weakMotorSlider.addEventListener('input', (e) => {
+            weakValueDisplay.textContent = e.target.value;
+        });
+
+        strongMotorSlider.addEventListener('input', (e) => {
+            strongValueDisplay.textContent = e.target.value;
+        });
+
+        vibrateBtn.addEventListener('click', () => {
+            if (currentGamepad && currentGamepad.vibrationActuator) {
+                const weakIntensity = parseFloat(weakMotorSlider.value);
+                const strongIntensity = parseFloat(strongMotorSlider.value);
+
+                currentGamepad.vibrationActuator.playEffect('dual-rumble', {
+                    startDelay: 0,
+                    duration: 500,
+                    weakMagnitude: weakIntensity,
+                    strongMagnitude: strongIntensity
+                });
+            }
+        });
+
+        // Gamepad API event listeners
+        window.addEventListener('gamepadconnected', connectHandler);
+        window.addEventListener('gamepaddisconnected', disconnectHandler);
+
+        // Check for already connected gamepads
+        window.addEventListener('load', () => {
+            const gamepads = navigator.getGamepads();
+            for (let i = 0; i < gamepads.length; i++) {
+                if (gamepads[i]) {
+                    connectHandler({ gamepad: gamepads[i] });
+                    break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

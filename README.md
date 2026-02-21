@@ -81,6 +81,26 @@ This updates:
 - `sitemap-news.xml`
 - `robots.txt` already points to both sitemap URLs.
 
+### Link Validation
+
+Check all local `href`/`src` links before deploy:
+
+```powershell
+.\check-links.ps1
+```
+
+A CI workflow also runs this automatically on every push and pull request:
+- `.github/workflows/link-check.yml`
+
+### Redirect Rules (SEO)
+
+Server-side redirect mappings are in:
+- `_redirects`
+
+This maps old root URLs to new folder URLs using forced `301` rules.
+If your host does not support `_redirects` (for example plain GitHub Pages),
+the existing root redirect HTML pages still provide client-side fallback.
+
 **Payment System Functions:** 50+ functions  
 **Lines of Code:** 1,500+ (payment.js)  
 **CSS:** 800+ lines (modern, professional)  

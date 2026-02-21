@@ -32,7 +32,7 @@ function disableImageRightClick() {
 
 // Load products from external JSON file
 function loadProductsFromJSON() {
-    fetch('products.json')
+    fetch('shop/products.json')
         .then(response => response.json())
         .then(data => {
             products = data.products;
@@ -145,7 +145,7 @@ function applySort() {
 // View Product Detail
 function viewProduct(productId, event) {
     if (event) event.stopPropagation();
-    window.location.href = `product-detail.html?id=${productId}`;
+    window.location.href = `shop/product-detail.html?id=${productId}`;
 }
 
 // Buy Product - Opens Payment Modal

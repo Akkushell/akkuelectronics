@@ -1,0 +1,36 @@
+# Canonical page redirects (old path -> new folder path)
+/services.html /services/services.html 301!
+/services /services/services.html 301!
+/contact.html /services/contact.html 301!
+/contact /services/contact.html 301!
+/gamepad-tester.html /services/gamepad-tester.html 301!
+/gamepad-tester /services/gamepad-tester.html 301!
+
+/shop.html /shop/shop.html 301!
+/shop /shop/shop.html 301!
+/product-detail.html /shop/product-detail.html 301!
+/product-detail /shop/product-detail.html 301!
+/privacy-policy.html /shop/privacy-policy.html 301!
+/privacy-policy /shop/privacy-policy.html 301!
+/payment.html /shop/payment.html 301!
+/payment /shop/payment.html 301!
+/invoice.html /shop/invoice.html 301!
+/invoice /shop/invoice.html 301!
+
+/playstation.html /PS/playstation.html 301!
+/playstation /PS/playstation.html 301!
+/playstation-5.html /PS/playstation-5.html 301!
+/playstation-5 /PS/playstation-5.html 301!
+/playstation-4.html /PS/playstation-4.html 301!
+/playstation-4 /PS/playstation-4.html 301!
+/playstation-3.html /PS/playstation-3.html 301!
+/playstation-3 /PS/playstation-3.html 301!
+
+/xbox.html /XB/xbox.html 301!
+/xbox /XB/xbox.html 301!
+/xbox-series.html /XB/xbox-series.html 301!
+/xbox-series /XB/xbox-series.html 301!
+/xbox-one.html /XB/xbox-one.html 301!
+/xbox-one /XB/xbox-one.html 301!
+/xbox-360.html /XB/xbox-360.html 301!
+/xbox-360 /XB/xbox-360.html 301!

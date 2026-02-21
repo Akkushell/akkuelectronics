@@ -142,7 +142,7 @@ def generate_main_sitemap(news_items: list[NewsItem]) -> None:
     _append_urlset_item(
         urlset,
         UrlItem(
-            loc=f"{BASE_URL}/blog/guides/index.html",
+            loc=f"{BASE_URL}/guides/index.html",
             lastmod=TODAY,
             changefreq="monthly",
             priority="0.8",
