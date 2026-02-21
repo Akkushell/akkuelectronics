@@ -135,7 +135,12 @@
             <div class="panel qr-wrap">
                 <h3>Scan UPI QR</h3>
                 <div id="qrCode"></div>
-                <div>UPI ID: <strong style="color:#d4af37;">akkuelectronics@upi</strong></div>
+                <div>UPI ID: <strong style="color:#d4af37;">akkue89563749@barodampay</strong></div>
+                <div style="margin-top:8px;">Amount: <strong id="qrPayableAmount" style="color:#90ee90;">₹0</strong></div>
+                <div style="margin-top:8px; word-break:break-all;">
+                    <a id="upiPayLink" href="#" target="_blank" rel="noopener" style="color:#7db4ff; text-decoration:underline;">Open UPI Payment Link</a>
+                </div>
+                <button type="button" class="btn btn-secondary" style="margin-top:10px;" onclick="copyUpiLink()">Copy UPI Link</button>
             </div>
 
             <div class="panel">
@@ -204,7 +209,8 @@
     let cartData = [];
     let totalAmount = 0;
     let currentStep = 1;
-    const upiId = '8956389723@barodampay';
+    const upiId = 'akkue89563749@barodampay';
+    let latestUpiLink = '';
     const orderData = { id: 'ORD-' + Date.now() + '-' + Math.floor(Math.random() * 1000), items: [], total: 0, customer: {}, paymentMethod: 'UPI', utrId: '' };
 
     (function init() {
@@ -262,6 +268,7 @@
 
         orderData.items = cartData;
         orderData.total = totalAmount;
+        updateUpiPaymentArtifacts();
     }
 
     function goToStep(step) {
@@ -284,6 +291,7 @@
         });
 
         if (target === 4) displayConfirmation();
+        if (target === 3) updateUpiPaymentArtifacts();
         currentStep = target;
         window.scrollTo(0, 0);
     }
@@ -328,14 +336,89 @@
     function generateQRCode() {
         const box = document.getElementById('qrCode');
         box.innerHTML = '';
+        const upiUrl = buildUpiUrl('upi');
+        latestUpiLink = upiUrl;
+
         if (typeof QRCode === 'undefined') {
-            box.innerHTML = '<p style="color:#999;">QR unavailable</p>';
+            renderQrFallbackImage(box, upiUrl);
             return;
         }
-        const upiUrl = buildUpiUrl('upi');
-        const canvas = document.createElement('canvas');
-        box.appendChild(canvas);
-        QRCode.toCanvas(canvas, upiUrl, { width: 250, margin: 1, color: { dark: '#000000', light: '#ffffff' } });
+
+        try {
+            const canvas = document.createElement('canvas');
+            box.appendChild(canvas);
+
+            const maybePromise = QRCode.toCanvas(
+                canvas,
+                upiUrl,
+                { width: 250, margin: 1, color: { dark: '#000000', light: '#ffffff' } },
+                function (error) {
+                    if (error) {
+                        box.innerHTML = '';
+                        renderQrFallbackImage(box, upiUrl);
+                    }
+                }
+            );
+
+            if (maybePromise && typeof maybePromise.catch === 'function') {
+                maybePromise.catch(function () {
+                    box.innerHTML = '';
+                    renderQrFallbackImage(box, upiUrl);
+                });
+            }
+        } catch (error) {
+            box.innerHTML = '';
+            renderQrFallbackImage(box, upiUrl);
+        }
+    }
+
+    function renderQrFallbackImage(container, upiUrl) {
+        const qrImage = document.createElement('img');
+        qrImage.alt = 'UPI QR Code';
+        qrImage.width = 250;
+        qrImage.height = 250;
+        qrImage.src = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(upiUrl);
+        qrImage.style.display = 'block';
+        qrImage.style.maxWidth = '100%';
+        qrImage.style.height = 'auto';
+        container.appendChild(qrImage);
+    }
+
+    function updateUpiPaymentArtifacts() {
+        generateQRCode();
+
+        const amountEl = document.getElementById('qrPayableAmount');
+        if (amountEl) {
+            amountEl.textContent = '₹' + (orderData.total || totalAmount || 0).toLocaleString();
+        }
+
+        const linkEl = document.getElementById('upiPayLink');
+        if (linkEl) {
+            linkEl.href = latestUpiLink || buildUpiUrl('upi');
+        }
+    }
+
+    function copyUpiLink() {
+        const upiLink = latestUpiLink || buildUpiUrl('upi');
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(upiLink).then(() => {
+                alert('UPI payment link copied');
+            }).catch(() => {
+                fallbackCopyUpiLink(upiLink);
+            });
+            return;
+        }
+        fallbackCopyUpiLink(upiLink);
+    }
+
+    function fallbackCopyUpiLink(link) {
+        const textarea = document.createElement('textarea');
+        textarea.value = link;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('UPI payment link copied');
     }
 
     function buildUpiUrl(app) {
@@ -484,7 +567,14 @@
     }
 
     function logToGoogleSheets() {
-        const url = 'https://script.google.com/macros/s/AKfycbxJ-rHFNxMdxUtIWyfdAtw2OQOtMIDGeTzdotBG_RfkRirmD_ZperRXLOLuLFumy5C_9Q/exec';
+        const url = 'https://script.google.com/macros/s/AKfycbx1iUQ4VojDJGCB5yiMQuhXXiTIDDZ5lT2cSwpyDzOYHoQL-R78vx8tyxPBx062T6q5Zw/exec';
+        
+        // Build product summary with names and quantities
+        const productDetails = orderData.items.map(item => {
+            const colorInfo = item.selectedColor ? ` (${item.selectedColor})` : '';
+            return `${item.name}${colorInfo} x${item.quantity}`;
+        }).join(', ');
+        
         const data = {
             orderId: orderData.id,
             customerName: orderData.customer.name,
@@ -492,6 +582,7 @@
             phone: orderData.customer.phone,
             address: orderData.customer.address,
             city: orderData.customer.city,
+            productDetails: productDetails,
             totalAmount: orderData.total,
             paymentMethod: 'UPI',
             utrId: orderData.utrId || 'N/A',
@@ -501,4 +592,4 @@
     }
 </script>
 </body>
-</html>
+</html> 
