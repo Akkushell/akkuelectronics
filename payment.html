@@ -188,6 +188,7 @@
             <h2 style="color:#90ee90;">Order Placed Successfully</h2>
             <p>Order ID: <strong id="orderRefId"></strong></p>
             <div class="button-group" style="justify-content:center;">
+                <button type="button" class="btn btn-success" onclick="sendWhatsAppInvoiceCopy()">Send Invoice Copy to WhatsApp</button>
                 <button type="button" class="btn btn-primary" onclick="downloadInvoice()">Download Invoice</button>
                 <button type="button" class="btn btn-secondary" onclick="goBackToShop()">Continue Shopping</button>
             </div>
@@ -210,7 +211,9 @@
     let totalAmount = 0;
     let currentStep = 1;
     const upiId = 'akkue89563749@barodampay';
+    const storeWhatsAppNumber = '918956389723';
     let latestUpiLink = '';
+    let whatsappPopupWindow = null;
     const orderData = { id: 'ORD-' + Date.now() + '-' + Math.floor(Math.random() * 1000), items: [], total: 0, customer: {}, paymentMethod: 'UPI', utrId: '' };
 
     (function init() {
@@ -464,6 +467,14 @@
             showError('Please complete all steps');
             return;
         }
+
+        // Pre-open popup on direct user click to improve WhatsApp open reliability
+        try {
+            whatsappPopupWindow = window.open('', '_blank');
+        } catch (_) {
+            whatsappPopupWindow = null;
+        }
+
         showLoadingModal();
         setTimeout(processOrder, 700);
     }
@@ -479,7 +490,66 @@
         document.getElementById('orderRefId').textContent = orderData.id;
         document.querySelectorAll('.step').forEach(el => { el.classList.remove('active'); el.classList.add('completed'); });
 
+        // Best-effort auto WhatsApp open after order success
+        sendWhatsAppInvoiceCopy(true);
+
         localStorage.removeItem('gameShopCart');
+    }
+
+    function buildWhatsAppInvoiceMessage() {
+        const itemSummary = (orderData.items || []).map(i => `${i.name}${i.selectedColor ? ' (' + i.selectedColor + ')' : ''} x${i.quantity}`).join(', ');
+
+        return [
+            '🧾 *Akku Electronics - Customer Invoice Copy*',
+            '',
+            `📌 Order ID: *${orderData.id}*`,
+            `📅 Date: *${new Date().toLocaleString('en-IN')}*`,
+            '',
+            '*👤 Customer*',
+            `Name: ${orderData.customer.name || '-'}`,
+            `Phone: ${orderData.customer.phone || '-'}`,
+            `Email: ${orderData.customer.email || '-'}`,
+            `Address: ${orderData.customer.address || '-'}`,
+            '',
+            '*🛒 Items*',
+            itemSummary || '-',
+            '',
+            '*💳 Payment*',
+            `Method: UPI`,
+            `UTR: ${orderData.utrId || 'N/A'}`,
+            `Total: ₹${(orderData.total || 0).toLocaleString('en-IN')}`,
+            '',
+            'Please verify this payment and process the order.'
+        ].join('\n');
+    }
+
+    function getWhatsAppInvoiceUrl() {
+        const message = buildWhatsAppInvoiceMessage();
+        return 'https://wa.me/' + storeWhatsAppNumber + '?text=' + encodeURIComponent(message);
+    }
+
+    function sendWhatsAppInvoiceCopy(isAuto = false) {
+        const whatsappUrl = getWhatsAppInvoiceUrl();
+
+        try {
+            if (whatsappPopupWindow && !whatsappPopupWindow.closed) {
+                whatsappPopupWindow.location.href = whatsappUrl;
+                whatsappPopupWindow.focus();
+                whatsappPopupWindow = null;
+            } else {
+                const target = isAuto ? '_blank' : '_self';
+                const win = window.open(whatsappUrl, target);
+                if (!win && isAuto) {
+                    alert('Popup blocked. Click "Send Invoice Copy to WhatsApp" button.');
+                }
+            }
+        } catch (_) {
+            if (isAuto) {
+                alert('Could not open WhatsApp automatically. Click "Send Invoice Copy to WhatsApp" button.');
+            } else {
+                window.location.href = whatsappUrl;
+            }
+        }
     }
 
     function replaceTemplateValue(template, key, value) {
@@ -499,12 +569,27 @@
         };
 
         try {
-            const response = await fetch('shop/invoice.html', { cache: 'no-store' });
-            if (!response.ok) {
+            let templateHTML = '';
+            const candidatePaths = ['invoice.html', 'shop/invoice.html'];
+            let templateLoaded = false;
+
+            for (const path of candidatePaths) {
+                try {
+                    const response = await fetch(path, { cache: 'no-store' });
+                    if (response.ok) {
+                        templateHTML = await response.text();
+                        templateLoaded = true;
+                        break;
+                    }
+                } catch (_) {
+                    // continue to next candidate path
+                }
+            }
+
+            if (!templateLoaded) {
                 throw new Error('Failed to fetch invoice template');
             }
 
-            let templateHTML = await response.text();
             templateHTML = replaceTemplateValue(templateHTML, 'to_name', data.to_name);
             templateHTML = replaceTemplateValue(templateHTML, 'to_email', data.to_email);
             templateHTML = replaceTemplateValue(templateHTML, 'order_id', data.order_id);

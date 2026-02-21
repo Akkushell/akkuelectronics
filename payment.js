@@ -58,6 +58,8 @@ let currentProduct = null;
 let currentOrderId = null;
 let orderHistory = [];
 let paymentInProgress = false;
+let lastSuccessfulOrderData = null;
+let lastSuccessfulInvoiceData = null;
 
 // ============================================================================
 // PAYMENT MODAL MANAGEMENT
@@ -362,35 +364,9 @@ function generateUPILink() {
 }
 
 /**
- * Navigate to Form Step
- */
-function proceedToFormStep() {
-    showFormStep();
-}
-
-/**
  * Show Form Step (for entering customer details)
  */
 function showFormStep() {
-    goToPaymentStep(2);
-}
-
-/**
- * Show Success Step
- */
-function showSuccessStep() {
-    // Deprecated - use goToPaymentStep(4) instead
-    goToPaymentStep(4);
-}
-
-/**
- * Legacy functions for backward compatibility
- */
-function showQRStep() {
-    goToPaymentStep(1);
-}
-
-function showUTRStep() {
     goToPaymentStep(2);
 }
 
@@ -899,205 +875,6 @@ async function generateCompleteInvoice(orderData) {
  * Display Success with Download Options
  */
 // ============================================================================
-// ORDER CONFIRMATION (Review & Confirm)
-// ============================================================================
-
-/**
- * Display Order Confirmation Page - User Reviews ALL Details Before Confirming
- */
-function displayOrderConfirmation(orderData) {
-    try {
-        const step3 = document.getElementById('paymentStep3');
-        if (!step3) return;
-        
-        // Clear existing content
-        step3.innerHTML = '';
-        step3.classList.add('success-screen');
-        
-        // Create confirmation page
-        const confirmationHTML = `
-            <div class="confirmation-header">
-                <h2>ORDER CONFIRMATION</h2>
-                <p>Please review all details before confirming</p>
-            </div>
-            
-            <!-- PRODUCT DETAILS -->
-            <div class="detail-card">
-                <h3>📦 PRODUCT DETAILS</h3>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Product:</span>
-                    <span class="detail-card-value">${orderData.product.name}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Category:</span>
-                    <span class="detail-card-value">${orderData.product.category}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Original Price:</span>
-                    <span class="detail-card-value">₹${orderData.product.originalPrice.toLocaleString('en-IN')}</span>
-                </div>
-                ${orderData.product.discount > 0 ? `
-                <div class="detail-card-row" style="color: #27ae60;">
-                    <span class="detail-card-label" style="color: #27ae60;">Discount:</span>
-                    <span class="detail-card-value">-${orderData.product.discountPercentage}% (₹${orderData.product.discount.toLocaleString('en-IN')})</span>
-                </div>
-                ` : ''}
-                <div class="final-amount-row">
-                    <span class="final-amount-label">Final Amount:</span>
-                    <span class="final-amount-value">₹${orderData.product.price.toLocaleString('en-IN')}</span>
-                </div>
-            </div>
-            
-            <!-- CUSTOMER DETAILS -->
-            <div class="detail-card">
-                <h3>👤 CUSTOMER DETAILS</h3>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Name:</span>
-                    <span class="detail-card-value">${orderData.customer.name}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Email:</span>
-                    <span class="detail-card-value">${orderData.customer.email}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Phone:</span>
-                    <span class="detail-card-value">+${orderData.customer.phone}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Address:</span>
-                    <span class="detail-card-value">${orderData.customer.address}</span>
-                </div>
-            </div>
-            
-            <!-- PAYMENT DETAILS -->
-            <div class="detail-card">
-                <h3>💳 PAYMENT DETAILS</h3>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Method:</span>
-                    <span class="detail-card-value">UPI</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Transaction ID:</span>
-                    <span class="detail-card-value highlight">${orderData.payment.utr}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Amount:</span>
-                    <span class="detail-card-value">₹${orderData.payment.amount.toLocaleString('en-IN')}</span>
-                </div>
-                <div class="detail-card-row">
-                    <span class="detail-card-label">Date & Time:</span>
-                    <span class="detail-card-value">${orderData.formattedDate} ${orderData.formattedTime}</span>
-                </div>
-            </div>
-            
-            <!-- ORDER ID -->
-            <div class="order-id-card">
-                <p class="order-id-label">Order ID</p>
-                <p class="order-id-display">${orderData.orderId}</p>
-            </div>
-        `;
-        
-        step3.innerHTML = confirmationHTML;
-        
-        // Add action buttons
-        const buttonsDiv = document.createElement('div');
-        buttonsDiv.style.cssText = `
-            display: flex;
-            gap: 10px;
-            margin-top: 14px;
-        `;
-        
-        // Confirm Order Button
-        const confirmBtn = document.createElement('button');
-        confirmBtn.className = 'btn submit-btn';
-        confirmBtn.style.flex = '1';
-        confirmBtn.innerHTML = '<i class="fas fa-check"></i> Confirm & Process';
-        confirmBtn.onclick = function() {
-            finalizeOrderConfirmation(orderData);
-        };
-        
-        // Cancel Button
-        const cancelBtn = document.createElement('button');
-        cancelBtn.className = 'btn back-btn';
-        cancelBtn.style.flex = '1';
-        cancelBtn.innerHTML = '<i class="fas fa-arrow-left"></i> Back';
-        cancelBtn.onclick = function() {
-            closePaymentModal();
-        };
-        
-        buttonsDiv.appendChild(confirmBtn);
-        buttonsDiv.appendChild(cancelBtn);
-        step3.appendChild(buttonsDiv);
-        
-    } catch (error) {
-        console.error('Error displaying confirmation:', error);
-        showNotification('Error displaying order confirmation', 'error');
-    }
-}
-
-/**
- * Finalize Order - Generate Invoice, Send Emails, Log to Sheets
- */
-async function finalizeOrderConfirmation(orderData) {
-    try {
-        const confirmStep = document.getElementById('paymentStep3');
-        if (!confirmStep) return;
-        
-        // Disable buttons and show processing
-        const buttons = confirmStep.querySelectorAll('button');
-        buttons.forEach(btn => btn.disabled = true);
-        
-        const confirmBtn = Array.from(buttons).find(btn => btn.textContent.includes('Confirm'));
-        if (confirmBtn) {
-            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        }
-        
-        // Show loading notification
-        showNotification('Processing your order...', 'info');
-        
-        // Generate invoice
-        let invoiceData = null;
-        try {
-            invoiceData = await generateCompleteInvoice(orderData);
-            console.log('Invoice generated successfully');
-        } catch (invoiceError) {
-            console.warn('Invoice generation issue:', invoiceError);
-        }
-        
-        // Send notifications in parallel
-        await Promise.allSettled([
-            sendEmailNotifications(orderData, invoiceData),
-            sendWhatsAppNotification(orderData, invoiceData),
-            logToGoogleSheets(orderData)
-        ]);
-        
-        // Log to localStorage
-        logOrderToJSON(orderData, invoiceData);
-        
-        // Track in Analytics
-        trackPurchaseEvent(orderData);
-        
-        // Display final success screen
-        displayOrderSuccess(orderData, invoiceData);
-        
-        showNotification('Order confirmed & processed successfully!', 'success');
-        
-    } catch (error) {
-        console.error('Error finalizing order:', error);
-        showNotification(
-            `Error finalizing order: ${error.message}. Please contact ${CONFIG.storePhone}`,
-            'error'
-        );
-        
-        // Re-enable buttons
-        const buttons = document.getElementById('paymentStep3')?.querySelectorAll('button');
-        if (buttons) {
-            buttons.forEach(btn => btn.disabled = false);
-        }
-    }
-}
-
-// ============================================================================
 // ORDER SUCCESS (Final)
 // ============================================================================
 
@@ -1108,6 +885,10 @@ function displayOrderSuccess(orderData, invoiceData) {
         
         if (!successContent || !successActions) return;
         
+        // Cache last successful order for manual WhatsApp fallback button
+        lastSuccessfulOrderData = orderData;
+        lastSuccessfulInvoiceData = invoiceData || null;
+
         // Success animation and message
         const successHTML = `
             <div style="text-align: center;">
@@ -1117,6 +898,7 @@ function displayOrderSuccess(orderData, invoiceData) {
                 <h2 style="color: #d4af37; margin: 0 0 8px 0;">✓ Order Confirmed!</h2>
                 <p style="color: #cccccc; font-size: 12px; margin: 0 0 6px 0;">Your order has been submitted successfully</p>
                 <p style="color: #999; font-size: 11px; margin: 0 0 12px 0;">Invoice PDF sent to <strong style="color: #d4af37;">${orderData.customer.email}</strong></p>
+                <p style="color: #f39c12; font-size: 11px; margin: 0 0 12px 0;"><i class="fab fa-whatsapp"></i> Popup blocked? Tap "Send Invoice Copy to WhatsApp" below.</p>
                 
                 <div class="order-id-card">
                     <p class="order-id-label">Order ID</p>
@@ -1131,6 +913,9 @@ function displayOrderSuccess(orderData, invoiceData) {
         
         // Add download buttons
         const buttonsHTML = `
+            <button class="btn download-btn" onclick="sendInvoiceCopyToWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Send Invoice Copy to WhatsApp
+            </button>
             ${invoiceData ? `
             <button class="btn download-btn" onclick="easyinvoice.download('AkkuElectronics_Invoice_${orderData.orderId}.pdf', ${JSON.stringify(invoiceData.pdf).replace(/"/g, '&quot;')}); showNotification('Invoice downloaded!', 'success');">
                 <i class="fas fa-file-pdf"></i> Download Invoice (PDF)
@@ -1519,11 +1304,21 @@ async function sendEmailNotifications(orderData, invoiceData) {
  */
 function sendWhatsAppNotification(orderData, invoiceData) {
     try {
-        const message = formatWhatsAppMessage(orderData);
-        const phoneNumber = CONFIG.upiMobile;
+        const message = formatWhatsAppMessage(orderData, invoiceData);
+        const phoneNumber = (CONFIG.upiMobile || CONFIG.storePhone || '').replace(/\D/g, '');
+
+        if (!phoneNumber) {
+            console.warn('Store WhatsApp number not configured, skipping WhatsApp notification');
+            return;
+        }
+
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        
-        window.open(whatsappUrl, '_blank', 'width=800,height=600');
+
+        const whatsappWindow = window.open(whatsappUrl, '_blank');
+        if (!whatsappWindow) {
+            showNotification('Please allow popups to send invoice copy on WhatsApp.', 'warning');
+        }
+
         console.log('WhatsApp notification opened');
     } catch (error) {
         console.error('WhatsApp notification error:', error);
@@ -1531,24 +1326,37 @@ function sendWhatsAppNotification(orderData, invoiceData) {
 }
 
 /**
+ * Manual fallback: Send latest invoice copy to WhatsApp from success screen
+ */
+function sendInvoiceCopyToWhatsApp() {
+    if (!lastSuccessfulOrderData) {
+        showNotification('No completed order found for WhatsApp sharing.', 'warning');
+        return;
+    }
+
+    sendWhatsAppNotification(lastSuccessfulOrderData, lastSuccessfulInvoiceData);
+}
+
+/**
  * Format WhatsApp Message with Emojis
  */
-function formatWhatsAppMessage(orderData) {
+function formatWhatsAppMessage(orderData, invoiceData) {
     return `
-🎮 *Akku Electronics - Order Confirmation* 🎮
+🧾 *Akku Electronics - Customer Invoice Copy* 🧾
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 *ORDER DETAILS*
+📋 *INVOICE DETAILS*
 ━━━━━━━━━━━━━━━━━━━━━━━━━
-🔹 Order ID: *${orderData.orderId}*
+🔹 Invoice No / Order ID: *${orderData.orderId}*
 📅 Date: *${orderData.formattedDate}*
 ⏰ Time: *${orderData.formattedTime}*
+📄 Invoice Status: *${invoiceData ? 'Generated' : 'Pending'}*
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 👤 *CUSTOMER INFORMATION*
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 👉 Name: *${orderData.customer.name}*
-📱 Phone: *+${orderData.customer.phone}*
+📱 Customer Phone: *+${orderData.customer.phone}*
 ✉️ Email: *${orderData.customer.email}*
 🏠 Address: *${orderData.customer.address}*
 
@@ -1564,17 +1372,18 @@ ${orderData.product.discount > 0 ? `
 💵 Final Price: *₹${orderData.product.price.toLocaleString('en-IN')}*
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
-💳 *PAYMENT INFORMATION*
+💳 *PAYMENT / TRANSACTION*
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 🔐 Payment Method: *UPI*
 🏦 UPI ID: *${orderData.payment.upiId}*
 📍 Transaction ID (UTR): *${orderData.payment.utr}*
-✅ Status: *PENDING VERIFICATION*
+✅ Status: *${orderData.payment.status || 'PENDING VERIFICATION'}*
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 📧 *NEXT STEPS*
 ━━━━━━━━━━━━━━━━━━━━━━━━━
-✓ Invoice has been generated and emailed
+✓ This invoice copy is shared from customer WhatsApp
+✓ Original invoice PDF downloaded on customer device
 ✓ We will verify your payment within 24 hours
 ✓ Tracking updates will be sent via WhatsApp
 ✓ For any queries, contact us immediately
