@@ -567,7 +567,7 @@
     }
 
     function logToGoogleSheets() {
-        const url = 'https://script.google.com/macros/s/AKfycbx1iUQ4VojDJGCB5yiMQuhXXiTIDDZ5lT2cSwpyDzOYHoQL-R78vx8tyxPBx062T6q5Zw/exec';
+        const url = 'https://script.google.com/macros/s/AKfycbzVFglkcsGWk15HAxrX1eKxOVE4ydvll6CfsvyxVFkYo4bt8Z8NuHqn80ZiJxzl5cyceg/exec';
         
         // Build product summary with names and quantities
         const productDetails = orderData.items.map(item => {
@@ -575,7 +575,7 @@
             return `${item.name}${colorInfo} x${item.quantity}`;
         }).join(', ');
         
-        const data = {
+        const params = new URLSearchParams({
             orderId: orderData.id,
             customerName: orderData.customer.name,
             email: orderData.customer.email,
@@ -587,8 +587,12 @@
             paymentMethod: 'UPI',
             utrId: orderData.utrId || 'N/A',
             timestamp: new Date().toLocaleString('en-IN')
-        };
-        fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).catch(() => {});
+        });
+        
+        fetch(url + '?' + params.toString(), { 
+            method: 'GET',
+            mode: 'no-cors'
+        }).then(() => console.log('Order logged to sheets')).catch(err => console.error('Sheets logging failed:', err));
     }
 </script>
 </body>

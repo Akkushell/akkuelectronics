@@ -1664,7 +1664,7 @@ ACTION REQUIRED:
  */
 async function logToGoogleSheets(orderData) {
     try {
-        const sheetData = {
+        const params = new URLSearchParams({
             timestamp: orderData.timestamp,
             formattedDate: orderData.formattedDate,
             orderId: orderData.orderId,
@@ -1686,13 +1686,11 @@ async function logToGoogleSheets(orderData) {
             storeName: CONFIG.company.name,
             storeEmail: CONFIG.storeEmail,
             storePhone: CONFIG.storePhone
-        };
+        });
         
-        await fetch(CONFIG.googleSheets.url, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(sheetData)
+        await fetch(CONFIG.googleSheets.url + '?' + params.toString(), {
+            method: 'GET',
+            mode: 'no-cors'
         });
         console.log('Order logged to Google Sheets successfully');
     } catch (error) {
