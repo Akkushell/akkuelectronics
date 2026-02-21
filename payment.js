@@ -29,7 +29,7 @@ const CONFIG = {
     
     // Google Sheets Integration
     googleSheets: {
-        url: "https://script.google.com/macros/s/AKfycbzVFglkcsGWk15HAxrX1eKxOVE4ydvll6CfsvyxVFkYo4bt8Z8NuHqn80ZiJxzl5cyceg/exec"
+        url: "https://script.google.com/macros/s/AKfycbwI6_6GBjAQh6tR8hnW2hXDPdg2T_tTigLpxflXDtaBlqS0Ia4J9vb5v2z1eNiey-1k/exec"
     },
     
     // Company Details
