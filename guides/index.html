@@ -108,41 +108,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </header>
 
-    <section class="guides-hero">
-        <div class="container">
-            <h1>Guides</h1>
-            <p>Select company or topic to jump directly to the resources you need.</p>
-        </div>
-    </section>
+   
 
     <main class="guides-main">
         <div class="container">
             <section class="company-grid-section">
                 <h2>Select Company</h2>
                 <div class="company-grid">
-                    <a href="#microsoft" class="company-card">Microsoft</a>
+                    <a href="#microsoft" class="company-card">Microsoft Xbox</a>
                     <a href="#nintendo" class="company-card">Nintendo</a>
-                    <a href="#sony" class="company-card">Sony</a>
-                    <a href="#valve" class="company-card">Valve</a>
-                    <a href="#hdmi" class="company-card">HDMI</a>
-                    <a href="#usb-c" class="company-card">USB-C</a>
+                    <a href="#sony" class="company-card">Sony PlayStation</a>
+                    
                 </div>
             </section>
 
             <section id="microsoft" class="guide-block">
                 <h3>Microsoft</h3>
                 <ul>
-                    <li><a href="../xbox-series.html">Xbox Series X/S Repair Guide</a></li>
-                    <li><a href="../xbox-one.html">Xbox One Repair Guide</a></li>
-                    <li><a href="../xbox-360.html">Xbox 360 Repair Guide</a></li>
+                    <li><a href="./xboxrgh3.html">Xbox 360 RGH3 Guide</a></li>
+                    <li><a href="../xbox-one.html">Xbox 360 Controller Repair Guide</a></li>
+                    <li><a href="../xbox-360.html">Xbox One S & X Controller Repair Guide</a></li>
+                     <li><a href="../xbox-360.html">Xbox Series S & X Controller Repair Guide</a></li>
                 </ul>
             </section>
 
             <section id="nintendo" class="guide-block">
                 <h3>Nintendo</h3>
                 <ul>
-                    <li><a href="../services.html">Nintendo Console Service Overview</a></li>
-                    <li><a href="../contact.html">Book Nintendo Diagnosis</a></li>
+                    <li><a href="../services.html">Nintendo Jailbreak Guide</a></li>
+                    <li><a href="../contact.html">Nintendo Joycon Controller Repair Guide</a></li>
                 </ul>
             </section>
 
@@ -219,5 +213,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const companyCards = Array.from(document.querySelectorAll('.company-card'));
+            const guideBlocks = Array.from(document.querySelectorAll('.guide-block'));
+
+            if (!companyCards.length || !guideBlocks.length) {
+                return;
+            }
+
+            const showSection = function (sectionId, updateHash) {
+                let hasMatch = false;
+
+                guideBlocks.forEach(function (block) {
+                    const isActive = block.id === sectionId;
+                    block.classList.toggle('is-active', isActive);
+                    if (isActive) {
+                        hasMatch = true;
+                    }
+                });
+
+                if (!hasMatch) {
+                    return;
+                }
+
+                companyCards.forEach(function (card) {
+                    const cardTarget = card.getAttribute('href').replace('#', '');
+                    card.classList.toggle('is-active', cardTarget === sectionId);
+                });
+
+                if (updateHash) {
+                    window.history.replaceState(null, '', '#' + sectionId);
+                }
+            };
+
+            companyCards.forEach(function (card) {
+                card.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const sectionId = card.getAttribute('href').replace('#', '');
+                    showSection(sectionId, true);
+                });
+            });
+
+            const initialSection = window.location.hash ? window.location.hash.replace('#', '') : companyCards[0].getAttribute('href').replace('#', '');
+            showSection(initialSection, false);
+        });
+    </script>
 </body>
 </html>
