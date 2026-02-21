@@ -416,16 +416,12 @@
         };
 
         try {
-            const response = await fetch('invoice.html', { cache: 'no-store' });
+            const response = await fetch('shop/invoice.html', { cache: 'no-store' });
             if (!response.ok) {
                 throw new Error('Failed to fetch invoice template');
             }
 
-            const invoicePage = await response.text();
-            const parser = new DOMParser();
-            const invoiceDoc = parser.parseFromString(invoicePage, 'text/html');
-            const invoiceTemplate = invoiceDoc.getElementById('invoice-template');
-            let templateHTML = invoiceTemplate ? invoiceTemplate.innerHTML : invoicePage;
+            let templateHTML = await response.text();
             templateHTML = replaceTemplateValue(templateHTML, 'to_name', data.to_name);
             templateHTML = replaceTemplateValue(templateHTML, 'to_email', data.to_email);
             templateHTML = replaceTemplateValue(templateHTML, 'order_id', data.order_id);
