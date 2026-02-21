@@ -171,48 +171,151 @@ document.querySelectorAll('.card, .category-card, .service-card, .service-detail
 // Firmware Selection Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const firmwareItems = document.querySelectorAll('.firmware-item');
+    const platformButtons = document.querySelectorAll('.platform-btn');
+    const modelButtons = document.querySelectorAll('.model-btn');
+    const firmwareGroups = document.querySelectorAll('.firmware-group');
+    const firmwareEmpty = document.getElementById('firmware-empty');
     const firmwareTitle = document.getElementById('firmware-title');
     const firmwareDescription = document.getElementById('firmware-description');
     const firmwareDownload = document.getElementById('firmware-download');
-    
-    if (firmwareItems.length > 0 && firmwareTitle && firmwareDescription && firmwareDownload) {
-        firmwareItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove active class from all items
-                firmwareItems.forEach(i => i.classList.remove('active'));
-                
-                // Add active class to clicked item
-                this.classList.add('active');
-                
-                // Get data attributes
-                const title = this.getAttribute('data-title');
-                const description = this.getAttribute('data-desc');
-                const url = this.getAttribute('data-url');
-                const btnText = this.getAttribute('data-btn');
-                
-                // Update display container with smooth transition
-                firmwareTitle.style.opacity = '0';
-                firmwareDescription.style.opacity = '0';
-                firmwareDownload.style.opacity = '0';
-                
-                setTimeout(() => {
-                    firmwareTitle.textContent = title;
-                    firmwareDescription.textContent = description;
-                    firmwareDownload.href = url;
-                    firmwareDownload.textContent = btnText;
-                    
-                    firmwareTitle.style.opacity = '1';
-                    firmwareDescription.style.opacity = '1';
-                    firmwareDownload.style.opacity = '1';
-                }, 200);
-            });
-        });
-        
-        // Add transition effect to elements
-        firmwareTitle.style.transition = 'opacity 0.3s ease';
-        firmwareDescription.style.transition = 'opacity 0.3s ease';
-        firmwareDownload.style.transition = 'opacity 0.3s ease';
+
+    if (firmwareItems.length === 0 || !firmwareTitle || !firmwareDescription || !firmwareDownload) {
+        return;
     }
+
+    let activePlatform = 'ps3';
+    let activeModel = 'all';
+
+    const updateDisplay = (item) => {
+        const title = item.getAttribute('data-title') || '';
+        const description = item.getAttribute('data-desc') || '';
+        const url = item.getAttribute('data-url') || '#';
+        const btnText = item.getAttribute('data-btn') || 'Download';
+
+        firmwareTitle.style.opacity = '0';
+        firmwareDescription.style.opacity = '0';
+        firmwareDownload.style.opacity = '0';
+
+        setTimeout(() => {
+            firmwareTitle.textContent = title;
+            firmwareDescription.textContent = description;
+            firmwareDownload.href = url;
+            firmwareDownload.textContent = btnText;
+
+            firmwareTitle.style.opacity = '1';
+            firmwareDescription.style.opacity = '1';
+            firmwareDownload.style.opacity = '1';
+        }, 200);
+    };
+
+    const setActiveItem = (item) => {
+        firmwareItems.forEach(i => i.classList.remove('active'));
+        if (item) {
+            item.classList.add('active');
+            updateDisplay(item);
+        }
+    };
+
+    const updateModelButtons = () => {
+        let activeModelStillVisible = false;
+
+        modelButtons.forEach(button => {
+            const isVisible = button.getAttribute('data-platform') === activePlatform;
+            button.hidden = !isVisible;
+
+            if (isVisible && button.getAttribute('data-model') === activeModel) {
+                activeModelStillVisible = true;
+            }
+        });
+
+        if (!activeModelStillVisible) {
+            const defaultModelButton = Array.from(modelButtons).find(button => {
+                return button.getAttribute('data-platform') === activePlatform && button.getAttribute('data-model') === 'all';
+            }) || Array.from(modelButtons).find(button => button.getAttribute('data-platform') === activePlatform);
+
+            activeModel = defaultModelButton ? defaultModelButton.getAttribute('data-model') : 'all';
+        }
+
+        modelButtons.forEach(button => {
+            const isCurrent = button.getAttribute('data-platform') === activePlatform && button.getAttribute('data-model') === activeModel;
+            button.classList.toggle('active', isCurrent);
+        });
+    };
+
+    const applyFilters = () => {
+        let firstVisibleItem = null;
+        let visibleCount = 0;
+
+        firmwareItems.forEach(item => {
+            const itemPlatform = item.getAttribute('data-platform');
+            const itemModel = item.getAttribute('data-model') || 'all';
+            const platformMatch = itemPlatform === activePlatform;
+            const modelMatch = activeModel === 'all' || itemModel === 'all' || itemModel === activeModel;
+            const showItem = platformMatch && modelMatch;
+
+            item.hidden = !showItem;
+            if (showItem) {
+                visibleCount += 1;
+                if (!firstVisibleItem) {
+                    firstVisibleItem = item;
+                }
+            }
+        });
+
+        firmwareGroups.forEach(group => {
+            const hasVisibleItems = group.querySelector('.firmware-item:not([hidden])');
+            group.hidden = !hasVisibleItems;
+        });
+
+        if (firmwareEmpty) {
+            firmwareEmpty.hidden = visibleCount > 0;
+        }
+
+        const currentActive = document.querySelector('.firmware-item.active:not([hidden])');
+        if (!currentActive && firstVisibleItem) {
+            setActiveItem(firstVisibleItem);
+        }
+    };
+
+    platformButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            activePlatform = this.getAttribute('data-platform') || 'ps3';
+
+            platformButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            updateModelButtons();
+            applyFilters();
+        });
+    });
+
+    modelButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            if (this.hidden) {
+                return;
+            }
+
+            activeModel = this.getAttribute('data-model') || 'all';
+            updateModelButtons();
+            applyFilters();
+        });
+    });
+
+    firmwareItems.forEach(item => {
+        item.addEventListener('click', function() {
+            if (this.hidden) {
+                return;
+            }
+            setActiveItem(this);
+        });
+    });
+
+    firmwareTitle.style.transition = 'opacity 0.3s ease';
+    firmwareDescription.style.transition = 'opacity 0.3s ease';
+    firmwareDownload.style.transition = 'opacity 0.3s ease';
+
+    updateModelButtons();
+    applyFilters();
 });
 
 console.log('Akku Electronics - Website loaded successfully!');

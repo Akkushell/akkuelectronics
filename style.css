@@ -2186,6 +2186,64 @@ mark {
     border-bottom: 2px solid #d4af37;
 }
 
+.platform-tabs,
+.model-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.platform-btn,
+.model-btn {
+    background: #2d2d2d;
+    color: #ffffff;
+    border: 1px solid #4a4a4a;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.platform-btn:hover,
+.model-btn:hover {
+    border-color: #d4af37;
+    color: #d4af37;
+}
+
+.platform-btn.active,
+.model-btn.active {
+    background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+    color: #000;
+    border-color: #d4af37;
+    font-weight: 600;
+}
+
+.model-btn[hidden] {
+    display: none;
+}
+
+.firmware-group {
+    margin-bottom: 14px;
+}
+
+.firmware-group-title {
+    color: #d4af37;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    border-left: 3px solid #d4af37;
+    padding-left: 8px;
+    font-weight: 700;
+}
+
+.firmware-empty {
+    color: #f4d03f;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 8px;
+}
+
 .firmware-list ul {
     list-style: none;
     padding: 0;
@@ -2245,6 +2303,12 @@ mark {
     
     .firmware-list {
         padding: 20px;
+    }
+
+    .platform-btn,
+    .model-btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
     }
 }
 
