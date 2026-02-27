@@ -33,7 +33,6 @@ Use this checklist every month to keep technical SEO, indexing, and content heal
   - Services page
   - Shop page
   - New blog posts
-  - New guides
 - [ ] Review Enhancements / Rich Results and fix schema errors.
 - [ ] Review Core Web Vitals and note any regressions.
 
@@ -61,7 +60,7 @@ Use this checklist every month to keep technical SEO, indexing, and content heal
 - [ ] Ensure WhatsApp links work on mobile and desktop.
 - [ ] Verify Shop -> Payment -> Invoice flow works fully.
 - [ ] Confirm noindex pages stay noindex (payment/invoice).
-- [ ] Test navigation links (including Guides, Blog, Firmwares).
+- [ ] Test navigation links (including Blog and Firmwares).
 
 ## 6) Performance Basics (Week 4)
 
@@ -93,7 +92,6 @@ Use this checklist every month to keep technical SEO, indexing, and content heal
 - https://akkuelectronics.in/shop.html
 - https://akkuelectronics.in/product-detail.html
 - https://akkuelectronics.in/blog/index.html
-- https://akkuelectronics.in/guides/index.html
 
 ---
 

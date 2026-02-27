@@ -42,7 +42,7 @@ foreach ($file in $htmlFiles) {
             $priority = "0.9"
             $changefreq = "weekly"
         }
-        elseif ($relative -eq "blog/index.html" -or $relative -eq "guides/index.html") {
+        elseif ($relative -eq "blog/index.html") {
             $priority = "0.8"
             $changefreq = "weekly"
         }

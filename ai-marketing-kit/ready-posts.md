@@ -184,11 +184,10 @@ Why customers choose us:
 • Transparent updates
 • Local support in Nagpur
 
-## Day 29 - Blog + Guides
+## Day 29 - Blog Promotion
 Caption:
-Explore our latest gaming blog posts and repair guides:
+Explore our latest gaming blog posts:
 Blog: https://akkuelectronics.in/blog/index.html
-Guides: https://akkuelectronics.in/guides/index.html
 
 ## Day 30 - Monthly Recap
 Caption:

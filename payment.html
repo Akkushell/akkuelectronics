@@ -36,6 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.0.0/dist/index.min.js"></script>
+    <script async src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()"></script>
 
     <style>
         body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%); color:#ccc; margin:0; padding:20px; }
@@ -77,6 +78,7 @@
         .upi-btn.phonepe { border-color:#5A4FCF; color:#5A4FCF; }
         .upi-btn.gpay { border-color:#4285F4; color:#4285F4; }
         .upi-btn.paytm { border-color:#00A699; color:#00A699; }
+        .gpay-status { margin-top:10px; color:#aaa; text-align:center; font-size:13px; }
 
         .button-group { display:flex; gap:10px; justify-content:flex-end; margin-top:18px; }
         .btn { border:none; border-radius:6px; padding:12px 18px; font-weight:700; cursor:pointer; text-transform:uppercase; }
@@ -151,6 +153,12 @@
         </div>
 
         <div class="step-content" data-step="3">
+            <div class="panel">
+                <h3>Pay with Google Pay API</h3>
+                <div id="googlePayButton" style="max-width:360px;margin:0 auto;"></div>
+                <div id="googlePayStatus" class="gpay-status">Loading Google Pay...</div>
+            </div>
+
             <div class="panel qr-wrap">
                 <h3>Scan UPI QR</h3>
                 <div id="qrCode"></div>
@@ -163,11 +171,9 @@
             </div>
 
             <div class="panel">
-                <h3>Pay with UPI Apps</h3>
+                <h3>Google Pay UPI App (Fallback)</h3>
                 <div class="upi-apps">
-                    <button class="upi-btn phonepe" type="button" onclick="openUPIApp('phonepe')">PhonePe</button>
                     <button class="upi-btn gpay" type="button" onclick="openUPIApp('gpay')">Google Pay</button>
-                    <button class="upi-btn paytm" type="button" onclick="openUPIApp('paytm')">Paytm</button>
                 </div>
             </div>
 
@@ -194,7 +200,7 @@
                 <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
                 <p><strong>Phone:</strong> <span id="confirmPhone"></span></p>
                 <p><strong>Address:</strong> <span id="confirmAddress"></span></p>
-                <p><strong>Payment:</strong> UPI</p>
+                <p><strong>Payment:</strong> <span id="confirmPaymentMethod"></span></p>
                 <p><strong>UTR:</strong> <span id="confirmUTR"></span></p>
             </div>
             <div class="button-group">
@@ -231,12 +237,22 @@
     let currentStep = 1;
     const upiId = 'akkue89563749@barodampay';
     const storeWhatsAppNumber = '918956389723';
+    const gpayConfig = window.AKKU_GPAY_CONFIG || {
+        environment: 'TEST',
+        merchantName: 'Akku Electronics',
+        merchantId: '',
+        gateway: 'example',
+        gatewayMerchantId: 'exampleGatewayMerchantId'
+    };
     let latestUpiLink = '';
     let whatsappPopupWindow = null;
+    let googlePaymentsClient = null;
+    let gpayPaymentCompleted = false;
     const orderData = { id: 'ORD-' + Date.now() + '-' + Math.floor(Math.random() * 1000), items: [], total: 0, customer: {}, paymentMethod: 'UPI', utrId: '' };
 
     (function init() {
         loadCartData();
+        initGooglePayButton();
     })();
 
     function loadCartData() {
@@ -313,7 +329,10 @@
         });
 
         if (target === 4) displayConfirmation();
-        if (target === 3) updateUpiPaymentArtifacts();
+        if (target === 3) {
+            updateUpiPaymentArtifacts();
+            initGooglePayButton();
+        }
         currentStep = target;
         window.scrollTo(0, 0);
     }
@@ -335,11 +354,150 @@
     }
 
     function validatePayment() {
+        if (gpayPaymentCompleted && orderData.paymentMethod === 'Google Pay API' && orderData.utrId) {
+            hideError();
+            return true;
+        }
         const utr = document.getElementById('utrInput').value.trim();
         if (!utr || utr.length < 10) return showError('Enter valid UTR/transaction ID (min 10 chars)'), false;
+        orderData.paymentMethod = 'UPI';
         orderData.utrId = utr;
         hideError();
         return true;
+    }
+
+    function getGooglePaymentsClient() {
+        if (!googlePaymentsClient && window.google && google.payments && google.payments.api) {
+            googlePaymentsClient = new google.payments.api.PaymentsClient({ environment: gpayConfig.environment || 'TEST' });
+        }
+        return googlePaymentsClient;
+    }
+
+    function setGooglePayStatus(message, isError = false) {
+        const el = document.getElementById('googlePayStatus');
+        if (!el) return;
+        el.textContent = message;
+        el.style.color = isError ? '#ff8787' : '#aaa';
+    }
+
+    function getBaseCardPaymentMethod() {
+        return {
+            type: 'CARD',
+            parameters: {
+                allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA']
+            }
+        };
+    }
+
+    function getGooglePayCardPaymentMethod() {
+        const method = getBaseCardPaymentMethod();
+        method.tokenizationSpecification = {
+            type: 'PAYMENT_GATEWAY',
+            parameters: {
+                gateway: gpayConfig.gateway || 'example',
+                gatewayMerchantId: gpayConfig.gatewayMerchantId || 'exampleGatewayMerchantId'
+            }
+        };
+        return method;
+    }
+
+    function getGooglePayPaymentDataRequest() {
+        const total = Number(orderData.total || totalAmount || 0).toFixed(2);
+        const request = {
+            apiVersion: 2,
+            apiVersionMinor: 0,
+            allowedPaymentMethods: [getGooglePayCardPaymentMethod()],
+            transactionInfo: {
+                totalPriceStatus: 'FINAL',
+                totalPrice: total,
+                countryCode: 'IN',
+                currencyCode: 'INR'
+            },
+            merchantInfo: {
+                merchantName: gpayConfig.merchantName || 'Akku Electronics'
+            }
+        };
+
+        if (gpayConfig.merchantId) {
+            request.merchantInfo.merchantId = gpayConfig.merchantId;
+        }
+
+        return request;
+    }
+
+    function onGooglePayLoaded() {
+        initGooglePayButton();
+    }
+
+    function initGooglePayButton() {
+        const host = document.getElementById('googlePayButton');
+        if (!host) return;
+        host.innerHTML = '';
+
+        const client = getGooglePaymentsClient();
+        if (!client) {
+            setGooglePayStatus('Google Pay SDK not ready yet. Please wait or use GPay UPI fallback.', true);
+            return;
+        }
+
+        const isReadyRequest = {
+            apiVersion: 2,
+            apiVersionMinor: 0,
+            allowedPaymentMethods: [getBaseCardPaymentMethod()]
+        };
+
+        client.isReadyToPay(isReadyRequest).then(function(response) {
+            if (!response.result) {
+                setGooglePayStatus('Google Pay is not available on this device. Use GPay UPI fallback.', true);
+                return;
+            }
+
+            const button = client.createButton({
+                onClick: onGooglePaymentButtonClicked,
+                buttonColor: 'black',
+                buttonType: 'pay'
+            });
+            host.appendChild(button);
+            setGooglePayStatus('Google Pay is ready. Tap Pay to continue.');
+        }).catch(function() {
+            setGooglePayStatus('Google Pay setup failed. Use GPay UPI fallback.', true);
+        });
+    }
+
+    function onGooglePaymentButtonClicked() {
+        const client = getGooglePaymentsClient();
+        if (!client) {
+            setGooglePayStatus('Google Pay client unavailable.', true);
+            return;
+        }
+
+        setGooglePayStatus('Opening Google Pay sheet...');
+        client.loadPaymentData(getGooglePayPaymentDataRequest())
+            .then(function(paymentData) {
+                const token = paymentData?.paymentMethodData?.tokenizationData?.token;
+                if (!token) {
+                    throw new Error('No payment token received from Google Pay');
+                }
+
+                gpayPaymentCompleted = true;
+                orderData.paymentMethod = 'Google Pay API';
+                orderData.utrId = 'GPAY-' + Date.now();
+
+                const utrInput = document.getElementById('utrInput');
+                if (utrInput) {
+                    utrInput.value = orderData.utrId;
+                }
+
+                hideError();
+                setGooglePayStatus('Payment authorized. Click Review Order to continue.');
+            })
+            .catch(function(error) {
+                const msg = error && error.statusCode === 'CANCELED'
+                    ? 'Payment cancelled. You can try again.'
+                    : 'Google Pay failed. Use GPay UPI fallback.';
+                setGooglePayStatus(msg, true);
+            });
     }
 
     function showError(message) {
@@ -458,6 +616,8 @@
     }
 
     function openUPIApp(app) {
+        gpayPaymentCompleted = false;
+        orderData.paymentMethod = 'UPI';
         window.location.href = buildUpiUrl(app);
     }
 
@@ -466,6 +626,7 @@
         document.getElementById('confirmEmail').textContent = orderData.customer.email || '-';
         document.getElementById('confirmPhone').textContent = orderData.customer.phone || '-';
         document.getElementById('confirmAddress').textContent = orderData.customer.address || '-';
+        document.getElementById('confirmPaymentMethod').textContent = orderData.paymentMethod || 'UPI';
         document.getElementById('confirmUTR').textContent = orderData.utrId || '-';
     }
 
@@ -534,7 +695,7 @@
             itemSummary || '-',
             '',
             '*💳 Payment*',
-            `Method: UPI`,
+            `Method: ${orderData.paymentMethod || 'UPI'}`,
             `UTR: ${orderData.utrId || 'N/A'}`,
             `Total: ₹${(orderData.total || 0).toLocaleString('en-IN')}`,
             '',
@@ -662,7 +823,7 @@
             order_id: orderData.id,
             customer_name: orderData.customer.name,
             total_amount: '₹' + orderData.total.toLocaleString(),
-            payment_method: 'UPI',
+            payment_method: orderData.paymentMethod || 'UPI',
             utr_id: orderData.utrId || 'N/A'
         };
         if (typeof emailjs !== 'undefined' && typeof emailjs.send === 'function') {
@@ -688,7 +849,7 @@
             city: orderData.customer.city,
             productDetails: productDetails,
             totalAmount: orderData.total,
-            paymentMethod: 'UPI',
+            paymentMethod: orderData.paymentMethod || 'UPI',
             utrId: orderData.utrId || 'N/A',
             timestamp: new Date().toLocaleString('en-IN')
         });
