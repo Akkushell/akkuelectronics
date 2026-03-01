@@ -38,7 +38,7 @@ foreach ($file in $htmlFiles) {
         $priority = "0.7"
         $changefreq = "monthly"
 
-        if ($relative -eq "services.html" -or $relative -eq "shop.html" -or $relative -eq "firmwares.html") {
+        if ($relative -eq "services.html" -or $relative -eq "firmwares.html") {
             $priority = "0.9"
             $changefreq = "weekly"
         }

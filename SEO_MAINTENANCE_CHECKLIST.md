@@ -89,7 +89,6 @@ Use this checklist every month to keep technical SEO, indexing, and content heal
 - https://akkuelectronics.in/
 - https://akkuelectronics.in/services.html
 - https://akkuelectronics.in/firmwares.html
-- https://akkuelectronics.in/shop.html
 - https://akkuelectronics.in/product-detail.html
 - https://akkuelectronics.in/blog/index.html
 

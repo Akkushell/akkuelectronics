@@ -1,6 +1,6 @@
-# 🎮 Akku Electronics - Gaming Shop & Payment System
+# 🎮 Akku Electronics - Gaming Console Repair Website
 
-**Production-Ready Gaming Console & Accessories E-Commerce Website**
+**Production website for gaming console repair services and support content**
 
 ---
 
@@ -11,7 +11,6 @@
 This single comprehensive guide includes:
 - ✅ Quick start (30 seconds)
 - ✅ System overview
-- ✅ Payment processing
 - ✅ Configuration
 - ✅ Customer experience
 - ✅ Developer reference
@@ -23,22 +22,19 @@ This single comprehensive guide includes:
 
 ## 🚀 QUICK START
 
-1. **Open Shop:** https://akkuelectronics.in/shop.html
-2. **Click "Buy Now"** on any product
-3. **Complete Payment** via UPI (PhonePe, Google Pay, Paytm)
-4. **Receive Invoice** via email & WhatsApp
-5. **Done!** Order complete in 50 seconds
+1. **Open Website:** https://akkuelectronics.in/
+2. **Browse Services** from PlayStation / Xbox pages
+3. **Use Contact Options** via phone, email, or WhatsApp
+4. **Book Repair Support** directly with Akku Electronics
 
 ---
 
 ## 📊 WHAT'S INCLUDED
 
-✅ **Payment System** - UPI payments with multi-app support  
-✅ **Invoice Generation** - Professional PDF invoices  
-✅ **Email Notifications** - Automated customer & admin emails  
-✅ **WhatsApp Integration** - Order confirmations & updates  
-✅ **Order Logging** - Google Sheets + Local Storage  
-✅ **Analytics** - Google Analytics purchase tracking  
+✅ **Service Pages** - Dedicated PlayStation/Xbox repair pages  
+✅ **Contact Workflows** - Phone, email, and WhatsApp support  
+✅ **Blog Content** - Technical posts and repair guides  
+✅ **Analytics** - Website interaction tracking  
 ✅ **Mobile Optimized** - Works perfectly on all devices  
 ✅ **Security** - Form validation & error handling  
 ✅ **Debug Tools** - 8 console tools for testing  
@@ -49,11 +45,10 @@ This single comprehensive guide includes:
 
 | Feature | Status |
 |---------|--------|
-| UPI Payment Gateway | ✅ |
-| Invoice PDF Generation | ✅ |
-| Email Notifications | ✅ |
+| Service Discovery | ✅ |
+| Contact Workflows | ✅ |
+| Blog Publishing | ✅ |
 | WhatsApp Messaging | ✅ |
-| Order Database | ✅ |
 | Analytics Tracking | ✅ |
 | Mobile Responsive | ✅ |
 | Production Ready | ✅ |
@@ -101,10 +96,9 @@ This maps old root URLs to new folder URLs using forced `301` rules.
 If your host does not support `_redirects` (for example plain GitHub Pages),
 the existing root redirect HTML pages still provide client-side fallback.
 
-**Payment System Functions:** 50+ functions  
-**Lines of Code:** 1,500+ (payment.js)  
-**CSS:** 800+ lines (modern, professional)  
-**HTML Integration:** shop.html, product-detail.html  
+**Core JS Functions:** Available in `script.js` and page-level scripts  
+**CSS:** Shared styles via `style.css` + `mobile.css`  
+**HTML Integration:** Service, blog, and utility pages  
 
 ### Debug in Console
 
