@@ -203,10 +203,35 @@
     /* ============= SECTION TITLES ============= */
     .category-section .section-title,
     .services-section h2,
-    .main-container h1 {
+    .main-container h2.section-title {
         font-size: 26px;
         margin-bottom: 30px;
         padding: 0 10px;
+    }
+
+    /* ============= HERO SECTION ============= */
+    .hero-section {
+        padding: 50px 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-content p {
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero-buttons .btn, .hero-buttons .btn-secondary {
+        width: 100%;
+        text-align: center;
     }
 
     /* ============= CATEGORY SECTION ============= */
