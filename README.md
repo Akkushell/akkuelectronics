@@ -33,7 +33,7 @@ This single comprehensive guide includes:
 
 ✅ **Service Pages** - Dedicated PlayStation/Xbox repair pages  
 ✅ **Contact Workflows** - Phone, email, and WhatsApp support  
-✅ **Blog Content** - Technical posts and repair guides  
+✅ **Service Content** - Technical service and repair information  
 ✅ **Analytics** - Website interaction tracking  
 ✅ **Mobile Optimized** - Works perfectly on all devices  
 ✅ **Security** - Form validation & error handling  
@@ -47,7 +47,6 @@ This single comprehensive guide includes:
 |---------|--------|
 | Service Discovery | ✅ |
 | Contact Workflows | ✅ |
-| Blog Publishing | ✅ |
 | WhatsApp Messaging | ✅ |
 | Analytics Tracking | ✅ |
 | Mobile Responsive | ✅ |
@@ -59,7 +58,7 @@ This single comprehensive guide includes:
 
 ### Sitemap Generation
 
-When you add a new blog post, regenerate both sitemaps with:
+When you add new indexable pages, regenerate both sitemaps with:
 
 ```bash
 python generate_sitemaps.py
@@ -98,7 +97,7 @@ the existing root redirect HTML pages still provide client-side fallback.
 
 **Core JS Functions:** Available in `script.js` and page-level scripts  
 **CSS:** Shared styles via `style.css` + `mobile.css`  
-**HTML Integration:** Service, blog, and utility pages  
+**HTML Integration:** Service and utility pages  
 
 ### Debug in Console
 

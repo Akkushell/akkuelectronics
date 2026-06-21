@@ -1,3 +1,66 @@
+(() => {
+    const DEFAULT_HERO_IMAGES = [
+        "images/ps5sc.png",
+        "images/xboxsxc.png",
+        "images/noledc.jpg"
+    ];
+
+    const getImagesFromData = (el) => {
+        const raw = el.getAttribute("data-hero-images");
+        if (!raw) return DEFAULT_HERO_IMAGES;
+
+        const parsed = raw
+            .split(",")
+            .map((item) => item.trim())
+            .filter(Boolean);
+
+        return parsed.length ? parsed : DEFAULT_HERO_IMAGES;
+    };
+
+    const createSlider = (heroSection) => {
+        if (heroSection.querySelector(".hero-bg-slider")) return;
+
+        const images = getImagesFromData(heroSection);
+        const slider = document.createElement("div");
+        slider.className = "hero-bg-slider";
+        slider.setAttribute("aria-hidden", "true");
+
+        images.forEach((src, index) => {
+            const slide = document.createElement("div");
+            slide.className = "hero-bg-slide" + (index === 0 ? " is-active" : "");
+            slide.style.backgroundImage = `url('${src}')`;
+            slider.appendChild(slide);
+        });
+
+        const overlay = document.createElement("div");
+        overlay.className = "hero-bg-overlay";
+        overlay.setAttribute("aria-hidden", "true");
+
+        heroSection.prepend(overlay);
+        heroSection.prepend(slider);
+
+        const slides = slider.querySelectorAll(".hero-bg-slide");
+        if (slides.length < 2) return;
+
+        let activeIndex = 0;
+        window.setInterval(() => {
+            slides[activeIndex].classList.remove("is-active");
+            activeIndex = (activeIndex + 1) % slides.length;
+            slides[activeIndex].classList.add("is-active");
+        }, 5000);
+    };
+
+    const initHeroSliders = () => {
+        document.querySelectorAll(".hero-section").forEach(createSlider);
+    };
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initHeroSliders);
+    } else {
+        initHeroSliders();
+    }
+})();
+
 // Mobile Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');

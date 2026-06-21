@@ -1,3 +1,55 @@
+/* Global hero slider treatment for all pages with .hero-section */
+.hero-section {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate;
+}
+
+.hero-section .hero-content,
+.hero-section .container.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-section .hero-bg-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-section .hero-bg-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 900ms ease, transform 6000ms ease;
+    will-change: opacity, transform;
+}
+
+.hero-section .hero-bg-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Keep background images about 25% visible for readability */
+.hero-section .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(120deg, rgba(8, 14, 24, 0.78) 0%, rgba(8, 14, 24, 0.72) 45%, rgba(8, 14, 24, 0.78) 100%),
+        rgba(0, 0, 0, 0.62);
+}
+
+@media (max-width: 768px) {
+    .hero-section .hero-bg-slide {
+        background-position: center 35%;
+    }
+}
+
 /* General Reset */
 * {
     margin: 0;

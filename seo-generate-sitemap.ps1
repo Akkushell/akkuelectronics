@@ -42,14 +42,6 @@ foreach ($file in $htmlFiles) {
             $priority = "0.9"
             $changefreq = "weekly"
         }
-        elseif ($relative -eq "blog/index.html") {
-            $priority = "0.8"
-            $changefreq = "weekly"
-        }
-        elseif ($relative -match "^blog/") {
-            $priority = "0.7"
-            $changefreq = "monthly"
-        }
         elseif ($relative -eq "privacy-policy.html") {
             $priority = "0.4"
             $changefreq = "yearly"
