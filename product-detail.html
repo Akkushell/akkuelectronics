@@ -23,27 +23,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="YB0gaatPKdTjdyO-nZmltGoGV8_KcfS6vSSFjyd2F48">
-    <meta name="description" content="View detailed product information and purchase gaming products at Akku Electronics. Shop consoles, controllers, accessories and parts with fast delivery.">
+    <meta name="description" content="View detailed gaming product information, specifications, pricing, and related items from Akku Electronics for smarter purchase decisions.">
     <meta name="keywords" content="gaming products, buy gaming console, controller details, gaming accessories shop, Nagpur">
     <meta name="author" content="Akku Electronics">
     <base href="../">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Product Details - Akku Electronics Gaming Store">
-    <meta property="og:description" content="View detailed product information and purchase gaming products at Akku Electronics.">
+    <meta property="og:title" content="Product Details | Akku Electronics">
+    <meta property="og:description" content="View detailed gaming product information, specifications, pricing, and related items from Akku Electronics for smarter purchase decisions.">
     <meta property="og:image" content="https://akkuelectronics.in/images/aelogo.png">
     <meta property="og:url" content="https://akkuelectronics.in/product-detail.html">
     <meta property="og:type" content="product">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Product Details - Akku Electronics">
-    <meta name="twitter:description" content="View detailed product information and shop gaming products online.">
+    <meta name="twitter:title" content="Product Details | Akku Electronics">
+    <meta name="twitter:description" content="View detailed gaming product information, specifications, pricing, and related items from Akku Electronics for smarter purchase decisions.">
     <meta name="twitter:image" content="https://akkuelectronics.in/images/aelogo.png">
     
     <link rel="canonical" href="https://akkuelectronics.in/product-detail.html">
-    <title>Product Details | Akku Electronics Gaming Store</title>
+    <title>Product Details | Akku Electronics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -72,8 +72,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <style>
         /* Product Detail Styles */
         .product-detail-container {
-            max-width: 1200px;
-            margin: 40px auto;
+            max-width: 1240px;
+            margin: 36px auto 56px;
             padding: 0 20px;
         }
 
@@ -91,6 +91,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         .breadcrumb a:hover {
             text-decoration: underline;
+        }
+
+        .breadcrumb-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb-back {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #000000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(212, 175, 55, 0.25);
+            text-decoration: none;
         }
 
         .product-detail-main {
@@ -114,8 +141,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 480px;
-            height: 480px;
+            width: min(100%, 480px);
+            aspect-ratio: 1 / 1;
+            height: auto;
             position: relative;
             overflow: hidden;
         }
@@ -193,7 +221,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .main-image-container img {
             width: 100%;
             height: 100%;
-            object-fit: fill;
+            object-fit: contain;
+            display: none;
+        }
+
+        .hidden-inline {
             display: none;
         }
 
@@ -469,6 +501,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin: 20px 0;
         }
 
+        .color-panel {
+            padding: 15px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+        }
+
+        .color-selection-label {
+            display: block;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
         .color-options {
             display: flex;
             gap: 12px;
@@ -531,6 +578,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             color: #d4af37;
         }
 
+        .related-product-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+
+        .not-found-state {
+            text-align: center;
+            padding: 100px 24px;
+            color: #d4af37;
+        }
+
         .related-product-info {
             padding: 15px;
         }
@@ -572,10 +632,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }
 
             .main-image-container {
-                width: 320px;
-                height: 320px;
+                width: min(100%, 380px);
                 border-radius: 8px;
                 padding: 8px;
+            }
+
+            .breadcrumb-row {
+                align-items: flex-start;
+            }
+
+            .breadcrumb-back {
+                padding: 8px 14px;
             }
 
             .main-image-container i {
@@ -1161,7 +1228,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <!-- AdSense Ad -->
-    <div class="container" style="margin: 30px auto; text-align: center;">
+    <div class="container ad-container">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1917270256596378"
              crossorigin="anonymous"></script>
         <!-- aeads1 -->
@@ -1179,11 +1246,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Product Detail Content -->
     <div class="product-detail-container">
         <!-- Breadcrumb with Back Button -->
-        <div class="breadcrumb" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="breadcrumb breadcrumb-row">
             <div>
                 <a href="index.html">Home</a> / <span id="breadcrumbProduct">Product</span>
             </div>
-            <a href="index.html" style="padding: 8px 20px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: #000; text-decoration: none; border-radius: 5px; font-weight: 600; transition: all 0.3s ease;">
+            <a href="index.html" class="breadcrumb-back">
                 <i class="fas fa-arrow-left"></i> Back to Home
             </a>
         </div>
@@ -1195,7 +1262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="main-image-container">
                     <i id="productIcon"></i>
                     <div id="mainImageContainer"></div>
-                    <div id="discountBadgeLarge" class="discount-badge-large" style="display:none;"></div>
+                    <div id="discountBadgeLarge" class="discount-badge-large hidden-inline"></div>
                 </div>
                 <div class="thumbnails-container" id="thumbnailsContainer"></div>
             </div>
@@ -1209,8 +1276,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="product-price-section">
                     <div class="current-price" id="productPrice"></div>
                     <div class="price-info">
-                        <span class="original-price" id="productOriginalPrice" style="display:none;"></span>
-                        <span class="savings-amount" id="savingsAmount" style="display:none;"></span>
+                        <span class="original-price hidden-inline" id="productOriginalPrice"></span>
+                        <span class="savings-amount hidden-inline" id="savingsAmount"></span>
                     </div>
                 </div>
 
@@ -1220,9 +1287,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <!-- Color Selection -->
-                <div id="colorSelectionContainer" class="color-selection" style="display:none; margin: 20px 0; padding: 15px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border: 1px solid #d4af37; border-radius: 8px;">
-                    <label style="display: block; color: #d4af37; font-weight: 600; margin-bottom: 10px; text-transform: uppercase;">Select Color:</label>
-                    <div id="colorOptions" style="display: flex; gap: 10px; flex-wrap: wrap;"></div>
+                <div id="colorSelectionContainer" class="color-selection color-panel" style="display:none;">
+                    <label class="color-selection-label">Select Color:</label>
+                    <div id="colorOptions" class="color-options"></div>
                 </div>
 
                 <!-- Description -->
@@ -1258,7 +1325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- AdSense Ad 2 -->
-    <div class="container" style="margin: 30px auto; text-align: center;">
+    <div class="container ad-container">
         <!-- aeads2 -->
         <ins class="adsbygoogle"
              style="display:block"
@@ -1277,18 +1344,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="footer-section about">
                     <h3>Akku Electronics</h3>
                     <p>Your trusted gaming product and console repair specialist in Nagpur. Quality products and expert service!</p>
-                    <div class="social-links" style="display: flex; justify-content: center; gap: 12px; margin-top: 10px;">
+                    <div class="social-links social-links-compact">
                         <a href="https://www.facebook.com/akku0101" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                            <img src="icon/facebook.png" alt="Facebook" style="width:20px;height:20px;vertical-align:middle;">
+                            <img src="icon/facebook.png" alt="Facebook" class="social-icon">
                         </a>
                         <a href="https://www.instagram.com/akkuelectronics.nagpur" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <img src="icon/instagram.png" alt="Instagram" style="width:20px;height:20px;vertical-align:middle;">
+                            <img src="icon/instagram.png" alt="Instagram" class="social-icon">
                         </a>
                         <a href="https://x.com/Sunil_Moundekar" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                            <img src="icon/twitter.png" alt="Twitter" style="width:20px;height:20px;vertical-align:middle;">
+                            <img src="icon/twitter.png" alt="Twitter" class="social-icon">
                         </a>
                         <a href="https://wa.me/918956389723" target="_blank" aria-label="WhatsApp">
-                            <img src="icon/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px;vertical-align:middle;">
+                            <img src="icon/whatsapp.png" alt="WhatsApp" class="social-icon">
                         </a>
                     </div>
                 </div>
@@ -1385,7 +1452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         displayProductDetails();
                         loadRelatedProducts();
                     } else {
-                        document.body.innerHTML = '<div style="text-align:center; padding: 100px; color: #d4af37;"><h1>Product Not Found</h1><p><a href="index.html">Back to Home</a></p></div>';
+                        document.body.innerHTML = '<div class="not-found-state"><h1>Product Not Found</h1><p><a href="index.html">Back to Home</a></p></div>';
                     }
                 })
                 .catch(error => console.error('Error loading products:', error));
@@ -1567,7 +1634,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 return `
                 <div class="related-product-card" onclick="window.location.href='product-detail.html?id=${product.id}'">
                     <div class="related-product-image">
-                        ${imageSrc ? `<img src="${sanitizeImagePath(imageSrc)}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: fill;">` : `<i class="${product.image}"></i>`}
+                        ${imageSrc ? `<img src="${sanitizeImagePath(imageSrc)}" alt="${product.name}" class="related-product-thumb">` : `<i class="${product.image}"></i>`}
                     </div>
                     <div class="related-product-info">
                         <div class="related-product-name">${product.name}</div>
