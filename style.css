@@ -2776,11 +2776,6 @@ footer {
 }
 
 /* Reusable utility classes to replace repeated inline styles */
-.ad-container {
-    margin: 30px auto;
-    text-align: center;
-}
-
 .social-links-compact {
     display: flex;
     justify-content: center;
