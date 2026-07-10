@@ -93,7 +93,7 @@ header .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    height: 80px;
+    height: 90px; /* New height */
 }
 
 .logo-link {
@@ -116,7 +116,7 @@ header .container {
 nav {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center; /* Changed from flex-end to center */
 }
 
 .nav-links {
@@ -133,7 +133,7 @@ nav {
     font-family: 'Orbitron', sans-serif;
     color: #00ffff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px; /* New font size */
     padding: 10px;
     position: relative;
     transition: all 0.3s ease;
