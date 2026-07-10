@@ -419,4 +419,81 @@ document.addEventListener('DOMContentLoaded', function() {
     applyFilters();
 });
 
+// Hero Banner Gallery - Auto Slide functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const heroBannerGallery = document.querySelector('.hero-banner-gallery');
+    if (!heroBannerGallery) return;
+
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dots .dot');
+    const prevBtn = document.querySelector('.hero-nav.prev');
+    const nextBtn = document.querySelector('.hero-nav.next');
+
+    if (slides.length === 0) return;
+
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    const showSlide = (index) => {
+        // Ensure index is within bounds
+        currentIndex = (index + slides.length) % slides.length;
+
+        // Update slides
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === currentIndex);
+        });
+
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    };
+
+    const nextSlide = () => {
+        showSlide(currentIndex + 1);
+        resetAutoSlide();
+    };
+
+    const prevSlide = () => {
+        showSlide(currentIndex - 1);
+        resetAutoSlide();
+    };
+
+    const resetAutoSlide = () => {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    };
+
+    const startAutoSlide = () => {
+        autoSlideInterval = setInterval(() => {
+            showSlide(currentIndex + 1);
+        }, 2000); // Auto-slide every 2 seconds
+    };
+
+    // Event listeners for navigation
+    prevBtn?.addEventListener('click', prevSlide);
+    nextBtn?.addEventListener('click', nextSlide);
+
+    // Event listeners for dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            resetAutoSlide();
+        });
+    });
+
+    // Start auto-slide on load
+    startAutoSlide();
+
+    // Pause auto-slide on hover
+    heroBannerGallery.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+
+    // Resume auto-slide when mouse leaves
+    heroBannerGallery.addEventListener('mouseleave', () => {
+        startAutoSlide();
+    });
+});
+
 console.log('Akku Electronics - Website loaded successfully!');
