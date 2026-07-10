@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startAutoSlide = () => {
         autoSlideInterval = setInterval(() => {
             showSlide(currentIndex + 1);
-        }, 2000); // Auto-slide every 2 seconds
+        }, 3000); // Auto-slide every 3 seconds
     };
 
     // Event listeners for navigation
@@ -481,6 +481,13 @@ document.addEventListener('DOMContentLoaded', () => {
             resetAutoSlide();
         });
     });
+
+    // Disable right-click on hero banner gallery
+    if (heroBannerGallery) {
+        heroBannerGallery.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+    }
 
     // Start auto-slide on load
     startAutoSlide();
